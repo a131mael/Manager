@@ -1,6 +1,6 @@
 /*
  * JBoss, Home of Professional Open Source
- * Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
+ * Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
  * contributors by the @authors tag. See the copyright.txt in the
  * distribution for a full listing of individual contributors.
  *
@@ -14,128 +14,90 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-/*
-Core JavaScript functionality for the application.  Performs the required
-Restful calls, validates return values, and populates the member table.
- */
+// Define top level routes for the app, security related views are declated in the security.js
+// Note that this app is a single page app, and each partial is routed to using the URL fragment. For example, to select the 'home' route, the URL is http://localhost:8080/Project/#/home
+var appModule = angular.module('PLAngular',
+	[ 'MessageModule', 'PicketLinkSecurityModule']).config(
+	[ '$routeProvider', function($routeProvider) {
+	    $routeProvider.when('/home', {
+		templateUrl : 'partials/home.html',
+		controller : HomeCtrl,
+		isFree : false
+	    // Add a default route
+	    }).when('/', {
+		templateUrl : 'partials/index.html',
+		controller : 'LoginCtrl',
+		access : {
+		    isFree : true
+		}
+	    }).when('/about', {
+		templateUrl : 'partials/about.html',
+		access : {
+		    isFree : true
+		}
+	    }).when('/contact', {
+		templateUrl : 'partials/contact.html',
+		access : {
+		    isFree : true
+		}
+	    }).otherwise({
+		redirectTo : 'login'
+	    });
+	} ]).factory('authHttpResponseInterceptor', ['$q', '$rootScope', '$location', 'SecurityService', 'MessageService', function($q, $rootScope, $location, SecurityService, MessageService) {
+	    return {
+		'request' : function(config) {
+		    SecurityService.secureRequest(config);
+		    return config || $q.when(config);
+		},
 
-/* Builds the updated table for the member list */
-function buildMemberRows(contries) {
-    return _.template( $( "#member-tmpl" ).html(), {"contries": contries});
-}
+		'response' : function(response) {
+		    return response || $q.when(response);
+		},
+		
+		'responseError' : function(rejection) {
+                    console.log("Server Response Status: " + rejection.status);
+                    console.log(rejection);
+    
+                    if (rejection.data && rejection.data.message) {
+                        MessageService.setMessages(rejection.data.message);
+                    } else {
+                        MessageService.setMessages(["Unexpected error from server."]);
+                    }
+        
+                    if (rejection.status === 401) {
+                        console.log("[INFO] Unauthorized response.");
+                        SecurityService.endSession();
+                        $location.path('/login');
+                        MessageService.setMessages(["Please, provide your credentials."]);
+                    } else if (rejection.status == 400) {
+                        console.log("[ERROR] Bad request response from the server.");
+                    } else if (rejection.status == 500) {
+                        console.log("[ERROR] Internal server error.");
+                    } else {
+                        console.log("[ERROR] Unexpected error from server.");
+                    }
 
-/* Uses JAX-RS GET to retrieve current member list */
-function updateMemberTable() {
-    // Display the loader widget
-    $.mobile.loading("show");
+		    return $q.reject(rejection);
+		}
+	    }
+	} ]).config([ '$httpProvider', function($httpProvider) {
+            //Http Intercpetor to check auth failures for xhr requests
+            $httpProvider.interceptors.push('authHttpResponseInterceptor');
+        } ]).run(function($rootScope, $location, MessageService) {
 
-    $.ajax({
-        url: "rest/countries",
-        cache: false,
-        success: function(data) {
-            $( "#members" ).empty().append(buildMemberRows(data));
-            $( "#member-table" ).table( "refresh" );
-        },
-        error: function(error) {
-            // console.log("error updating table -" + error.status);
-        },
-        complete: function() {
-            // Hide the loader widget
-            $.mobile.loading("hide");
-        }
-    });
-}
+            // register listener to watch route changes
+            $rootScope.$on("$routeChangeStart", function(event, next, current) {
+                MessageService.clearMessages();
+            });
+});
 
-/* Uses JAX-RS GET to retrieve current member list */
-function updateCountryTable() {
-    // Display the loader widget
-    $.mobile.loading("show");
+appModule.controller('MessageCtrl', function(MessageService, $scope) {
+    $scope.hasMessages = function() {
+        return MessageService.hasMessages();
+    };
 
-    $.ajax({
-        url: "rest/countries",
-        cache: false,
-        success: function(data) {
-            $( "#members" ).empty().append(buildMemberRows(data));
-            $( "#member-table" ).table( "refresh" );
-        },
-        error: function(error) {
-            // console.log("error updating table -" + error.status);
-        },
-        complete: function() {
-            // Hide the loader widget
-            $.mobile.loading("hide");
-        }
-    });
-}
-
-/*
- * Attempts to register a new member using a JAX-RS POST. The callbacks the
- * refresh the member table, or process JAX-RS response codes to update the
- * validation errors.
- */
-function registerMember(countryData) {
-    // clear existing msgs
-    $('span.invalid').remove();
-    $('span.success').remove();
-
-    // Display the loader widget
-    $.mobile.loading("show");
-
-    $.ajax({
-        url: 'rest/countries',
-        contentType: "application/json",
-        dataType: "json",
-        type: "POST",
-        data: JSON.stringify(countryData),
-        success: function(data) {
-            // console.log("Member registered");
-
-            // clear input fields
-            $('#reg')[0].reset();
-
-            // mark success on the registration form
-            $('#formMsgs').append($('<span class="success">Member Registered</span>'));
-
-            updateMemberTable();
-        },
-        error: function(error) {
-            if ((error.status == 409) || (error.status == 400)) {
-                // console.log("Validation error registering user!");
-
-                var errorMsg = $.parseJSON(error.responseText);
-
-                $.each(errorMsg, function(index, val) {
-                    $('<span class="invalid">' + val + '</span>').insertAfter($('#' + index));
-                });
-            } else {
-                // console.log("error - unknown server issue");
-                $('#formMsgs').append($('<span class="invalid">Unknown server error</span>'));
-            }
-        },
-        complete: function() {
-            // Hide the loader widget
-            $.mobile.loading("hide");
-        }
-    });
-}
-
-
-function Listar(){ 
-	$("#tblListar").html(""); 
-	$("#tblListar").html( "<thead>"
-			+ "	<tr>"
-			+ "	<th></th>"+ "	<th>Código</th>"
-			+ "	<th>Nome</th>"+ "	<th>Telefone</th>"
-			+ "	<th>Email</th>"+ "	</tr>"+ "</thead>"+ "<tbody>"+ "</tbody>" ); 
-	for(var i in tbClientes){
-		var cli = JSON.parse(tbClientes[i]); 
-		$("#tblListar tbody").append("<tr>"); 
-		$("#tblListar tbody").append("<td><img src='edit.png' alt='"+i+"' class='btnEditar'/><img src='delete.png' alt='"
-				+i+"' class='btnExcluir'/></td>");
-		$("#tblListar tbody").append("<td>"+cli.Codigo+"</td>");
-		$("#tblListar tbody").append("<td>"+cli.Nome+"</td>");
-		$("#tblListar tbody").append("<td>"+cli.Telefone+"</td>"); 
-		$("#tblListar tbody").append("<td>"+cli.Email+"</td>"); 
-		$("#tblListar tbody").append("</tr>"); } 
-}
-
+    $scope.clearMessages = function() {
+        MessageService.clearMessages();
+    };
+    
+});
