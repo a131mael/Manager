@@ -54,9 +54,6 @@ import org.aaf.webInterface.service.MemberRegistration;
 public class MemberResourceRESTService {
 
     @Inject
-    private Logger log;
-
-    @Inject
     private Validator validator;
 
     @Inject
@@ -155,7 +152,7 @@ public class MemberResourceRESTService {
      * @return JAX-RS response containing all violations
      */
     private Response.ResponseBuilder createViolationResponse(Set<ConstraintViolation<?>> violations) {
-        log.fine("Validation completed. violations found: " + violations.size());
+        //log.fine("Validation completed. violations found: " + violations.size());
 
         Map<String, String> responseObj = new HashMap<>();
 

@@ -30,7 +30,7 @@ function updateMemberTable() {
     $.mobile.loading("show");
 
     $.ajax({
-        url: "rest/countries",
+        url: "../Engine/rest/countries",
         cache: false,
         success: function(data) {
             $( "#members" ).empty().append(buildMemberRows(data));
@@ -52,7 +52,7 @@ function updateCountryTable() {
     $.mobile.loading("show");
 
     $.ajax({
-        url: "rest/countries",
+        url: "../Engine/rest/countries",
         cache: false,
         success: function(data) {
             $( "#members" ).empty().append(buildMemberRows(data));
@@ -82,7 +82,7 @@ function registerMember(countryData) {
     $.mobile.loading("show");
 
     $.ajax({
-        url: 'rest/countries',
+        url: '../Engine/rest/countries',
         contentType: "application/json",
         dataType: "json",
         type: "POST",

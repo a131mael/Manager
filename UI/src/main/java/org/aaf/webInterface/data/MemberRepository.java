@@ -19,6 +19,7 @@ package org.aaf.webInterface.data;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -29,7 +30,7 @@ import org.aaf.webInterface.model.Member;
 @ApplicationScoped
 public class MemberRepository {
 
-    @Inject
+	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
     public Member findById(Long id) {

@@ -29,7 +29,6 @@ import org.aaf.webInterface.util.HabilityEnum;
 @Model
 public class PlayerController extends AuthController{
 
-    @Inject
     private FacesContext facesContext;
 
     @Inject

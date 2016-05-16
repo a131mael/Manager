@@ -25,7 +25,6 @@ import org.aaf.webInterface.service.TeamService;
 @Model
 public class TeamController extends AuthController{
 
-    @Inject
     private FacesContext facesContext;
 
     @Inject

@@ -33,7 +33,6 @@ import org.aaf.webInterface.service.UserService;
 @Model
 public class UserController {
 
-    @Inject
     private FacesContext facesContext;
 
     @Inject

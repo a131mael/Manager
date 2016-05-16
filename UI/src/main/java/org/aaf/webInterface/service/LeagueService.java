@@ -16,25 +16,14 @@
  */
 package org.aaf.webInterface.service;
 
-import java.util.List;
-import java.util.logging.Logger;
-
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Match;
-import org.aaf.webInterface.model.Team;
+import javax.persistence.PersistenceContext;
 
 @Stateless
 public class LeagueService {
 
-    @Inject
-    private Logger log;
-
-    @Inject
+	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
 	
