@@ -45,9 +45,6 @@ import org.aaf.engine.service.CountryService;
 @Stateful
 public class CountryRest {
 	@Inject
-	private Logger log;
-
-	@Inject
 	private CountryService countryService;
 
 	@GET
@@ -70,7 +67,7 @@ public class CountryRest {
 			countryService.register(country);
 			
 		} catch (Exception e) {
-			log.info("Registering " + country.getName());
+			//log.info("Registering " + country.getName());
 		}
 
 		return builder.build();

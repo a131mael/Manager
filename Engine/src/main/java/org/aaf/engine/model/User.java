@@ -8,11 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-
-
+ 
 @Entity
 public class User implements Serializable{
-
+ 
 	/**
 	 * 
 	 */
@@ -22,7 +21,7 @@ public class User implements Serializable{
 	@GeneratedValue(generator = "GENERATE_User", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "GENERATE_User", sequenceName = "User_pk_seq", allocationSize = 1)
 	private Long id;
-
+ 
 	private String name;
 
 	private String cod;
@@ -34,14 +33,6 @@ public class User implements Serializable{
 	
 	private String senha;
 
-	public String getCod() {
-		return cod;
-	}
-
-	public void setCod(String cod) {
-		this.cod = cod;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -50,12 +41,12 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
+	public String getCod() {
+		return cod;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCod(String cod) {
+		this.cod = cod;
 	}
 
 	public String getLogin() {
@@ -66,14 +57,6 @@ public class User implements Serializable{
 		this.login = login;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 	public Team getTeam() {
 		return team;
 	}
@@ -82,4 +65,13 @@ public class User implements Serializable{
 		this.team = team;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	
 }

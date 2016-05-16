@@ -2,11 +2,11 @@ package org.aaf.engine.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.aaf.engine.dto.CountryDTO;
@@ -15,11 +15,11 @@ import org.aaf.engine.model.Country;
 @Stateless
 public class CountryService {
 
-	@Inject
+	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
-
-	@Inject
-	private Logger log;
+//
+//	@Inject
+//	private Logger log;
 
 	@Inject
 	private LeagueService leagueService;
@@ -30,14 +30,14 @@ public class CountryService {
 
 	public void register(CountryDTO country) throws Exception {
 
-		log.info("Registering " + country.getName());
+		//log.info("Registering " + country.getName());
 		leagueService.createLeague(country);
 
 	}
 
 	public void save(Country country) throws Exception {
 
-		log.info("Registering " + country.getName());
+		//log.info("Registering " + country.getName());
 		em.persist(country);
 	}
 

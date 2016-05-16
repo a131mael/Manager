@@ -30,8 +30,9 @@
 	<!-- </properties> -->
 	<!-- </persistence-unit> -->
 
-	<persistence-unit name="PostgreDS">
+	<persistence-unit name="PostgresDS">
 
+<!-- 		<non-jta-data-source>java:/PostgresDS</non-jta-data-source> -->
 		<jta-data-source>java:/PostgresDS</jta-data-source>
 		<class>org.aaf.engine.model.Country</class>
 		<class>org.aaf.engine.model.League</class>
@@ -39,10 +40,9 @@
 		<class>org.aaf.engine.model.Team</class>
 		<class>org.aaf.engine.model.User</class>
 		<class>org.aaf.engine.model.Property</class>
-		<class>java.lang.Long</class>
 		<class>org.aaf.engine.model.Match</class>
 
-		<!-- <non-jta-data-source>java:/PostgreSQLDS</non-jta-data-source> -->
+		
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
