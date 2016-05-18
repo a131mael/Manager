@@ -15,16 +15,16 @@ import org.aaf.engine.model.Team;
 @Stateless
 public class PlayerService {
 
-	@Inject
+	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-	@Inject
-	private Logger log;
+//	@Inject
+//	private Logger log;
 
 
 	public void save(Country country) throws Exception {
 
-		log.info("Registering " + country.getName());
+		//log.info("Registering " + country.getName());
 		em.persist(country);
 	}
 	
@@ -35,7 +35,7 @@ public class PlayerService {
 			em.persist(createPlayer(i, team));
 		}
 
-		log.info("Registering " + team.getName());
+		//log.info("Registering " + team.getName());
 		
 	}
 	

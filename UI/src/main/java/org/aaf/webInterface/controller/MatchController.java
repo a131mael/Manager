@@ -31,7 +31,6 @@ import org.aaf.webInterface.service.PlayerService;
 @Model
 public class MatchController extends AuthController {
 
-	@Inject
 	private FacesContext facesContext;
 
 	@Inject

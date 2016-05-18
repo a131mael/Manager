@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
@@ -36,10 +37,9 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 @Model
 public class AuthController {
 
-    @Inject
     private FacesContext facesContext;
 
-    @Inject
+    @EJB
     private UserService userRegistration;
 
     @Produces

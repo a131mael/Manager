@@ -32,7 +32,6 @@ import org.aaf.webInterface.service.TeamService;
 @SessionScoped
 public class LeagueController extends AuthController{
 
-    @Inject
     private FacesContext facesContext;
 
     @Inject

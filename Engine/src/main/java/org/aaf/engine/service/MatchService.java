@@ -1,30 +1,35 @@
 package org.aaf.engine.service;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.engine.dto.CountryDTO;
 import org.aaf.engine.model.Country;
 import org.aaf.engine.model.League;
 import org.aaf.engine.model.Match;
-import org.aaf.engine.model.Property;
 import org.aaf.engine.model.Team;
 
-@Stateless
-public class MatchService {
+@RequestScoped 
+public class MatchService implements Serializable{
 
-	@Inject
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-	@Inject
-	private Logger log;
+//	@Inject
+//	private Logger log;
 
 	@Inject
 	private LeagueService leagueService;

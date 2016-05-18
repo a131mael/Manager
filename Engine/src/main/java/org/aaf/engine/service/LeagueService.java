@@ -14,11 +14,11 @@ import org.aaf.engine.model.League;
 @Stateless
 public class LeagueService {
 
-	@Inject
+	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-	@Inject
-	private Logger log;
+//	@Inject
+//	private Logger log;
 
 	@Inject
 	private TeamService teamService;
@@ -28,13 +28,13 @@ public class LeagueService {
 
 	public void register(Country country) throws Exception {
 
-		log.info("Registering " + country.getName());
+	//	log.info("Registering " + country.getName());
 		em.persist(country);
 	}
 
 	public void save(Country country) throws Exception {
 
-		log.info("Registering " + country.getName());
+	//	log.info("Registering " + country.getName());
 		em.persist(country);
 	}
 

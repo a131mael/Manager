@@ -16,30 +16,27 @@
  */
 package org.aaf.webInterface.service;
 
-import org.aaf.webInterface.model.Member;
-import org.aaf.webInterface.model.User;
-
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import java.util.logging.Logger;
+import javax.persistence.PersistenceContext;
+
+import org.aaf.webInterface.model.Member;
+import org.aaf.webInterface.model.User;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
 public class MemberRegistration {
 
-    @Inject
-    private Logger log;
-
-    @Inject
+	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
-    @Inject
+    @SuppressWarnings("unused")
+	@Inject
     private Event<User> memberEventSrc;
 
     public void register(Member member) throws Exception {
-        log.info("Registering " + member.getName());
         em.persist(member);
         //memberEventSrc.fire(member);
     }

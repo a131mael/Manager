@@ -34,7 +34,6 @@ import org.aaf.webInterface.service.MemberRegistration;
 @Model
 public class MemberController {
 
-    @Inject
     private FacesContext facesContext;
 
     @Inject
