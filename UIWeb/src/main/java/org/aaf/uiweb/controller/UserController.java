@@ -32,9 +32,9 @@ public class UserController {
 
     @Inject
     private FacesContext facesContext;
-//
-//    @Inject
-//    private UserService userRegistration;
+
+    @Inject
+    private UserService userRegistration;
 
     @Produces
     @Named
@@ -48,16 +48,16 @@ public class UserController {
     }
 
     public void register() throws Exception {
-//        try {
-//        	userRegistration.register(newUser);
-//            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
-//            facesContext.addMessage(null, m);
-//            initNewMember();
-//        } catch (Exception e) {
-//            String errorMessage = getRootErrorMessage(e);
-//            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
-//            facesContext.addMessage(null, m);
-//        }
+        try {
+        	userRegistration.register(newUser);
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
+            facesContext.addMessage(null, m);
+            initNewMember();
+        } catch (Exception e) {
+            String errorMessage = getRootErrorMessage(e);
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
+            facesContext.addMessage(null, m);
+        }
     }
     
 
