@@ -1,20 +1,4 @@
 <!DOCTYPE html>
-<!--
-    JBoss, Home of Professional Open Source
-    Copyright 2014, Red Hat, Inc. and/or its affiliates, and individual
-    contributors by the @authors tag. See the copyright.txt in the
-    distribution for a full listing of individual contributors.
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
 <html>
 <head>
 <title>Football Manager</title>
@@ -58,6 +42,9 @@
 <script type="text/javascript" src="js/app.js"></script>
 <!-- For minification, uncomment out this file -->
 <!-- <script type="text/javascript" src="js/app.min.js"></script> -->
+
+<!-- ANGULAR -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <script type="text/javascript">
         $( document ).ready( function() {
@@ -135,6 +122,18 @@
     </script>
 </head>
 <body>
+	<script type="text/template" id="member-tmpl">
+        <% _.each(contries, function(country) { %>
+        <tr>
+            <th><%=country.id%></td>
+            <td><%=country.name%></td>
+            <td><%=country.activeTeams%></td>
+			<td><%=country.capacity%></td>
+            <td><a href="rest/countries/<%=country.id%>" rel="external" target="_blank" class="resturl ui-link">JSON</a></td>
+   
+		</tr>
+        <% }); %>
+    </script>
 	<div id="container">
 		<section>
 
@@ -150,20 +149,16 @@
 					<div class="wrap">
 						<!-- For now mapping bean validation constraints from server side model is a manual task -->
 						<form name="firtLeague" id="intro-art" data-ajax="false">
-							test
-						</form>
+							test</form>
 					</div>
 				</div>
 			</article>
 
-
-
 			<!-- New HTML5 article tag -->
-			<article id="register-art" data-role="page"
-				data-title="Adicionar País">
+			<article id="register-art" data-role="page" data-title="Jogadores">
 				<!-- Header -->
 				<div data-role="header" class="header">
-					<h3>Novo País</h3>
+					<h3>Jogadores</h3>
 				</div>
 				<!-- /Header -->
 
@@ -171,57 +166,39 @@
 					<div class="wrap">
 						<!-- For now mapping bean validation constraints from server side model is a manual task -->
 						<form name="firtLeague" id="reg" data-ajax="false">
-							<fieldset>
-								<legend>Registrando um novo país:</legend>
-								<div class="ui-field-contain">
-									<label for="name">Nome:</label> <input type="text" name="name"
-										id="name" placeholder="Country Name" required autofocus />
-								</div>
-								<div class="ui-field-contain">
-									<label for="firtLeague">Liga Principal:</label> <input
-										type="text" name="firtLeague" id="firtLeague"
-										placeholder="Name of First league" required />
-								</div>
-
-								<div id="formMsgs"></div>
-								<div class="ui-grid-a app-responsive">
-									<div class="ui-block-a">
-										<input type="submit" id="register" value="Register"
-											data-theme="b" />
-									</div>
-									<div class="ui-block-b">
-										<input type="button" name="cancel" id="cancel" value="Reset" />
-									</div>
-								</div>
-							</fieldset>
+						<div ng-app="">
+						</div>
+						
 						</form>
 					</div>
 				</div>
 			</article>
 
 
-            <article id="member-art" data-role="page" data-title="List Members">
-                <!-- Header -->
-                <div data-role="header" class="header" data-position="fixed">
-                    <h3>HTML5 Quickstart</h3>
-                </div>
-                <!-- /Header -->
+			<article id="member-art" data-role="page" data-title="List Members">
+				<!-- Header -->
+				<div data-role="header" class="header" data-position="fixed">
+					<h3>HTML5 Quickstart</h3>
+				</div>
+				<!-- /Header -->
 
-                <div class="ui-content" role="main">
-                    <div class="wrap">
-                        <button id="refreshButton" data-role="button" data-inline="true" data-icon="refresh">Refresh Members</button>
-                        <table data-role="table" id="member-table" data-mode="reflow" class="app-responsive table-stroke">
-                            <thead>
-                                <tr>
-                                    <th data-priority="1">Id</th>
-                                    <th data-priority="persist">Nome</th>
-                                    <th data-priority="2">Times Ativos</th>
-                                    <th data-priority="3">Capacidade</th>
-                                    <th data-priority="4">REST URL</th>
-                                </tr>
-                            </thead>
-                            <tbody id="members">
-                            <!-- This is where the list of members gets populated by the templates. This row is only
+				<div class="ui-content" role="main">
+					<div class="wrap">
+						<button id="refreshButton" data-role="button" data-inline="true"
+							data-icon="refresh">Refresh Members</button>
+						<table data-role="table" id="member-table" data-mode="reflow"
+							class="app-responsive table-stroke">
+							<thead>
+								<tr>
+									<th data-priority="1">Id</th>
+									<th data-priority="persist">Nome</th>
+									<th data-priority="2">Times Ativos</th>
+									<th data-priority="3">Capacidade</th>
+									<th data-priority="4">REST URL</th>
+								</tr>
+							</thead>
+							<tbody id="members">
+								<!-- This is where the list of members gets populated by the templates. This row is only
                                 here as an example of the code that will be inserted.
                             <tr>
                                 <th>0</td>
@@ -231,28 +208,29 @@
                                 <td><a href="rest/members/0" rel="external" target="_blank" class="resturl ui-link">JSON</a></td>
                             </tr>
                             -->
-                            </tbody>
-                        </table>
-                        <div class="member-foot">
-                            <!-- Sets the JAX-RS URLs to retrieve all members either as XML or JSON data.-->
-                            REST URL for all members:
-                            <a href="rest/members" target="_blank" rel="external">JSON</a>
-                        </div>
-                    </div>
-                </div>
-            </article>
+							</tbody>
+						</table>
+						<div class="member-foot">
+							<!-- Sets the JAX-RS URLs to retrieve all members either as XML or JSON data.-->
+							REST URL for all members: <a href="rest/members" target="_blank"
+								rel="external">JSON</a>
+						</div>
+					</div>
+				</div>
+			</article>
 
 			<!-- Footer -->
 			<div data-role="footer" data-tap-toggle="false" data-position="fixed"
 				data-theme="a">
 				<div data-role="navbar">
 					<ul>
-						<li><a href="#intro-art" data-icon="home" class="ui-btn-active"></a></li>
+						<li><a href="#intro-art" data-icon="home"
+							class="ui-btn-active"></a></li>
 						<li><a href="#register-art" data-icon="gear"></a></li>
 						<li><a href="#member-art" data-icon="grid"></a></li>
 						<li><a href="#register-art" data-icon="plus"></a></li>
 						<li><a href="#register-art" data-icon="info"></a></li>
-<!-- 						<li><a href="#register-art" data-icon="plus"></a></li>	
+						<!-- 						<li><a href="#register-art" data-icon="plus"></a></li>	
 <!-- 						<li><a href="#register-art" data-icon="plus"></a></li> -->
 					</ul>
 				</div>
@@ -260,19 +238,6 @@
 			<!-- /Footer -->
 		</section>
 	</div>
-	<script type="text/template" id="member-tmpl">
-        <% _.each(contries, function(country) { %>
-        <tr>
-            <th><%=country.id%></td>
-            <td><%=country.name%></td>
-            <td><%=country.activeTeams%></td>
-			<td><%=country.capacity%></td>
-            <td><a href="rest/countries/<%=country.id%>" rel="external" target="_blank" class="resturl ui-link">JSON</a></td>
-   
-		</tr>
-        <% }); %>
-    </script>
-	
 
 </body>
 </html>
