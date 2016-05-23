@@ -16,77 +16,34 @@
  */
 package org.aaf.uiweb.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import org.aaf.uiweb.dto.MatchDTO;
 
 @Stateless
 public class MatchService {
 
-//    @Inject
-//    private Logger log;
-
-    @Inject
-    private EntityManager em;
-
-  
 	
 	@SuppressWarnings("unchecked")
 	public List<MatchDTO> getLastMatches(Long idTeam) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("Select m from Match m  ");
-		sql.append("left join m.homeTeam ht ");
-		sql.append("left join m.visitTeam vt ");
-		sql.append("where 1=1 ");
-		sql.append("and (");
-		sql.append("vt.id = :idTeam ");
-		sql.append("or ht.id = :idTeam ");
-		sql.append(") ");
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("idTeam", idTeam);
-		return  query.getResultList();
+		
+		return  new ArrayList<MatchDTO>();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<MatchDTO> getMatches(Long id,int session, int week) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("Select m from Match m  ");
-		sql.append("left join m.homeTeam ht ");
-		sql.append("left join m.visitTeam vt ");
-		sql.append("where 1=1 ");
-		sql.append("and (");
-		sql.append("vt.id = :idTeam ");
-		sql.append("or ht.id = :idTeam ");
-		sql.append(") ");
-		sql.append("and m.session = :session");
-		sql.append("and m.week = :week");
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("session", session);
-		query.setParameter("idTeam", id);
-		query.setParameter("week", week);
-		return  query.getResultList();
+		
+		return  new ArrayList<MatchDTO>();
 		
 		
 	}
 
 	public MatchDTO getLastMatch(Long id) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("Select m from Match m  ");
-		sql.append("left join m.homeTeam ht ");
-		sql.append("left join m.visitTeam vt ");
-		sql.append("where 1=1 ");
-		sql.append("and (");
-		sql.append("vt.id = :idTeam ");
-		sql.append("or m.id = :id ");
-		sql.append(") ");
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("id", id);
-		return  (MatchDTO) query.getResultList();
+		
+		return  new MatchDTO();
 	}
 
 }
