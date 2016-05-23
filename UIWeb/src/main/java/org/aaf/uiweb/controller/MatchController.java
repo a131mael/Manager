@@ -23,25 +23,27 @@ import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import org.aaf.uiweb.dto.MatchDTO;
+import org.aaf.uiweb.service.MatchService;
+
 @Model
 public class MatchController extends AuthController {
 
 //	@Inject
 //	private FacesContext facesContext;
 
-//	@Inject
-//	private MatchService matchService;
+	@Inject
+	private MatchService matchService;
 //
-//	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
-//		return matchService.getMatches(getLoggedUser().getId(),
-//				getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
+	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
+		return matchService.getMatches(getLoggedUser().getId(),	getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
+
+	}
 //
-//	}
-//
-//	public List<MatchDTO> getLastTeamMatchs() throws Exception {
-//		return matchService.getLastMatches(getLoggedUser().getId());
-//
-//	}
+	public List<MatchDTO> getLastTeamMatchs() throws Exception {
+		return matchService.getLastMatches(getLoggedUser().getId());
+
+	}
 
 	public List<Integer> getWeeks() throws Exception {
 		List<Integer> semanas = new ArrayList<Integer>();

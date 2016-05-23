@@ -34,6 +34,7 @@ import javax.xml.bind.Unmarshaller;
 
 import org.aaf.uiweb.dto.CountryDTO;
 import org.aaf.uiweb.dto.TeamDTO;
+import org.aaf.uiweb.util.ConectionRest;
 
 
 @Stateless
@@ -47,34 +48,38 @@ public class TeamService {
     private final static int  HTTP_COD_SUCESSO = 200;
 
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
-		try {
-			//TODO - Importante
-			URL url = new URL("http://localhost/UI/rest/teams/avaliable/1");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			
-			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
-				throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
-			}
-
-			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-						
-			JAXBContext jaxbContext = JAXBContext.newInstance(TeamDTO.class);
-
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-			TeamDTO banda = (TeamDTO) jaxbUnmarshaller.unmarshal(br);
-			
-			System.out.println("------  Dados da Banda  -------- \n");
-			
-			int count = 1;
-			
-
-			con.disconnect();
-
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		try {
+//			//TODO - Importante
+//			URL url = new URL("http://localhost/UI/rest/teams/avaliable/1");
+//			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//			
+//			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
+//				throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
+//			}
+//
+//			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+//						
+//			JAXBContext jaxbContext = JAXBContext.newInstance(TeamDTO.class);
+//
+//			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+//			TeamDTO banda = (TeamDTO) jaxbUnmarshaller.unmarshal(br);
+//			
+//			System.out.println("------  Dados da Banda  -------- \n");
+//			
+//			int count = 1;
+//			
+//
+//			con.disconnect();
+//
+//		} catch (MalformedURLException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		ConectionRest conectionRest = new ConectionRest();
+		conectionRest.setUrl("http://localhost/UI/rest/teams/avaliable/1");
+		conectionRest.getObject(TeamDTO.class);
 		
 		return null;
     }
