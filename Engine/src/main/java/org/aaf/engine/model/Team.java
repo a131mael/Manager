@@ -26,7 +26,7 @@ public class Team {
 	private League league;
 	
 	@OneToOne
-	private User owner;
+	private UserFM owner;
 
 	public String getCod() {
 		return cod;
@@ -60,11 +60,11 @@ public class Team {
 		this.league = league;
 	}
 
-	public User getOwner() {
+	public UserFM getOwner() {
 		return owner;
 	}
 
-	public void setOwner(User owner) {
+	public void setOwner(UserFM owner) {
 		this.owner = owner;
 	}
 

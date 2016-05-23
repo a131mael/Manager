@@ -26,12 +26,13 @@ import javax.inject.Named;
 
 import org.aaf.uiweb.dto.TeamDTO;
 import org.aaf.uiweb.dto.UserDTO;
+import org.aaf.uiweb.service.UserService;
 
 @Model
 public class UserController {
 
-    @Inject
-    private FacesContext facesContext;
+//    @Inject
+//    private FacesContext facesContext;
 
     @Inject
     private UserService userRegistration;
@@ -42,21 +43,21 @@ public class UserController {
 
     @PostConstruct
     public void initNewMember() {
-    	newUser = new UserDTO();
+    	setNewUser(new UserDTO());
     	TeamDTO team = new TeamDTO();
-    	newUser.setTeam(team);
+    	getNewUser().setTeam(team);
     }
 
     public void register() throws Exception {
         try {
-        	userRegistration.register(newUser);
+        	userRegistration.register(getNewUser());
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
-            facesContext.addMessage(null, m);
+//            facesContext.addMessage(null, m);
             initNewMember();
         } catch (Exception e) {
             String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
-            facesContext.addMessage(null, m);
+//            facesContext.addMessage(null, m);
         }
     }
     
@@ -79,5 +80,13 @@ public class UserController {
         // This is the root cause message
         return errorMessage;
     }
+
+	public UserDTO getNewUser() {
+		return newUser;
+	}
+
+	public void setNewUser(UserDTO newUser) {
+		this.newUser = newUser;
+	}
 
 }

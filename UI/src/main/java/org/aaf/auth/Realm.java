@@ -4,7 +4,7 @@ package org.aaf.auth;
 import javax.inject.Inject;
 import javax.naming.NamingException;
 
-import org.aaf.webInterface.model.User;
+import org.aaf.webInterface.model.UserFM;
 import org.aaf.webInterface.service.UserService;
 import org.aaf.webInterface.util.ServiceLocator;
 import org.apache.shiro.SecurityUtils;
@@ -31,7 +31,7 @@ public class Realm extends AuthorizingRealm {
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
 
-        User usuario = (User) SecurityUtils.getSubject().getPrincipal();
+        UserFM usuario = (UserFM) SecurityUtils.getSubject().getPrincipal();
 
         SimpleAuthorizationInfo info = null;
         
@@ -52,11 +52,11 @@ public class Realm extends AuthorizingRealm {
 			}
 			 
 			System.out.println("Autorizacao");
-			User m = new User();
+			UserFM m = new UserFM();
 			m.setLogin((String)arg0.getPrincipal());
 			m.setSenha(sb.toString());
 			userService = getEjb(UserService.class, UserService.class);
-			User member = userService.login(m);
+			UserFM member = userService.login(m);
 			if(member != null){
 				return new SimpleAuthenticationInfo(member, m.getSenha(), getName());
 			}

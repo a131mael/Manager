@@ -45,18 +45,18 @@ public class TeamService {
 		return  query.getResultList();
 	}
     
-	public Team getAvailableTeam(Country country) throws Exception {
+	public Team getAvailableTeam(Long idcountry) throws Exception {
     	StringBuilder sql = new StringBuilder();
-    	sql.append("SELECT t from TEAM t ");
+    	sql.append("SELECT t from Team t ");
     	sql.append("left join t.league l ");
     	sql.append("left join l.country c ");
     	sql.append("where 1=1 ");
-    	sql.append("and c.id = :idCountry");
+    	sql.append("and c.id = :idCountry ");
     	sql.append("and l.level = :level");
     	
     	Query query = em.createQuery(sql.toString());
-		query.setParameter("idCountry", country.getId());
-		query.setParameter("level", 3); //TODO colocado valor arbitrario, 3, deve-se pegar o ultimo level, fazer rotina para buscar o ultimo
+		query.setParameter("idCountry", idcountry);
+		query.setParameter("level", 3); //TODO - Important 	colocado valor arbitrario, 3, deve-se pegar o ultimo level, fazer rotina para buscar o ultimo
 		return  (Team) query.getSingleResult();
     }
 	    

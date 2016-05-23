@@ -16,22 +16,11 @@
  */
 package org.aaf.webInterface.rest;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.persistence.NoResultException;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
-import javax.validation.Validator;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -47,14 +36,11 @@ import org.aaf.webInterface.service.TeamService;
  * <p/>
  * This class produces a RESTful service to read/write the contents of the members table.
  */
-@Path("/members")
+@Path("/teams")
 @RequestScoped
 public class TeamRESTService {
-
-    @Inject
-    private Validator validator;
     
-    @Inject
+    @EJB
     private TeamService teamService;
 
     @GET
@@ -71,21 +57,25 @@ public class TeamRESTService {
         /*Team member = teamService.findById(id);
         if (member == null) {
             throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }
+        }	
         return member;*/
     	return null;
     }
     
     @GET
-    @Path("/{avaliableTeam:[0-9][0-9]*}")
+    @Path("/avaliable/{countryId:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Team lookupAvaliableTeamByCountry(@PathParam("id") long id) {
-        /*Team member = teamService.findById(id);
-        if (member == null) {
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }
-        return member;*/
-    	return null;
+    public Team lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
+    	Team t = null;
+		try {
+			t = teamService.getAvailableTeam(id);
+	        if (t == null) {
+	            throw new WebApplicationException(Response.Status.NOT_FOUND);
+	        }
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        return t;
     }
-  
 }

@@ -31,7 +31,7 @@ public class Team implements Serializable{
 	private League league;
 	
 	@OneToOne
-	private User owner;
+	private UserFM owner;
 	
 	private Double cashBox;
 
@@ -67,11 +67,11 @@ public class Team implements Serializable{
 		this.league = league;
 	}
 
-	public User getOwner() {
+	public UserFM getOwner() {
 		return owner;
 	}
 
-	public void setOwner(User owner) {
+	public void setOwner(UserFM owner) {
 		this.owner = owner;
 	}
 

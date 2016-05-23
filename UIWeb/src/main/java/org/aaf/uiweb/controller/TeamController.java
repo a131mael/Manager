@@ -23,8 +23,8 @@ import javax.inject.Inject;
 @Model
 public class TeamController extends AuthController{
 
-    @Inject
-    private FacesContext facesContext;
+//    @Inject
+//    private FacesContext facesContext;
 
 //    @Inject
 //    private TeamService teamService;

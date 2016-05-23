@@ -25,8 +25,8 @@ import javax.inject.Inject;
 @SessionScoped
 public class LeagueController extends AuthController{
 
-    @Inject
-    private FacesContext facesContext;
+//    @Inject
+//    private FacesContext facesContext;
 
 //    @Inject
 //    private TeamService teamService; 

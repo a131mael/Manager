@@ -25,7 +25,7 @@ import javax.persistence.Query;
 
 import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.User;
+import org.aaf.webInterface.model.UserFM;
 
 @Stateless
 public class UserService {
@@ -43,7 +43,7 @@ public class UserService {
 
     
 
-    public void register(User user) throws Exception {
+    public void register(UserFM user) throws Exception {
 
     	Team team = teamService.getAvailableTeam(null);
     	team.setName(user.getTeam().getName());
@@ -56,15 +56,15 @@ public class UserService {
         user.setTeam(team);
     }
 
-	public User login(User m) {
+	public UserFM login(UserFM m) {
 		StringBuilder query = new StringBuilder();
-		query.append("SELECT u from USER u ");
+		query.append("SELECT u from USERFM u ");
 		query.append("where 1=1 ");
 		query.append("and u.login = : login ");
 		Query query2 = em.createQuery(query.toString());
 		query2.setParameter("login", m.getLogin());
 		
-		User user = (User) query2.getSingleResult();
+		UserFM user = (UserFM) query2.getSingleResult();
 		return user;
 	}
 }

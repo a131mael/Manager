@@ -48,10 +48,10 @@ public class TeamService {
 
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
 		try {
-			
-			URL url = new URL("http://localhost:8080/ui/banda/get");
+			//TODO - Importante
+			URL url = new URL("http://localhost/UI/rest/teams/avaliable/1");
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
+			
 			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
 				throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
 			}

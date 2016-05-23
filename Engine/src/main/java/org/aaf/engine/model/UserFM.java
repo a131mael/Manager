@@ -1,4 +1,4 @@
-package org.aaf.webInterface.model;
+package org.aaf.engine.model;
 
 import java.io.Serializable;
 
@@ -8,40 +8,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
-
+ 
 @Entity
-public class User implements Serializable{
+public class UserFM implements Serializable{
+ 
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4812515119488608179L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_User", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "GENERATE_User", sequenceName = "User_pk_seq", allocationSize = 1)
 	private Long id;
-
+ 
 	private String name;
 
 	private String cod;
-	
-	private String email;
-	
+
 	@OneToOne
 	private Team team;
 	
 	private String login;
 	
 	private String senha;
-
-	public String getCod() {
-		return cod;
-	}
-
-	public void setCod(String cod) {
-		this.cod = cod;
-	}
 
 	public String getName() {
 		return name;
@@ -51,12 +42,12 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public Long getId() {
-		return id;
+	public String getCod() {
+		return cod;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCod(String cod) {
+		this.cod = cod;
 	}
 
 	public String getLogin() {
@@ -67,14 +58,6 @@ public class User implements Serializable{
 		this.login = login;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
 	public Team getTeam() {
 		return team;
 	}
@@ -83,12 +66,13 @@ public class User implements Serializable{
 		this.team = team;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getSenha() {
+		return senha;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
+	
 }

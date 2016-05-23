@@ -23,7 +23,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.webInterface.model.Member;
-import org.aaf.webInterface.model.User;
+import org.aaf.webInterface.model.UserFM;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless
@@ -34,7 +34,7 @@ public class MemberRegistration {
 
     @SuppressWarnings("unused")
 	@Inject
-    private Event<User> memberEventSrc;
+    private Event<UserFM> memberEventSrc;
 
     public void register(Member member) throws Exception {
         em.persist(member);

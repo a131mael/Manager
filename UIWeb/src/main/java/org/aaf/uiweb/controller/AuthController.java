@@ -16,27 +16,15 @@
  */
 package org.aaf.uiweb.controller;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
-import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.aaf.uiweb.dto.TeamDTO;
-import org.aaf.uiweb.dto.UserDTO;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 
 @Model
 public class AuthController {
 
-    @Inject
-    private FacesContext facesContext;
+//    @Inject
+//    private FacesContext facesContext;
 
 //    @Inject
 //    private UserService userRegistration;
@@ -61,7 +49,7 @@ public class AuthController {
     		return null;
         } catch (Exception ex) {
         	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
-			facesContext.addMessage(null, m);
+//			facesContext.addMessage(null, m);
             ex.printStackTrace();
             return "erro";
         }

@@ -26,7 +26,7 @@ import javax.inject.Named;
 
 import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.User;
+import org.aaf.webInterface.model.UserFM;
 import org.aaf.webInterface.service.MemberRegistration;
 import org.aaf.webInterface.service.UserService;
 
@@ -40,11 +40,11 @@ public class UserController {
 
     @Produces
     @Named
-    private User newUser;
+    private UserFM newUser;
 
     @PostConstruct
     public void initNewMember() {
-    	newUser = new User();
+    	newUser = new UserFM();
     	Team team = new Team();
     	newUser.setTeam(team);
     }

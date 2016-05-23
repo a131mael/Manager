@@ -25,11 +25,10 @@ import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.User;
+import org.aaf.webInterface.model.UserFM;
 import org.aaf.webInterface.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -44,11 +43,11 @@ public class AuthController {
 
     @Produces
     @Named
-    private User authUser;
+    private UserFM authUser;
 
     @PostConstruct
     public void initNewMember() {
-    	setAuthUser(new User());
+    	setAuthUser(new UserFM());
     	Team team = new Team();
     	getAuthUser().setTeam(team);
     }
@@ -67,18 +66,18 @@ public class AuthController {
         }
     }
 
-	public User getAuthUser() {
+	public UserFM getAuthUser() {
 		return authUser;
 	}
 
-	public void setAuthUser(User authUser) {
+	public void setAuthUser(UserFM authUser) {
 		this.authUser = authUser;
 	}
     
-	public User getLoggedUser() {
+	public UserFM getLoggedUser() {
         try {
             if (SecurityUtils.getSubject().getPrincipal() != null) {
-                User user = (User) SecurityUtils.getSubject().getPrincipal();
+                UserFM user = (UserFM) SecurityUtils.getSubject().getPrincipal();
                 return user;
             }
         } catch (Exception ex) {
