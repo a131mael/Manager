@@ -16,12 +16,6 @@
  */
 package org.aaf.uiweb.service;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -29,11 +23,9 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
 
-import org.aaf.uiweb.dto.CountryDTO;
-import org.aaf.uiweb.dto.TeamDTO;
+import org.aaf.ui.DTO.CountryDTO;
+import org.aaf.ui.DTO.TeamDTO;
 import org.aaf.uiweb.util.ConectionRest;
 
 

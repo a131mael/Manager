@@ -17,18 +17,15 @@
 package org.aaf.uiweb.service;
 
 
+import java.util.logging.Logger;
+
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
-import javax.jws.soap.SOAPBinding.Use;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.aaf.uiweb.dto.TeamDTO;
-import org.aaf.uiweb.dto.UserDTO;
-
-import java.util.List;
-import java.util.logging.Logger;
+import org.aaf.ui.DTO.TeamDTO;
+import org.aaf.ui.DTO.UserDTO;
 
 @Stateless
 public class UserService {

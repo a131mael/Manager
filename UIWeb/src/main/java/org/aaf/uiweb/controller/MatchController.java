@@ -20,10 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
-import org.aaf.uiweb.dto.MatchDTO;
+import org.aaf.ui.DTO.MatchDTO;
 import org.aaf.uiweb.service.MatchService;
 
 @Model

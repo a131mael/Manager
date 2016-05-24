@@ -16,12 +16,8 @@
  */
 package org.aaf.uiweb.controller;
 
-import java.util.List;
-
 import javax.enterprise.inject.Model;
-import javax.inject.Inject;
 
-import org.aaf.uiweb.dto.PlayerDTO;
 import org.aaf.uiweb.util.HabilityEnum;
 
 @Model

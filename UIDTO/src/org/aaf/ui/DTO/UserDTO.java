@@ -1,4 +1,4 @@
-package org.aaf.uiweb.dto;
+package org.aaf.ui.DTO;
 
 public class UserDTO {
 

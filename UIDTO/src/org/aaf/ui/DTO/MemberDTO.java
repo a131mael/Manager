@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aaf.uiweb.dto;
+package org.aaf.ui.DTO;
 
 public class MemberDTO  {
     private Long id;

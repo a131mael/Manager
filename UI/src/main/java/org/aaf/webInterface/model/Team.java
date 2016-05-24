@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.aaf.ui.DTO.TeamDTO;
+
 @Entity
 public class Team implements Serializable{
 
@@ -34,7 +36,18 @@ public class Team implements Serializable{
 	private UserFM owner;
 	
 	private Double cashBox;
-
+	
+	public TeamDTO getDTO(){
+		TeamDTO teamDTO = new TeamDTO();
+		teamDTO.setCashBox(cashBox);
+		teamDTO.setCod(cod);
+		teamDTO.setId(id);
+		teamDTO.setLeague(league.getDTO());
+		teamDTO.setName(name);
+		teamDTO.setOwner(owner.getDTO());
+		return teamDTO;
+	}
+	
 	public String getCod() {
 		return cod;
 	}

@@ -20,12 +20,11 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.aaf.uiweb.dto.TeamDTO;
-import org.aaf.uiweb.dto.UserDTO;
+import org.aaf.ui.DTO.TeamDTO;
+import org.aaf.ui.DTO.UserDTO;
 import org.aaf.uiweb.service.UserService;
 
 @Model

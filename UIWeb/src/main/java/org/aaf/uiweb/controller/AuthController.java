@@ -20,8 +20,7 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 
-import org.aaf.uiweb.dto.UserDTO;
-import org.apache.shiro.SecurityUtils;
+import org.aaf.ui.DTO.UserDTO;
 
 @Model
 public class AuthController {

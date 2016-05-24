@@ -21,7 +21,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
-import org.aaf.uiweb.dto.MatchDTO;
+import org.aaf.ui.DTO.MatchDTO;
 
 @Stateless
 public class MatchService {

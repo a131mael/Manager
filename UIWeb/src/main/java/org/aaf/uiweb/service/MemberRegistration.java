@@ -23,7 +23,7 @@ import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 
-import org.aaf.uiweb.dto.UserDTO;
+import org.aaf.ui.DTO.UserDTO;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 @Stateless

@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.aaf.uiweb.dto.PlayerDTO;
+import org.aaf.ui.DTO.PlayerDTO;
 
 @Stateless
 public class PlayerService {

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.aaf.ui.DTO.UserDTO;
+
 @Entity
 public class UserFM implements Serializable{
 
@@ -31,6 +33,19 @@ public class UserFM implements Serializable{
 	
 	@OneToOne
 	private Team team;
+	
+	public UserDTO getDTO(){
+		UserDTO user = new UserDTO();
+		user.setCod(cod);
+		user.setEmail(email);
+		user.setId(id);
+		user.setLogin(login);
+		user.setName(name);
+		user.setSenha(senha);
+		user.setTeam(team.getDTO());
+		
+		return user;
+	}
 	
 	private String login;
 	
