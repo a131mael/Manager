@@ -20,7 +20,6 @@ import java.util.List;
 
 import javax.enterprise.inject.Model;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.aaf.webInterface.model.Country;
@@ -31,8 +30,6 @@ import org.aaf.webInterface.service.TeamService;
 @Model
 @SessionScoped
 public class LeagueController extends AuthController{
-
-    private FacesContext facesContext;
 
     @Inject
     private TeamService teamService; 

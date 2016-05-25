@@ -17,19 +17,10 @@
 package org.aaf.webInterface.controller;
 
 import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
-
-import org.aaf.webInterface.service.TeamService;
 
 @Model
 public class TeamController extends AuthController{
 
-    private FacesContext facesContext;
-
-    @Inject
-    private TeamService teamService;
-    
     
     
 

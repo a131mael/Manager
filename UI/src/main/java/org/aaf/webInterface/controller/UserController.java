@@ -24,10 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.UserFM;
-import org.aaf.webInterface.service.MemberRegistration;
 import org.aaf.webInterface.service.UserService;
 
 @Model

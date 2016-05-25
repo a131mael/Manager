@@ -12,15 +12,13 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
-import org.aaf.ui.DTO.LeagueDTO;
-
 @Entity
 public class League implements Serializable{
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8514629038725047970L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_League", strategy = GenerationType.SEQUENCE)
@@ -39,19 +37,6 @@ public class League implements Serializable{
 	@ManyToOne
 	private Country country;
 
-	public LeagueDTO getDTO(){
-		LeagueDTO leagueDTO = new LeagueDTO();
-		leagueDTO.setCod(cod);
-		leagueDTO.setCountry(country.getDTO());
-		leagueDTO.setId(id);
-		leagueDTO.setLevel(level);
-		leagueDTO.setName(name);
-
-		//TODO - importante - getTeans falando no dto
-		return leagueDTO;
-		
-	}
-	
 	public String getCod() {
 		return cod;
 	}

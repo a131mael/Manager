@@ -20,18 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.aaf.webInterface.model.Match;
-import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.service.MatchService;
-import org.aaf.webInterface.service.PlayerService;
 
 @Model
 public class MatchController extends AuthController {
-
-	private FacesContext facesContext;
 
 	@Inject
 	private MatchService matchService;

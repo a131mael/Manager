@@ -19,7 +19,6 @@ package org.aaf.webInterface.controller;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.aaf.webInterface.model.Player;
@@ -29,7 +28,6 @@ import org.aaf.webInterface.util.HabilityEnum;
 @Model
 public class PlayerController extends AuthController{
 
-    private FacesContext facesContext;
 
     @Inject
     private PlayerService playerService;
