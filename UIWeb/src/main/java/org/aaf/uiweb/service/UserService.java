@@ -27,45 +27,45 @@ import javax.persistence.Query;
 import org.aaf.ui.DTO.TeamDTO;
 import org.aaf.ui.DTO.UserDTO;
 
-@Stateless
 public class UserService {
 
-    @Inject
-    private Logger log;
+//    @Inject
+//    private Logger log;
 
-    @Inject
-    private EntityManager em;
+//    @Inject
+//    private EntityManager em;
 
 //    @Inject
 //    private Event<Member> memberEventSrc;
     
-    @Inject
-    private TeamService teamService;
+//    @Inject
+//    private TeamService teamService;
     
 
     public void register(UserDTO user) throws Exception {
-    	log.info("Registering " + user.getName());
-
-    	TeamDTO team = teamService.getAvailableTeam(null);
-    	team.setName(user.getTeam().getName());
-    	team.setOwner(user);
-    	
-    	user.setTeam(null);
-    	em.persist(user);
-
-        em.persist(team);
-        user.setTeam(team);
+//    	log.info("Registering " + user.getName());
+//
+//    	TeamDTO team = teamService.getAvailableTeam(null);
+//    	team.setName(user.getTeam().getName());
+//    	team.setOwner(user);
+//    	
+//    	user.setTeam(null);
+//    	em.persist(user);
+//
+//        em.persist(team);
+//        user.setTeam(team);
     }
 
 	public UserDTO login(UserDTO m) {
-		StringBuilder query = new StringBuilder();
-		query.append("SELECT u from USER u ");
-		query.append("where 1=1 ");
-		query.append("and u.login = : login ");
-		Query query2 = em.createQuery(query.toString());
-		query2.setParameter("login", m.getLogin());
-		
-		UserDTO user = (UserDTO) query2.getSingleResult();
-		return user;
+//		StringBuilder query = new StringBuilder();
+//		query.append("SELECT u from USER u ");
+//		query.append("where 1=1 ");
+//		query.append("and u.login = : login ");
+//		Query query2 = em.createQuery(query.toString());
+//		query2.setParameter("login", m.getLogin());
+//		
+//		UserDTO user = (UserDTO) query2.getSingleResult();
+//		return user;
+		return null;
 	}
 }

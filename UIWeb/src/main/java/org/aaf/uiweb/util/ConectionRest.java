@@ -36,7 +36,7 @@ public class ConectionRest {
 		try{
 			con = (HttpURLConnection) getUrl().openConnection();
 			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
-				throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
+					throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
 			}
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));

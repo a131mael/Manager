@@ -15,7 +15,7 @@ public class Player implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8458130884793236986L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_Player", strategy = GenerationType.SEQUENCE)

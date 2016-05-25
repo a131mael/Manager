@@ -17,30 +17,27 @@
 package org.aaf.uiweb.service;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
-@Stateless
 public class EconomyService {
 
 //    @Inject
 //    private Logger log;
 
-    @Inject
-    private EntityManager em;
-	
+//    @Inject
+//    private EntityManager em;
+//	
     @SuppressWarnings("unchecked")
 	public Long getTotalSalary(Long teamID) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT p from  Player p ");
-		sql.append("left join p.team t ");
-		sql.append("where 1 = 1 ");
-		sql.append("and t.id = :teamID ");
-		
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("teamID", teamID);
-		return  (Long) query.getSingleResult();
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("SELECT p from  Player p ");
+//		sql.append("left join p.team t ");
+//		sql.append("where 1 = 1 ");
+//		sql.append("and t.id = :teamID ");
+//		
+//		Query query = em.createQuery(sql.toString());
+//		query.setParameter("teamID", teamID);
+//		return  (Long) query.getSingleResult();
+    return null;
 	}
    
 }

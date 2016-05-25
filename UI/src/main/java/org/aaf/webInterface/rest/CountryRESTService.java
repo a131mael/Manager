@@ -28,7 +28,6 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.ui.DTO.TeamDTO;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.TeamService;
 
@@ -66,7 +65,7 @@ public class CountryRESTService {
     @GET
     @Path("/avaliable/{countryId:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public TeamDTO lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
+    public Team lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
     	Team t = null;
 		try {
 			t = teamService.getAvailableTeam(id);
@@ -77,6 +76,6 @@ public class CountryRESTService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-        return t.getDTO();
+        return t;
     }
 }

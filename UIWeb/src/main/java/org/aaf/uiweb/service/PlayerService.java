@@ -19,45 +19,43 @@ package org.aaf.uiweb.service;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import org.aaf.ui.DTO.PlayerDTO;
 
-@Stateless
 public class PlayerService {
 
 //    @Inject
 //    private Logger log;
 
-    @Inject
-    private EntityManager em;
+//    @Inject
+//    private EntityManager em;
 
     @SuppressWarnings("unchecked")
 	public List<PlayerDTO> getPlayers(Long teamID, String orderBy, String orderByType) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT p from  Player p ");
-		sql.append("left join p.team t ");
-		sql.append("where 1 = 1 ");
-		sql.append("and t.id = :teamID ");
-		
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("teamID", teamID);
-		return  query.getResultList();
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("SELECT p from  Player p ");
+//		sql.append("left join p.team t ");
+//		sql.append("where 1 = 1 ");
+//		sql.append("and t.id = :teamID ");
+//		
+//		Query query = em.createQuery(sql.toString());
+//		query.setParameter("teamID", teamID);
+//		return  query.getResultList();
+    	return null;
 		
 	}
     
 	public PlayerDTO getPlayer(Long id) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT p from  Player p ");
-		sql.append("left join p.team t ");
-		sql.append("where 1 = 1 ");
-		sql.append("and p.id = :teamID ");
-		
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("teamID", id);
-		return  (PlayerDTO) query.getSingleResult();
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("SELECT p from  Player p ");
+//		sql.append("left join p.team t ");
+//		sql.append("where 1 = 1 ");
+//		sql.append("and p.id = :teamID ");
+//		
+//		Query query = em.createQuery(sql.toString());
+//		query.setParameter("teamID", id);
+//		return  (PlayerDTO) query.getSingleResult();
+		return null;
 		
 	}
 }

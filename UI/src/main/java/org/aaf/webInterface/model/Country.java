@@ -7,8 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
-
-import org.aaf.ui.DTO.CountryDTO;
  
 @Entity
 public class Country implements Serializable{
@@ -16,7 +14,7 @@ public class Country implements Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4669406790432703794L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "GENERATE_Country", strategy = GenerationType.SEQUENCE)
@@ -31,16 +29,6 @@ public class Country implements Serializable{
     
     private int week;
     
-    public CountryDTO getDTO(){
-    	CountryDTO countryDTO = new CountryDTO();
-    	countryDTO.setCod(cod);
-    	countryDTO.setId(id);
-    	countryDTO.setName(name);
-    	countryDTO.setSession(session);
-    	countryDTO.setWeek(week);
-    	return countryDTO;
-    }
-
 	public String getCod() {
 		return cod;
 	}
