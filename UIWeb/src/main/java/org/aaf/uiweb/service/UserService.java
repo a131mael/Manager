@@ -17,15 +17,7 @@
 package org.aaf.uiweb.service;
 
 
-import java.util.logging.Logger;
-
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
-import org.aaf.ui.DTO.TeamDTO;
-import org.aaf.ui.DTO.UserDTO;
+import org.aaf.uiweb.dto.UserDTO;
 
 public class UserService {
 

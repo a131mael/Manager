@@ -22,7 +22,6 @@ import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-import org.aaf.ui.DTO.MatchDTO;
 import org.aaf.uiweb.service.MatchService;
 
 @Model
@@ -34,14 +33,14 @@ public class MatchController extends AuthController {
 	@Inject
 	private MatchService matchService;
 //
-	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
-		return matchService.getMatches(getLoggedUser().getId(),	getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
-
+	public List<Object> getTeamMatchs(int round) throws Exception {
+		//return matchService.getMatches(getLoggedUser().getId(),	getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
+return null;
 	}
 //
-	public List<MatchDTO> getLastTeamMatchs() throws Exception {
-		return matchService.getLastMatches(getLoggedUser().getId());
-
+	public List<Object> getLastTeamMatchs() throws Exception {
+		//return matchService.getLastMatches(getLoggedUser().getId());
+return null;
 	}
 
 	public List<Integer> getWeeks() throws Exception {

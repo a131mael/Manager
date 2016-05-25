@@ -34,6 +34,5 @@
 			<attribute name="owner.project.facets" value="jboss.m2"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/UIDTO"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -17,8 +17,6 @@
 package org.aaf.uiweb.controller;
 
 import javax.enterprise.inject.Model;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 @Model
 public class TeamController extends AuthController{

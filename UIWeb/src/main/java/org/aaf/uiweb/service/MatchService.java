@@ -19,9 +19,7 @@ package org.aaf.uiweb.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateless;
-
-import org.aaf.ui.DTO.MatchDTO;
+import org.aaf.uiweb.dto.MatchDTO;
 
 public class MatchService {
 

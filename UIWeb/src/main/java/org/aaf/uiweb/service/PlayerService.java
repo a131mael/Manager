@@ -18,9 +18,7 @@ package org.aaf.uiweb.service;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
-
-import org.aaf.ui.DTO.PlayerDTO;
+import org.aaf.uiweb.dto.PlayerDTO;
 
 public class PlayerService {
 

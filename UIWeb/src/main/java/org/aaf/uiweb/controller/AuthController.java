@@ -20,8 +20,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.application.FacesMessage;
 
-import org.aaf.ui.DTO.UserDTO;
-
 @Model
 public class AuthController {
 
@@ -65,7 +63,7 @@ public class AuthController {
 //		this.authUser = authUser;
 //	}
 //    
-	public UserDTO getLoggedUser() {
+	public Object getLoggedUser() {
 //        try {
 //            if (SecurityUtils.getSubject().getPrincipal() != null) {
 //                UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
@@ -77,7 +75,7 @@ public class AuthController {
 //        }
 
 //        return null;
-		return new UserDTO();
+		return null;
     }
 
 }

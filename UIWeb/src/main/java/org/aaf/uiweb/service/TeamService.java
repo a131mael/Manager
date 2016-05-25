@@ -17,15 +17,9 @@
 package org.aaf.uiweb.service;
 
 import java.util.List;
-import java.util.logging.Logger;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
-
-import org.aaf.ui.DTO.CountryDTO;
-import org.aaf.ui.DTO.TeamDTO;
+import org.aaf.uiweb.dto.CountryDTO;
+import org.aaf.uiweb.dto.TeamDTO;
 import org.aaf.uiweb.util.ConectionRest;
 
 
