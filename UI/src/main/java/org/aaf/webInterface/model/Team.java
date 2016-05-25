@@ -13,6 +13,7 @@ import javax.persistence.SequenceGenerator;
 @Entity
 public class Team implements Serializable{
 
+
 	/**
 	 * 
 	 */

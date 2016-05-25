@@ -23,17 +23,14 @@ import javax.ejb.Stateless;
 
 import org.aaf.ui.DTO.MatchDTO;
 
-@Stateless
 public class MatchService {
 
 	
-	@SuppressWarnings("unchecked")
 	public List<MatchDTO> getLastMatches(Long idTeam) {
 		
 		return  new ArrayList<MatchDTO>();
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<MatchDTO> getMatches(Long id,int session, int week) {
 		
 		return  new ArrayList<MatchDTO>();

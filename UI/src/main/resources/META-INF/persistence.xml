@@ -14,12 +14,12 @@
 		<class>org.aaf.webInterface.model.Member</class>
 		<class>org.aaf.webInterface.model.Player</class>
 		<class>org.aaf.webInterface.model.Team</class>
-		<class>org.aaf.webInterface.model.User</class>
+		<class>org.aaf.webInterface.model.UserFM</class>
 		
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
- 			<property name="hibernate.hbm2ddl.auto" value="create-drop"/> 
+<!--  			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
 			<property name="hibernate.show_sql" value="true" />
 		</properties>

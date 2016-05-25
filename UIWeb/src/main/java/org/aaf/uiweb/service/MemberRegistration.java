@@ -19,27 +19,21 @@ package org.aaf.uiweb.service;
 import java.lang.reflect.Member;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-
-import org.aaf.ui.DTO.UserDTO;
 
 // The @Stateless annotation eliminates the need for manual transaction demarcation
-@Stateless
 public class MemberRegistration {
 
 //    @Inject
 //    private Logger log;
 
-    @Inject
-    private EntityManager em;
-
-    @Inject
-    private Event<UserDTO> memberEventSrc;
+//    @Inject
+//    private EntityManager em;
+//
+//    @Inject
+//    private Event<UserDTO> memberEventSrc;
 
     public void register(Member member) throws Exception {
-        em.persist(member);
+     //   em.persist(member);
         //memberEventSrc.fire(member);
     }
 }

@@ -55,6 +55,7 @@ public class TeamService {
     	
     	Query query = em.createQuery(sql.toString());
 		query.setParameter("idCountry", idcountry);
+		query.setMaxResults(1);
 		query.setParameter("level", 3); //TODO - Important 	colocado valor arbitrario, 3, deve-se pegar o ultimo level, fazer rotina para buscar o ultimo
 		return  (Team) query.getSingleResult();
     }

@@ -29,14 +29,13 @@ import org.aaf.ui.DTO.TeamDTO;
 import org.aaf.uiweb.util.ConectionRest;
 
 
-@Stateless
 public class TeamService {
 
-    @Inject
-    private Logger log;
+//    @Inject
+//    private Logger log;
 
-    @Inject
-    private EntityManager em;
+//    @Inject
+//    private EntityManager em;
     private final static int  HTTP_COD_SUCESSO = 200;
 
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
@@ -78,26 +77,28 @@ public class TeamService {
 	    
 	@SuppressWarnings("unchecked")
 	public List<TeamDTO> getTeans(Long idLeague) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT t from  Team t ");
-		sql.append("left join t.league l ");
-		sql.append("where 1=1 ");
-		sql.append("and l.id = :idLeague ");
-  
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("idLeague", idLeague);
-		return  query.getResultList();
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("SELECT t from  Team t ");
+//		sql.append("left join t.league l ");
+//		sql.append("where 1=1 ");
+//		sql.append("and l.id = :idLeague ");
+//  
+//		Query query = em.createQuery(sql.toString());
+//		query.setParameter("idLeague", idLeague);
+//		return  query.getResultList();
+		return null;
 	}
 	
 	public TeamDTO getTean(Long id) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT t from  Team t ");
-		sql.append("left join t.league l ");
-		sql.append("where 1=1 ");
-		sql.append("and t.id = :id ");
-  
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("id", id);
-		return  (TeamDTO) query.getSingleResult();
+//		StringBuilder sql = new StringBuilder();
+//		sql.append("SELECT t from  Team t ");
+//		sql.append("left join t.league l ");
+//		sql.append("where 1=1 ");
+//		sql.append("and t.id = :id ");
+//  
+//		Query query = em.createQuery(sql.toString());
+//		query.setParameter("id", id);
+//		return  (TeamDTO) query.getSingleResult();
+		return null;
 	}
 }

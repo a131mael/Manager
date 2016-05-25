@@ -4,6 +4,7 @@ import java.util.List;
 
 public class LeagueDTO {
 
+
 	private Long id;
 
 	private String name;

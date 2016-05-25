@@ -17,17 +17,14 @@
 package org.aaf.uiweb.service;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
 
-@Stateless
 public class LeagueService {
 
 //    @Inject
 //    private Logger log;
 
-    @Inject
-    private EntityManager em;
+//    @Inject
+//    private EntityManager em;
 
 	
 }
