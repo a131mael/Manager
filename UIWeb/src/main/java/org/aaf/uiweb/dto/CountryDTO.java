@@ -1,5 +1,7 @@
 package org.aaf.uiweb.dto;
 
+import org.json.JSONObject;
+
 public class CountryDTO {
  
 	private Long id;
@@ -11,6 +13,20 @@ public class CountryDTO {
     private int session;
     
     private int week;
+    
+    public CountryDTO(){}
+    
+    public CountryDTO(JSONObject json){
+    	if(json != null){
+    		
+    		this.id = !json.isNull("id") ? json.getLong("id"):null;
+    		this.name = !json.isNull("name") ?json.getString("name"):null;
+    		this.cod = !json.isNull("cod") ?json.getString("cod"):null;
+    		this.session = !json.isNull("session") ?json.getInt("session"):null;
+    		this.week = !json.isNull("week") ?json.getInt("week"):null;
+    	}
+    }
+    
 
 	public String getCod() {
 		return cod;

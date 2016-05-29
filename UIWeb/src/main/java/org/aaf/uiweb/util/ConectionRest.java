@@ -11,6 +11,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.json.JSONObject;
+
 public class ConectionRest {
 	
 	private URL url;
@@ -32,29 +34,34 @@ public class ConectionRest {
 	
 	@SuppressWarnings("rawtypes")
 	public Object getObject(Class c){
-		HttpURLConnection con = null;
-		try{
-			con = (HttpURLConnection) getUrl().openConnection();
-			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
-					throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
-			}
+//		HttpURLConnection con = null;
+//		try{
+//			con = (HttpURLConnection) getUrl().openConnection();
+//			if (con.getResponseCode() != HTTP_COD_SUCESSO) {
+//					throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
+//			}
+//			
+//			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
+//			JAXBContext jaxbContext = JAXBContext.newInstance(c);
+//			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+//			
+//			return jaxbUnmarshaller.unmarshal(br);
 			
-			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
-			JAXBContext jaxbContext = JAXBContext.newInstance(c);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 			
-			return jaxbUnmarshaller.unmarshal(br);
 			
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}finally {
-			con.disconnect();
-		}
-		return con;
+//		} catch (MalformedURLException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} catch (JAXBException e) {
+//			e.printStackTrace();
+//		}finally {
+//			con.disconnect();
+//		}
+//		
+//		
+//		return con;
+		return null;
 		
 	}
 	

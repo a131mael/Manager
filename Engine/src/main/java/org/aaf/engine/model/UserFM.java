@@ -26,6 +26,8 @@ public class UserFM implements Serializable{
 	private String name;
 
 	private String cod;
+	
+	private String email;
 
 	@OneToOne
 	private Team team;
@@ -72,6 +74,14 @@ public class UserFM implements Serializable{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	

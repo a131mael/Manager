@@ -17,7 +17,11 @@
 package org.aaf.uiweb.service;
 
 
+import javax.inject.Inject;
+
+import org.aaf.uiweb.dto.TeamDTO;
 import org.aaf.uiweb.dto.UserDTO;
+import org.aaf.uiweb.util.JSONPPost;
 
 public class UserService {
 
@@ -30,18 +34,27 @@ public class UserService {
 //    @Inject
 //    private Event<Member> memberEventSrc;
     
-//    @Inject
-//    private TeamService teamService;
+    
+    private TeamService teamService;
     
 
+    public UserService(){
+    	teamService = new TeamService();
+    }
+    
+    
     public void register(UserDTO user) throws Exception {
-//    	log.info("Registering " + user.getName());
-//
-//    	TeamDTO team = teamService.getAvailableTeam(null);
-//    	team.setName(user.getTeam().getName());
-//    	team.setOwner(user);
-//    	
-//    	user.setTeam(null);
+    	
+    	//	log.info("Registering " + user.getName());
+
+    	TeamDTO team = teamService.getAvailableTeam(null);
+    	team.setName(user.getTeam().getName());
+   // 	team.setOwner(user);
+  
+    	JSONPPost.sendJson(team.getJSON());
+    	
+//TODO POST para criar time    	
+    	user.setTeam(team);
 //    	em.persist(user);
 //
 //        em.persist(team);

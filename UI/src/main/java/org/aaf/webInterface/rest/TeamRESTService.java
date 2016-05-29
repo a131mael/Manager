@@ -16,11 +16,17 @@
  */
 package org.aaf.webInterface.rest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -28,8 +34,10 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.TeamService;
+import org.json.JSONObject;
 
 /**
  * JAX-RS Example
@@ -78,4 +86,36 @@ public class TeamRESTService {
 		}
         return t;
     }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createMember(String member) {
+
+        Response.ResponseBuilder builder = null;
+
+        try {
+            // Validates member using bean validation
+
+      //  	teamService.save(member);
+
+            // Create an "ok" response
+            builder = Response.ok();
+        } catch (ConstraintViolationException ce) {
+            // Handle bean validation issues
+        } catch (ValidationException e) {
+            // Handle the unique constrain violation
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("email", "Email taken");
+            builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
+        } catch (Exception e) {
+            // Handle generic exceptions
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", e.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+
+        return builder.build();
+    }
+
 }

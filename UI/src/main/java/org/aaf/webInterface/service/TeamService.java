@@ -84,4 +84,9 @@ public class TeamService {
 		query.setParameter("id", id);
 		return  (Team) query.getSingleResult();
 	}
+	
+	public void save(Team team){
+		em.persist(team);
+	}
+
 }

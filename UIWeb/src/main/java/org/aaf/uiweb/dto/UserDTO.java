@@ -1,5 +1,7 @@
 package org.aaf.uiweb.dto;
 
+import org.json.JSONObject;
+
 public class UserDTO {
 
 	private Long id;
@@ -7,14 +9,29 @@ public class UserDTO {
 	private String name;
 
 	private String cod;
-	
+
 	private String email;
-	
+
 	private TeamDTO team;
-	
+
 	private String login;
-	
+
 	private String senha;
+
+	public UserDTO() {
+	}
+
+	public UserDTO(JSONObject json) {
+		if (json != null) {
+			this.id = !json.isNull("id") ? json.getLong("id") : null;
+			this.name = !json.isNull("id") ? json.getString("name") : null;
+			this.cod = !json.isNull("id") ? json.getString("cod") : null;
+			this.email = !json.isNull("id") ? json.getString("email") : null;
+			this.team = new TeamDTO(!json.isNull("team") ?json.getJSONObject("team"):null);
+			this.login = !json.isNull("id") ? json.getString("login") : null;
+			this.senha = !json.isNull("id") ? json.getString("senha") : null;
+		}
+	}
 
 	public String getCod() {
 		return cod;
