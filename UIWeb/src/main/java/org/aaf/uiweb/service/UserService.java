@@ -16,13 +16,14 @@
  */
 package org.aaf.uiweb.service;
 
-
 import javax.inject.Inject;
 
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
+import org.aaf.uiweb.util.JsonReader;
+import org.json.JSONObject;
 import org.json.JSONWriter;
 import org.primefaces.push.impl.JSONDecoder;
 
@@ -32,48 +33,40 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 
 public class UserService {
 
-//    @Inject
-//    private Logger log;
+	// @Inject
+	// private Logger log;
 
-//    @Inject
-//    private EntityManager em;
+	// @Inject
+	// private EntityManager em;
 
-//    @Inject
-//    private Event<Member> memberEventSrc;
-    
-    
-    private TeamService teamService;
-    
+	// @Inject
+	// private Event<Member> memberEventSrc;
 
-    public UserService(){
-    	teamService = new TeamService();
-    }
-    
-    
-    public void register(UserDTO user) throws Exception {
-    	
-    	//	log.info("Registering " + user.getName());
+	private TeamService teamService;
 
-    	TeamDTO team = teamService.getAvailableTeam(null);
-    	team.setName(user.getTeam().getName());
-    	team.setOwner(user);
-  
-    	
-    	JSONPPost.sendJson(JsonWriter.objectToJson(team), EndPoints.REGISTER_TEAM);
-    	
-//TODO POST para criar time    	
-    }
-
-	public UserDTO login(UserDTO m) {
-//		StringBuilder query = new StringBuilder();
-//		query.append("SELECT u from USER u ");
-//		query.append("where 1=1 ");
-//		query.append("and u.login = : login ");
-//		Query query2 = em.createQuery(query.toString());
-//		query2.setParameter("login", m.getLogin());
-//		
-//		UserDTO user = (UserDTO) query2.getSingleResult();
-//		return user;
-		return null;
+	public UserService() {
+		teamService = new TeamService();
 	}
+
+	public void register(UserDTO user) throws Exception {
+
+		// log.info("Registering " + user.getName());
+
+		TeamDTO team = teamService.getAvailableTeam(null);
+		team.setName(user.getTeam().getName());
+		team.setOwner(user);
+
+		JSONPPost.sendJson(JsonWriter.objectToJson(team), EndPoints.REGISTER_TEAM);
+
+		// TODO POST para criar time
+	}
+
+	public UserDTO login(UserDTO m) throws Exception {
+//		JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
+//		TeamDTO time = new TeamDTO(jo);
+//		
+		JSONPPost.sendJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
+		return m;
+	}
+
 }

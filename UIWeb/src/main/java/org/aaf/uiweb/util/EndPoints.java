@@ -5,5 +5,6 @@ public class EndPoints {
 	
 	public static final String AVALIABLE_TEAM = "http://localhost/UI/rest/teams/avaliable/1";
 	public static final String REGISTER_TEAM = "http://localhost/UI/rest/teams/";
+	public static final String LOGIN = "http://localhost/UI/rest/users/login";
 	
 }
