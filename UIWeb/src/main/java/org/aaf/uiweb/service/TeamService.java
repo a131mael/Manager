@@ -18,8 +18,8 @@ package org.aaf.uiweb.service;
 
 import java.util.List;
 
-import org.aaf.uiweb.dto.CountryDTO;
-import org.aaf.uiweb.dto.TeamDTO;
+import org.aaf.dto.CountryDTO;
+import org.aaf.dto.TeamDTO;
 import org.aaf.uiweb.util.ConectionRest;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;

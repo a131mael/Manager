@@ -23,8 +23,8 @@ import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.aaf.uiweb.dto.TeamDTO;
-import org.aaf.uiweb.dto.UserDTO;
+import org.aaf.dto.TeamDTO;
+import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.service.UserService;
 
 @Model

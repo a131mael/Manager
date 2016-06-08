@@ -18,7 +18,14 @@ package org.aaf.uiweb.controller;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
+import javax.inject.Named;
+
+import org.aaf.dto.TeamDTO;
+import org.aaf.dto.UserDTO;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 
 @Model
 public class AuthController {
@@ -29,24 +36,23 @@ public class AuthController {
 //    @Inject
 //    private UserService userRegistration;
 
-//    @Produces
-//    @Named
-//    private UserDTO authUser;
+    @Produces
+    @Named
+    private UserDTO authUser;
 
     @PostConstruct
     public void initNewMember() {
-//    	setAuthUser(new UserDTO());
-//    	TeamDTO team = new TeamDTO();
-//    	getAuthUser().setTeam(team);
+    	setAuthUser(new UserDTO());
+    	TeamDTO team = new TeamDTO();
+    	getAuthUser().setTeam(team);
     }
 
     public String login() throws Exception {
     	try {
-//            UsernamePasswordToken token = new UsernamePasswordToken(authUser.getLogin(), authUser.getSenha().toCharArray(), true);
-//            SecurityUtils.getSubject().login(token);
-//
-//            return "team";
-    		return null;
+            UsernamePasswordToken token = new UsernamePasswordToken(authUser.getLogin(), authUser.getSenha().toCharArray(), true);
+            SecurityUtils.getSubject().login(token);
+
+            return "team";
         } catch (Exception ex) {
         	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
 //			facesContext.addMessage(null, m);
@@ -55,14 +61,14 @@ public class AuthController {
         }
     }
 
-//	public UserDTO getAuthUser() {
-//		return authUser;
-//	}
-//
-//	public void setAuthUser(UserDTO authUser) {
-//		this.authUser = authUser;
-//	}
-//    
+	public UserDTO getAuthUser() {
+		return authUser;
+	}
+
+	public void setAuthUser(UserDTO authUser) {
+		this.authUser = authUser;
+	}
+    
 	public Object getLoggedUser() {
 //        try {
 //            if (SecurityUtils.getSubject().getPrincipal() != null) {

@@ -103,6 +103,14 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.aaf.UIDTO</groupId>
+			<artifactId>UIDTO</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<!-- <scope>system</scope> -->
+			<!-- <systemPath>path/to/myejbproject.jar</systemPath> -->
+		</dependency>
+
+		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
 			<version>1.2.4</version>
@@ -245,6 +253,11 @@
 			<version>4.1.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.cedarsoftware</groupId>
+			<artifactId>json-io</artifactId>
+			<version>4.1.6</version>
+		</dependency>
 
 	</dependencies>
 

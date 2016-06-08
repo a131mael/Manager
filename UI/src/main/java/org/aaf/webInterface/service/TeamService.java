@@ -23,43 +23,48 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.aaf.webInterface.model.League;
 import org.aaf.webInterface.model.Team;
+import org.aaf.webInterface.model.UserFM;
 
 @Stateless
 public class TeamService {
 
 	@PersistenceContext(unitName = "PostgresDS")
-    private EntityManager em;
+	private EntityManager em;
 
-  //TODO query nativa mongoDB
-    @Deprecated
-    @SuppressWarnings("unchecked")
+	// TODO query nativa mongoDB
+	@Deprecated
+	@SuppressWarnings("unchecked")
 	public List<Team> getTeansMONGODB(Long idLeague) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("db.Team.find({'league_id': ");
 		sql.append(idLeague);
 		sql.append("})");
-  
+
 		Query query = em.createNativeQuery(sql.toString(), Team.class);
-		return  query.getResultList();
+		return query.getResultList();
 	}
-    
+
 	public Team getAvailableTeam(Long idcountry) throws Exception {
-    	StringBuilder sql = new StringBuilder();
-    	sql.append("SELECT t from Team t ");
-    	sql.append("left join t.league l ");
-    	sql.append("left join l.country c ");
-    	sql.append("where 1=1 ");
-    	sql.append("and c.id = :idCountry ");
-    	sql.append("and l.level = :level");
-    	
-    	Query query = em.createQuery(sql.toString());
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT t from Team t ");
+		sql.append("left join t.league l ");
+		sql.append("left join l.country c ");
+		sql.append("where 1=1 ");
+		sql.append("and c.id = :idCountry ");
+		sql.append("and l.level = :level");
+
+		Query query = em.createQuery(sql.toString());
 		query.setParameter("idCountry", idcountry);
 		query.setMaxResults(1);
-		query.setParameter("level", 3); //TODO - Important 	colocado valor arbitrario, 3, deve-se pegar o ultimo level, fazer rotina para buscar o ultimo
-		return  (Team) query.getSingleResult();
-    }
-	    
+		query.setParameter("level", 3); // TODO - Important colocado valor
+										// arbitrario, 3, deve-se pegar o ultimo
+										// level, fazer rotina para buscar o
+										// ultimo
+		return (Team) query.getSingleResult();
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Team> getTeans(Long idLeague) {
 		StringBuilder sql = new StringBuilder();
@@ -67,26 +72,46 @@ public class TeamService {
 		sql.append("left join t.league l ");
 		sql.append("where 1=1 ");
 		sql.append("and l.id = :idLeague ");
-  
+
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("idLeague", idLeague);
-		return  query.getResultList();
+		return query.getResultList();
 	}
-	
+
 	public Team getTean(Long id) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");
 		sql.append("where 1=1 ");
 		sql.append("and t.id = :id ");
-  
+
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("id", id);
-		return  (Team) query.getSingleResult();
+		return (Team) query.getSingleResult();
 	}
-	
-	public void save(Team team){
+
+	public void save(Team team) {
 		em.persist(team);
+	}
+
+	public void registerTeam(Team t) {
+		try {
+			UserFM userTeam = t.getOwner(); 
+			userTeam.setTeam(null);
+			em.persist(userTeam);
+			
+			League le = t.getLeague();
+			le.setCountry(null);
+			em.merge(le);
+			
+			t.setLeague(le);
+			t.setOwner(userTeam);
+			em.merge(t);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }

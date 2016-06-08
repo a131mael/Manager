@@ -1,44 +1,37 @@
-package org.aaf.webInterface.model;
+package org.aaf.dto;
 
-import java.io.Serializable;
+import org.json.JSONObject;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+public class UserDTO {
 
-import org.aaf.dto.UserDTO;
-
-@Entity
-public class UserFM implements Serializable{
-
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(generator = "GENERATE_User", strategy = GenerationType.SEQUENCE)
-	@SequenceGenerator(name = "GENERATE_User", sequenceName = "User_pk_seq", allocationSize = 1)
 	private Long id;
 
 	private String name;
 
 	private String cod;
-	
+
 	private String email;
-	
-	@OneToOne
-	private Team team;
-	
+
+	private TeamDTO team;
+
 	private String login;
-	
+
 	private String senha;
 
-	public UserFM(){}
+	public UserDTO() {
+	}
+
+	public UserDTO(JSONObject json) {
+		if (json != null) {
+			this.id = !json.isNull("id") ? json.getLong("id") : null;
+			this.name = !json.isNull("id") ? json.getString("name") : null;
+			this.cod = !json.isNull("id") ? json.getString("cod") : null;
+			this.email = !json.isNull("id") ? json.getString("email") : null;
+			this.team = new TeamDTO(!json.isNull("team") ?json.getJSONObject("team"):null);
+			this.login = !json.isNull("id") ? json.getString("login") : null;
+			this.senha = !json.isNull("id") ? json.getString("senha") : null;
+		}
+	}
 
 	public String getCod() {
 		return cod;
@@ -80,11 +73,11 @@ public class UserFM implements Serializable{
 		this.senha = senha;
 	}
 
-	public Team getTeam() {
+	public TeamDTO getTeam() {
 		return team;
 	}
 
-	public void setTeam(Team team) {
+	public void setTeam(TeamDTO team) {
 		this.team = team;
 	}
 

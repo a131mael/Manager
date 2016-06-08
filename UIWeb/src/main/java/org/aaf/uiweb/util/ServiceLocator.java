@@ -9,6 +9,8 @@ import java.util.Properties;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.aaf.uiweb.service.UserService;
+
 
 
 
@@ -41,13 +43,13 @@ public class ServiceLocator {
         return instance;
     }
 
-//    public UserService getEjb(String simpleNameImpl, String nameInterface) throws NamingException {
-//    		Constant c = new Constant();
-//    	
-//    		Object ejbHome2 = (Object) jndiContext.lookup(c.getContextoGlobalEJB() + c.getBarra() 
-//                                + c.getProjeto() + c.getBarra() 
-//                                + simpleNameImpl +"!"  + nameInterface);
-//
-//            return (UserService) ejbHome2;
-//        }
+    public UserService getEjb(String simpleNameImpl, String nameInterface) throws NamingException {
+    		Constant c = new Constant();
+    	
+    		Object ejbHome2 = (Object) jndiContext.lookup(c.getContextoGlobalEJB() + c.getBarra() 
+                                + c.getProjeto() + c.getBarra() 
+                                + simpleNameImpl +"!"  + nameInterface);
+
+            return (UserService) ejbHome2;
+        }
 }

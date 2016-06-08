@@ -1,9 +1,13 @@
 package org.aaf.auth;
 
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.naming.NamingException;
 
+import org.aaf.dto.UserDTO;
+import org.aaf.uiweb.service.UserService;
+import org.aaf.uiweb.util.ServiceLocator;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -21,9 +25,12 @@ import org.apache.shiro.subject.PrincipalCollection;
  */
 public class Realm extends AuthorizingRealm {
 	
-//	@Inject
-//	private UserService userService;
-
+	private UserService userService;
+	
+	@PostConstruct
+	public void initializy(){
+		userService = new UserService();
+	}
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
@@ -42,37 +49,27 @@ public class Realm extends AuthorizingRealm {
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
-//		try {
-//			StringBuilder sb = new StringBuilder();
-//			
-//			for(char c : (char [])arg0.getCredentials()){
-//				sb.append(c);	
-//			}
-//			 
-//			System.out.println("Autorizacao");
-//			User m = new User();
-//			m.setLogin((String)arg0.getPrincipal());
-//			m.setSenha(sb.toString());
-//			userService = getEjb(UserService.class, UserService.class);
-//			User member = userService.login(m);
-//			if(member != null){
-//				return new SimpleAuthenticationInfo(member, m.getSenha(), getName());
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	
+		try {
+			StringBuilder sb = new StringBuilder();
+			
+			for(char c : (char [])arg0.getCredentials()){
+				sb.append(c);	
+			}
+			 
+			System.out.println("Autorizacao");
+			UserDTO m = new UserDTO();
+			m.setLogin((String)arg0.getPrincipal());
+			m.setSenha(sb.toString());
+			userService.login(m);
+			UserDTO member = userService.login(m);
+			if(member != null){
+				return new SimpleAuthenticationInfo(member, m.getSenha(), getName());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 		return null;
 	}
-
-//	@SuppressWarnings("rawtypes")
-//	private UserService getEjb(Class impl, Class local) {
-//		try {
-//			return ServiceLocator.getInstance().getEjb(impl.getSimpleName(), local.getName());
-//		} catch (NamingException e) {
-//			e.printStackTrace();
-//		}
-//		return userService;
-//	}
 
 }

@@ -18,7 +18,7 @@ package org.aaf.uiweb.service;
 
 import java.util.List;
 
-import org.aaf.uiweb.dto.PlayerDTO;
+import org.aaf.dto.PlayerDTO;
 
 public class PlayerService {
 

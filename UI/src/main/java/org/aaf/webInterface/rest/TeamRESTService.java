@@ -34,10 +34,12 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.webInterface.model.Member;
+import org.aaf.dto.TeamDTO;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.TeamService;
-import org.json.JSONObject;
+import org.aaf.webInterface.util.Convertes;
+
+import com.cedarsoftware.util.io.JsonReader;
 
 /**
  * JAX-RS Example
@@ -90,14 +92,24 @@ public class TeamRESTService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response createMember(String member) {
+    public Response register(String member) {
 
         Response.ResponseBuilder builder = null;
 
         try {
             // Validates member using bean validation
 
-      //  	teamService.save(member);
+        	TeamDTO team = (TeamDTO) JsonReader.jsonToJava(member);
+        	
+        	//TeamDTO team = new TeamDTO();
+        //	JSONObject jsonObject = new JSONObject(member);
+        	
+        	//UserFM user =  Convertes.getUser((UserDTO) (jsonObject.get("owner")));
+        	//Team t = Convertes.getTeam(jsonObject);
+        	//TeamDTO ob = new ObjectMapper().readValue(jsonObject, TeamDTO.class);
+        	
+        	
+        	teamService.registerTeam(Convertes.getTeam(team));
 
             // Create an "ok" response
             builder = Response.ok();

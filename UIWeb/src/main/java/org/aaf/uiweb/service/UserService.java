@@ -19,9 +19,16 @@ package org.aaf.uiweb.service;
 
 import javax.inject.Inject;
 
-import org.aaf.uiweb.dto.TeamDTO;
-import org.aaf.uiweb.dto.UserDTO;
+import org.aaf.dto.TeamDTO;
+import org.aaf.dto.UserDTO;
+import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
+import org.json.JSONWriter;
+import org.primefaces.push.impl.JSONDecoder;
+
+import com.cedarsoftware.util.io.JsonWriter;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 
 public class UserService {
 
@@ -49,16 +56,12 @@ public class UserService {
 
     	TeamDTO team = teamService.getAvailableTeam(null);
     	team.setName(user.getTeam().getName());
-   // 	team.setOwner(user);
+    	team.setOwner(user);
   
-    	JSONPPost.sendJson(team.getJSON());
+    	
+    	JSONPPost.sendJson(JsonWriter.objectToJson(team), EndPoints.REGISTER_TEAM);
     	
 //TODO POST para criar time    	
-    	user.setTeam(team);
-//    	em.persist(user);
-//
-//        em.persist(team);
-//        user.setTeam(team);
     }
 
 	public UserDTO login(UserDTO m) {
