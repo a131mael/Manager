@@ -100,12 +100,14 @@ public class TeamService {
 			userTeam.setTeam(null);
 			em.persist(userTeam);
 			
-			League le = t.getLeague();
-			le.setCountry(null);
-			em.merge(le);
+			League le = em.find(League.class, t.getLeague().getId()) ;
 			
 			t.setLeague(le);
 			t.setOwner(userTeam);
+			
+			userTeam.setTeam(t);
+			em.persist(userTeam);
+			
 			em.merge(t);
 
 		} catch (Exception e) {
