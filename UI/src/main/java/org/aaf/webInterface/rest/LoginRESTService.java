@@ -17,7 +17,6 @@
 package org.aaf.webInterface.rest;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
@@ -30,12 +29,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 
 import org.aaf.dto.TeamDTO;
-import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.TeamService;
 import org.aaf.webInterface.util.Convertes;
 
@@ -56,18 +52,19 @@ public class LoginRESTService {
     @GET
     @Path("/login/{countryId:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Team lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
-    	Team t = null;
-		try {
-			t = teamService.getAvailableTeam(id);
-	        if (t == null) {
-	            throw new WebApplicationException(Response.Status.NOT_FOUND);
-	        }
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        return t;
+    public TeamDTO lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
+//    	Team t = null;
+//		try {
+//			t = teamService.getAvailableTeam(id);
+//	        if (t == null) {
+//	            throw new WebApplicationException(Response.Status.NOT_FOUND);
+//	        }
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//        return t;
+    	return null;
     }
     
     @POST

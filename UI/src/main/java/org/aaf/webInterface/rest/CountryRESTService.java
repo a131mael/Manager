@@ -16,8 +16,6 @@
  */
 package org.aaf.webInterface.rest;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
@@ -28,54 +26,37 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.service.TeamService;
+import org.aaf.webInterface.model.Country;
+import org.aaf.webInterface.service.CountryService;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the members table.
- */
-@Path("/teams")
+@Path("/countries")
 @RequestScoped
 public class CountryRESTService {
     
     @EJB
-    private TeamService teamService;
+    private CountryService countryService;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Team> listAllMembers() {
-//        return teamService.findAllOrderedByName();
-    	return null;
+    public Response listAllMembers() {
+    	Response.ResponseBuilder builder = Response.ok();
+		builder.entity(countryService.findAllOrderedByName());
+        return builder.build();
     }
 
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Team lookupMemberById(@PathParam("id") long id) {
-        /*Team member = teamService.findById(id);
-        if (member == null) {
+    public Response lookupMemberById(@PathParam("id") long id) {
+    	Response.ResponseBuilder builder = Response.ok();
+    	
+        Country country = countryService.findById(id);
+        builder.entity(country);
+        if (country == null) {
+        	 builder = Response.status(Response.Status.NOT_FOUND);
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }	
-        return member;*/
-    	return null;
+        return builder.build();
     }
-    
-    @GET
-    @Path("/avaliable/{countryId:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Team lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
-    	Team t = null;
-		try {
-			t = teamService.getAvailableTeam(id);
-	        if (t == null) {
-	            throw new WebApplicationException(Response.Status.NOT_FOUND);
-	        }
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        return t;
-    }
+   
 }

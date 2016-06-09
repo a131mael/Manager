@@ -16,30 +16,23 @@
  */
 package org.aaf.webInterface.rest;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.validation.ConstraintViolationException;
-import javax.validation.ValidationException;
-import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.dto.TeamDTO;
+import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.service.TeamService;
-import org.aaf.webInterface.util.Convertes;
-
-import com.cedarsoftware.util.io.JsonReader;
+import org.aaf.webInterface.service.PlayerService;
 
 /**
  * JAX-RS Example
@@ -47,83 +40,56 @@ import com.cedarsoftware.util.io.JsonReader;
  * This class produces a RESTful service to read/write the contents of the
  * members table.
  */
-@Path("/teams")
+@Path("/players")
 @RequestScoped
-public class TeamRESTService {
+public class PlayerRESTService {
 
 	@EJB
-	private TeamService teamService;
+	private PlayerService playerService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Team> listAllMembers() {
+	public List<Team> listAllPlayers() {
 		// return teamService.findAllOrderedByName();
 		return null;
 	}
 
 	@GET
-	@Path("/{id:[0-9][0-9]*}")
+	@Path("/{idTeam:[0-9][0-9]*}/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response lookupMemberById(@PathParam("id") long id) {
+	public Response lookupPlayerById(@PathParam("id") long id,@PathParam("idTeam") long idTeam){
+		
 		Response.ResponseBuilder builder = null;
 
-		Team team = teamService.getTean(id);
+		Player player = playerService.getPlayer(id);
 
-		if (team == null) {
+		if (player == null) {
 			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
 			builder = Response.ok();
-			builder.entity(team);
+			builder.entity(player);
 		}
 
 		return builder.build();
 	}
-
+	
 	@GET
-	@Path("/avaliable/{countryId:[0-9][0-9]*}")
+	@Path("/{idTeam:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Team lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
-		Team t = null;
-		try {
-			t = teamService.getAvailableTeam(id);
-			if (t == null) {
-				throw new WebApplicationException(Response.Status.NOT_FOUND);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return t;
-	}
-
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response register(String member) {
-
+	public Response lookupPlayersById(@PathParam("idTeam") long idTeam, @DefaultValue("value")@QueryParam("orderBy") String orderBy, @DefaultValue("desc")@QueryParam("orderByType") String orderByType) {
 		Response.ResponseBuilder builder = null;
 
-		try {
+		List<Player> players = playerService.getPlayers(idTeam, orderBy, orderByType);
 
-			TeamDTO team = (TeamDTO) JsonReader.jsonToJava(member);
-			teamService.registerTeam(Convertes.getTeam(team));
-
-			// Create an "ok" response
+		if (players == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
 			builder = Response.ok();
-		} catch (ConstraintViolationException ce) {
-			// Handle bean validation issues
-		} catch (ValidationException e) {
-			// Handle the unique constrain violation
-			Map<String, String> responseObj = new HashMap<>();
-			responseObj.put("email", "Email taken");
-			builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
-		} catch (Exception e) {
-			// Handle generic exceptions
-			Map<String, String> responseObj = new HashMap<>();
-			responseObj.put("error", e.getMessage());
-			builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+			builder.entity(players);
 		}
+
 		return builder.build();
 	}
 

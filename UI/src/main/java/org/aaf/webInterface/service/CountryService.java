@@ -16,53 +16,32 @@
  */
 package org.aaf.webInterface.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.Member;
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.UserFM;
+import org.aaf.webInterface.model.Country;
 
 @Stateless
-public class UserService {
+public class CountryService {
 
 	@PersistenceContext(unitName = "PostgresDS")
-    private EntityManager em;
+	private EntityManager em;
 
-    @SuppressWarnings("unused")
-	@Inject
-    private Event<Member> memberEventSrc;
-    
-    @Inject
-    private TeamService teamService;
-    
+	public Country findById(Long id) {
+		return em.find(Country.class, id);
+	}
 
-    public void register(UserFM user) throws Exception {
-
-    	Team team = teamService.getAvailableTeam(null);
-    	team.setName(user.getTeam().getName());
-    	team.setOwner(user);
-    	
-    	user.setTeam(null);
-    	em.persist(user);
-
-        em.persist(team);
-        user.setTeam(team);
-    }
-
-	public UserFM login(UserFM m) {
-		StringBuilder query = new StringBuilder();
-		query.append("SELECT u from USERFM u ");
-		query.append("where 1=1 ");
-		query.append("and u.login = : login ");
-		Query query2 = em.createQuery(query.toString());
-		query2.setParameter("login", m.getLogin());
+	public List<Country> findAllOrderedByName() {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT c from  Country c ");
+		sql.append("where 1 = 1 ");
+		sql.append("ORDER BY  name ");
 		
-		UserFM user = (UserFM) query2.getSingleResult();
-		return user;
+		Query query = em.createQuery(sql.toString());
+		return  query.getResultList();
 	}
 }
