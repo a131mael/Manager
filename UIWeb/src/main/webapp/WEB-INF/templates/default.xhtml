@@ -29,7 +29,7 @@
 					<h:selectOneMenu id="country" label="Country" style="width: 175px;"
 						value="#{countryDTO}">
 						<f:selectItem itemLabel="Country ..." itemValue="" />
-						<f:selectItems value="#{selectItems.habilityEnum}" />
+						<f:selectItems value="#{userController.countries}" />
 						<!-- 						<f:ajax execute="@this" render="@all" event="click" /> -->
 					</h:selectOneMenu>
 					<h:message for="country" errorClass="invalid" />

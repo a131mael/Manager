@@ -16,6 +16,8 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
@@ -44,6 +46,7 @@ public class UserController {
     @Produces
     @Named
     private CountryDTO countryDTO;
+    
 
     @PostConstruct
     public void initNewMember() {
@@ -65,17 +68,17 @@ public class UserController {
         }
     }
     
-    public void getCountries() throws Exception {
+    public List<CountryDTO> getCountries() throws Exception {
         try {
-        	userRegistration.register(getNewUser());
-            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
-//            facesContext.addMessage(null, m);
-            initNewMember();
+        	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
+
+        	return userRegistration.getCountries();
         } catch (Exception e) {
             String errorMessage = getRootErrorMessage(e);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
 //            facesContext.addMessage(null, m);
         }
+		return null;
     }
     
 

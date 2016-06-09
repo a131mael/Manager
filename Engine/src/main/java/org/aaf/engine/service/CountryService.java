@@ -65,6 +65,7 @@ public class CountryService {
 		String query1 = "db.Property.find({'value': 'b'})";
 		Query query = em.createNativeQuery(query1, Country.class);
 
+		@SuppressWarnings("unchecked")
 		List<Country> list = query.getResultList();
 		return list;
 	}

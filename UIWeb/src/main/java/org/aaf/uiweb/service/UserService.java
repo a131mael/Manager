@@ -73,10 +73,11 @@ public class UserService {
 	
 	public List<CountryDTO> getCountries() throws Exception {
 		JSONObject jo = JsonReader.getObject(EndPoints.GET_COUNTRIES);
-		List<CountryDTO> countries = new ArrayList<CountryDTO>();
-		//TODO verificar
+		
+		List<CountryDTO> objs = (List<CountryDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		
 
-		return countries;
+		return objs;
 	}
 
 }
