@@ -16,8 +16,13 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 
+import org.aaf.dto.PlayerDTO;
+import org.aaf.uiweb.service.PlayerService;
 import org.aaf.uiweb.util.HabilityEnum;
 
 @Model
@@ -26,15 +31,19 @@ public class PlayerController extends AuthController{
 //    @Inject
 //    private FacesContext facesContext;
 
-//    @Inject
-//    private PlayerService playerService;
+    private PlayerService playerService;
     
     private HabilityEnum selectedHability;
+
+    @PostConstruct
+    private void init(){
+    	playerService = new PlayerService();
+    }
     
-//    public List<PlayerDTO> getTeamPlayers() throws Exception {
-//    	return playerService.getPlayers(getLoggedUser().getId(), selectedHability != null ?selectedHability.getLabel():null,"");
-//    
-//    }
+    public List<PlayerDTO> getTeamPlayers() throws Exception {
+    	return playerService.getPlayers(getLoggedUser().getId(), selectedHability != null ?selectedHability.getLabel():null,"");
+    
+    }
 
 	public HabilityEnum getSelectedHability() {
 		return selectedHability;

@@ -25,8 +25,8 @@ public class JSONPPost {
 			httpClient.getConnectionManager().shutdown();
 		}
 	}
-	
-	public static void sendJson(String json, String url) {
+
+	public static String sendJson(String json, String url) {
 		HttpClient httpClient = new DefaultHttpClient();
 		try {
 			HttpPost request = new HttpPost(url);
@@ -35,6 +35,15 @@ public class JSONPPost {
 			request.addHeader("content-type", "application/json");
 			request.setEntity(params);
 			httpClient.execute(request);
+//			HttpResponse response = httpClient.execute(request);
+//			int status = response.getStatusLine().getStatusCode();
+//			if (status >= 200 && status < 300) {
+//				HttpEntity entity = response.getEntity();
+//				return EntityUtils.toString(entity);
+//			} else {
+//				throw new ClientProtocolException("Unexpected response status: " + status);
+//			}
+
 			// handle response here...
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -42,6 +51,7 @@ public class JSONPPost {
 		} finally {
 			httpClient.getConnectionManager().shutdown();
 		}
+		return url;
 	}
 
 }

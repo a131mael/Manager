@@ -29,7 +29,7 @@ public class Realm extends AuthorizingRealm {
 	
 	@PostConstruct
 	public void initializy(){
-		userService = new UserService();
+		setUserService(new UserService());
 	}
 
 	@Override
@@ -60,8 +60,8 @@ public class Realm extends AuthorizingRealm {
 			UserDTO m = new UserDTO();
 			m.setLogin((String)arg0.getPrincipal());
 			m.setSenha(sb.toString());
-			userService.login(m);
-			UserDTO member = userService.login(m);
+			getUserService().login(m);
+			UserDTO member = getUserService().login(m);
 			if(member != null){
 				return new SimpleAuthenticationInfo(member, m.getSenha(), getName());
 			}
@@ -70,6 +70,14 @@ public class Realm extends AuthorizingRealm {
 		}
 	
 		return null;
+	}
+
+	public UserService getUserService() {
+		return userService!= null?userService:new UserService();
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
 }

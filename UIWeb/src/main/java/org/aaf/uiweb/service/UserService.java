@@ -16,20 +16,18 @@
  */
 package org.aaf.uiweb.service;
 
-import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.aaf.dto.CountryDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONObject;
-import org.json.JSONWriter;
-import org.primefaces.push.impl.JSONDecoder;
 
 import com.cedarsoftware.util.io.JsonWriter;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 
 public class UserService {
 
@@ -62,11 +60,23 @@ public class UserService {
 	}
 
 	public UserDTO login(UserDTO m) throws Exception {
-//		JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
+		//JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
 //		TeamDTO time = new TeamDTO(jo);
 //		
 		JSONPPost.sendJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
+		
+		//TODO - remover
+		m.setId(1L);
+		
 		return m;
+	}
+	
+	public List<CountryDTO> getCountries() throws Exception {
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_COUNTRIES);
+		List<CountryDTO> countries = new ArrayList<CountryDTO>();
+		//TODO verificar
+
+		return countries;
 	}
 
 }

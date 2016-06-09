@@ -69,19 +69,18 @@ public class AuthController {
 		this.authUser = authUser;
 	}
     
-	public Object getLoggedUser() {
-//        try {
-//            if (SecurityUtils.getSubject().getPrincipal() != null) {
-//                UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
-//                return user;
-//            }
-//        } catch (Exception ex) {
-//            Logger.getLogger(MemberController.class.getSimpleName()).log(Level.WARNING, null, ex);
-//        	ex.printStackTrace();
-//        }
+	public UserDTO getLoggedUser() {
+        try {
+            if (SecurityUtils.getSubject().getPrincipal() != null) {
+                UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
+                return user;
+            }
+        } catch (Exception ex) {
+          //  Logger.getLogger(MemberController.class.getSimpleName()).log(Level.WARNING, null, ex);
+        	ex.printStackTrace();
+        }
 
-//        return null;
-		return null;
+        return null;
     }
 
 }

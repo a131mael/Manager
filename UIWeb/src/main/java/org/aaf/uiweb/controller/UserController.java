@@ -23,6 +23,7 @@ import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.aaf.dto.CountryDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.service.UserService;
@@ -39,6 +40,10 @@ public class UserController {
     @Produces
     @Named
     private UserDTO newUser;
+    
+    @Produces
+    @Named
+    private CountryDTO countryDTO;
 
     @PostConstruct
     public void initNewMember() {
@@ -48,6 +53,19 @@ public class UserController {
     }
 
     public void register() throws Exception {
+        try {
+        	userRegistration.register(getNewUser());
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
+//            facesContext.addMessage(null, m);
+            initNewMember();
+        } catch (Exception e) {
+            String errorMessage = getRootErrorMessage(e);
+            FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, "Registration unsuccessful");
+//            facesContext.addMessage(null, m);
+        }
+    }
+    
+    public void getCountries() throws Exception {
         try {
         	userRegistration.register(getNewUser());
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
@@ -86,6 +104,14 @@ public class UserController {
 
 	public void setNewUser(UserDTO newUser) {
 		this.newUser = newUser;
+	}
+
+	public CountryDTO getCountryDTO() {
+		return countryDTO;
+	}
+
+	public void setCountryDTO(CountryDTO countryDTO) {
+		this.countryDTO = countryDTO;
 	}
 
 }

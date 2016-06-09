@@ -19,27 +19,25 @@ package org.aaf.uiweb.service;
 import java.util.List;
 
 import org.aaf.dto.PlayerDTO;
+import org.aaf.dto.TeamDTO;
+import org.aaf.uiweb.util.EndPoints;
+import org.aaf.uiweb.util.JsonReader;
+import org.json.JSONObject;
 
 public class PlayerService {
 
 //    @Inject
 //    private Logger log;
 
-//    @Inject
-//    private EntityManager em;
+
 
     @SuppressWarnings("unchecked")
 	public List<PlayerDTO> getPlayers(Long teamID, String orderBy, String orderByType) {
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("SELECT p from  Player p ");
-//		sql.append("left join p.team t ");
-//		sql.append("where 1 = 1 ");
-//		sql.append("and t.id = :teamID ");
-//		
-//		Query query = em.createQuery(sql.toString());
-//		query.setParameter("teamID", teamID);
-//		return  query.getResultList();
-    	return null;
+    	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER);
+		TeamDTO time = new TeamDTO(jo);
+		
+		//return time;
+		return null;
 		
 	}
     
