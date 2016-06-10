@@ -16,10 +16,14 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
+import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 
 import org.aaf.dto.TeamDTO;
@@ -35,8 +39,10 @@ public class AuthController {
 
 //    @Inject
 //    private UserService userRegistration;
+	
+	private UserDTO loggedUser;
 
-    @Produces
+	@Produces
     @Named
     private UserDTO authUser;
 
@@ -71,10 +77,15 @@ public class AuthController {
     
 	public UserDTO getLoggedUser() {
         try {
-            if (SecurityUtils.getSubject().getPrincipal() != null) {
-                UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
-                return user;
-            }
+        	if(loggedUser == null){
+        		if (SecurityUtils.getSubject().getPrincipal() != null) {
+        			UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
+        			loggedUser = user;
+        		}
+        	}
+        	
+        	return loggedUser;
+        	
         } catch (Exception ex) {
           //  Logger.getLogger(MemberController.class.getSimpleName()).log(Level.WARNING, null, ex);
         	ex.printStackTrace();

@@ -25,28 +25,28 @@
 				<h2>Member Registration</h2>
 
 				<h:panelGrid columns="3" columnClasses="titleCell">
-					<h:outputLabel for="country" value="Country:" />
-					<h:selectOneMenu id="country" label="Country" style="width: 175px;"
-						value="#{countryDTO.name}">
-						<f:selectItem itemLabel="Country ..." itemValue="" />
-						<f:selectItems var="country" value="#{userController.countries}"  
-									   itemLabel="#{country.name}"/>
-					</h:selectOneMenu>
-					<h:message for="country" errorClass="invalid" />
+<!-- 					<h:outputLabel for="country" value="Country:" /> -->
+<!-- 					<h:selectOneMenu id="country" label="Country" style="width: 175px;" -->
+<!-- 						value="#{userController.countryDTO}"> -->
+<!-- 						<f:selectItem itemLabel="Country ..." itemValue="" /> -->
+<!-- 						<f:selectItems value="#{CombosEspeciaisMB.countries}"  /> -->
+<!-- 						<f:ajax execute="@this" render="teamName" event="change" />  -->
+<!-- 					</h:selectOneMenu> -->
+<!-- 					<h:outputText value=""/> -->
 					<h:outputLabel for="teamName" value="Team Name:" />
-					<h:inputText id="teamName" value="#{newUser.team.name}" />
+					<h:inputText id="teamName" value="#{userController.newUser.team.name}" />
 					<h:message for="teamName" errorClass="invalid" />
 
 					<h:outputLabel for="login" value="Login:" />
-					<h:inputText id="login" value="#{newUser.login}" />
+					<h:inputText id="login" value="#{userController.newUser.login}" />
 					<h:message for="login" errorClass="invalid" />
 
 					<h:outputLabel for="name" value="Name:" />
-					<h:inputText id="name" value="#{newUser.name}" />
+					<h:inputText id="name" value="#{userController.newUser.name}" />
 					<h:message for="name" errorClass="invalid" />
 
 					<h:outputLabel for="email2" value="Email:" />
-					<h:inputText id="email2" value="#{newUser.email}" />
+					<h:inputText id="email2" value="#{userController.newUser.email}" />
 					<h:message for="email2" errorClass="invalid" />
 				</h:panelGrid>
 

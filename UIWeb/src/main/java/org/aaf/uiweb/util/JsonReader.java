@@ -44,18 +44,18 @@ public class JsonReader {
 	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
 	      String jsonText = readAll(rd);
 	      JSONArray json = new JSONArray(jsonText);
-	      
 	      return json;
 	    } finally {
 	      is.close();
+	      
 	    }
 	  }
 	  
 
   public static void main(String[] args) throws IOException, JSONException {
-    JSONObject json = readJsonFromUrl("http://localhost/UI/rest/teams/avaliable/1");
+   // JSONObject json = readJsonFromUrl("http://localhost/UI/rest/teams/avaliable/1");
     //System.out.println(json.toString());
-    System.out.println(json.get("league"));
+   // System.out.println(json.get("league"));
   }
   
   public static JSONObject getObject(String url){

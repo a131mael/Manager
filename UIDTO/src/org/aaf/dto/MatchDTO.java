@@ -1,8 +1,14 @@
 package org.aaf.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class MatchDTO {
+public class MatchDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 

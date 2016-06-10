@@ -20,8 +20,10 @@ import java.util.List;
 
 import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
+import org.aaf.uiweb.util.Convertes;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PlayerService {
@@ -31,13 +33,9 @@ public class PlayerService {
 
 
 
-    @SuppressWarnings("unchecked")
 	public List<PlayerDTO> getPlayers(Long teamID, String orderBy, String orderByType) {
-    	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER);
-		TeamDTO time = new TeamDTO(jo);
-		
-		//return time;
-		return null;
+    	JSONArray jo = JsonReader.getList(EndPoints.GET_PLAYERS_USER+teamID);
+		return Convertes.getPlayers(jo);
 		
 	}
     

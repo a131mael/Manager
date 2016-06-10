@@ -30,9 +30,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import org.aaf.dto.TeamDTO;
+import org.aaf.dto.UserDTO;
 import org.aaf.webInterface.service.TeamService;
+import org.aaf.webInterface.service.UserService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonReader;
@@ -47,7 +50,7 @@ import com.cedarsoftware.util.io.JsonReader;
 public class LoginRESTService {
     
     @EJB
-    private TeamService teamService;
+    private UserService userService;
 
     @GET
     @Path("/login/{countryId:[0-9][0-9]*}")
@@ -70,27 +73,15 @@ public class LoginRESTService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public TeamDTO register(String member) {
+    public Response register(String user) {
 
-       // Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder =  Response.ok();
 
         try {
-            // Validates member using bean validation
 
-        	TeamDTO team = (TeamDTO) JsonReader.jsonToJava(member);
-        	
-        	//TeamDTO team = new TeamDTO();
-        //	JSONObject jsonObject = new JSONObject(member);
-        	
-        	//UserFM user =  Convertes.getUser((UserDTO) (jsonObject.get("owner")));
-        	//Team t = Convertes.getTeam(jsonObject);
-        	//TeamDTO ob = new ObjectMapper().readValue(jsonObject, TeamDTO.class);
-        	
-        	
-        	teamService.registerTeam(Convertes.getTeam(team));
-        	 
+        	UserDTO userDTO = (UserDTO) JsonReader.jsonToJava(user);
+        	builder.entity(userService.login((Convertes.getUser(userDTO))));
 
-        	return team;
         	
             // Create an "ok" response
          //   builder = Response.ok();
@@ -100,15 +91,15 @@ public class LoginRESTService {
             // Handle the unique constrain violation
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("email", "Email taken");
-       //     builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
+            builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
         } catch (Exception e) {
             // Handle generic exceptions
             Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
-         //   builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         }
 
-        return null;
+        return builder.build();
     }
 
 }

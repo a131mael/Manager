@@ -56,9 +56,9 @@ public class UserService {
 
 	public UserFM login(UserFM m) {
 		StringBuilder query = new StringBuilder();
-		query.append("SELECT u from USERFM u ");
+		query.append("SELECT u from UserFM u ");
 		query.append("where 1=1 ");
-		query.append("and u.login = : login ");
+		query.append("and u.login = :login ");
 		Query query2 = em.createQuery(query.toString());
 		query2.setParameter("login", m.getLogin());
 		

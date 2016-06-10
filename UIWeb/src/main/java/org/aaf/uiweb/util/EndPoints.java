@@ -9,7 +9,7 @@ public class EndPoints {
 	public static final String AVALIABLE_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/avaliable/1").toString();
 	public static final String REGISTER_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/").toString();
 	public static final String LOGIN = new StringBuilder(urlBase).append("/UI/rest/login").toString();
-	public static final String GET_PLAYERS_USER = new StringBuilder(urlBase).append("/UI/rest/players").toString();
+	public static final String GET_PLAYERS_USER = new StringBuilder(urlBase).append("/UI/rest/players/").toString();
 	public static final String GET_COUNTRIES = new StringBuilder(urlBase).append("/UI/rest/countries").toString();
 	
 }

@@ -26,9 +26,7 @@ import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
-import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonWriter;
 
 public class UserService {
@@ -48,11 +46,11 @@ public class UserService {
 		teamService = new TeamService();
 	}
 
-	public void register(UserDTO user) throws Exception {
+	public void register(UserDTO user, CountryDTO countryDTO) throws Exception {
 
 		// log.info("Registering " + user.getName());
 
-		TeamDTO team = teamService.getAvailableTeam(null);
+		TeamDTO team = teamService.getAvailableTeam(countryDTO);
 		team.setName(user.getTeam().getName());
 		team.setOwner(user);
 
@@ -63,9 +61,10 @@ public class UserService {
 
 	public UserDTO login(UserDTO m) throws Exception {
 		//JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
+		
 //		TeamDTO time = new TeamDTO(jo);
 //		
-		JSONPPost.sendJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
+		JSONPPost.postJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
 		
 		//TODO - remover
 		m.setId(1L);

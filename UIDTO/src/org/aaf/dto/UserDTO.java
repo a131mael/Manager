@@ -1,8 +1,15 @@
 package org.aaf.dto;
 
+import java.io.Serializable;
+
 import org.json.JSONObject;
 
-public class UserDTO {
+public class UserDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 

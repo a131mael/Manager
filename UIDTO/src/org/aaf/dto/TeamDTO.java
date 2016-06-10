@@ -1,42 +1,49 @@
 package org.aaf.dto;
 
+import java.io.Serializable;
+
 import org.json.JSONObject;
 
+public class TeamDTO implements Serializable {
 
-public class TeamDTO {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 
 	private String name;
-	
+
 	private String cod;
 
 	private LeagueDTO league;
-	
+
 	private UserDTO owner;
-	
+
 	private Double cashBox;
-	
-	
-	public TeamDTO(){
-		
+
+	public TeamDTO() {
+
 	}
-	
-	@Deprecated //04/06/16
+
+	@Deprecated // 04/06/16
 	public TeamDTO(JSONObject json) {
-		 System.out.println(json.get("id"));
-		 this.id = !json.isNull("id")  ?json.getLong("id"):null;
-		 this.name = !json.isNull("name")  ?json.getString("name"):null;
-		 this.cod = !json.isNull("cod") ?json.getString("cod"):null;
-		 this.setLeague(new LeagueDTO(!json.isNull("league")?json.getJSONObject("league"):null));
-		 this.setOwner(new UserDTO(!json.isNull("owner")?json.getJSONObject("owner"):null));
-		 this.cashBox = !json.isNull("cashBox") ?json.getDouble("cashBox"):null;
+		if (json != null) {
+			this.id = !json.isNull("id") ? json.getLong("id") : null;
+			this.name = !json.isNull("name") ? json.getString("name") : null;
+			this.cod = !json.isNull("cod") ? json.getString("cod") : null;
+			this.setLeague(new LeagueDTO(!json.isNull("league") ? json.getJSONObject("league") : null));
+			this.setOwner(new UserDTO(!json.isNull("owner") ? json.getJSONObject("owner") : null));
+			this.cashBox = !json.isNull("cashBox") ? json.getDouble("cashBox") : null;
+		}
+
 	}
-	
-	@Deprecated //04/06/16
-	public JSONObject getJSON(){
-		//JSONObject object=new JSONObject(this);
-		JSONObject object=new JSONObject();
+
+	@Deprecated // 04/06/16
+	public JSONObject getJSON() {
+		// JSONObject object=new JSONObject(this);
+		JSONObject object = new JSONObject();
 		object.put("id", this.id);
 		object.put("name", this.name);
 		object.put("cod", this.cod);
@@ -45,7 +52,7 @@ public class TeamDTO {
 		object.put("cashBox", this.cashBox);
 		return object;
 	}
-	
+
 	public String getCod() {
 		return cod;
 	}

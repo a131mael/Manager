@@ -1,9 +1,16 @@
 package org.aaf.dto;
 
+import java.io.Serializable;
+
 import org.json.JSONObject;
 
-public class CountryDTO {
+public class CountryDTO implements Serializable{
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private Long id;
  
     private String name;

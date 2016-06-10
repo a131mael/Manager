@@ -1,10 +1,18 @@
 package org.aaf.uiweb.util;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+
+import com.cedarsoftware.util.io.JsonObject;
+import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 
 public class JSONPPost {
 
@@ -52,6 +60,35 @@ public class JSONPPost {
 			httpClient.getConnectionManager().shutdown();
 		}
 		return url;
+	}
+	
+	public static JSONObject postJson(String json, String url) {
+		HttpClient httpClient = new DefaultHttpClient();
+		try {
+			HttpPost request = new HttpPost(url);
+			StringEntity params = new StringEntity(json);
+
+			request.addHeader("content-type", "application/json");
+			request.setEntity(params);
+			httpClient.execute(request);
+			HttpResponse response = httpClient.execute(request);
+			int status = response.getStatusLine().getStatusCode();
+			if (status >= 200 && status < 300) {
+				HttpEntity entity = response.getEntity();
+				  JSONObject json2 = new JSONObject(EntityUtils.toString(entity));
+				return json2;
+			} else {
+				throw new ClientProtocolException("Unexpected response status: " + status);
+			}
+
+			// handle response here...
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			// handle exception here
+		} finally {
+			httpClient.getConnectionManager().shutdown();
+		}
+		return null;
 	}
 
 }

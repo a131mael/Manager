@@ -11,15 +11,15 @@
 			<h:panelGrid columns="2" width="100%">
 				<h:panelGrid width="50%">
 					<img
-						src=" ../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
-						width="45px" height="45px" alt="#{player.country.name}" />
+						src=" ../../resources/img/ico/flags/#{authController.loggedUser.team.league.country.name.toLowerCase()}.png"
+						width="45px" height="45px" alt="#{authController.loggedUser.team.league.country.name}" />
 
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<h:outputLabel value="#{authController.loggedUser.team.name}"  style="font-size: 25px" />
 					<img
-						src=" ../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
-						width="16px" height="16px" alt="#{player.country.name}" />
+						src=" ../../resources/img/ico/flags/#{authController.loggedUser.team.league.country.name.toLowerCase()}.png"
+						width="16px" height="16px" alt="#{authController.loggedUser.team.league.country.name}" />
 
 					<h:outputLabel value="#{msg['team.league']}" />
 					<h:outputText value="#{authController.loggedUser.team.league.name}" />

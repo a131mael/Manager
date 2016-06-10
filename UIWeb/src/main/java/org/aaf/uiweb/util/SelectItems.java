@@ -29,6 +29,11 @@ import javax.persistence.Entity;
 public class SelectItems implements Serializable {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ArrayList<SelectItem> getHabilityEnum(){
 		return HabilityEnum.getEnuns();
 	}

@@ -49,14 +49,14 @@ public class Realm extends AuthorizingRealm {
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken arg0) throws AuthenticationException {
+		System.out.println("Autorizacao");
 		try {
 			StringBuilder sb = new StringBuilder();
 			
 			for(char c : (char [])arg0.getCredentials()){
 				sb.append(c);	
 			}
-			 
-			System.out.println("Autorizacao");
+			
 			UserDTO m = new UserDTO();
 			m.setLogin((String)arg0.getPrincipal());
 			m.setSenha(sb.toString());

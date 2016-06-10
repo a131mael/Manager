@@ -1,6 +1,15 @@
 package org.aaf.dto;
 
-public class PlayerDTO {
+import java.io.Serializable;
+
+import org.json.JSONObject;
+
+public class PlayerDTO implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 
@@ -38,6 +47,8 @@ public class PlayerDTO {
 	
 	private String ignore;
 	
+	public PlayerDTO() {}
+
 	public String getCod() {
 		return cod;
 	}

@@ -57,7 +57,7 @@ public class UserController {
 
     public void register() throws Exception {
         try {
-        	userRegistration.register(getNewUser());
+        	userRegistration.register(getNewUser(),countryDTO);
             FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registered!", "Registration successful");
 //            facesContext.addMessage(null, m);
             initNewMember();

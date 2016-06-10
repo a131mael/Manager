@@ -3,7 +3,8 @@
   <persistence-unit name="EngineWeb-persistence-unit" transaction-type="JTA">
     <description>EngineWeb Persistence Unit</description>
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+    <non-jta-data-source>java:/PostgresDS</non-jta-data-source>
+<!--     <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source> -->
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="hibernate.hbm2ddl.auto" value="create-drop"/>

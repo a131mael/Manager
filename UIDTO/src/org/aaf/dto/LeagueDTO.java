@@ -1,11 +1,17 @@
 package org.aaf.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.json.JSONObject;
 
-public class LeagueDTO {
+public class LeagueDTO implements Serializable{
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 
