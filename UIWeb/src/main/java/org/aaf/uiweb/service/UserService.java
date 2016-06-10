@@ -25,8 +25,10 @@ import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
 import org.aaf.uiweb.util.JsonReader;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.cedarsoftware.util.io.JsonObject;
 import com.cedarsoftware.util.io.JsonWriter;
 
 public class UserService {
@@ -72,11 +74,18 @@ public class UserService {
 	}
 	
 	public List<CountryDTO> getCountries() throws Exception {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_COUNTRIES);
+		JSONArray jo = JsonReader.getList(EndPoints.GET_COUNTRIES);
+		List<CountryDTO> objs = new ArrayList<CountryDTO>();
+		for(int i = 0; i<jo.length();i++){
+			CountryDTO co = new CountryDTO();
+			
+			co.setName(jo.getJSONObject(i).getString("name"));
+			co.setId(jo.getJSONObject(i).getLong("id"));
+			//co.setCod(jo.getJSONObject(i).getString("cod"));
+			
+			objs.add(co);
+		}
 		
-		List<CountryDTO> objs = (List<CountryDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		
-
 		return objs;
 	}
 

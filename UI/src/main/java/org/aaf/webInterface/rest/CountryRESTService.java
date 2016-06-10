@@ -28,6 +28,7 @@ import javax.ws.rs.core.Response;
 
 import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.service.CountryService;
+import org.aaf.webInterface.util.Convertes;
 
 @Path("/countries")
 @RequestScoped
@@ -38,9 +39,15 @@ public class CountryRESTService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listAllMembers() {
+    public Response getAll() {
+    	
+    	
     	Response.ResponseBuilder builder = Response.ok();
-		builder.entity(countryService.findAllOrderedByName());
+    	
+//    	retornar assim
+    	/*JsonWriter.objectToJson(team)*/
+    	
+		builder.entity(Convertes.getCountries(countryService.findAllOrderedByName()));
         return builder.build();
     }
 

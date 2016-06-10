@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.nio.charset.Charset;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,11 +29,28 @@ public class JsonReader {
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
       String jsonText = readAll(rd);
       JSONObject json = new JSONObject(jsonText);
+      
+      com.cedarsoftware.util.io.JsonReader.jsonToJava(jsonText);
+      
       return json;
     } finally {
       is.close();
     }
   }
+  
+  public static JSONArray readListJsonFromUrl(String url) throws IOException, JSONException {
+	    InputStream is = new URL(url).openStream();
+	    try {
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+	      String jsonText = readAll(rd);
+	      JSONArray json = new JSONArray(jsonText);
+	      
+	      return json;
+	    } finally {
+	      is.close();
+	    }
+	  }
+	  
 
   public static void main(String[] args) throws IOException, JSONException {
     JSONObject json = readJsonFromUrl("http://localhost/UI/rest/teams/avaliable/1");
@@ -51,5 +69,18 @@ public class JsonReader {
 	}
 	  return json;
   }
+
+  public static JSONArray getList(String url){
+	  JSONArray json = null;
+	try {
+		json = readListJsonFromUrl(url);
+	} catch (JSONException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	  return json;
+  }
+
   
 }

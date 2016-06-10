@@ -2,7 +2,7 @@ package org.aaf.uiweb.util;
 
 public class EndPoints {
 
-	//private StringBuilder urlBase = new StringBuilder("http://localhost");
+	//private static StringBuilder urlBase = new StringBuilder("http://localhost");
 	private static StringBuilder urlBase = new StringBuilder("http://ec2-52-67-36-232.sa-east-1.compute.amazonaws.com");
 	
  	

@@ -4,6 +4,9 @@
  */
 package org.aaf.webInterface.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.TeamDTO;
@@ -46,7 +49,32 @@ public class Convertes {
 			return null;
 		}
 	}
+	
+	public static CountryDTO getCountryDTO(Country country) {
+		if (country != null) {
+			CountryDTO countryDTO = new CountryDTO();
+			countryDTO.setCod(country.getCod());
+			countryDTO.setId(country.getId());
+			countryDTO.setName(country.getName());
+			countryDTO.setWeek(country.getWeek());
+			countryDTO.setSession(country.getSession());
 
+			return countryDTO;
+		} else {
+			return null;
+		}
+	}
+	
+
+	public static List<CountryDTO> getCountries(List<Country> countries){
+		List<CountryDTO> countriesDTO = new ArrayList<>();
+		
+		for(Country country : countries){
+			countriesDTO.add(getCountryDTO(country));
+		}
+		return countriesDTO;
+	}
+	
 	public static League getLeague(LeagueDTO dto) {
 		if (dto != null) {
 			League league = new League();

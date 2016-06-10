@@ -27,10 +27,10 @@
 				<h:panelGrid columns="3" columnClasses="titleCell">
 					<h:outputLabel for="country" value="Country:" />
 					<h:selectOneMenu id="country" label="Country" style="width: 175px;"
-						value="#{countryDTO}">
+						value="#{countryDTO.name}">
 						<f:selectItem itemLabel="Country ..." itemValue="" />
-						<f:selectItems value="#{userController.countries}" />
-						<!-- 						<f:ajax execute="@this" render="@all" event="click" /> -->
+						<f:selectItems var="country" value="#{userController.countries}"  
+									   itemLabel="#{country.name}"/>
 					</h:selectOneMenu>
 					<h:message for="country" errorClass="invalid" />
 					<h:outputLabel for="teamName" value="Team Name:" />

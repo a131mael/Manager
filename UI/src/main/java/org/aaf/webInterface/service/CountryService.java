@@ -23,6 +23,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.aaf.dto.CountryDTO;
 import org.aaf.webInterface.model.Country;
 
 @Stateless
