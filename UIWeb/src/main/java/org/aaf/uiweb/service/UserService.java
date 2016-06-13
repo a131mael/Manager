@@ -26,6 +26,7 @@ import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
@@ -60,16 +61,18 @@ public class UserService {
 	}
 
 	public UserDTO login(UserDTO m) throws Exception {
-		//JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
+		JSONObject jo = JsonReader.getObject(EndPoints.LOGIN+m.getLogin());
 		
 //		TeamDTO time = new TeamDTO(jo);
 //		
-		JSONPPost.postJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
+		//JSONObject obj = JSONPPost.postJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
 		
 		//TODO - remover
-		m.setId(1L);
 		
-		return m;
+		UserDTO userLogado = (UserDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		//m.setId(1L);
+		
+		return userLogado;
 	}
 	
 	public List<CountryDTO> getCountries() throws Exception {

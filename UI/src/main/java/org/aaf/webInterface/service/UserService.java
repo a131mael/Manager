@@ -65,4 +65,16 @@ public class UserService {
 		UserFM user = (UserFM) query2.getSingleResult();
 		return user;
 	}
+	
+	public UserFM login(String login) {
+		StringBuilder query = new StringBuilder();
+		query.append("SELECT u from UserFM u ");
+		query.append("where 1=1 ");
+		query.append("and u.login = :login ");
+		Query query2 = em.createQuery(query.toString());
+		query2.setParameter("login", login);
+		
+		UserFM user = (UserFM) query2.getSingleResult();
+		return user;
+	}
 }

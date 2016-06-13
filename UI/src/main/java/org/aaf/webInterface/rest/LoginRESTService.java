@@ -24,11 +24,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -39,6 +41,7 @@ import org.aaf.webInterface.service.UserService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 
 /**
  * JAX-RS Example
@@ -70,18 +73,18 @@ public class LoginRESTService {
     	return null;
     }
     
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
+    //TODO - importante passar senha e depois token
+    @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response register(String user) {
+    public Response register(@QueryParam("login") String login) {
 
         Response.ResponseBuilder builder =  Response.ok();
 
         try {
 
-        	UserDTO userDTO = (UserDTO) JsonReader.jsonToJava(user);
-        	builder.entity(userService.login((Convertes.getUser(userDTO))));
-
+        //	UserDTO userDTO = (UserDTO) JsonReader.jsonToJava(user);
+        	//builder.entity(userService.login((Convertes.getUser(userDTO))));
+        	builder.entity(JsonWriter.objectToJson(Convertes.getUser(userService.login(login))));
         	
             // Create an "ok" response
          //   builder = Response.ok();

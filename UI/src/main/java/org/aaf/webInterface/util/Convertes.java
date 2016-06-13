@@ -34,6 +34,23 @@ public class Convertes {
 			return null;
 		}
 	}
+	
+	public static UserDTO getUser(UserFM user) {
+		if (user != null) {
+			UserDTO userDTO = new UserDTO();
+			userDTO.setCod(user.getCod());
+			userDTO.setEmail(user.getEmail());
+			userDTO.setId(user.getId());
+			userDTO.setLogin(user.getLogin());
+			userDTO.setName(user.getName());
+			userDTO.setSenha(user.getSenha());
+			userDTO.setTeam(getTeam(user.getTeam()));
+			return userDTO;
+
+		} else {
+			return null;
+		}
+	}
 
 	public static Country getCountry(CountryDTO dto) {
 		if (dto != null) {
@@ -43,6 +60,21 @@ public class Convertes {
 			country.setName(dto.getName());
 			country.setWeek(dto.getWeek());
 			country.setSession(dto.getSession());
+
+			return country;
+		} else {
+			return null;
+		}
+	}
+	
+	public static CountryDTO getCountry(Country obj) {
+		if (obj != null) {
+			CountryDTO country = new CountryDTO();
+			country.setCod(obj.getCod());
+			country.setId(obj.getId());
+			country.setName(obj.getName());
+			country.setWeek(obj.getWeek());
+			country.setSession(obj.getSession());
 
 			return country;
 		} else {
@@ -89,6 +121,21 @@ public class Convertes {
 			return null;
 		}
 	}
+	
+	public static LeagueDTO getLeague(League obj) {
+		if (obj != null) {
+			LeagueDTO league = new LeagueDTO();
+			league.setCod(obj.getCod());
+			league.setId(obj.getId());
+			league.setCountry(getCountry(obj.getCountry()));
+			league.setLevel(obj.getLevel());
+			league.setName(obj.getName());
+			// league.setTeans(teans); //TODO - verificar 04/06/16
+			return league;
+		} else {
+			return null;
+		}
+	}
 
 	public static Team getTeam(TeamDTO dto) {
 		if (dto != null) {
@@ -99,6 +146,21 @@ public class Convertes {
 			obj.setLeague(getLeague(dto.getLeague()));
 			obj.setName(dto.getName());
 			obj.setOwner(getUser(dto.getOwner()));
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static TeamDTO getTeam(Team team) {
+		if (team != null) {
+			TeamDTO obj = new TeamDTO();
+			obj.setCashBox(team.getCashBox()+0.01);//TODO verificar
+			obj.setCod(team.getCod());
+			obj.setId(team.getId());
+			obj.setLeague(getLeague(team.getLeague()));
+			obj.setName(team.getName());
+			//obj.setOwner(getUser(dto.getOwner()));
 			return obj;
 		} else {
 			return null;
