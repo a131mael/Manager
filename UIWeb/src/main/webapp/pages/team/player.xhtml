@@ -9,9 +9,9 @@
 	>
 
 	<ui:define name="content">
-		<h:form>
+		<h:form style="width:100%">
 			<div>
-				<h:panelGrid columns="2" title="#{playerController.player.name}">
+				<h:panelGrid columns="2" title="#{playerController.player.name}" style="widht:100%;align:right">
 					<p:commandButton action="#{playerController.dismiss(playerController.player)}" value="demitir"	ajax="true">
 						<f:param name="id" value="#{playerController.player.id}" />
 					</p:commandButton>

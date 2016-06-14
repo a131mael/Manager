@@ -4,6 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/userDefault.xhtml">
 
 	<ui:define name="content">
@@ -18,16 +19,15 @@
 					</h:panelGrid>
 
 
-					<h:panelGrid columns="2" >
+					<h:panelGrid columns="2">
 						<h:outputLabel for="orderBy" value="Order by: " />
 
-						<h:selectOneMenu label="orderBy"
-							style="width: 200px; margin-left: 10px;"
+						<p:selectOneMenu label="orderBy" style="width: 200px; margin-left: 10px;"
 							value="playerListController.selectedHability">
 							<f:selectItem itemLabel="Hability" itemValue="" />
 							<f:selectItems value="#{selectItems.habilityEnum}" />
-							<!-- <f:ajax execute="@this" render="@all" event="click"/> -->
-						</h:selectOneMenu>
+							<p:ajax process="@this" update="@form" />
+						</p:selectOneMenu>
 					</h:panelGrid>
 
 
@@ -35,105 +35,109 @@
 				</h:panelGrid>
 				<hr />
 				<br />
-			
-				
-				<ui:repeat var="player" value="#{playerListController.teamPlayers}"
-					varStatus="status">
-					<h:panelGrid columns="8">
-						<img
-							src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
-							width="16px" height="16px" alt="#{player.country.name}" />
 
-						<h:link value="#{player.name}, "  onclick="window.location='./player.xhtml?id=#{player.id}'"/> 
+				<h:panelGrid id="listPlayers">
+					<ui:repeat var="player" value="#{playerListController.teamPlayers}"
+						varStatus="status">
+						<h:panelGrid columns="8">
+							<img
+								src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
+								width="16px" height="16px" alt="#{player.country.name}" />
 
-<!-- 					<h:commandLink value="#{player.name}, " actionListener="player" action="player" outcome="?teste=3;faces-redirect=true" /> -->
-<!-- 					<h:commandLink value="teste " onclick="window.location='./player.xhtml?id=#{player.id}'"  /> -->
+							<h:link value="#{player.name}, "
+								onclick="window.location='./player.xhtml?id=#{player.id}'" />
 
-						<h:outputLabel value="#{playerHability.getAge(player.age)}" />
-						<h:outputText value="#{msg['player.age.yearOld']} " />
-						<h:outputText value=" " style="padding-left: 30px" />
-						<h:outputText value="#{msg['player.height']}: " />
-						<h:outputLabel value="#{playerHability.getHeigth(player.height)}"
-							style="margin-left:2px" />
-					</h:panelGrid>
-					<center>
+							<!-- 					<h:commandLink value="#{player.name}, " actionListener="player" action="player" outcome="?teste=3;faces-redirect=true" /> -->
+							<!-- 					<h:commandLink value="teste " onclick="window.location='./player.xhtml?id=#{player.id}'"  /> -->
 
-						<hr />
-
-						<h:panelGrid columns="3">
-							<h:panelGrid columns="2" title="Bodily">
-
-								<h:outputLabel value="#{msg['player.agility']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.agility)}" />
-
-								<h:outputLabel value="#{msg['player.impulse']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.impulse)}" />
-
-								<h:outputLabel value="#{msg['player.resistence']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.resistence)}" />
-
-								<h:outputLabel value="#{msg['player.strength']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.strength)}" />
-
-
-								<h:outputLabel value="#{msg['player.velocity']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.velocity)}" />
-
-							</h:panelGrid>
-
-							<h:panelGrid columns="2" title="Technical">
-								<h:outputLabel value="#{msg['player.disarm']}" />
-								<h:outputText
-									value="#{playerHability.getHability(player.disarm)}" />
-
-								<h:outputLabel value="#{msg['player.mark']}: " />
-								<h:outputText value="#{playerHability.getHability(player.mark)}" />
-
-								<h:outputLabel value="#{msg['player.kick']}: " />
-								<h:outputText value="#{playerHability.getHability(player.kick)}" />
-
-								<h:outputLabel value="#{msg['player.pass']}: " />
-								<h:outputText value="#{playerHability.getHability(player.pass)}" />
-
-								<h:outputLabel value="#{msg['player.technique']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.technique)}" />
-
-							</h:panelGrid>
-
-							<h:panelGrid columns="2" title="Psychological">
-								<h:outputLabel value="#{msg['player.aggressiveness']}:  " />
-								<h:outputText
-									value="#{playerHability.getHability(player.aggressiveness)}" />
-
-								<h:outputLabel value="#{msg['player.decision']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.decision)}" />
-
-								<h:outputLabel value="#{msg['player.goalKeaper']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.goalKeaper)}" />
-
-								<h:outputLabel value="#{msg['player.positioning']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.positioning)}" />
-
-								<h:outputLabel value="#{msg['player.workIndex']}: " />
-								<h:outputText
-									value="#{playerHability.getHability(player.workIndex)}" />
-							</h:panelGrid>
-
+							<h:outputLabel value="#{playerHability.getAge(player.age)}" />
+							<h:outputText value="#{msg['player.age.yearOld']} " />
+							<h:outputText value=" " style="padding-left: 30px" />
+							<h:outputText value="#{msg['player.height']}: " />
+							<h:outputLabel value="#{playerHability.getHeigth(player.height)}"
+								style="margin-left:2px" />
 						</h:panelGrid>
-					</center>
+						<center>
 
-					<br />
-				</ui:repeat>
+							<hr />
 
+							<h:panelGrid columns="3">
+								<h:panelGrid columns="2" title="Bodily">
+
+									<h:outputLabel value="#{msg['player.agility']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.agility)}" />
+
+									<h:outputLabel value="#{msg['player.impulse']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.impulse)}" />
+
+									<h:outputLabel value="#{msg['player.resistence']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.resistence)}" />
+
+									<h:outputLabel value="#{msg['player.strength']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.strength)}" />
+
+
+									<h:outputLabel value="#{msg['player.velocity']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.velocity)}" />
+
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" title="Technical">
+									<h:outputLabel value="#{msg['player.disarm']}" />
+									<h:outputText
+										value="#{playerHability.getHability(player.disarm)}" />
+
+									<h:outputLabel value="#{msg['player.mark']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.mark)}" />
+
+									<h:outputLabel value="#{msg['player.kick']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.kick)}" />
+
+									<h:outputLabel value="#{msg['player.pass']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.pass)}" />
+
+									<h:outputLabel value="#{msg['player.technique']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.technique)}" />
+
+								</h:panelGrid>
+
+								<h:panelGrid columns="2" title="Psychological">
+									<h:outputLabel value="#{msg['player.aggressiveness']}:  " />
+									<h:outputText
+										value="#{playerHability.getHability(player.aggressiveness)}" />
+
+									<h:outputLabel value="#{msg['player.decision']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.decision)}" />
+
+									<h:outputLabel value="#{msg['player.goalKeaper']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.goalKeaper)}" />
+
+									<h:outputLabel value="#{msg['player.positioning']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.positioning)}" />
+
+									<h:outputLabel value="#{msg['player.workIndex']}: " />
+									<h:outputText
+										value="#{playerHability.getHability(player.workIndex)}" />
+								</h:panelGrid>
+
+							</h:panelGrid>
+						</center>
+
+						<br />
+					</ui:repeat>
+				</h:panelGrid>
 			</div>
 		</h:form>
 	</ui:define>
