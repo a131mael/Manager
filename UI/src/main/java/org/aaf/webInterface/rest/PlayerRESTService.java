@@ -33,6 +33,9 @@ import javax.ws.rs.core.Response;
 import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.PlayerService;
+import org.aaf.webInterface.util.Convertes;
+
+import com.cedarsoftware.util.io.JsonWriter;
 
 /**
  * JAX-RS Example
@@ -87,7 +90,7 @@ public class PlayerRESTService {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
 			builder = Response.ok();
-			builder.entity(players);
+			builder.entity( JsonWriter.objectToJson(Convertes.getPlayers(players)));
 		}
 
 		return builder.build();

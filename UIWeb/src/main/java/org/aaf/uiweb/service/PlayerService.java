@@ -26,6 +26,8 @@ import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.cedarsoftware.util.io.JsonWriter;
+
 public class PlayerService {
 
 //    @Inject
@@ -34,8 +36,9 @@ public class PlayerService {
 
 
 	public List<PlayerDTO> getPlayers(Long teamID, String orderBy, String orderByType) {
-    	JSONArray jo = JsonReader.getList(EndPoints.GET_PLAYERS_USER+teamID);
-		return Convertes.getPlayers(jo);
+    	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER+teamID);
+    	List<PlayerDTO> players = (List<PlayerDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		return players;
 		
 	}
     

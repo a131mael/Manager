@@ -16,6 +16,7 @@
 
 				</h:panelGrid>
 				<h:panelGrid columns="2">
+				
 					<h:outputLabel value="#{authController.loggedUser.team.name}"  style="font-size: 25px" />
 					<img
 						src=" ../../resources/img/ico/flags/#{authController.loggedUser.team.league.country.name.toLowerCase()}.png"
@@ -23,10 +24,28 @@
 
 					<h:outputLabel value="#{msg['team.league']}" />
 					<h:outputText value="#{authController.loggedUser.team.league.name}" />
+				
 					<h:outputLabel value="#{msg['country']}" />
 					<h:outputText
 						value="#{authController.loggedUser.team.league.country.name}" />
-					<hr />
+					
+					<h:outputLabel value="#{msg['team.user']}" />
+					<h:outputText value="#{authController.loggedUser.login}"  />
+				
+					<h:outputLabel value="#{msg['team.entry']}" />
+					<h:outputText value="..."  style="font-size: 25px" />
+				
+					<h:outputLabel value="#{msg['team.idiom']}" />
+					<h:outputText value="..."  style="font-size: 25px" />
+					
+					<h:outputLabel value="#{msg['team.stadium']}" />
+					<h:outputText value="..."  style="font-size: 25px" />
+				
+					<h:outputLabel value="#{msg['team.region']}" />
+					<h:outputText value="..."  style="font-size: 25px" />
+				
+<hr />					
+					
 				</h:panelGrid>
 				<ui:repeat var="match" value="#{matchController.lastTeamMatchs}"
 					varStatus="status">

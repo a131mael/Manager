@@ -58,6 +58,7 @@ public class PlayerService {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT p from  Player p ");
 		sql.append("left join p.team t ");
+		sql.append("left join p.country c ");
 		sql.append("where 1 = 1 ");
 		sql.append("and t.id = :teamID ");
 		

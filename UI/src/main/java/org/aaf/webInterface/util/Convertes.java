@@ -9,10 +9,12 @@ import java.util.List;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
+import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.model.League;
+import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.UserFM;
 
@@ -34,7 +36,7 @@ public class Convertes {
 			return null;
 		}
 	}
-	
+
 	public static UserDTO getUser(UserFM user) {
 		if (user != null) {
 			UserDTO userDTO = new UserDTO();
@@ -66,7 +68,7 @@ public class Convertes {
 			return null;
 		}
 	}
-	
+
 	public static CountryDTO getCountry(Country obj) {
 		if (obj != null) {
 			CountryDTO country = new CountryDTO();
@@ -82,6 +84,56 @@ public class Convertes {
 		}
 	}
 	
+	public static List<PlayerDTO> getPlayers(List<Player> players){
+		List<PlayerDTO> playerDTOs = new ArrayList<>();
+		if(players != null){
+			for(Player player :players){
+				playerDTOs.add(getPlayer(player));
+			}
+		}
+		return playerDTOs;
+	}
+
+	public static PlayerDTO getPlayer(Player obj) {
+		if (obj != null) {
+			PlayerDTO playerDTO = new PlayerDTO();
+
+			playerDTO.setId(obj.getId());
+			playerDTO.setName(obj.getName());
+			playerDTO.setCod(obj.getCod());
+			playerDTO.setAge(obj.getAge());
+			playerDTO.setAggressiveness(obj.getAggressiveness());
+			playerDTO.setAgility(obj.getAgility());
+			playerDTO.setCod(obj.getCod());
+			playerDTO.setCountry(getCountry(obj.getCountry()));
+			// json.getInt("aggressiveness") : null); //TODO - verificar
+			playerDTO.setDecision(obj.getDecision());
+			playerDTO.setDisarm(obj.getDisarm());
+			playerDTO.setGoalKeaper(obj.getGoalKeaper());
+			playerDTO.setHeight(obj.getHeight());
+			// playerDTO.setIgnore( !json.isNull("ignore") ?
+			// json.getInt("ignore") : null);
+			playerDTO.setImpulse(obj.getImpulse());
+			playerDTO.setKick(obj.getKick());
+			playerDTO.setMark(obj.getMark());
+			playerDTO.setPass(obj.getPass());
+			playerDTO.setPositioning(obj.getPositioning());
+			playerDTO.setResistence(obj.getResistence());
+			playerDTO.setSalary(obj.getSalary());
+			playerDTO.setStrength(obj.getStrength());
+			// playerDTO.setTeam( !json.isNull("team") ? json.getInt("team") :
+			// null);
+			playerDTO.setTechnique(obj.getTechnique());
+			playerDTO.setVelocity(obj.getVelocity());
+			playerDTO.setWorkIndex(obj.getWorkIndex());
+
+			return playerDTO;
+
+		} else {
+			return null;
+		}
+	}
+
 	public static CountryDTO getCountryDTO(Country country) {
 		if (country != null) {
 			CountryDTO countryDTO = new CountryDTO();
@@ -96,17 +148,16 @@ public class Convertes {
 			return null;
 		}
 	}
-	
 
-	public static List<CountryDTO> getCountries(List<Country> countries){
+	public static List<CountryDTO> getCountries(List<Country> countries) {
 		List<CountryDTO> countriesDTO = new ArrayList<>();
-		
-		for(Country country : countries){
+
+		for (Country country : countries) {
 			countriesDTO.add(getCountryDTO(country));
 		}
 		return countriesDTO;
 	}
-	
+
 	public static League getLeague(LeagueDTO dto) {
 		if (dto != null) {
 			League league = new League();
@@ -121,7 +172,7 @@ public class Convertes {
 			return null;
 		}
 	}
-	
+
 	public static LeagueDTO getLeague(League obj) {
 		if (obj != null) {
 			LeagueDTO league = new LeagueDTO();
@@ -151,16 +202,16 @@ public class Convertes {
 			return null;
 		}
 	}
-	
+
 	public static TeamDTO getTeam(Team team) {
 		if (team != null) {
 			TeamDTO obj = new TeamDTO();
-			obj.setCashBox(team.getCashBox()+0.01);//TODO verificar
+			obj.setCashBox(team.getCashBox() + 0.01);// TODO verificar
 			obj.setCod(team.getCod());
 			obj.setId(team.getId());
 			obj.setLeague(getLeague(team.getLeague()));
 			obj.setName(team.getName());
-			//obj.setOwner(getUser(dto.getOwner()));
+			// obj.setOwner(getUser(dto.getOwner()));
 			return obj;
 		} else {
 			return null;
