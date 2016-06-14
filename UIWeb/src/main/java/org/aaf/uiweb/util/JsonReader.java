@@ -38,6 +38,18 @@ public class JsonReader {
     }
   }
   
+  public static String readJsonFromUrlString(String url) throws IOException, JSONException {
+	    InputStream is = new URL(url).openStream();
+	    try {
+	      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+	      String jsonText = readAll(rd);
+	      
+	      return jsonText;
+	    } finally {
+	      is.close();
+	    }
+	  }
+  
   public static JSONArray readListJsonFromUrl(String url) throws IOException, JSONException {
 	    InputStream is = new URL(url).openStream();
 	    try {
@@ -68,6 +80,18 @@ public class JsonReader {
 		e.printStackTrace();
 	}
 	  return json;
+  }
+  
+  public static String getText(String url){
+	  String retorno = null;
+	try {
+		retorno = readJsonFromUrlString(url);
+	} catch (JSONException e) {
+		e.printStackTrace();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	  return retorno;
   }
 
   public static JSONArray getList(String url){

@@ -4,18 +4,33 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/userDefault.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/userDefault.xhtml"
+	>
 
 	<ui:define name="content">
+		<h:form>
+			<div>
+				<h:panelGrid columns="2" title="#{playerController.player.name}">
+					<p:commandButton action="#{playerController.dismiss(playerController.player)}" value="demitir"	ajax="true">
+						<f:param name="id" value="#{playerController.player.id}" />
+					</p:commandButton>
+					
+				</h:panelGrid>
 
-		<div>
-			<h:panelGrid columns="2" >
-			
-			</h:panelGrid>
-			
+				<h:panelGrid columns="2" title="#{playerController.player.name}">
+					<h:outputLabel value="Name" />
+					<h:outputLabel value="#{playerController.player.name}" />
+					<h:outputLabel value="Agressividade" />
+					<h:outputLabel
+						value="#{playerHability.getHability(playerController.player.aggressiveness)}" />
+					<h:outputText value="#{msg['player.age.yearOld']} " />
+					<h:outputLabel
+						value="#{playerHability.getAge(playerController.player.age)}" />
 
-				
-		</div>
+				</h:panelGrid>
 
+			</div>
+		</h:form>
 	</ui:define>
 </ui:composition>

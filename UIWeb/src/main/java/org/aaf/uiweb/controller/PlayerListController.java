@@ -20,43 +20,30 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
-import javax.faces.bean.ViewScoped;
 
 import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.PlayerService;
 import org.aaf.uiweb.util.HabilityEnum;
 
 @Model
-@ViewScoped
-public class PlayerController extends AuthController {
+public class PlayerListController extends AuthController{
 
-	// @Inject
-	// private FacesContext facesContext;
+//    @Inject
+//    private FacesContext facesContext;
 
-	private PlayerService playerService;
+    private PlayerService playerService;
+    
+    private HabilityEnum selectedHability;
 
-	private HabilityEnum selectedHability;
-
-	private PlayerDTO player;
-
-	@PostConstruct
-	private void init() {
-		playerService = new PlayerService();
-		String id = getRequestParam("id");
-		addAtributoSessao("id",id);
-		player = id!= null? (playerService.getPlayer(Long.parseLong(id),getLoggedUser().getTeam().getId())):null;
-	}
-
-	public List<PlayerDTO> getTeamPlayers() throws Exception {
-		return playerService.getPlayers(getLoggedUser().getId(),
-				selectedHability != null ? selectedHability.getLabel() : null, "");
-
-	}
-
-	public String dismiss(PlayerDTO player) {
-		String retorno = playerService.dismiss(player.getId());
-		return retorno;
-	}
+    @PostConstruct
+    private void init(){
+    	playerService = new PlayerService();
+    }
+    
+    public List<PlayerDTO> getTeamPlayers() throws Exception {
+    	return playerService.getPlayers(getLoggedUser().getId(), selectedHability != null ?selectedHability.getLabel():null,"");
+    
+    }
 
 	public HabilityEnum getSelectedHability() {
 		return selectedHability;
@@ -64,14 +51,6 @@ public class PlayerController extends AuthController {
 
 	public void setSelectedHability(HabilityEnum selectedHability) {
 		this.selectedHability = selectedHability;
-	}
-
-	public void setPlayer(PlayerDTO player) {
-		this.player = player;
-	}
-
-	public PlayerDTO getPlayer() {
-		return player;
 	}
 
 }

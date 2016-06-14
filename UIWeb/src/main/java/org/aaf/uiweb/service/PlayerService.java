@@ -19,40 +19,32 @@ package org.aaf.uiweb.service;
 import java.util.List;
 
 import org.aaf.dto.PlayerDTO;
-import org.aaf.dto.TeamDTO;
-import org.aaf.uiweb.util.Convertes;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONArray;
 import org.json.JSONObject;
-
-import com.cedarsoftware.util.io.JsonWriter;
 
 public class PlayerService {
 
 //    @Inject
 //    private Logger log;
 
-
-
+	@SuppressWarnings("unchecked")
 	public List<PlayerDTO> getPlayers(Long teamID, String orderBy, String orderByType) {
     	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER+teamID);
-    	List<PlayerDTO> players = (List<PlayerDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+    	List<PlayerDTO> players = ((List<PlayerDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
 		return players;
 		
 	}
     
-	public PlayerDTO getPlayer(Long id) {
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("SELECT p from  Player p ");
-//		sql.append("left join p.team t ");
-//		sql.append("where 1 = 1 ");
-//		sql.append("and p.id = :teamID ");
-//		
-//		Query query = em.createQuery(sql.toString());
-//		query.setParameter("teamID", id);
-//		return  (PlayerDTO) query.getSingleResult();
-		return null;
+	public PlayerDTO getPlayer(Long id, Long idTeam) {
+		JSONObject jo = JsonReader.getObject( EndPoints.GET_PLAYER.replace("*1", idTeam.toString()).replace("*2", id.toString()));
+    	PlayerDTO player = (PlayerDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		return player;
+	}
+
+	public String dismiss(long id) {
+		String jo = JsonReader.getText( EndPoints.PLAYER_DISMISS+id);
 		
+		return jo;		
 	}
 }

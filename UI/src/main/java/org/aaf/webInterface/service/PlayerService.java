@@ -80,4 +80,9 @@ public class PlayerService {
 		return  (Player) query.getSingleResult();
 		
 	}
+
+	public String dismiss(long id) {
+		em.remove(em.find(Player.class, id));
+		return "ok";
+	}
 }

@@ -16,15 +16,14 @@
  */
 package org.aaf.uiweb.controller;
 
-import java.io.Serializable;
-
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
@@ -92,6 +91,32 @@ public class AuthController {
         }
 
         return null;
+    }
+	
+	public static String getRequestParam(String param) {
+        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+
+        return req.getParameter(param);
+    }
+
+    public void addAtributoSessao(String nome, Object valor) {
+        FacesContext fc = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+        session.setAttribute(nome, valor);
+    }
+
+    public Object getAtributoSessao(String nome) {
+        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpSession session = (HttpSession) req.getSession();
+        Object obj = session.getAttribute(nome);
+        return obj;
+    }
+
+    public void removeAtributoSessao(String nome) {
+        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+        HttpSession session = (HttpSession) req.getSession();
+        session.removeAttribute(nome);
+
     }
 
 }

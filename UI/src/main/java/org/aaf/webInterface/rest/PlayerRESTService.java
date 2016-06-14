@@ -52,16 +52,8 @@ public class PlayerRESTService {
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Team> listAllPlayers() {
-		// return teamService.findAllOrderedByName();
-		return null;
-	}
-
-	@GET
-	@Path("/{idTeam:[0-9][0-9]*}/{id:[0-9][0-9]*}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response lookupPlayerById(@PathParam("id") long id,@PathParam("idTeam") long idTeam){
-		
+	public Response lookupPlayerById(@QueryParam("id") long id, @QueryParam("idTeam") long idTeam) {
+		// TODO alterar o id do time para o token
 		Response.ResponseBuilder builder = null;
 
 		Player player = playerService.getPlayer(id);
@@ -71,16 +63,32 @@ public class PlayerRESTService {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
 			builder = Response.ok();
-			builder.entity(player);
+			builder.entity(JsonWriter.objectToJson(Convertes.getPlayer(player)));
 		}
 
 		return builder.build();
 	}
 	
 	@GET
+	@Path("/dismiss/{id:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response dismissPlayer(@PathParam("id") long id) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+		
+		playerService.dismiss(id);
+		builder = Response.ok();
+		builder.entity("ok");
+
+		return builder.build();
+	}
+
+	@GET
 	@Path("/{idTeam:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response lookupPlayersById(@PathParam("idTeam") long idTeam, @DefaultValue("value")@QueryParam("orderBy") String orderBy, @DefaultValue("desc")@QueryParam("orderByType") String orderByType) {
+	public Response lookupPlayersById(@PathParam("idTeam") long idTeam,
+			@DefaultValue("value") @QueryParam("orderBy") String orderBy,
+			@DefaultValue("desc") @QueryParam("orderByType") String orderByType) {
 		Response.ResponseBuilder builder = null;
 
 		List<Player> players = playerService.getPlayers(idTeam, orderBy, orderByType);
@@ -90,7 +98,7 @@ public class PlayerRESTService {
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
 			builder = Response.ok();
-			builder.entity( JsonWriter.objectToJson(Convertes.getPlayers(players)));
+			builder.entity(JsonWriter.objectToJson(Convertes.getPlayers(players)));
 		}
 
 		return builder.build();

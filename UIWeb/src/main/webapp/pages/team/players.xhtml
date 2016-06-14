@@ -13,17 +13,17 @@
 
 					<h:panelGrid columns="3">
 						<h:outputLabel value="Time principal, " />
-						<h:outputLabel value="#{playerController.teamPlayers.size()}" />
+						<h:outputLabel value="#{playerListController.teamPlayers.size()}" />
 						<h:outputLabel value=" jogadores" />
 					</h:panelGrid>
 
 
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2" >
 						<h:outputLabel for="orderBy" value="Order by: " />
 
 						<h:selectOneMenu label="orderBy"
 							style="width: 200px; margin-left: 10px;"
-							value="playerController.selectedHability">
+							value="playerListController.selectedHability">
 							<f:selectItem itemLabel="Hability" itemValue="" />
 							<f:selectItems value="#{selectItems.habilityEnum}" />
 							<!-- <f:ajax execute="@this" render="@all" event="click"/> -->
@@ -35,16 +35,19 @@
 				</h:panelGrid>
 				<hr />
 				<br />
-
-				<ui:repeat var="player" value="#{playerController.teamPlayers}"
+			
+				
+				<ui:repeat var="player" value="#{playerListController.teamPlayers}"
 					varStatus="status">
 					<h:panelGrid columns="8">
 						<img
 							src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
 							width="16px" height="16px" alt="#{player.country.name}" />
 
-						<!-- <h:commandLink value="#{player.name}, " actionListener="player" action="player" outcome="faces-redirect=true" /> -->
-						<h:link value="Next page" outcome="nextpage.xhtml" />
+						<h:link value="#{player.name}, "  onclick="window.location='./player.xhtml?id=#{player.id}'"/> 
+
+<!-- 					<h:commandLink value="#{player.name}, " actionListener="player" action="player" outcome="?teste=3;faces-redirect=true" /> -->
+<!-- 					<h:commandLink value="teste " onclick="window.location='./player.xhtml?id=#{player.id}'"  /> -->
 
 						<h:outputLabel value="#{playerHability.getAge(player.age)}" />
 						<h:outputText value="#{msg['player.age.yearOld']} " />

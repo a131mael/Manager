@@ -13,7 +13,7 @@
   PATH="/pages/team/index.xhtml" SHAPE="409,173,0,0"
   model-entity="JSFProcessGroup" persistent="true"/>
  <PROCESS-ITEM NAME="rules:#pages#team#players.xhtml"
-  PATH="/pages/team/players.xhtml" SHAPE="201,268,0,0" model-entity="JSFProcessGroup">
+  PATH="/pages/team/players.xhtml" SHAPE="104,336,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#pages#team#players.xhtml:0" NAME="item"
    PATH="/pages/team/players.xhtml" model-entity="JSFProcessItem">
    <PROCESS-ITEM-OUTPUT ID="player::#pages#team#player.xhtml"
@@ -22,6 +22,12 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#team#player.xhtml"
-  PATH="/pages/team/player.xhtml" SHAPE="432,276,0,0"
-  model-entity="JSFProcessGroup" persistent="true"/>
+  PATH="/pages/team/player.xhtml" SHAPE="336,360,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#team#player.xhtml:0" NAME="item"
+   PATH="/pages/team/player.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ok::#pages#team#players.xhtml" NAME="output"
+    PATH="/pages/team/players.xhtml"
+    TARGET="rules:#pages#team#players.xhtml" TITLE="ok" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>
