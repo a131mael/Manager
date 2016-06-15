@@ -16,15 +16,34 @@
  */
 package org.aaf.webInterface.service;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
+import org.aaf.webInterface.model.Team;
 
 @Stateless
 public class LeagueService {
 
 	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
+
+	@SuppressWarnings("unchecked")
+	public List<Team> getTeams(long idLeague) {
+
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT t from  Team t ");
+		sql.append("left join t.league l ");
+		sql.append("where 1=1 ");
+		sql.append("and l.id = :idLeague ");
+
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("idLeague", idLeague);
+		return query.getResultList();
+	}
 
 	
 }

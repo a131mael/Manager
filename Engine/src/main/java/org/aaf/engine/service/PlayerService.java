@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.aaf.engine.model.Country;
 import org.aaf.engine.model.Player;
 import org.aaf.engine.model.Team;
+import org.aaf.engine.model.TeamLeague;
 
 @Stateless
 public class PlayerService {
@@ -30,20 +31,34 @@ public class PlayerService {
 		em.persist(team);
 		
 		for(int i=1; i<=22; i++){
-			em.persist(createPlayer(i, team));
+			//em.persist(createPlayer(i, team));
 		}
 
 		//log.info("Registering " + team.getName());
 		
 	}
 	
-	private Player createPlayer(int index, Team team){
+	public void register(TeamLeague teamLeague) throws Exception {
+		Team team = teamLeague.getTeam();
+		em.persist(team);
+		teamLeague.setTeam(team);
+		em.persist(teamLeague);
+		
+		for(int i=1; i<=22; i++){
+			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry()));
+		}
+
+		//log.info("Registering " + team.getName());
+		
+	}
+	
+	private Player createPlayer(int index, Team team, Country country){
 		Random gerador = new Random();
 		Player player = new Player();
 		player.setCod(index+"");
 		player.setName("Jogador " + index);
 		player.setTeam(team);
-		player.setCountry(team.getLeague().getCountry());
+		player.setCountry(country);
 		
 		player.setAge((float) (gerador.nextDouble() * 15)+ 18);
 		player.setAggressiveness((float) (gerador.nextDouble() * 8)+ 3);

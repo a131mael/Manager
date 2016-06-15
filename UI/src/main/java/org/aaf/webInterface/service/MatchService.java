@@ -80,6 +80,24 @@ public class MatchService {
 		query.setParameter("idTeam", id);
 		query.setParameter("week", week);
 		return  query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Match> getMatches(Long id,int session) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or ht.id = :idTeam ");
+		sql.append(") ");
+		sql.append("and m.session = :session");
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("session", String.valueOf(session));
+		query.setParameter("idTeam", id);
+		return  query.getResultList();
 		
 		
 	}

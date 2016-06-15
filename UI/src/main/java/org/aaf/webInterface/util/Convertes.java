@@ -9,11 +9,13 @@ import java.util.List;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
+import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.model.League;
+import org.aaf.webInterface.model.Match;
 import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.UserFM;
@@ -216,7 +218,44 @@ public class Convertes {
 		} else {
 			return null;
 		}
-
 	}
-
+	
+	public static List<TeamDTO> getTeams(List<Team> teams){
+		List<TeamDTO> teamsDTO = new ArrayList<>();
+		if(teams != null){
+			for(Team mt :teams){
+				teamsDTO.add(getTeam(mt));
+			}
+		}
+		return teamsDTO;
+	}
+	
+	public static MatchDTO getMatch(Match param) {
+		if (param != null) {
+			MatchDTO obj = new MatchDTO();
+			obj.setCod(param.getCod());
+			obj.setDate(param.getDate());
+			obj.setGolasHomeTeam(param.getGolasHomeTeam());
+			obj.setGolasVisitTeam(param.getGolasVisitTeam());
+			obj.setHomeTeam(getTeam(param.getHomeTeam()));
+			obj.setId(param.getId());
+			obj.setRound(param.getRound());
+			obj.setSession(param.getSession());
+			obj.setVisitTeam(getTeam(param.getVisitTeam()));
+			obj.setWeek(param.getWeek());
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static List<MatchDTO> getMatches(List<Match> matches){
+		List<MatchDTO> matchesDTO = new ArrayList<>();
+		if(matches != null){
+			for(Match mt :matches){
+				matchesDTO.add(getMatch(mt));
+			}
+		}
+		return matchesDTO;
+	}
 }

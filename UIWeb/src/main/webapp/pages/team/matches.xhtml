@@ -13,7 +13,7 @@
 				<h:panelGrid>
 					<h:outputLabel value="Jogos da Liga" />
 					<hr />
-					<ui:repeat var="week" value="#{matchController.weeks}"
+					<!-- <ui:repeat var="week" value="#{matchController.weeks}"
 						varStatus="status">
 
 						<h:panelGrid columns="2">
@@ -34,7 +34,30 @@
 							</div>
 
 						</h:panelGrid>
+					</ui:repeat> -->
+
+
+
+					<ui:repeat var="match" value="#{matchController.getTeamMatchs(0)}"
+						varStatus="status">
+
+						<h:panelGrid columns="2">
+								<h:outputLabel value="#{msg['match.week']}: "/>
+								<h:outputLabel value="#{match.week}" />
+					
+							<h:panelGrid columns="5">
+								<h:outputText value="#{match.homeTeam.name}" />
+								<h:outputLabel value=" - " />
+								<h:outputText value="#{match.visitTeam.name}" />
+								<h:link value=" escalar "
+									onclick="window.location='./player.xhtml?id=#{player.id}'" />
+								<h:link value=" relatório "
+									onclick="window.location='./player.xhtml?id=#{player.id}'" />
+							</h:panelGrid>
+						</h:panelGrid>
 					</ui:repeat>
+
+
 
 				</h:panelGrid>
 				<h:panelGrid>

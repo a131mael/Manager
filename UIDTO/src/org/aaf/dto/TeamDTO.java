@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.json.JSONObject;
 
-public class TeamDTO implements Serializable {
+public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 
 	/**
 	 * 
@@ -22,6 +22,8 @@ public class TeamDTO implements Serializable {
 	private UserDTO owner;
 
 	private Double cashBox;
+	
+	private int points;
 
 	public TeamDTO() {
 
@@ -100,5 +102,27 @@ public class TeamDTO implements Serializable {
 	public void setLeague(LeagueDTO league) {
 		this.league = league;
 	}
+
+	@Override
+	public int compareTo(TeamDTO o) {
+		if(o.getPoints() > this.points){
+			return 1;
+		}else if(o.getPoints() < this.points){
+			return -1;
+		}else{
+			
+			return 0;	
+		}
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
+
+	
 
 }
