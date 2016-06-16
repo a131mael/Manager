@@ -33,7 +33,7 @@ public class PlayerListController extends AuthController{
 
     private PlayerService playerService;
     
-    private HabilityEnum selectedHability;
+    private HabilityEnum selectedHability = HabilityEnum.AGILITY;
 
     @PostConstruct
     private void init(){
