@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<h:head>
+
+	</h:head>
 
 	<ui:define name="content">
 		<h:form style="width:100%">
@@ -22,10 +26,11 @@
 					<h:panelGrid columns="2">
 						<h:outputLabel for="orderBy" value="Order by: " />
 
-						<p:selectOneMenu label="orderBy" style="width: 200px; margin-left: 10px;"
-							value="playerListController.selectedHability">
+						<p:selectOneMenu label="orderBy"
+							style="width: 200px; margin-left: 10px;"
+								value="#{playerListController.selectedHability}">
 							<f:selectItem itemLabel="Hability" itemValue="" />
-							<f:selectItems value="#{selectItems.habilityEnum}" />
+							<f:selectItems value="#{selectItems.habilityEnum}" var="item" itemValue="item" itemLabel="#{item.description}"/>
 							<p:ajax process="@this" update="@form" />
 						</p:selectOneMenu>
 					</h:panelGrid>
