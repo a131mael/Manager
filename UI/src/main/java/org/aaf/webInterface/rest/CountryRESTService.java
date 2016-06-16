@@ -30,6 +30,8 @@ import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.service.CountryService;
 import org.aaf.webInterface.util.Convertes;
 
+import com.cedarsoftware.util.io.JsonWriter;
+
 @Path("/countries")
 @RequestScoped
 public class CountryRESTService {
@@ -54,11 +56,26 @@ public class CountryRESTService {
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response lookupMemberById(@PathParam("id") long id) {
+    public Response lookupCountryById(@PathParam("id") long id) {
     	Response.ResponseBuilder builder = Response.ok();
     	
         Country country = countryService.findById(id);
         builder.entity(country);
+        if (country == null) {
+        	 builder = Response.status(Response.Status.NOT_FOUND);
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }	
+        return builder.build();
+    }
+    
+    @GET
+    @Path("/user/{idUser:[0-9][0-9]*}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response lookupCountryByIdUser(@PathParam("idUser") long idUser) {
+    	Response.ResponseBuilder builder = Response.ok();
+    	
+        Country country = countryService.findByUserId(idUser);
+        builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
         if (country == null) {
         	 builder = Response.status(Response.Status.NOT_FOUND);
             throw new WebApplicationException(Response.Status.NOT_FOUND);

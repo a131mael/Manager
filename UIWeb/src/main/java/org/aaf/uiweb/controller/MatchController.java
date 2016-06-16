@@ -38,7 +38,7 @@ public class MatchController extends AuthController {
 	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
 		
 		
-		return matchService.getMatches(getLoggedUser().getTeam().getId(),getLoggedUser().getTeam().getLeague().getCountry().getSession());
+		return matchService.getMatches(getLoggedUser().getTeam().getId(),getLoggedUser().getCountryDTO().getSession());
 	}
 
 	//

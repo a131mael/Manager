@@ -23,41 +23,27 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Team;
+import org.aaf.webInterface.model.TeamLeague;
 
 @Stateless
-public class LeagueService {
+public class TeamLeagueService {
 
 	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
 	@SuppressWarnings("unchecked")
-	public List<Team> getTeams(long idLeague) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT t from  TeamLeague tl ");
-		sql.append("left join tl.league l ");
-		sql.append("left join tl.team t ");
-		sql.append("where 1=1 ");
-		sql.append("and l.id = :idLeague ");
-
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("idLeague", idLeague);
-		return query.getResultList();
-	}
-
-	public League getLeagueByUser(long idUser) {
+	public List<TeamLeague> getTeamLeagueByLeague(long idLeague) {
 		StringBuilder query = new StringBuilder();
-		query.append("SELECT l from TeamLeague tl ");
+		query.append("SELECT tl from TeamLeague tl ");
 		query.append("left join tl.league l ");
 		query.append("left join tl.team t ");
-		query.append("left join t.owner user ");
 		query.append("where 1=1 ");
-		query.append("and user.id = :idUser ");
+		query.append("and l.id = :idLeague ");
 		Query query2 = em.createQuery(query.toString());
-		query2.setParameter("idUser", idUser);
+		query2.setParameter("idLeague", idLeague);
 		
-		League user = (League) query2.getSingleResult();
-		return user;
+		List<TeamLeague> teamLeague =  query2.getResultList();
+		return teamLeague;
 	}
+
 }

@@ -12,12 +12,14 @@ import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
+import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.model.League;
 import org.aaf.webInterface.model.Match;
 import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
+import org.aaf.webInterface.model.TeamLeague;
 import org.aaf.webInterface.model.UserFM;
 
 public class Convertes {
@@ -257,5 +259,36 @@ public class Convertes {
 			}
 		}
 		return matchesDTO;
+	}
+
+	public static TeamLeagueDTO getTeamLeague(TeamLeague param) {
+		if (param != null) {
+			TeamLeagueDTO obj = new TeamLeagueDTO();
+			obj.setCod(param.getCod());
+			obj.setGoalsPro(param.getGoalsPro());
+			obj.setGoasAgainst(param.getGoasAgainst());
+			obj.setId(param.getId());
+			obj.setLeague(getLeague(param.getLeague()));
+			obj.setLosses(param.getLosses());
+			obj.setMain(param.isMain());
+			obj.setMatches(param.getMatches());
+			obj.setName(param.getName());
+			obj.setPoints(param.getPoints());
+			obj.setTeam(getTeam(param.getTeam()));
+			obj.setVictories(param.getVictories());
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static List<TeamLeagueDTO> getTeamLeagues(List<TeamLeague> leagues){
+		List<TeamLeagueDTO> teamLeagueDTOs = new ArrayList<>();
+		if(leagues != null){
+			for(TeamLeague mt :leagues){
+				teamLeagueDTOs.add(getTeamLeague(mt));
+			}
+		}
+		return teamLeagueDTOs;
 	}
 }

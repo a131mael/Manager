@@ -27,7 +27,6 @@ import org.json.JSONObject;
 
 public class TeamService {
 
-    private final static int  HTTP_COD_SUCESSO = 200;
 
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
 		JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);

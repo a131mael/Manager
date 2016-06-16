@@ -29,60 +29,44 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.webInterface.model.Country;
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.service.LeagueService;
+import org.aaf.webInterface.model.Match;
+import org.aaf.webInterface.model.TeamLeague;
+import org.aaf.webInterface.service.MatchService;
+import org.aaf.webInterface.service.TeamLeagueService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-@Path("/leagues")
+@Path("/teamLeagues")
 @RequestScoped
-public class LeagueRESTService {
+public class TeamLeagueRESTService {
 
 	@EJB
-	private LeagueService leagueService;
+	private TeamLeagueService teamLeagueService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response lookupPlayerById(@QueryParam("id") long id, @QueryParam("idTeam") long idTeam) {
-	
 		return null;
 	}
 	
 	@GET
-	@Path("/{idLeague:[0-9][0-9]*}")
+	@Path("/league/{idLeague:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getTeansLeague(@PathParam("idLeague") long idLeague) {
+	public Response getMatches(@PathParam("idLeague") long idLeague) {
 		Response.ResponseBuilder builder = null;
-
-		List<Team> teams = leagueService.getTeams(idLeague);
-
-		if (teams == null) {
+		
+		builder = Response.ok();
+		
+		List<TeamLeague> teamLeague = teamLeagueService.getTeamLeagueByLeague(idLeague);
+		if (teamLeague == null) {
 			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
 			builder = Response.ok();
-			builder.entity(JsonWriter.objectToJson(Convertes.getTeams(teams)));
+			builder.entity(JsonWriter.objectToJson(Convertes.getTeamLeagues(teamLeague)));
 		}
-
 		return builder.build();
 	}
-	
-	@GET
-    @Path("/user/{idUser:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response lookupLeagueByIdUser(@PathParam("idUser") long idUser) {
-    	Response.ResponseBuilder builder = Response.ok();
-    	
-        League league = leagueService.getLeagueByUser(idUser);
-        builder.entity(JsonWriter.objectToJson(Convertes.getLeague(league)));
-        if (league == null) {
-        	 builder = Response.status(Response.Status.NOT_FOUND);
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }	
-        return builder.build();
-    }
 
 }

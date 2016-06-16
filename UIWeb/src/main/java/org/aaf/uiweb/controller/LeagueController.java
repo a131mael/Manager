@@ -24,7 +24,8 @@ import javax.inject.Inject;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
-import org.aaf.dto.TeamDTO;
+import org.aaf.dto.TeamLeagueDTO;
+import org.aaf.uiweb.service.TeamLeagueService;
 import org.aaf.uiweb.service.TeamService;
 
 @Model
@@ -37,17 +38,20 @@ public class LeagueController extends AuthController{
     @Inject
     private TeamService teamService; 
     
-    public List<TeamDTO> getLeagueTeans(){
-    	List<TeamDTO> teams = teamService.getTeans(getLoggedUser().getTeam().getLeague().getId());
-    	return teams;
+    @Inject
+    private TeamLeagueService teamLeagueService; 
+    
+    public List<TeamLeagueDTO> getLeagueTeans(){
+    	List<TeamLeagueDTO> teamLeagueDTOs = teamLeagueService.getTeans(getLoggedUser().getMainLeague().getId());
+    	return teamLeagueDTOs;
     }
     
     public CountryDTO getCountryLeague(){
-    	return getLoggedUser().getTeam().getLeague().getCountry();
+    	return getLoggedUser().getCountryDTO();
     }
 
     public LeagueDTO getLeague(){
-    	return getLoggedUser().getTeam().getLeague();
+    	return getLoggedUser().getMainLeague();
     }
     
 }

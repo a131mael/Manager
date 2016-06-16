@@ -16,16 +16,21 @@
  */
 package org.aaf.uiweb.service;
 
-import org.aaf.dto.LeagueDTO;
+import java.util.List;
+
+import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONObject;
 
-public class LeagueService {
 
-	public LeagueDTO getMainLeague(Long idUser) {
-		JSONObject jo = JsonReader.getObject( EndPoints.GET_MAIN_LEAGUE_USER+idUser);
-    	LeagueDTO leagueDTO = (LeagueDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return leagueDTO;
+public class TeamLeagueService {
+
+	@SuppressWarnings("unchecked")
+	public List<TeamLeagueDTO> getTeans(Long idLeague) {
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_TEAMLEAGUE_LEAGUE+idLeague);
+    	List<TeamLeagueDTO> matches = ((List<TeamLeagueDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
+		return matches;
 	}
+	
 }
