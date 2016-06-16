@@ -41,12 +41,6 @@ import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonReader;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the
- * members table.
- */
 @Path("/teams")
 @RequestScoped
 public class TeamRESTService {
@@ -109,7 +103,6 @@ public class TeamRESTService {
 			TeamDTO team = (TeamDTO) JsonReader.jsonToJava(member);
 			teamService.registerTeam(Convertes.getTeam(team));
 
-			// Create an "ok" response
 			builder = Response.ok();
 		} catch (ConstraintViolationException ce) {
 			// Handle bean validation issues

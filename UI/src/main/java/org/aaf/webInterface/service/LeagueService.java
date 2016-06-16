@@ -33,7 +33,6 @@ public class LeagueService {
 
 	@SuppressWarnings("unchecked")
 	public List<Team> getTeams(long idLeague) {
-
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  TeamLeague tl ");
 		sql.append("left join tl.league l ");
@@ -45,6 +44,4 @@ public class LeagueService {
 		query.setParameter("idLeague", idLeague);
 		return query.getResultList();
 	}
-
-	
 }

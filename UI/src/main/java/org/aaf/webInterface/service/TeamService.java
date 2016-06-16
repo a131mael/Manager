@@ -23,7 +23,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.League;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.UserFM;
 
@@ -32,19 +31,6 @@ public class TeamService {
 
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
-
-	// TODO query nativa mongoDB
-	@Deprecated
-	@SuppressWarnings("unchecked")
-	public List<Team> getTeansMONGODB(Long idLeague) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("db.Team.find({'league_id': ");
-		sql.append(idLeague);
-		sql.append("})");
-
-		Query query = em.createNativeQuery(sql.toString(), Team.class);
-		return query.getResultList();
-	}
 
 	public Team getAvailableTeam(Long idcountry) throws Exception {
 		StringBuilder sql = new StringBuilder();
@@ -105,13 +91,10 @@ public class TeamService {
 			
 			userTeam.setTeam(t);
 			em.persist(userTeam);
-			
 			em.merge(t);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

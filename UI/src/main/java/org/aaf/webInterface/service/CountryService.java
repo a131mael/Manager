@@ -23,7 +23,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.dto.CountryDTO;
 import org.aaf.webInterface.model.Country;
 
 @Stateless
@@ -36,6 +35,7 @@ public class CountryService {
 		return em.find(Country.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Country> findAllOrderedByName() {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT c from  Country c ");

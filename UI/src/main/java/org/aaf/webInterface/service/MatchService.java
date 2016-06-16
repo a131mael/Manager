@@ -31,21 +31,6 @@ public class MatchService {
 	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
-    //TODO query mongoDB
-	@SuppressWarnings("unchecked")
-	@Deprecated
-	public List<Match> getLastMatchesMongoDB(Long id) {
-		StringBuilder sql = new StringBuilder();
-    	sql.append("db.Match.find({ '$or':[  {'visitTeam_id': ");
-    	sql.append(id);
-    	sql.append("},{'homeTeam_id' : ");
-    	sql.append(id);
-    	sql.append("}]})");
-//    	sql.append(".sort( { 'round': 1 } )");
-		Query query = em.createNativeQuery(sql.toString(), Match.class);
-		return  query.getResultList();
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Match> getLastMatches(Long idTeam) {
 		StringBuilder sql = new StringBuilder();

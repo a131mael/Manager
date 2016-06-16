@@ -23,10 +23,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.validation.ConstraintViolationException;
 import javax.validation.ValidationException;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -35,74 +32,61 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.dto.TeamDTO;
-import org.aaf.dto.UserDTO;
-import org.aaf.webInterface.service.TeamService;
 import org.aaf.webInterface.service.UserService;
 import org.aaf.webInterface.util.Convertes;
 
-import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the members table.
- */
 @Path("/login")
 @RequestScoped
 public class LoginRESTService {
-    
-    @EJB
-    private UserService userService;
 
-    @GET
-    @Path("/login/{countryId:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public TeamDTO lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
-//    	Team t = null;
-//		try {
-//			t = teamService.getAvailableTeam(id);
-//	        if (t == null) {
-//	            throw new WebApplicationException(Response.Status.NOT_FOUND);
-//	        }
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//        return t;
-    	return null;
-    }
-    
-    //TODO - importante passar senha e depois token
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response register(@QueryParam("login") String login) {
+	@EJB
+	private UserService userService;
 
-        Response.ResponseBuilder builder =  Response.ok();
+	@GET
+	@Path("/login/{countryId:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public TeamDTO lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
+		// Team t = null;
+		// try {
+		// t = teamService.getAvailableTeam(id);
+		// if (t == null) {
+		// throw new WebApplicationException(Response.Status.NOT_FOUND);
+		// }
+		//
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		// return t;
+		return null;
+	}
 
-        try {
+	// TODO - importante passar senha e depois token
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response register(@QueryParam("login") String login) {
 
-        //	UserDTO userDTO = (UserDTO) JsonReader.jsonToJava(user);
-        	//builder.entity(userService.login((Convertes.getUser(userDTO))));
-        	builder.entity(JsonWriter.objectToJson(Convertes.getUser(userService.login(login))));
-        	
-            // Create an "ok" response
-         //   builder = Response.ok();
-        } catch (ConstraintViolationException ce) {
-            // Handle bean validation issues
-        } catch (ValidationException e) {
-            // Handle the unique constrain violation
-            Map<String, String> responseObj = new HashMap<>();
-            responseObj.put("email", "Email taken");
-            builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
-        } catch (Exception e) {
-            // Handle generic exceptions
-            Map<String, String> responseObj = new HashMap<>();
-            responseObj.put("error", e.getMessage());
-            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
-        }
+		Response.ResponseBuilder builder = Response.ok();
 
-        return builder.build();
-    }
+		try {
 
+			builder.entity(JsonWriter.objectToJson(Convertes.getUser(userService.login(login))));
+
+		} catch (ConstraintViolationException ce) {
+			// Handle bean validation issues
+		} catch (ValidationException e) {
+			// Handle the unique constrain violation
+			Map<String, String> responseObj = new HashMap<>();
+			responseObj.put("email", "Email taken");
+			builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
+		} catch (Exception e) {
+			// Handle generic exceptions
+			Map<String, String> responseObj = new HashMap<>();
+			responseObj.put("error", e.getMessage());
+			builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+		}
+
+		return builder.build();
+	}
 }

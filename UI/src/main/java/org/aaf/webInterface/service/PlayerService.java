@@ -31,28 +31,6 @@ public class PlayerService {
 	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
-//TODO query nativa para mongo
-    @SuppressWarnings("unchecked")
-	@Deprecated
-	public List<Player> getPlayersMONGODB(Long id, String orderBy) {
-		StringBuilder sql = new StringBuilder();
-    	sql.append("db.Player.find({'team_id': ");
-    	sql.append(id);
-    	sql.append("},");//Query
-    	sql.append("{'ignore': 0},"); //Projecao
-    	
-    	sql.append("{ 'sort': [['"); //Sorte
-//    	sql.append(orderBy);
-    	sql.append("age");
-    	sql.append("',");
-    	sql.append("'asc'");
-    	sql.append("]]}");
-    	sql.append(")");
-		Query query = em.createNativeQuery(sql.toString(), Player.class);
-		return  query.getResultList();
-		
-	}
-	
     @SuppressWarnings("unchecked")
 	public List<Player> getPlayers(Long teamID, String orderBy, String orderByType) {
 		StringBuilder sql = new StringBuilder();
@@ -71,7 +49,6 @@ public class PlayerService {
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("teamID", teamID);
 		return  query.getResultList();
-		
 	}
     
 	public Player getPlayer(Long id) {
@@ -84,7 +61,6 @@ public class PlayerService {
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("teamID", id);
 		return  (Player) query.getSingleResult();
-		
 	}
 
 	public String dismiss(long id) {

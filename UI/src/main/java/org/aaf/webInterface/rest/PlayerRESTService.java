@@ -31,18 +31,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.webInterface.model.Player;
-import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.PlayerService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the
- * members table.
- */
+
 @Path("/players")
 @RequestScoped
 public class PlayerRESTService {

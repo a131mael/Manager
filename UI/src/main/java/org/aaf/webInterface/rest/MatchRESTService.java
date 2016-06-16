@@ -20,7 +20,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -30,22 +29,12 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.dto.MatchDTO;
 import org.aaf.webInterface.model.Match;
-import org.aaf.webInterface.model.Player;
-import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.service.MatchService;
-import org.aaf.webInterface.service.PlayerService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the
- * members table.
- */
 @Path("/matches")
 @RequestScoped
 public class MatchRESTService {
@@ -56,7 +45,6 @@ public class MatchRESTService {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response lookupPlayerById(@QueryParam("id") long id, @QueryParam("idTeam") long idTeam) {
-
 		return null;
 	}
 	
@@ -77,7 +65,6 @@ public class MatchRESTService {
 			builder = Response.ok();
 			builder.entity(JsonWriter.objectToJson(Convertes.getMatches(matches)));
 		}
-
 		return builder.build();
 	}
 
