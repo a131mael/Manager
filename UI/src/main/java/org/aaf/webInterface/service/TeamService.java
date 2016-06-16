@@ -23,7 +23,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.League;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.UserFM;
 
@@ -33,23 +32,11 @@ public class TeamService {
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-	// TODO query nativa mongoDB
-	@Deprecated
-	@SuppressWarnings("unchecked")
-	public List<Team> getTeansMONGODB(Long idLeague) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("db.Team.find({'league_id': ");
-		sql.append(idLeague);
-		sql.append("})");
-
-		Query query = em.createNativeQuery(sql.toString(), Team.class);
-		return query.getResultList();
-	}
-
 	public Team getAvailableTeam(Long idcountry) throws Exception {
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT t from Team t ");
-		sql.append("left join t.league l ");
+		sql.append("SELECT t from TeamLeague tl ");
+		sql.append("left join tl.league l ");
+		sql.append("left join tl.team t ");
 		sql.append("left join l.country c ");
 		sql.append("where 1=1 ");
 		sql.append("and c.id = :idCountry ");
@@ -100,20 +87,14 @@ public class TeamService {
 			userTeam.setTeam(null);
 			em.persist(userTeam);
 			
-			League le = em.find(League.class, t.getLeague().getId()) ;
-			
-			t.setLeague(le);
 			t.setOwner(userTeam);
 			
 			userTeam.setTeam(t);
 			em.persist(userTeam);
-			
 			em.merge(t);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

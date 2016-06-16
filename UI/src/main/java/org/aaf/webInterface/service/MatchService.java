@@ -31,21 +31,6 @@ public class MatchService {
 	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
-    //TODO query mongoDB
-	@SuppressWarnings("unchecked")
-	@Deprecated
-	public List<Match> getLastMatchesMongoDB(Long id) {
-		StringBuilder sql = new StringBuilder();
-    	sql.append("db.Match.find({ '$or':[  {'visitTeam_id': ");
-    	sql.append(id);
-    	sql.append("},{'homeTeam_id' : ");
-    	sql.append(id);
-    	sql.append("}]})");
-//    	sql.append(".sort( { 'round': 1 } )");
-		Query query = em.createNativeQuery(sql.toString(), Match.class);
-		return  query.getResultList();
-	}
-	
 	@SuppressWarnings("unchecked")
 	public List<Match> getLastMatches(Long idTeam) {
 		StringBuilder sql = new StringBuilder();
@@ -79,6 +64,24 @@ public class MatchService {
 		query.setParameter("session", session);
 		query.setParameter("idTeam", id);
 		query.setParameter("week", week);
+		return  query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Match> getMatches(Long id,int session) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or ht.id = :idTeam ");
+		sql.append(") ");
+		sql.append("and m.session = :session");
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("session", String.valueOf(session));
+		query.setParameter("idTeam", id);
 		return  query.getResultList();
 		
 		

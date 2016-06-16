@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -22,8 +21,8 @@ public class Team {
 	
 	private Double cashBox;
 
-	@ManyToOne
-	private League league;
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="team")
+//	private List<TeamLeague> teamLeagues;
 	
 	@OneToOne
 	private UserFM owner;
@@ -52,14 +51,6 @@ public class Team {
 		this.id = id;
 	}
 
-	public League getLeague() {
-		return league;
-	}
-
-	public void setLeague(League league) {
-		this.league = league;
-	}
-
 	public UserFM getOwner() {
 		return owner;
 	}
@@ -75,5 +66,13 @@ public class Team {
 	public void setCashBox(Double cashBox) {
 		this.cashBox = cashBox;
 	}
+
+//	public List<TeamLeague> getTeamLeagues() {
+//		return teamLeagues;
+//	}
+//
+//	public void setTeamLeagues(List<TeamLeague> teamLeagues) {
+//		this.teamLeagues = teamLeagues;
+//	}
 
 }

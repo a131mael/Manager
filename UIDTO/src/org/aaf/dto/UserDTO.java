@@ -24,7 +24,11 @@ public class UserDTO implements Serializable{
 	private String login;
 
 	private String senha;
+	
+	private CountryDTO countryDTO;
 
+	private LeagueDTO mainLeague;
+	
 	public UserDTO() {
 	}
 
@@ -94,6 +98,22 @@ public class UserDTO implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public CountryDTO getCountryDTO() {
+		return countryDTO;
+	}
+
+	public void setCountryDTO(CountryDTO countryDTO) {
+		this.countryDTO = countryDTO;
+	}
+
+	public LeagueDTO getMainLeague() {
+		return mainLeague;
+	}
+
+	public void setMainLeague(LeagueDTO mainLeague) {
+		this.mainLeague = mainLeague;
 	}
 
 }

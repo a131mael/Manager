@@ -63,14 +63,7 @@ public class UserService {
 	public UserDTO login(UserDTO m) throws Exception {
 		JSONObject jo = JsonReader.getObject(EndPoints.LOGIN+m.getLogin());
 		
-//		TeamDTO time = new TeamDTO(jo);
-//		
-		//JSONObject obj = JSONPPost.postJson(JsonWriter.objectToJson(m), EndPoints.LOGIN);
-		
-		//TODO - remover
-		
 		UserDTO userLogado = (UserDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		//m.setId(1L);
 		
 		return userLogado;
 	}

@@ -16,16 +16,17 @@
  */
 package org.aaf.uiweb.service;
 
-import org.aaf.dto.LeagueDTO;
+import org.aaf.dto.CountryDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONObject;
 
-public class LeagueService {
 
-	public LeagueDTO getMainLeague(Long idUser) {
-		JSONObject jo = JsonReader.getObject( EndPoints.GET_MAIN_LEAGUE_USER+idUser);
-    	LeagueDTO leagueDTO = (LeagueDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return leagueDTO;
+public class CountryService {
+
+	public CountryDTO getCountry(Long idUser) {
+		JSONObject jo = JsonReader.getObject( EndPoints.GET_COUNTRY_USER+idUser);
+    	CountryDTO countryDTO = (CountryDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		return countryDTO;
 	}
 }

@@ -16,8 +16,6 @@
  */
 package org.aaf.uiweb.controller;
 
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.bean.ViewScoped;
@@ -35,8 +33,6 @@ public class PlayerController extends AuthController {
 
 	private PlayerService playerService;
 
-	private HabilityEnum selectedHability;
-
 	private PlayerDTO player;
 
 	@PostConstruct
@@ -47,23 +43,9 @@ public class PlayerController extends AuthController {
 		player = id!= null? (playerService.getPlayer(Long.parseLong(id),getLoggedUser().getTeam().getId())):null;
 	}
 
-	public List<PlayerDTO> getTeamPlayers() throws Exception {
-		return playerService.getPlayers(getLoggedUser().getId(),
-				selectedHability != null ? selectedHability.getLabel() : null, "");
-
-	}
-
 	public String dismiss(PlayerDTO player) {
 		String retorno = playerService.dismiss(player.getId());
 		return retorno;
-	}
-
-	public HabilityEnum getSelectedHability() {
-		return selectedHability;
-	}
-
-	public void setSelectedHability(HabilityEnum selectedHability) {
-		this.selectedHability = selectedHability;
 	}
 
 	public void setPlayer(PlayerDTO player) {

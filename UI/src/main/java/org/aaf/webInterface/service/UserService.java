@@ -17,13 +17,11 @@
 package org.aaf.webInterface.service;
 
 import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.Member;
 import org.aaf.webInterface.model.Team;
 import org.aaf.webInterface.model.UserFM;
 
@@ -33,10 +31,6 @@ public class UserService {
 	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
-    @SuppressWarnings("unused")
-	@Inject
-    private Event<Member> memberEventSrc;
-    
     @Inject
     private TeamService teamService;
     

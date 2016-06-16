@@ -41,12 +41,11 @@
 		<class>org.aaf.engine.model.UserFM</class>
 		<class>org.aaf.engine.model.Property</class>
 		<class>org.aaf.engine.model.Match</class>
-
-		
+		<class>org.aaf.engine.model.TeamLeague</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-<!--  			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
+<!--  				<property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
 <!-- 			<property name="hibernate.hbm2ddl.auto" value="update" /> -->
 			<property name="hibernate.show_sql" value="true" />
 		</properties>

@@ -20,7 +20,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -30,71 +29,43 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.webInterface.model.Player;
-import org.aaf.webInterface.service.PlayerService;
+import org.aaf.webInterface.model.Match;
+import org.aaf.webInterface.model.TeamLeague;
+import org.aaf.webInterface.service.MatchService;
+import org.aaf.webInterface.service.TeamLeagueService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-
-@Path("/players")
+@Path("/teamLeagues")
 @RequestScoped
-public class PlayerRESTService {
+public class TeamLeagueRESTService {
 
 	@EJB
-	private PlayerService playerService;
+	private TeamLeagueService teamLeagueService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response lookupPlayerById(@QueryParam("id") long id, @QueryParam("idTeam") long idTeam) {
-		// TODO alterar o id do time para o token
-		Response.ResponseBuilder builder = null;
-
-		Player player = playerService.getPlayer(id);
-
-		if (player == null) {
-			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
-			throw new WebApplicationException(Response.Status.NOT_FOUND);
-		} else {
-			builder = Response.ok();
-			builder.entity(JsonWriter.objectToJson(Convertes.getPlayer(player)));
-		}
-
-		return builder.build();
+		return null;
 	}
 	
 	@GET
-	@Path("/dismiss/{id:[0-9][0-9]*}")
+	@Path("/league/{idLeague:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response dismissPlayer(@PathParam("id") long id) {
-		// TODO alterar o id do time para o token
+	public Response getMatches(@PathParam("idLeague") long idLeague) {
 		Response.ResponseBuilder builder = null;
 		
-		playerService.dismiss(id);
 		builder = Response.ok();
-		builder.entity("ok");
-
-		return builder.build();
-	}
-
-	@GET
-	@Path("/{idTeam:[0-9][0-9]*}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response lookupPlayersById(@PathParam("idTeam") long idTeam,
-			@DefaultValue("value") @QueryParam("orderBy") String orderBy,
-			@DefaultValue("desc") @QueryParam("orderByType") String orderByType) {
-		Response.ResponseBuilder builder = null;
-
-		List<Player> players = playerService.getPlayers(idTeam, orderBy, orderByType);
-
-		if (players == null) {
+		
+		List<TeamLeague> teamLeague = teamLeagueService.getTeamLeagueByLeague(idLeague);
+		if (teamLeague == null) {
 			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		} else {
 			builder = Response.ok();
-			builder.entity(JsonWriter.objectToJson(Convertes.getPlayers(players)));
+			builder.entity(JsonWriter.objectToJson(Convertes.getTeamLeagues(teamLeague)));
 		}
-
 		return builder.build();
 	}
 

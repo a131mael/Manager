@@ -17,7 +17,6 @@
 package org.aaf.webInterface.rest;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
@@ -41,11 +40,6 @@ import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonReader;
 
-/**
- * JAX-RS Example
- * <p/>
- * This class produces a RESTful service to read/write the contents of the members table.
- */
 @Path("/users")
 @RequestScoped
 public class UserRESTService {
@@ -78,21 +72,11 @@ public class UserRESTService {
         Response.ResponseBuilder builder = null;
 
         try {
-            // Validates member using bean validation
 
         	TeamDTO team = (TeamDTO) JsonReader.jsonToJava(member);
         	
-        	//TeamDTO team = new TeamDTO();
-        //	JSONObject jsonObject = new JSONObject(member);
-        	
-        	//UserFM user =  Convertes.getUser((UserDTO) (jsonObject.get("owner")));
-        	//Team t = Convertes.getTeam(jsonObject);
-        	//TeamDTO ob = new ObjectMapper().readValue(jsonObject, TeamDTO.class);
-        	
-        	
         	teamService.registerTeam(Convertes.getTeam(team));
 
-            // Create an "ok" response
             builder = Response.ok();
         } catch (ConstraintViolationException ce) {
             // Handle bean validation issues
@@ -107,8 +91,6 @@ public class UserRESTService {
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         }
-
         return builder.build();
     }
-
 }

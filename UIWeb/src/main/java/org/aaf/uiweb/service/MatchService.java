@@ -20,6 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.aaf.dto.MatchDTO;
+import org.aaf.uiweb.util.EndPoints;
+import org.aaf.uiweb.util.JsonReader;
+import org.json.JSONObject;
 
 public class MatchService {
 
@@ -29,11 +32,12 @@ public class MatchService {
 		return  new ArrayList<MatchDTO>();
 	}
 	
-	public List<MatchDTO> getMatches(Long id,int session, int week) {
+	@SuppressWarnings("unchecked")
+	public List<MatchDTO> getMatches(Long idTeam,int session) {
 		
-		return  new ArrayList<MatchDTO>();
-		
-		
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_MATCHES+idTeam+"/"+session);
+    	List<MatchDTO> matches = ((List<MatchDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
+		return matches;
 	}
 
 	public MatchDTO getLastMatch(Long id) {

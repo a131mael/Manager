@@ -9,13 +9,17 @@ import java.util.List;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
+import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
+import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.model.League;
+import org.aaf.webInterface.model.Match;
 import org.aaf.webInterface.model.Player;
 import org.aaf.webInterface.model.Team;
+import org.aaf.webInterface.model.TeamLeague;
 import org.aaf.webInterface.model.UserFM;
 
 public class Convertes {
@@ -194,7 +198,7 @@ public class Convertes {
 			obj.setCashBox(dto.getCashBox());
 			obj.setCod(dto.getCod());
 			obj.setId(dto.getId());
-			obj.setLeague(getLeague(dto.getLeague()));
+		//	obj.setLeague(getLeague(dto.getLeague()));
 			obj.setName(dto.getName());
 			obj.setOwner(getUser(dto.getOwner()));
 			return obj;
@@ -209,14 +213,82 @@ public class Convertes {
 			obj.setCashBox(team.getCashBox() + 0.01);// TODO verificar
 			obj.setCod(team.getCod());
 			obj.setId(team.getId());
-			obj.setLeague(getLeague(team.getLeague()));
+			//obj.setLeague(getLeague(team.getLeague()));
 			obj.setName(team.getName());
 			// obj.setOwner(getUser(dto.getOwner()));
 			return obj;
 		} else {
 			return null;
 		}
-
+	}
+	
+	public static List<TeamDTO> getTeams(List<Team> teams){
+		List<TeamDTO> teamsDTO = new ArrayList<>();
+		if(teams != null){
+			for(Team mt :teams){
+				teamsDTO.add(getTeam(mt));
+			}
+		}
+		return teamsDTO;
+	}
+	
+	public static MatchDTO getMatch(Match param) {
+		if (param != null) {
+			MatchDTO obj = new MatchDTO();
+			obj.setCod(param.getCod());
+			obj.setDate(param.getDate());
+			obj.setGolasHomeTeam(param.getGolasHomeTeam());
+			obj.setGolasVisitTeam(param.getGolasVisitTeam());
+			obj.setHomeTeam(getTeam(param.getHomeTeam()));
+			obj.setId(param.getId());
+			obj.setRound(param.getRound());
+			obj.setSession(param.getSession());
+			obj.setVisitTeam(getTeam(param.getVisitTeam()));
+			obj.setWeek(param.getWeek());
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static List<MatchDTO> getMatches(List<Match> matches){
+		List<MatchDTO> matchesDTO = new ArrayList<>();
+		if(matches != null){
+			for(Match mt :matches){
+				matchesDTO.add(getMatch(mt));
+			}
+		}
+		return matchesDTO;
 	}
 
+	public static TeamLeagueDTO getTeamLeague(TeamLeague param) {
+		if (param != null) {
+			TeamLeagueDTO obj = new TeamLeagueDTO();
+			obj.setCod(param.getCod());
+			obj.setGoalsPro(param.getGoalsPro());
+			obj.setGoasAgainst(param.getGoasAgainst());
+			obj.setId(param.getId());
+			obj.setLeague(getLeague(param.getLeague()));
+			obj.setLosses(param.getLosses());
+			obj.setMain(param.isMain());
+			obj.setMatches(param.getMatches());
+			obj.setName(param.getName());
+			obj.setPoints(param.getPoints());
+			obj.setTeam(getTeam(param.getTeam()));
+			obj.setVictories(param.getVictories());
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static List<TeamLeagueDTO> getTeamLeagues(List<TeamLeague> leagues){
+		List<TeamLeagueDTO> teamLeagueDTOs = new ArrayList<>();
+		if(leagues != null){
+			for(TeamLeague mt :leagues){
+				teamLeagueDTOs.add(getTeamLeague(mt));
+			}
+		}
+		return teamLeagueDTOs;
+	}
 }

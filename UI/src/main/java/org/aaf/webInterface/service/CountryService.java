@@ -23,8 +23,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.dto.CountryDTO;
 import org.aaf.webInterface.model.Country;
+import org.aaf.webInterface.model.UserFM;
 
 @Stateless
 public class CountryService {
@@ -36,6 +36,7 @@ public class CountryService {
 		return em.find(Country.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Country> findAllOrderedByName() {
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT c from  Country c ");
@@ -44,5 +45,21 @@ public class CountryService {
 		
 		Query query = em.createQuery(sql.toString());
 		return  query.getResultList();
+	}
+
+	public Country findByUserId(long idUser) {
+		StringBuilder query = new StringBuilder();
+		query.append("SELECT c from TeamLeague tl ");
+		query.append("left join tl.league l ");
+		query.append("left join l.country c ");
+		query.append("left join tl.team t ");
+		query.append("left join t.owner user ");
+		query.append("where 1=1 ");
+		query.append("and user.id = :idUser ");
+		Query query2 = em.createQuery(query.toString());
+		query2.setParameter("idUser", idUser);
+		
+		Country user = (Country) query2.getSingleResult();
+		return user;
 	}
 }

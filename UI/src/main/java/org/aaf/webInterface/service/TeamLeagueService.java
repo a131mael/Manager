@@ -14,40 +14,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aaf.webInterface.util;
+package org.aaf.webInterface.service;
 
-import java.util.logging.Logger;
+import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Produces;
-import javax.enterprise.inject.spi.InjectionPoint;
-import javax.faces.context.FacesContext;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-/**
- * This class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans
- * 
- * <p>
- * Example injection on a managed bean field:
- * </p>
- * 
- * <pre>
- * &#064;Inject
- * private EntityManager em;
- * </pre>
- */
-public class Resources {
+import org.aaf.webInterface.model.TeamLeague;
 
-    @Produces
-    @PersistenceContext
+@Stateless
+public class TeamLeagueService {
+
+	@PersistenceContext(unitName = "PostgresDS")
     private EntityManager em;
 
-    @Produces
-    public Logger produceLog(InjectionPoint injectionPoint) {
-        return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
-    }
-
- 
+	@SuppressWarnings("unchecked")
+	public List<TeamLeague> getTeamLeagueByLeague(long idLeague) {
+		StringBuilder query = new StringBuilder();
+		query.append("SELECT tl from TeamLeague tl ");
+		query.append("left join tl.league l ");
+		query.append("left join tl.team t ");
+		query.append("where 1=1 ");
+		query.append("and l.id = :idLeague ");
+		Query query2 = em.createQuery(query.toString());
+		query2.setParameter("idLeague", idLeague);
+		
+		List<TeamLeague> teamLeague =  query2.getResultList();
+		return teamLeague;
+	}
 
 }

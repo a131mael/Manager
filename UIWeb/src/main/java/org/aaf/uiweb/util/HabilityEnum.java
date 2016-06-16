@@ -6,9 +6,39 @@ import javax.faces.model.SelectItem;
 
 public enum HabilityEnum {
 
+	AGE("Idade"),
+	
 	AGILITY("Agilidade"),
 	
-	VELOCITY("Velocidade");
+	VELOCITY("Velocidade"),
+	
+	RESISTENCE("Resistência"),
+	
+	IMPULSE("Impulso"),
+	
+	STRENGTH("Força"),
+	
+	PASS("Passe"),
+	
+	KICK("Finalização"),
+	
+	DISARM("Desarme"),
+	
+	TECHNIQUE("Técnica"),
+	
+	MARK("Marcação"),
+	
+	POSITIONING("Posicionamento"),
+	
+	DECISION("Decisão"),
+	
+	AGGRESSIVENESS("Agressividade"),
+	
+	GOALKEAPER("Goleiro"),
+	
+	WORKINDEX("Indice de trabalho");
+	
+	
 	
 	private String label;
     

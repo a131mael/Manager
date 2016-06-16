@@ -16,71 +16,73 @@
  */
 package org.aaf.webInterface.rest;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.webInterface.model.Country;
-import org.aaf.webInterface.service.CountryService;
+import org.aaf.webInterface.model.League;
+import org.aaf.webInterface.model.Team;
+import org.aaf.webInterface.service.LeagueService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-@Path("/countries")
+@Path("/leagues")
 @RequestScoped
-public class CountryRESTService {
-    
-    @EJB
-    private CountryService countryService;
+public class LeagueRESTService {
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll() {
-    	
-    	
-    	Response.ResponseBuilder builder = Response.ok();
-    	
-//    	retornar assim
-    	/*JsonWriter.objectToJson(team)*/
-    	
-		builder.entity(Convertes.getCountries(countryService.findAllOrderedByName()));
-        return builder.build();
-    }
+	@EJB
+	private LeagueService leagueService;
 
-    @GET
-    @Path("/{id:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response lookupCountryById(@PathParam("id") long id) {
-    	Response.ResponseBuilder builder = Response.ok();
-    	
-        Country country = countryService.findById(id);
-        builder.entity(country);
-        if (country == null) {
-        	 builder = Response.status(Response.Status.NOT_FOUND);
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }	
-        return builder.build();
-    }
-    
-    @GET
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response lookupPlayerById(@QueryParam("id") long id, @QueryParam("idTeam") long idTeam) {
+	
+		return null;
+	}
+	
+	@GET
+	@Path("/{idLeague:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getTeansLeague(@PathParam("idLeague") long idLeague) {
+		Response.ResponseBuilder builder = null;
+
+		List<Team> teams = leagueService.getTeams(idLeague);
+
+		if (teams == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getTeams(teams)));
+		}
+
+		return builder.build();
+	}
+	
+	@GET
     @Path("/user/{idUser:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response lookupCountryByIdUser(@PathParam("idUser") long idUser) {
+    public Response lookupLeagueByIdUser(@PathParam("idUser") long idUser) {
     	Response.ResponseBuilder builder = Response.ok();
     	
-        Country country = countryService.findByUserId(idUser);
-        builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
-        if (country == null) {
+        League league = leagueService.getLeagueByUser(idUser);
+        builder.entity(JsonWriter.objectToJson(Convertes.getLeague(league)));
+        if (league == null) {
         	 builder = Response.status(Response.Status.NOT_FOUND);
             throw new WebApplicationException(Response.Status.NOT_FOUND);
         }	
         return builder.build();
     }
-   
+
 }

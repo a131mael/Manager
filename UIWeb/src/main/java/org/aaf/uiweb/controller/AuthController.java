@@ -21,50 +21,60 @@ import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
+import org.aaf.uiweb.service.CountryService;
+import org.aaf.uiweb.service.LeagueService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 
 @Model
 public class AuthController {
 
-//    @Inject
-//    private FacesContext facesContext;
+	// @Inject
+	// private FacesContext facesContext;
 
-//    @Inject
-//    private UserService userRegistration;
-	
+	// @Inject
+	// private UserService userRegistration;
+
+	@Inject
+	private CountryService countryService;
+
+	@Inject
+	private LeagueService leagueService;
+
 	private UserDTO loggedUser;
 
 	@Produces
-    @Named
-    private UserDTO authUser;
+	@Named
+	private UserDTO authUser;
 
-    @PostConstruct
-    public void initNewMember() {
-    	setAuthUser(new UserDTO());
-    	TeamDTO team = new TeamDTO();
-    	getAuthUser().setTeam(team);
-    }
+	@PostConstruct
+	public void initNewMember() {
+		setAuthUser(new UserDTO());
+		TeamDTO team = new TeamDTO();
+		getAuthUser().setTeam(team);
+	}
 
-    public String login() throws Exception {
-    	try {
-            UsernamePasswordToken token = new UsernamePasswordToken(authUser.getLogin(), authUser.getSenha().toCharArray(), true);
-            SecurityUtils.getSubject().login(token);
+	public String login() throws Exception {
+		try {
+			UsernamePasswordToken token = new UsernamePasswordToken(authUser.getLogin(),
+					authUser.getSenha().toCharArray(), true);
+			SecurityUtils.getSubject().login(token);
 
-            return "team";
-        } catch (Exception ex) {
-        	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
-//			facesContext.addMessage(null, m);
-            ex.printStackTrace();
-            return "erro";
-        }
-    }
+			return "team";
+		} catch (Exception ex) {
+			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
+			// facesContext.addMessage(null, m);
+			ex.printStackTrace();
+			return "erro";
+		}
+	}
 
 	public UserDTO getAuthUser() {
 		return authUser;
@@ -73,50 +83,57 @@ public class AuthController {
 	public void setAuthUser(UserDTO authUser) {
 		this.authUser = authUser;
 	}
-    
+
+	// Colocar o country no loggedUser
 	public UserDTO getLoggedUser() {
-        try {
-        	if(loggedUser == null){
-        		if (SecurityUtils.getSubject().getPrincipal() != null) {
-        			UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
-        			loggedUser = user;
-        		}
-        	}
-        	
-        	return loggedUser;
-        	
-        } catch (Exception ex) {
-          //  Logger.getLogger(MemberController.class.getSimpleName()).log(Level.WARNING, null, ex);
-        	ex.printStackTrace();
-        }
+		try {
+			if (loggedUser == null) {
+				if (SecurityUtils.getSubject().getPrincipal() != null) {
+					UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
+					loggedUser = user;
+					loggedUser.setCountryDTO(countryService.getCountry(loggedUser.getId()));
+					loggedUser.setMainLeague(leagueService.getMainLeague(loggedUser.getId()));
+				}
+			}
 
-        return null;
-    }
-	
+			return loggedUser;
+
+		} catch (Exception ex) {
+			// Logger.getLogger(MemberController.class.getSimpleName()).log(Level.WARNING,
+			// null, ex);
+			ex.printStackTrace();
+		}
+
+		return null;
+	}
+
 	public static String getRequestParam(String param) {
-        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
 
-        return req.getParameter(param);
-    }
+		return req.getParameter(param);
+	}
 
-    public void addAtributoSessao(String nome, Object valor) {
-        FacesContext fc = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
-        session.setAttribute(nome, valor);
-    }
+	public void addAtributoSessao(String nome, Object valor) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+		session.setAttribute(nome, valor);
+	}
 
-    public Object getAtributoSessao(String nome) {
-        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpSession session = (HttpSession) req.getSession();
-        Object obj = session.getAttribute(nome);
-        return obj;
-    }
+	public Object getAtributoSessao(String nome) {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		HttpSession session = (HttpSession) req.getSession();
+		Object obj = session.getAttribute(nome);
+		return obj;
+	}
 
-    public void removeAtributoSessao(String nome) {
-        HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
-        HttpSession session = (HttpSession) req.getSession();
-        session.removeAttribute(nome);
+	public void removeAtributoSessao(String nome) {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		HttpSession session = (HttpSession) req.getSession();
+		session.removeAttribute(nome);
 
-    }
+	}
 
 }

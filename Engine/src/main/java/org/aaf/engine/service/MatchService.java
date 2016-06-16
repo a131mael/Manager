@@ -96,7 +96,7 @@ public class MatchService implements Serializable{
 
 		StringBuilder sqlTeamLeague = new StringBuilder();
 		for (League l : leagues) {
-			sqlTeamLeague.append("SELECT t From Team t left join t.league l where l.id = :idLeague ");
+			sqlTeamLeague.append("SELECT t From TeamLeague tl left join tl.league l left join tl.team t where l.id = :idLeague ");
 			
 			Query queryTeans = em.createQuery(sqlTeamLeague.toString());
 			queryTeans.setParameter("idLeague", l.getId());

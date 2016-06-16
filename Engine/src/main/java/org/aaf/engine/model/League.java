@@ -20,7 +20,10 @@ public class League {
 	private String cod;
 	
 	private int level;
-
+//	
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="league")
+//	private List<TeamLeague> teamLeagues;
+//	
 	@ManyToOne
 	private Country country;
 

@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.TeamDTO;
-import org.aaf.uiweb.util.ConectionRest;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONObject;
@@ -28,12 +27,6 @@ import org.json.JSONObject;
 
 public class TeamService {
 
-//    @Inject
-//    private Logger log;
-
-//    @Inject
-//    private EntityManager em;
-    private final static int  HTTP_COD_SUCESSO = 200;
 
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
 		JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
@@ -44,16 +37,9 @@ public class TeamService {
 	    
 	@SuppressWarnings("unchecked")
 	public List<TeamDTO> getTeans(Long idLeague) {
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("SELECT t from  Team t ");
-//		sql.append("left join t.league l ");
-//		sql.append("where 1=1 ");
-//		sql.append("and l.id = :idLeague ");
-//  
-//		Query query = em.createQuery(sql.toString());
-//		query.setParameter("idLeague", idLeague);
-//		return  query.getResultList();
-		return null;
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_TEAMS+idLeague);
+    	List<TeamDTO> matches = ((List<TeamDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
+		return matches;
 	}
 	
 	public TeamDTO getTean(Long id) {
