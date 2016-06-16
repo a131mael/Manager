@@ -196,7 +196,7 @@ public class Convertes {
 			obj.setCashBox(dto.getCashBox());
 			obj.setCod(dto.getCod());
 			obj.setId(dto.getId());
-			obj.setLeague(getLeague(dto.getLeague()));
+		//	obj.setLeague(getLeague(dto.getLeague()));
 			obj.setName(dto.getName());
 			obj.setOwner(getUser(dto.getOwner()));
 			return obj;
@@ -211,7 +211,7 @@ public class Convertes {
 			obj.setCashBox(team.getCashBox() + 0.01);// TODO verificar
 			obj.setCod(team.getCod());
 			obj.setId(team.getId());
-			obj.setLeague(getLeague(team.getLeague()));
+			//obj.setLeague(getLeague(team.getLeague()));
 			obj.setName(team.getName());
 			// obj.setOwner(getUser(dto.getOwner()));
 			return obj;

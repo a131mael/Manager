@@ -41,7 +41,7 @@ public class PlayerListController extends AuthController{
     }
     
     public List<PlayerDTO> getTeamPlayers() throws Exception {
-    	return playerService.getPlayers(getLoggedUser().getId(), selectedHability != null ?selectedHability.getLabel():null,"");
+    	return playerService.getPlayers(getLoggedUser().getId(), selectedHability != null ?selectedHability.name().toLowerCase():null,"desc");
     
     }
 

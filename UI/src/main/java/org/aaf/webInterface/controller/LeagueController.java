@@ -34,17 +34,20 @@ public class LeagueController extends AuthController{
     @Inject
     private TeamService teamService; 
     
+    //TODO passando id do time ao inves do id da liga, verificar o sql e buscar a liga pelo id do time
     public List<Team> getLeagueTeans(){
-    	List<Team> teams = teamService.getTeans(getLoggedUser().getTeam().getLeague().getId());
+    	List<Team> teams = teamService.getTeans(getLoggedUser().getTeam().getId());
     	return teams;
     }
     
     public Country getCountryLeague(){
-    	return getLoggedUser().getTeam().getLeague().getCountry();
+//    	return getLoggedUser().getTeam()..getCountry();
+    	return null;
     }
 
     public League getLeague(){
-    	return getLoggedUser().getTeam().getLeague();
+    	return null;
+    	//return getLoggedUser().getTeam().getLeague();
     }
     
 }

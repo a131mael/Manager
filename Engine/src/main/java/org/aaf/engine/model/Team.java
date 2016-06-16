@@ -1,14 +1,9 @@
 package org.aaf.engine.model;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -26,8 +21,8 @@ public class Team {
 	
 	private Double cashBox;
 
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="team")
-	private List<TeamLeague> teamLeagues;
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="team")
+//	private List<TeamLeague> teamLeagues;
 	
 	@OneToOne
 	private UserFM owner;
@@ -72,12 +67,12 @@ public class Team {
 		this.cashBox = cashBox;
 	}
 
-	public List<TeamLeague> getTeamLeagues() {
-		return teamLeagues;
-	}
-
-	public void setTeamLeagues(List<TeamLeague> teamLeagues) {
-		this.teamLeagues = teamLeagues;
-	}
+//	public List<TeamLeague> getTeamLeagues() {
+//		return teamLeagues;
+//	}
+//
+//	public void setTeamLeagues(List<TeamLeague> teamLeagues) {
+//		this.teamLeagues = teamLeagues;
+//	}
 
 }

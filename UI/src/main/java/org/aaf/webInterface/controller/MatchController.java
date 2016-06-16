@@ -32,8 +32,9 @@ public class MatchController extends AuthController {
 	private MatchService matchService;
 
 	public List<Match> getTeamMatchs(int round) throws Exception {
-		return matchService.getMatches(getLoggedUser().getId(),
-				getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
+		//TODO nao pode usar usuario logado aqui, 
+		//return matchService.getMatches(getLoggedUser().getId(), getLoggedUser().getTeam().getLeague().getCountry().getSession(), round);
+		return null;
 
 	}
 

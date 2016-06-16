@@ -65,7 +65,7 @@ public class PlayerService {
 		player.setAgility((float) (gerador.nextDouble() * 8)+ 4);
 		player.setDecision((float) (gerador.nextDouble() * 1)+ 3);
 		player.setDisarm((float) (gerador.nextDouble() * 8)+ 3);
-		player.setGoalKeaper((float) (gerador.nextDouble() * 6)+ 1);
+		player.setGoalkeaper((float) (gerador.nextDouble() * 6)+ 1);
 		player.setHeight((float) (gerador.nextDouble() * 65)+ 150);
 		player.setImpulse((float) (gerador.nextDouble() * 8)+ 5);
 		player.setKick((float) (gerador.nextDouble() * 8)+ 3);
@@ -76,7 +76,7 @@ public class PlayerService {
 		player.setStrength((float) (gerador.nextDouble() * 8)+ 5);
 		player.setTechnique((float) (gerador.nextDouble() * 8)+ 5);
 		player.setVelocity((float) (gerador.nextDouble() * 8)+ 5);
-		player.setWorkIndex((float) (gerador.nextDouble() * 8)+ 5);
+		player.setWorkindex((float) (gerador.nextDouble() * 8)+ 5);
 		
 		player.setIgnore("a");
 		

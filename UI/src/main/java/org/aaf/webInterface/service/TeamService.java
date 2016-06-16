@@ -48,8 +48,9 @@ public class TeamService {
 
 	public Team getAvailableTeam(Long idcountry) throws Exception {
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT t from Team t ");
-		sql.append("left join t.league l ");
+		sql.append("SELECT t from TeamLeague tl ");
+		sql.append("left join tl.league l ");
+		sql.append("left join tl.team t ");
 		sql.append("left join l.country c ");
 		sql.append("where 1=1 ");
 		sql.append("and c.id = :idCountry ");
@@ -100,9 +101,6 @@ public class TeamService {
 			userTeam.setTeam(null);
 			em.persist(userTeam);
 			
-			League le = em.find(League.class, t.getLeague().getId()) ;
-			
-			t.setLeague(le);
 			t.setOwner(userTeam);
 			
 			userTeam.setTeam(t);

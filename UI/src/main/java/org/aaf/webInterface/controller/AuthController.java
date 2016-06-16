@@ -33,6 +33,7 @@ import org.aaf.webInterface.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 
+//TODO REMOVER ESSA CLASSE INTEIRA
 @Model
 public class AuthController {
 

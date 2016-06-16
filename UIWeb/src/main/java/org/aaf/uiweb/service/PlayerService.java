@@ -30,13 +30,21 @@ public class PlayerService {
 
 	@SuppressWarnings("unchecked")
 	public List<PlayerDTO> getPlayers(Long teamID, String orderBy, String orderByType) {
-    	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER+teamID);
+		StringBuilder parans = new StringBuilder();
+		if(orderBy != null){
+			parans.append("?");
+			parans.append("orderBy=");
+			parans.append(orderBy);
+			parans.append("&orderByType=");
+			parans.append(orderByType);
+		}
+    	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER+teamID+parans);
     	List<PlayerDTO> players = ((List<PlayerDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
 		return players;
 		
 	}
     
-	public PlayerDTO getPlayer(Long id, Long idTeam) {
+	public PlayerDTO getPlayer(Long id, Long idTeam) { 
 		JSONObject jo = JsonReader.getObject( EndPoints.GET_PLAYER.replace("*1", idTeam.toString()).replace("*2", id.toString()));
     	PlayerDTO player = (PlayerDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
 		return player;

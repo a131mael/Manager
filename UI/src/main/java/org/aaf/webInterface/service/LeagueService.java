@@ -35,8 +35,9 @@ public class LeagueService {
 	public List<Team> getTeams(long idLeague) {
 
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT t from  Team t ");
-		sql.append("left join t.league l ");
+		sql.append("SELECT t from  TeamLeague tl ");
+		sql.append("left join tl.league l ");
+		sql.append("left join tl.team t ");
 		sql.append("where 1=1 ");
 		sql.append("and l.id = :idLeague ");
 

@@ -61,6 +61,12 @@ public class PlayerService {
 		sql.append("left join p.country c ");
 		sql.append("where 1 = 1 ");
 		sql.append("and t.id = :teamID ");
+		if(orderBy!= null){
+			sql.append("ORDER BY p. ");
+			sql.append(orderBy);
+			sql.append(" ");
+			sql.append(orderByType);	
+		}
 		
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("teamID", teamID);

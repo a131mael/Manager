@@ -1,13 +1,10 @@
 package org.aaf.engine.model;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 @Entity
@@ -49,8 +46,8 @@ public class Player {
 	private float positioning;
 	private float decision;
 	private float aggressiveness;
-	private float goalKeaper;
-	private float workIndex;
+	private float goalkeaper;
+	private float workindex;
 	
 	private String ignore;
 	
@@ -190,21 +187,6 @@ public class Player {
 		this.aggressiveness = aggressiveness;
 	}
 
-	public float getGoalKeaper() {
-		return goalKeaper;
-	}
-
-	public void setGoalKeaper(float goalKeaper) {
-		this.goalKeaper = goalKeaper;
-	}
-
-	public float getWorkIndex() {
-		return workIndex;
-	}
-
-	public void setWorkIndex(float workIndex) {
-		this.workIndex = workIndex;
-	}
 
 	public float getHeight() {
 		return height;
@@ -244,6 +226,22 @@ public class Player {
 
 	public void setIgnore(String ignore) {
 		this.ignore = ignore;
+	}
+
+	public float getGoalkeaper() {
+		return goalkeaper;
+	}
+
+	public void setGoalkeaper(float goalkeaper) {
+		this.goalkeaper = goalkeaper;
+	}
+
+	public float getWorkindex() {
+		return workindex;
+	}
+
+	public void setWorkindex(float workindex) {
+		this.workindex = workindex;
 	}
 
 }
