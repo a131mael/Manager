@@ -22,7 +22,6 @@ import javax.faces.bean.ViewScoped;
 
 import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.PlayerService;
-import org.aaf.uiweb.util.HabilityEnum;
 
 @Model
 @ViewScoped

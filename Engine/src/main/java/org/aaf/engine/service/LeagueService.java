@@ -39,8 +39,9 @@ public class LeagueService {
 	public void createLeague(CountryDTO country) {
 		try {
 			em.persist(country.getCountry());
+			Integer indiceJogador = 0;
 			for(int i = 1 ; i<=37; i++){
-				teamService.register(createLeague(i, country));	;
+				teamService.register(createLeague(i, country),indiceJogador);	;
 			}
 			matchService.createMatches(country.getCountry());
 
