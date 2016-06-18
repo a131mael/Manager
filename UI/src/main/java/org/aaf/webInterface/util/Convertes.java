@@ -12,7 +12,6 @@ import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
-import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.webInterface.model.Country;
 import org.aaf.webInterface.model.League;

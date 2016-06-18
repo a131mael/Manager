@@ -24,8 +24,6 @@ import javax.inject.Inject;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
-import org.aaf.dto.TeamLeagueDTO;
-import org.aaf.uiweb.service.TeamLeagueService;
 import org.aaf.uiweb.service.TeamService;
 
 @Model

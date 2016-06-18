@@ -7,11 +7,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.engine.model.Country;
-import org.aaf.engine.model.League;
 import org.aaf.engine.model.Player;
 import org.aaf.engine.model.Team;
 import org.aaf.engine.model.TeamLeague;
-import org.aaf.engine.names.Brasil;
 
 @Stateless
 public class PlayerService {
@@ -40,26 +38,25 @@ public class PlayerService {
 		
 	}
 	
-	public void register(TeamLeague teamLeague, Integer indiceJogador) throws Exception {
+	public void register(TeamLeague teamLeague) throws Exception {
 		Team team = teamLeague.getTeam();
 		em.persist(team);
 		teamLeague.setTeam(team);
 		em.persist(teamLeague);
 		
 		for(int i=1; i<=22; i++){
-			indiceJogador++;
-			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador));
+			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry()));
 		}
 
 		//log.info("Registering " + team.getName());
 		
 	}
 	
-	private Player createPlayer(int index, Team team, Country country, Integer indiceJogador){
+	private Player createPlayer(int index, Team team, Country country){
 		Random gerador = new Random();
 		Player player = new Player();
 		player.setCod(index+"");
-		player.setName(country.getName().equalsIgnoreCase(Brasil.nameCountry)?Brasil.getNamesPlayeres().get(indiceJogador):"Jogador " + index);
+		player.setName("Jogador " + index);
 		player.setTeam(team);
 		player.setCountry(country);
 		
