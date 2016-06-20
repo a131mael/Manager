@@ -13,14 +13,15 @@ import org.quartz.JobExecutionException;
 
 public class CountryJob implements Job {
 
-	@Inject
+	/*@Inject
 	private Logger log;
-
+*/
 	private CountryService service;
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		try {
+			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 			service = ServiceLocator.getInstance().getEJB("java:global/Engine/CountryService!org.aaf.engine.service.CountryService");
 			
 			CountryDTO country = new CountryDTO();
@@ -28,7 +29,7 @@ public class CountryJob implements Job {
 			country.setName("Pais 1");
 			service.register(country);
 		} catch (Exception e) {
-			log.info("CRIANDO PAIS");
+		//	log.info("CRIANDO PAIS");
 		}
 		System.out.println("Call to WebService");
 

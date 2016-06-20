@@ -6,6 +6,10 @@ import javax.faces.model.SelectItem;
 
 public enum HabilityEnum {
 
+	VALUE("Valor"),
+	
+	SALARY("Salário"),
+	
 	AGE("Idade"),
 	
 	AGILITY("Agilidade"),

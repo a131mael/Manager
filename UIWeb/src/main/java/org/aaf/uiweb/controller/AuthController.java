@@ -124,14 +124,28 @@ public class AuthController {
 	}
 
 	public Object getAtributoSessao(String nome) {
-		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
-				.getRequest();
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		
+		req.getRequestURL().toString();
+		req.getRequestURI().toString();
+		req.getContextPath();
+		req.getPathInfo();
+		req.getQueryString();
+		
 		HttpSession session = (HttpSession) req.getSession();
 		Object obj = session.getAttribute(nome);
 		session.getAttributeNames();
 		return obj;
 	}
 
+	public Object getQueryValue(String param) {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		
+		Object obj = req.getParameter(param); 
+		return obj;
+	}
+	
+	
 	public void removeAtributoSessao(String nome) {
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();

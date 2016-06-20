@@ -19,6 +19,7 @@ public class Player {
 	private float height;
 	private float age;
 	private Float salary;
+	private Long value;
 	
 	@ManyToOne
 	private Country country;
@@ -242,6 +243,14 @@ public class Player {
 
 	public void setWorkindex(float workindex) {
 		this.workindex = workindex;
+	}
+
+	public Long getValue() {
+		return value;
+	}
+
+	public void setValue(Long value) {
+		this.value = value;
 	}
 
 }

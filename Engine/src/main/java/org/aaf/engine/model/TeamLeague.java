@@ -7,6 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.aaf.engine.util.MatchStatusEnum;
+
 @Entity
 public class TeamLeague {
 
@@ -38,6 +40,8 @@ public class TeamLeague {
 	private int victories;
 	
 	private int losses;
+	
+	private MatchStatusEnum matchStatus;
 
 	public String getCod() {
 		return cod;
@@ -134,6 +138,14 @@ public class TeamLeague {
 
 	public void setLosses(int losses) {
 		this.losses = losses;
+	}
+
+	public MatchStatusEnum getMatchStatus() {
+		return matchStatus;
+	}
+
+	public void setMatchStatus(MatchStatusEnum matchStatus) {
+		this.matchStatus = matchStatus;
 	}
 
 

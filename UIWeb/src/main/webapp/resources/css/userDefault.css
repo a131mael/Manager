@@ -44,15 +44,24 @@ body {
 }
 #aside {
   font-size: 0.9em;
-  width: 475px;
-  float: left;
+  width: 40px !important;
+  height: 300px !important;
+  float: right;
   margin: 10px 0px;
   border: 1px solid #D5D5D5;
   background: #F1F1F1;
   background-image: url(#{request.contextPath}/resources/gfx/asidebkg.png);
   background-repeat: repeat-x;
-  padding: 20px;
+  padding: 5px;
 }
+
+.gi-1x{font-size: 10px;}
+.gi-1-5x{font-size: 15px;}
+.gi-2x{font-size: 20px;}
+.gi-2-5x{font-size: 25px;}
+.gi-3x{font-size: 30px;}
+.gi-4x{font-size: 40px;}
+.gi-5x{font-size: 50px;}
 
 #aside ul {
   padding-left: 30px;

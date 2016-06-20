@@ -12,7 +12,7 @@
 	</h:head>
 
 	<ui:define name="content">
-		<h:form style="width:100%">
+		<h:form style="width:100%;border:none">
 			<div>
 				<h:panelGrid columns="2">
 
@@ -21,7 +21,6 @@
 						<h:outputLabel value="#{playerListController.teamPlayers.size()}" />
 						<h:outputLabel value=" jogadores" />
 					</h:panelGrid>
-
 
 					<h:panelGrid columns="2">
 						<h:outputLabel for="orderBy" value="Order by: " />
@@ -61,9 +60,7 @@
 								style="margin-left:2px" />
 						</h:panelGrid>
 						<center>
-
 							<hr />
-
 							<h:panelGrid columns="3">
 								<h:panelGrid columns="2" title="Bodily">
 
