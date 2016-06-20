@@ -59,7 +59,6 @@ public class AuthController {
 		setAuthUser(new UserDTO());
 		TeamDTO team = new TeamDTO();
 		getAuthUser().setTeam(team);
-		getAtributoSessao("teste");
 	}
 
 	public String login() throws Exception {
@@ -135,6 +134,14 @@ public class AuthController {
 		return obj;
 	}
 
+	public Object getQueryValue(String param) {
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
+		
+		Object obj = req.getParameter(param); 
+		return obj;
+	}
+	
+	
 	public void removeAtributoSessao(String nome) {
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
 				.getRequest();

@@ -130,6 +130,7 @@ public class Convertes {
 			playerDTO.setTechnique(obj.getTechnique());
 			playerDTO.setVelocity(obj.getVelocity());
 			playerDTO.setWorkIndex(obj.getWorkIndex());
+			playerDTO.setValue(obj.getValue());;
 
 			return playerDTO;
 

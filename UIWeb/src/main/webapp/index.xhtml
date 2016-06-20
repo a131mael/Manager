@@ -33,6 +33,20 @@
 		</div>
 
 		<h:form id="reg">
+			<shiro:authenticated>
+				<script type="text/javascript">
+                
+                        var lastUrl = '#{param['lastUrl']}'; 
+                    
+                        if(lastUrl.indexOf('#{facesContext.externalContext.requestContextPath}/admin/')!=-1){
+                            window.location = lastUrl;
+                        }else{
+                            window.location ='#{facesContext.externalContext.requestContextPath}/admin/dashboard/index.xhtml';
+                        }
+                    </script>
+			</shiro:authenticated>
+
+
 			<h2>Login</h2>
 			<h:panelGrid columns="3" columnClasses="titleCell">
 				<h:outputLabel for="name" value="Login:" />

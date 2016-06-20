@@ -27,6 +27,7 @@ public class Player implements Serializable{
 	private float height;
 	private float age;
 	private Float salary;
+	private Long value;
 	
 	@ManyToOne
 	private Country country;
@@ -249,6 +250,14 @@ public class Player implements Serializable{
 
 	public void setIgnore(String ignore) {
 		this.ignore = ignore;
+	}
+
+	public Long getValue() {
+		return value;
+	}
+
+	public void setValue(Long value) {
+		this.value = value;
 	}
 
 }

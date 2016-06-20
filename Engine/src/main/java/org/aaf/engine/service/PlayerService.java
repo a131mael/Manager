@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.engine.model.Country;
-import org.aaf.engine.model.League;
 import org.aaf.engine.model.Player;
 import org.aaf.engine.model.Team;
 import org.aaf.engine.model.TeamLeague;
@@ -58,10 +57,12 @@ public class PlayerService {
 	private Player createPlayer(int index, Team team, Country country, Integer indiceJogador){
 		Random gerador = new Random();
 		Player player = new Player();
+		
 		player.setCod(index+"");
 		player.setName(country.getName().equalsIgnoreCase(Brasil.nameCountry)?Brasil.getNamesPlayeres().get(indiceJogador):"Jogador " + index);
 		player.setTeam(team);
 		player.setCountry(country);
+		
 		
 		player.setAge((float) (gerador.nextDouble() * 15)+ 18);
 		player.setAggressiveness((float) (gerador.nextDouble() * 8)+ 3);
@@ -81,6 +82,27 @@ public class PlayerService {
 		player.setVelocity((float) (gerador.nextDouble() * 8)+ 5);
 		player.setWorkindex((float) (gerador.nextDouble() * 8)+ 5);
 		
+		Float value = 100F;
+		value+= (player.getAgility())*1000;
+		value+= (player.getDecision())*1000;
+		value+= (player.getDisarm())*1000;
+		value+= (player.getGoalkeaper())*1000;
+		value+= (player.getImpulse())*1000;
+		value+= (player.getKick())*1000;
+		value+= (player.getMark())*1000;
+		value+= (player.getPass())*1000;
+		value+= (player.getPositioning())*1000;
+		value+= (player.getResistence())*1000;
+		value+= (player.getResistence())*1000;
+		value+= (player.getStrength())*1000;
+		value+= (player.getTechnique())*1000;
+		value+= (player.getVelocity())*1000;
+		value+= (player.getWorkindex())*1000;
+		
+		Long valueL = (long) Math.round(value) ; 
+		
+		player.setValue(valueL);
+		player.setSalary(value/8);
 		player.setIgnore("a");
 		
 		return player;

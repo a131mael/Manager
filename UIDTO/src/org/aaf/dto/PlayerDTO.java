@@ -17,6 +17,7 @@ public class PlayerDTO implements Serializable{
 	private float height;
 	private float age;
 	private Float salary;
+	private Long value;
 	
 	private CountryDTO country;
 
@@ -239,6 +240,14 @@ public class PlayerDTO implements Serializable{
 
 	public void setIgnore(String ignore) {
 		this.ignore = ignore;
+	}
+
+	public Long getValue() {
+		return value;
+	}
+
+	public void setValue(Long value) {
+		this.value = value;
 	}
 
 }
