@@ -4,46 +4,54 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/userDefault.xhtml">
+	template="/WEB-INF/templates/userDefault.xhtml"
+	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="content">
 		<div>
+			<h:form style="width:100%;border:none">
+				<h:panelGrid width="100%" columns="2">
+					<h:panelGrid>
+						<h:outputLabel value="Jogos da Liga" />
+						<hr />
 
-			<h:panelGrid width="100%" columns="2">
-				<h:panelGrid>
-					<h:outputLabel value="Jogos da Liga" />
-					<hr />
+						<ui:repeat var="match" value="#{matchController.getTeamMatchs(0)}"
+							varStatus="status">
 
-					<ui:repeat var="match" value="#{matchController.getTeamMatchs(0)}"
-						varStatus="status">
-
-						<h:panelGrid columns="2">
-								<h:outputLabel value="#{msg['match.week']}: "/>
+							<h:panelGrid columns="2">
+								<h:outputLabel value="#{msg['match.week']}: " />
 								<h:outputLabel value="#{match.week}" />
-					
-							<h:panelGrid columns="5">
-							<a href="index.xhtml?teamId=#{match.homeTeam.id}">#{match.homeTeam.name}</a>
-								<h:outputLabel value=" - " />
-								<a href="index.xhtml?teamId=#{match.visitTeam.id}">#{match.visitTeam.name}</a>
+
+								<h:panelGrid columns="5">
+
+									<a href="index.xhtml?teamId=#{match.homeTeam.id}">#{match.homeTeam.name}</a>
+
+									<h:outputLabel value=" - " />
+
+									<a href="index.xhtml?teamId=#{match.visitTeam.id}">#{match.visitTeam.name}</a>
+								</h:panelGrid>
+								<br />
+								<p:link value="escalar" outcome="lineUp">
+										<f:param name="match" value="#{match.id}" />
+									</p:link>
+<!-- 								<a href="lineUp.xhtml?teamId=#{matchController.lineupLink(match.id)}">escalar</a> -->
+								<a href="report.xhtml?teamId=#{leagueTeam.team.id}">relatório</a>
+
 							</h:panelGrid>
-								<br/>
-								<h:link value=" escalar " />
-								<h:link value=" relatório " />
-							
-						</h:panelGrid>
-							<br/>
-								<br/>
-					</ui:repeat>
+							<br />
+							<br />
+						</ui:repeat>
 
-				</h:panelGrid>
-				<h:panelGrid>
-					<h:outputLabel value="Outros" />
-					<hr />
+					</h:panelGrid>
+					<h:panelGrid>
+						<h:outputLabel value="Outros" />
+						<hr />
+
+					</h:panelGrid>
 
 				</h:panelGrid>
 
-			</h:panelGrid>
-
+			</h:form>
 		</div>
 
 	</ui:define>

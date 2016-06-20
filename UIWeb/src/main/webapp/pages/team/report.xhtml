@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+		<div>
+
+			<h:panelGrid width="100%" columns="2">
+				<h:panelGrid>
+					<h:outputLabel value="Jogos da Liga" />
+					<hr />
+
+					<ui:repeat var="match" value="#{matchController.getTeamMatchs(0)}"
+						varStatus="status">
+
+						<h:panelGrid columns="2">
+								<h:outputLabel value="#{msg['match.week']}: "/>
+								<h:outputLabel value="#{match.week}" />
+					
+							<h:panelGrid columns="5">
+							<a href="index.xhtml?teamId=#{match.homeTeam.id}">#{match.homeTeam.name}</a>
+								<h:outputLabel value=" - " />
+								<a href="index.xhtml?teamId=#{match.visitTeam.id}">#{match.visitTeam.name}</a>
+							</h:panelGrid>
+								<br/>
+								<h:link value=" escalar " />
+								<h:link value=" relatório " />
+							
+						</h:panelGrid>
+							<br/>
+								<br/>
+					</ui:repeat>
+
+				</h:panelGrid>
+				<h:panelGrid>
+					<h:outputLabel value="Outros" />
+					<hr />
+
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+		</div>
+
+	</ui:define>
+</ui:composition>

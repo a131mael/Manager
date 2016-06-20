@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+		<div>
+			<h:form style="width:100%;border:none">
+
+				<h:panelGrid width="100%" columns="2">
+
+					<h:panelGrid>
+						<h:outputLabel value="Táticas" />
+						<p:selectOneMenu label="orderBy"
+							style="width: 100px; margin-left: 5px;"
+							value="#{playerListController.selectedHability}">
+							<f:selectItem itemLabel="Hability" itemValue="" />
+							<f:selectItems value="#{selectItems.habilityEnum}" var="item"
+								itemValue="item" itemLabel="#{item.description}" />
+							<p:ajax process="@this" update="@this" />
+						</p:selectOneMenu>
+
+						<h:outputLabel value="Mostrar a tática	" />
+
+					</h:panelGrid>
+
+
+					<h:panelGrid>
+						<h:outputLabel value="Time:" />
+						<br />
+
+						<h:panelGrid columns="3">
+							<h:outputLabel value="1" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="3">
+							<h:outputLabel value="2" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="3" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="4" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="5" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="6" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="7" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="8" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="9" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="10" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+						<h:panelGrid columns="3">
+							<h:outputLabel value="11" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+
+
+						<br />
+						<h:outputLabel value="Reservas" />
+						<hr />
+						<h:panelGrid columns="3">
+							<h:outputLabel value="12" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="13" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="14" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="15" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<h:panelGrid columns="3">
+							<h:outputLabel value="16" />
+							<p:selectOneMenu label="orderBy"
+								style="width: 280px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{matchController.teamPlayers}" var="item"
+									itemValue="item" itemLabel="#{item.name}" />
+							</p:selectOneMenu>
+
+							<p:selectOneMenu label="orderBy"
+								style="width: 30px; margin-left: 5px;">
+								<f:selectItem itemLabel=" " itemValue="" />
+								<f:selectItems value="#{selectItems.positionEnum}" var="item"
+									itemValue="item" itemLabel="#{item.description}" />
+							</p:selectOneMenu>
+
+						</h:panelGrid>
+						<p:commandButton actionListener="#{matchController.saveLineUp()}" value="Salvar"></p:commandButton>
+
+					</h:panelGrid>
+
+				</h:panelGrid>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>

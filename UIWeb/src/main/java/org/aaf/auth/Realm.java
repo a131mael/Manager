@@ -2,19 +2,14 @@ package org.aaf.auth;
 
 
 import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.naming.NamingException;
 
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.service.UserService;
-import org.aaf.uiweb.util.ServiceLocator;
-import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 

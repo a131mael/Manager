@@ -37,5 +37,9 @@ public class SelectItems implements Serializable {
 	public ArrayList<SelectItem> getHabilityEnum(){
 		return HabilityEnum.getEnuns();
 	}
+	
+	public ArrayList<SelectItem> getPositionEnum(){
+		return PositionEnum.getEnuns();
+	}
    
 }

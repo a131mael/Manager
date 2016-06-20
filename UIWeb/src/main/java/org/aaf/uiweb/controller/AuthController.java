@@ -16,6 +16,9 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
@@ -125,6 +128,7 @@ public class AuthController {
 				.getRequest();
 		HttpSession session = (HttpSession) req.getSession();
 		Object obj = session.getAttribute(nome);
+		session.getAttributeNames();
 		return obj;
 	}
 
@@ -134,6 +138,19 @@ public class AuthController {
 		HttpSession session = (HttpSession) req.getSession();
 		session.removeAttribute(nome);
 
+	}
+	
+	public static Map<String, String> getQueryMap(String query)  
+	{  
+	    String[] params = query.split("&");  
+	    Map<String, String> map = new HashMap<String, String>();  
+	    for (String param : params)  
+	    {  
+	        String name = param.split("=")[0];  
+	        String value = param.split("=")[1];  
+	        map.put(name, value);  
+	    }  
+	    return map;  
 	}
 
 }

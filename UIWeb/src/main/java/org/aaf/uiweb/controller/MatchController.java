@@ -20,10 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import org.aaf.dto.MatchDTO;
+import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.MatchService;
+import org.aaf.uiweb.service.PlayerService;
 
 @Model
 public class MatchController extends AuthController {
@@ -33,12 +36,38 @@ public class MatchController extends AuthController {
 
 	@Inject
 	private MatchService matchService;
+	
+	@Inject
+	private PlayerService playerService;
 
 	//
 	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
+
+		return matchService.getMatches(getLoggedUser().getTeam().getId(), getLoggedUser().getCountryDTO().getSession());
+	}
+
+	public String lineupLink(long id) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(getLoggedUser().getId());
+		sb.append("&match=");
 		
 		
-		return matchService.getMatches(getLoggedUser().getTeam().getId(),getLoggedUser().getCountryDTO().getSession());
+		sb.append(id);
+
+		return sb.toString();
+	}
+
+	public String saveLineUp() {
+		getAtributoSessao("match");
+		getLoggedUser().getId();
+		
+		Object valor = FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get("math");
+		return "";
+	}
+	
+	public List<PlayerDTO> getTeamPlayers() throws Exception {
+		return playerService.getPlayers(getLoggedUser().getId(), "name", "asc");
+
 	}
 
 	//
