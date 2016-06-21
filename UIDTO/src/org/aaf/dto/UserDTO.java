@@ -32,13 +32,14 @@ public class UserDTO implements Serializable{
 	public UserDTO() {
 	}
 
+	@SuppressWarnings("deprecation")
 	public UserDTO(JSONObject json) {
 		if (json != null) {
 			this.id = !json.isNull("id") ? json.getLong("id") : null;
 			this.name = !json.isNull("id") ? json.getString("name") : null;
 			this.cod = !json.isNull("id") ? json.getString("cod") : null;
 			this.email = !json.isNull("id") ? json.getString("email") : null;
-			this.team = new TeamDTO(!json.isNull("team") ?json.getJSONObject("team"):null);
+			this.team = new TeamDTO(json.isNull("team") ? null : json.getJSONObject("team"));
 			this.login = !json.isNull("id") ? json.getString("login") : null;
 			this.senha = !json.isNull("id") ? json.getString("senha") : null;
 		}

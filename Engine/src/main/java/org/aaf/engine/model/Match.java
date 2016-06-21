@@ -1,11 +1,17 @@
 package org.aaf.engine.model;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+
+import org.aaf.engine.util.MatchStatusEnum;
 
 @Entity
 public class Match {
@@ -14,7 +20,6 @@ public class Match {
 	@GeneratedValue(generator = "GENERATE_Match", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "GENERATE_Match", sequenceName = "Match_pk_seq", allocationSize = 1)
 	private Long id;
-
 
 	private String cod;
 	
@@ -33,6 +38,11 @@ public class Match {
 	private int golasVisitTeam;
 	
 	private int round;
+	
+	@Column
+	private LocalDateTime dateTime;
+	
+	private MatchStatusEnum matchStatus;
 
 	public Long getId() {
 		return id;
@@ -104,6 +114,22 @@ public class Match {
 
 	public void setWeek(String week) {
 		this.week = week;
+	}
+
+	public MatchStatusEnum getMatchStatus() {
+		return matchStatus;
+	}
+
+	public void setMatchStatus(MatchStatusEnum matchStatus) {
+		this.matchStatus = matchStatus;
+	}
+
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
 	}
 
 

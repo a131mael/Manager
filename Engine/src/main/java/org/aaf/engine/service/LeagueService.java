@@ -1,5 +1,7 @@
 package org.aaf.engine.service;
 
+import java.time.LocalDateTime;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -38,7 +40,10 @@ public class LeagueService {
 
 	public void createLeague(CountryDTO country) {
 		try {
-			em.persist(country.getCountry());
+			Country c = country.getCountry();
+			c.setDateTimeStart(LocalDateTime.now());
+			em.persist(c);
+			
 			Integer indiceJogador = 0;
 			for(int i = 1 ; i<=37; i++){
 				teamService.register(createLeague(i, country),indiceJogador);	;

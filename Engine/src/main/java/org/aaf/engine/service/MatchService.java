@@ -1,9 +1,11 @@
 package org.aaf.engine.service;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -14,14 +16,10 @@ import org.aaf.engine.model.Country;
 import org.aaf.engine.model.League;
 import org.aaf.engine.model.Match;
 import org.aaf.engine.model.Team;
+import org.aaf.engine.util.MatchStatusEnum;
 
-@RequestScoped 
-public class MatchService implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+@Stateless 
+public class MatchService {
 
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
@@ -34,52 +32,36 @@ public class MatchService implements Serializable{
 
 	@Inject
 	private TeamService teamService;
-
-	//TODO query nativa para mongoDB
+	
 	@SuppressWarnings("unchecked")
-	public void createMatchesMongo(Country country) {
-
+	public List<Match> getMatchesToExecute(LocalDateTime now){
 		StringBuilder sql = new StringBuilder();
-		sql.append("db.League.find({'country_id': ");
-		sql.append(country.getId());
-		sql.append("})");
-		Query query = em.createNativeQuery(sql.toString(), League.class);
-		List<League> leagues = (List<League>) query.getResultList();
-
-		StringBuilder sqlTeamLeague = new StringBuilder();
+		sql.append("SELECT m From Match m ");
+		sql.append("where 1=1 ");
+		sql.append("and m.dateTime < :now ");
+		sql.append("and m.matchStatus = :status ");
 		
-		List<Integer> index = new ArrayList<>();
-		for(int i =0; i<8;i++){ //8 teams per League, if more, chance the number
-			index.add(i);
-		}
-		int index2Group = index.size()/2;
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("now", now);
+		query.setParameter("status", MatchStatusEnum.NOT_PLAYED);
 		
-		for (League l : leagues) {
-			sqlTeamLeague.append("db.Team.find({'league_id': ");
-			sqlTeamLeague.append(l.getId());
-			sqlTeamLeague.append("})");
-
-			Query queryTeans = em.createNativeQuery(sqlTeamLeague.toString(), Team.class);
-			List<Team> teans = queryTeans.getResultList();
-			
-			for(int j=0; j<(teans.size()-1)*2;j++){
-				System.out.println("Rodada " + j);
-				for(int i=0;i<teans.size()/2;i++){
-			
-					createMatch(teans.get(i), teans.get(index.get(i+index2Group)), j);
-					System.out.println(teans.get(i).getName() +" x " + teans.get(index.get(i+index2Group)).getName());
-					
-				}
-				escalonar(index);
-			}
-		
-			sqlTeamLeague = new StringBuilder();
-
-		}
+		return  query.getResultList();
 	}
 
+	public Match save(Match match){
+		if(match.getId() == null){
+			em.persist(match);
+		}else{
+			em.merge(match);
+			
+		}
+		return match;
+	}
+	
 	@SuppressWarnings("unchecked")
 	public void createMatches(Country country) {
+		
+		LocalDateTime baseDate = country.getDateTimeStart();
 
 		StringBuilder sql = new StringBuilder();
 		sql.append("Select l From League l left join l.country c  where c.id = :countryID ");
@@ -106,7 +88,7 @@ public class MatchService implements Serializable{
 				System.out.println("Rodada " + j);
 				for(int i=0;i<teans.size()/2;i++){
 			
-					createMatch(teans.get(i), teans.get(index.get(i+index2Group)), j);
+					createMatch(teans.get(i), teans.get(index.get(i+index2Group)), j,country,baseDate);
 					System.out.println(teans.get(i).getName() +" x " + teans.get(index.get(i+index2Group)).getName());
 					
 				}
@@ -117,8 +99,7 @@ public class MatchService implements Serializable{
 
 		}
 	}
-	
-	
+		
 	private static void escalonar(List<Integer> index) {
 		int finalIndex = index.size()-1;
 		List<Integer> indexClone = new ArrayList<>();
@@ -135,16 +116,7 @@ public class MatchService implements Serializable{
 		return index;
 	}
 
-	private static List<Team> invertArray(List<Team> array){
-		List<Team> clone = new ArrayList<>();
-		for(Team element: array){
-			clone.add(0, element);
-		}
-		
-		return clone;
-	}
-
-	private void createMatch(Team team, Team team2, int round) {
+	private void createMatch(Team team, Team team2, int round, Country country, LocalDateTime dateExecution) {
 		Match match = new Match();
 		match.setRound(round);
 		match.setWeek(String.valueOf(round));
@@ -156,6 +128,13 @@ public class MatchService implements Serializable{
 			match.setHomeTeam(team2);
 			match.setVisitTeam(team);
 		}
+		
+		LocalDateTime dateGame = dateExecution.plusDays(0); //Adiciona 3 dias a partir do cadastro do pais -> forma correta buscar primeiro domingo
+		dateGame = dateGame.plusDays(country.getSession()*7*15); //Contagem de temporadas - o dia do jogo é referente a temporada em que ele esta 
+		dateGame = dateGame.plusDays(round*7); // 1 jogo por semana 
+		
+		match.setDateTime(dateGame);
+		match.setMatchStatus(MatchStatusEnum.NOT_PLAYED);
 		em.persist(match);
 
 	}

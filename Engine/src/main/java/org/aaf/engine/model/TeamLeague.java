@@ -41,7 +41,6 @@ public class TeamLeague {
 	
 	private int losses;
 	
-	private MatchStatusEnum matchStatus;
 
 	public String getCod() {
 		return cod;
@@ -140,13 +139,6 @@ public class TeamLeague {
 		this.losses = losses;
 	}
 
-	public MatchStatusEnum getMatchStatus() {
-		return matchStatus;
-	}
-
-	public void setMatchStatus(MatchStatusEnum matchStatus) {
-		this.matchStatus = matchStatus;
-	}
 
 
 }

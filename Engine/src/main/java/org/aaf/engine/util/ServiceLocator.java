@@ -25,15 +25,14 @@ public class ServiceLocator {
 		return instance;
 	}
 
-	public CountryService getEJB(String jndiName) {
+	public Object getEJB(String jndiName) {
 		Object ref = null;
 		try {
 			ref = jndiContext.lookup(jndiName);
-			CountryService home = (CountryService) PortableRemoteObject.narrow(ref, CountryService.class);
 		} catch (Exception exc) {
 			exc.printStackTrace();
 		}
-		return (CountryService) ref;
+		return ref;
 	}
 
 }

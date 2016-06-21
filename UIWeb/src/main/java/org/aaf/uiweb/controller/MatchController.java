@@ -23,6 +23,7 @@ import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
+import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.MatchService;
@@ -51,15 +52,21 @@ public class MatchController extends AuthController {
 		sb.append(getLoggedUser().getId());
 		sb.append("&match=");
 		
-		
 		sb.append(id);
 
 		return sb.toString();
 	}
 
 	public String saveLineUp() {
-		getAtributoSessao("match");
-		getLoggedUser().getId();
+		Long matchId = Long.valueOf((String) getQueryValue("match"));
+		MatchDTO match = new MatchDTO();
+		match.setId(matchId);
+		
+		LineUpDTO lineUpDTO = new LineUpDTO();
+		
+		lineUpDTO.setTeamDTO(getLoggedUser().getTeam());
+		lineUpDTO.setMatch(match);
+		
 		
 		Object valor = FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get("math");
 		return "";

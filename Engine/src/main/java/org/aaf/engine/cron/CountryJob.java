@@ -1,9 +1,5 @@
 package org.aaf.engine.cron;
 
-import java.util.logging.Logger;
-
-import javax.inject.Inject;
-
 import org.aaf.engine.dto.CountryDTO;
 import org.aaf.engine.service.CountryService;
 import org.aaf.engine.util.ServiceLocator;
@@ -22,7 +18,7 @@ public class CountryJob implements Job {
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
 		try {
 			System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-			service = ServiceLocator.getInstance().getEJB("java:global/Engine/CountryService!org.aaf.engine.service.CountryService");
+			service = (CountryService) ServiceLocator.getInstance().getEJB("java:global/Engine/CountryService!org.aaf.engine.service.CountryService");
 			
 			CountryDTO country = new CountryDTO();
 			country.setCod("1");

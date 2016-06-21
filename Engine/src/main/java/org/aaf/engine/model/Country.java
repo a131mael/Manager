@@ -1,7 +1,9 @@
 package org.aaf.engine.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +30,9 @@ public class Country implements Serializable{
     private int session;
     
     private int week;
+    
+    @Column
+	private LocalDateTime dateTimeStart; 
 
 
 	public String getCod() {
@@ -68,6 +73,14 @@ public class Country implements Serializable{
 
 	public void setWeek(int week) {
 		this.week = week;
+	}
+
+	public LocalDateTime getDateTimeStart() {
+		return dateTimeStart;
+	}
+
+	public void setDateTimeStart(LocalDateTime dateTimeStart) {
+		this.dateTimeStart = dateTimeStart;
 	}
 
 	
