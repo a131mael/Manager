@@ -28,21 +28,19 @@
 
 					</h:panelGrid>
 
-
 					<h:panelGrid>
 						<h:outputLabel value="Time:" />
 						<br />
 
 						<h:panelGrid columns="3">
 							<h:outputLabel value="1" />
-							<p:selectOneMenu label="orderBy"
-								style="width: 280px; margin-left: 5px;">
-								<f:selectItem itemLabel=" " itemValue="" />
-								<f:selectItems value="#{matchController.teamPlayers}" var="item"
-									itemValue="item" itemLabel="#{item.name}" />
+						
+							<p:selectOneMenu style="width: 280px; margin-left: 5px;" converter="converterPlayer" var="t">
+								<f:selectItems value="#{matchController.teamPlayers}" var="theme" itemLabel="#{theme.name}" itemValue="#{theme}" />
 							</p:selectOneMenu>
 
-							<p:selectOneMenu style="width: 70px; margin-left: 5px;">
+							<p:selectOneMenu label="orderBy"
+								style="width: 70px; margin-left: 5px;">
 								<f:selectItem itemLabel=" " itemValue="" />
 								<f:selectItems value="#{selectItems.positionEnum}" var="item"
 									itemValue="item" itemLabel="#{item.description}" />
@@ -50,7 +48,7 @@
 
 						</h:panelGrid>
 
-						<h:panelGrid columns="3">
+						<!-- <h:panelGrid columns="3">
 							<h:outputLabel value="2" />
 							<p:selectOneMenu label="orderBy"
 								style="width: 280px; margin-left: 5px;">
@@ -310,12 +308,12 @@
 									itemValue="item" itemLabel="#{item.description}" />
 							</p:selectOneMenu>
 
-						</h:panelGrid>
-						<p:commandButton actionListener="#{matchController.saveLineUp()}" value="Salvar"></p:commandButton>
-
+						</h:panelGrid> -->
+						
 					</h:panelGrid>
 
 				</h:panelGrid>
+						<p:commandButton  update="@form"  icon="ui-icon-check" actionListener="#{matchController.saveLineUp()} "ajax="true" action="#{matchController.saveLineUp()}"/>
 			</h:form>
 		</div>
 

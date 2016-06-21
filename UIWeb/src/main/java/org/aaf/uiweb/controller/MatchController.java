@@ -19,8 +19,12 @@ package org.aaf.uiweb.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import org.aaf.dto.LineUpDTO;
@@ -29,7 +33,8 @@ import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.MatchService;
 import org.aaf.uiweb.service.PlayerService;
 
-@Model
+@ViewScoped
+@ManagedBean
 public class MatchController extends AuthController {
 
 	// @Inject
@@ -40,6 +45,13 @@ public class MatchController extends AuthController {
 	
 	@Inject
 	private PlayerService playerService;
+	
+	private LineUpDTO lineUP;
+	
+	@PostConstruct
+	private void init(){
+		lineUP = new LineUpDTO();
+	}
 
 	//
 	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
@@ -58,18 +70,35 @@ public class MatchController extends AuthController {
 	}
 
 	public String saveLineUp() {
-		Long matchId = Long.valueOf((String) getQueryValue("match"));
+		
+		Long matchId = getQueryValue("match") != null ? Long.valueOf((String)getQueryValue("match")): null;
 		MatchDTO match = new MatchDTO();
 		match.setId(matchId);
 		
+		this.lineUP.getMatch();		
 		LineUpDTO lineUpDTO = new LineUpDTO();
 		
 		lineUpDTO.setTeamDTO(getLoggedUser().getTeam());
 		lineUpDTO.setMatch(match);
 		
 		
-		Object valor = FacesContext.getCurrentInstance().getExternalContext().getRequestMap().get("math");
 		return "";
+	}
+	
+	public ArrayList<SelectItem> getTeamPlayersItems() {
+		ArrayList<SelectItem> items  = new ArrayList<SelectItem>();
+		try {
+			List<PlayerDTO> countries = getTeamPlayers();
+			items.add(new SelectItem(null, ""));
+			for (PlayerDTO m : countries) {
+				items.add(new SelectItem(m, m.getName()));
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return items;
 	}
 	
 	public List<PlayerDTO> getTeamPlayers() throws Exception {
@@ -90,6 +119,14 @@ public class MatchController extends AuthController {
 		}
 		return semanas;
 
+	}
+
+	public LineUpDTO getLineUP() {
+		return lineUP;
+	}
+
+	public void setLineUP(LineUpDTO lineUP) {
+		this.lineUP = lineUP;
 	}
 
 }
