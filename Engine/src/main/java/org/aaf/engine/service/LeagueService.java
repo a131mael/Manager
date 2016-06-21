@@ -1,5 +1,8 @@
 package org.aaf.engine.service;
 
+import java.time.LocalDateTime;
+import java.time.Month;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -38,7 +41,11 @@ public class LeagueService {
 
 	public void createLeague(CountryDTO country) {
 		try {
-			em.persist(country.getCountry());
+			Country c = country.getCountry();
+			LocalDateTime startDate = LocalDateTime.of(2016, Month.JUNE, 21, 17, 40, 30);//TODO data arbitraria colocar no formulario a data de inicio.
+			c.setDateTimeStart(startDate); 
+			em.persist(c);
+			
 			Integer indiceJogador = 0;
 			for(int i = 1 ; i<=37; i++){
 				teamService.register(createLeague(i, country),indiceJogador);	;

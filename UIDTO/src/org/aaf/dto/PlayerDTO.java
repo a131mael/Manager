@@ -2,8 +2,6 @@ package org.aaf.dto;
 
 import java.io.Serializable;
 
-import org.json.JSONObject;
-
 public class PlayerDTO implements Serializable{
 
 	/**
