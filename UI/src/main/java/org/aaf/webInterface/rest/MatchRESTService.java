@@ -16,11 +16,17 @@
  */
 package org.aaf.webInterface.rest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.validation.ConstraintViolationException;
+import javax.validation.ValidationException;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -29,10 +35,13 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.aaf.dto.LineUpDTO;
+import org.aaf.dto.TeamDTO;
 import org.aaf.webInterface.model.Match;
 import org.aaf.webInterface.service.MatchService;
 import org.aaf.webInterface.util.Convertes;
 
+import com.cedarsoftware.util.io.JsonReader;
 import com.cedarsoftware.util.io.JsonWriter;
 
 @Path("/matches")
@@ -64,6 +73,38 @@ public class MatchRESTService {
 		} else {
 			builder = Response.ok();
 			builder.entity(JsonWriter.objectToJson(Convertes.getMatches(matches)));
+		}
+		return builder.build();
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/lineup")
+	public Response saveLineUp(String lineup) {
+		System.out.println("SAVING LINEUP");
+		Response.ResponseBuilder builder = null;
+		try {
+
+			LineUpDTO dto = (LineUpDTO) JsonReader.jsonToJava(lineup);
+			System.out.println(dto.getId());
+			System.out.println(dto.getPlayer1().getName());
+			
+			matchService.save(Convertes.getLineUp(dto));
+
+			builder = Response.ok();
+		} catch (ConstraintViolationException ce) {
+			// Handle bean validation issues
+		} catch (ValidationException e) {
+			// Handle the unique constrain violation
+			Map<String, String> responseObj = new HashMap<>();
+			responseObj.put("email", "Email taken");
+			builder = Response.status(Response.Status.CONFLICT).entity(responseObj);
+		} catch (Exception e) {
+			// Handle generic exceptions
+			Map<String, String> responseObj = new HashMap<>();
+			responseObj.put("error", e.getMessage());
+			builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
 		}
 		return builder.build();
 	}

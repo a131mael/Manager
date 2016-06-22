@@ -21,9 +21,13 @@ import java.util.List;
 
 import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
+import org.aaf.dto.TeamDTO;
 import org.aaf.uiweb.util.EndPoints;
+import org.aaf.uiweb.util.JSONPPost;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONObject;
+
+import com.cedarsoftware.util.io.JsonWriter;
 
 public class MatchService {
 
@@ -47,9 +51,8 @@ public class MatchService {
 	}
 
 	public void saveLineUp(LineUpDTO lineUP) {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_MATCHES+idTeam+"/"+session);
-    	List<MatchDTO> matches = ((List<MatchDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
-		return matches;
+		JSONPPost.sendJson(JsonWriter.objectToJson(lineUP), EndPoints.SAVE_LINEUP);
+		
 	}
 
 }

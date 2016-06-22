@@ -23,7 +23,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.aaf.webInterface.model.LineUp;
 import org.aaf.webInterface.model.Match;
+import org.aaf.webInterface.model.Team;
 
 @Stateless
 public class MatchService {
@@ -100,6 +102,19 @@ public class MatchService {
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("id", id);
 		return  (Match) query.getResultList();
+	}
+
+	public void save(LineUp lineUp) {
+		em.find(Match.class, lineUp.getMatch().getId());
+		em.find(Team.class, lineUp.getTeam().getId());
+		
+		if(lineUp.getId() != null){
+			em.merge(lineUp);
+		}else{
+			em.persist(lineUp);
+		}
+		
+		
 	}
 
 }
