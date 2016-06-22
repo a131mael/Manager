@@ -31,9 +31,12 @@
 									<a href="index.xhtml?teamId=#{match.visitTeam.id}">#{match.visitTeam.name}</a>
 								</h:panelGrid>
 								<br />
-								<p:link value="escalar" outcome="lineUp">
-										<f:param name="match" value="#{match.id}" />
-									</p:link>
+								
+								<p:link value="escalar" outcome="lineUp" >
+									<f:param name="match" value="#{match.id}" />
+								</p:link>
+								
+								
 <!-- 								<a href="lineUp.xhtml?teamId=#{matchController.lineupLink(match.id)}">escalar</a> -->
 								<a href="report.xhtml?teamId=#{leagueTeam.team.id}">relatório</a>
 

@@ -30,6 +30,9 @@ public class ConverterPlayer implements Converter {
     public String getAsString(FacesContext context, UIComponent component,Object value) {
     	if (value != null && !"".equals(value)) {
 
+    		if(value instanceof String){
+    			return null;
+    		}
             PlayerDTO entity = (PlayerDTO) value;
 
             // adiciona item como atributo do componente

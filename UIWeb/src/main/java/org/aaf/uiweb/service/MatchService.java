@@ -19,6 +19,7 @@ package org.aaf.uiweb.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
@@ -43,6 +44,12 @@ public class MatchService {
 	public MatchDTO getLastMatch(Long id) {
 		
 		return  new MatchDTO();
+	}
+
+	public void saveLineUp(LineUpDTO lineUP) {
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_MATCHES+idTeam+"/"+session);
+    	List<MatchDTO> matches = ((List<MatchDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
+		return matches;
 	}
 
 }

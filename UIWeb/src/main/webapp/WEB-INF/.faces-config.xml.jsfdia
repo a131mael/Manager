@@ -30,4 +30,22 @@
     TARGET="rules:#pages#team#players.xhtml" TITLE="ok" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#team#matches.xhtml"
+  PATH="/pages/team/matches.xhtml" SHAPE="563,303,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#team#matches.xhtml:0" NAME="item"
+   PATH="/pages/team/matches.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="lineUp::#pages#team#lineUp.xhtml"
+    NAME="output" PATH="/pages/team/lineUp.xhtml"
+    TARGET="rules:#pages#team#lineUp.xhtml" TITLE="lineUp" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#team#lineUp.xhtml"
+  PATH="/pages/team/lineUp.xhtml" SHAPE="762,316,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#team#lineUp.xhtml:0" NAME="item"
+   PATH="/pages/team/lineUp.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="matches::#pages#team#matches.xhtml"
+    NAME="output" PATH="/pages/team/matches.xhtml"
+    TARGET="rules:#pages#team#matches.xhtml" TITLE="matches" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

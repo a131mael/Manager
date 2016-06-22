@@ -33,8 +33,9 @@ import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.MatchService;
 import org.aaf.uiweb.service.PlayerService;
 
-@ViewScoped
-@ManagedBean
+/*@ViewScoped
+@ManagedBean*/
+@Model //TODO REMOVER ?
 public class MatchController extends AuthController {
 
 	// @Inject
@@ -48,9 +49,13 @@ public class MatchController extends AuthController {
 	
 	private LineUpDTO lineUP;
 	
+	private Long matchId;
+	
 	@PostConstruct
 	private void init(){
 		lineUP = new LineUpDTO();
+		matchId = getQueryValue("match") != null ? Long.valueOf((String)getQueryValue("match")): null;
+		
 	}
 
 	//
@@ -70,19 +75,13 @@ public class MatchController extends AuthController {
 	}
 
 	public String saveLineUp() {
-		
-		Long matchId = getQueryValue("match") != null ? Long.valueOf((String)getQueryValue("match")): null;
 		MatchDTO match = new MatchDTO();
 		match.setId(matchId);
+		lineUP.setTeamDTO(getLoggedUser().getTeam());
+		lineUP.setMatch(match);
 		
-		this.lineUP.getMatch();		
-		LineUpDTO lineUpDTO = new LineUpDTO();
-		
-		lineUpDTO.setTeamDTO(getLoggedUser().getTeam());
-		lineUpDTO.setMatch(match);
-		
-		
-		return "";
+		matchService.saveLineUp(lineUP);
+		return "matches";
 	}
 	
 	public ArrayList<SelectItem> getTeamPlayersItems() {

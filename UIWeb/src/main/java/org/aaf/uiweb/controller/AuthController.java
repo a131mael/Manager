@@ -16,6 +16,7 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -131,6 +132,16 @@ public class AuthController {
 		req.getContextPath();
 		req.getPathInfo();
 		req.getQueryString();
+		req.getParameter(nome);
+		req.getAttributeNames();
+		req.getHeaderNames();
+		req.getParameterMap();
+		try {
+			req.getInputStream();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		HttpSession session = (HttpSession) req.getSession();
 		Object obj = session.getAttribute(nome);
