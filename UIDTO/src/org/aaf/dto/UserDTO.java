@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.json.JSONObject;
 
-public class UserDTO implements Serializable{
+public class UserDTO implements Serializable {
 
 	/**
 	 * 
@@ -24,11 +24,11 @@ public class UserDTO implements Serializable{
 	private String login;
 
 	private String senha;
-	
+
 	private CountryDTO countryDTO;
 
 	private LeagueDTO mainLeague;
-	
+
 	public UserDTO() {
 	}
 
@@ -43,6 +43,26 @@ public class UserDTO implements Serializable{
 			this.login = !json.isNull("id") ? json.getString("login") : null;
 			this.senha = !json.isNull("id") ? json.getString("senha") : null;
 		}
+	}
+
+	@Override
+	public int hashCode() {
+		int hash = 7;
+		hash = 11 * hash + (this.id != null ? this.id.hashCode() : 0);
+		return hash;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+
+		final UserDTO other = (UserDTO) obj;
+		if (this.getId() != other.getId() && (this.id == null || !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
 	}
 
 	public String getCod() {

@@ -37,6 +37,27 @@ public class TeamLeagueDTO implements Serializable, Comparable<TeamLeagueDTO> {
 
 	}
 
+	@Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+       
+        final TeamLeagueDTO other = (TeamLeagueDTO) obj;
+        if (this.getId() != other.getId() && (this.id == null || !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+	
 	public String getCod() {
 		return cod;
 	}
