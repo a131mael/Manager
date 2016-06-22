@@ -12,7 +12,6 @@
 		<class>org.aaf.engine.model.Player</class>
 		<class>org.aaf.engine.model.Team</class>
 		<class>org.aaf.engine.model.UserFM</class>
-		<class>org.aaf.engine.model.Property</class>
 		<class>org.aaf.engine.model.Match</class>
 		<class>org.aaf.engine.model.TeamLeague</class>
 
