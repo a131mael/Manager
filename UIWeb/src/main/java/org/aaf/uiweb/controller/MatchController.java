@@ -16,6 +16,7 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +83,7 @@ public class MatchController extends AuthController {
 		match.setId(matchId);
 		lineUP.setTeamDTO(getLoggedUser().getTeam());
 		lineUP.setMatch(match);
-		
+		lineUP.setDate(LocalDateTime.now());
 		matchService.saveLineUp(lineUP);
 		return "matches";
 	}

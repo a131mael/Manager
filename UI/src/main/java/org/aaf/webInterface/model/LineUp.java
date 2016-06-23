@@ -1,5 +1,7 @@
 package org.aaf.webInterface.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
 import org.aaf.webInterface.util.PositionEnum;
+
 
 @Entity
 public class LineUp {
@@ -24,69 +27,177 @@ public class LineUp {
 	@OneToOne
 	private Match match;
 	
+	private LocalDateTime date;
+	
 	@ManyToOne
 	private Player position1;
 	private PositionEnum orderP1;
+	private int rate1;
 	
 	@ManyToOne
 	private Player position2;
 	private PositionEnum orderP2;
-
+	private int rate2;
+	
 	@ManyToOne
 	private Player position3;
 	private PositionEnum orderP3;
-
+	private int rate3;
+	
 	@ManyToOne
 	private Player position4;
 	private PositionEnum orderP4;
-
+	private int rate4;
+	
 	@ManyToOne
 	private Player position5;
 	private PositionEnum orderP5;
-
+	private int rate5;
+	
 	@ManyToOne
 	private Player position6;
 	private PositionEnum orderP6;
-
+	private int rate6;
+	
 	@ManyToOne
 	private Player position7;
 	private PositionEnum orderP7;
-
+	private int rate7;
+	
 	@ManyToOne
 	private Player position8;
 	private PositionEnum orderP8;
-
+	private int rate8;
+	
 	@ManyToOne
 	private Player position9;
 	private PositionEnum orderP9;
-
+	private int rate9;
+	
 	@ManyToOne
 	private Player position10;
 	private PositionEnum orderP10;
-
+	private int rate10;
+	
 	@ManyToOne
 	private Player position11;
 	private PositionEnum orderP11;
-
+	private int rate11;
+	
 	@ManyToOne
 	private Player position12;
 	private PositionEnum orderP12;
-
+	private int rate12;
+	
 	@ManyToOne
 	private Player position13;
 	private PositionEnum orderP13;
-
+	private int rate13;
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Team getTeam() {
+		return team;
+	}
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	public Match getMatch() {
+		return match;
+	}
+	public void setMatch(Match match) {
+		this.match = match;
+	}
+	public int getRate1() {
+		return rate1;
+	}
+	public void setRate1(int rate1) {
+		this.rate1 = rate1;
+	}
+	public int getRate2() {
+		return rate2;
+	}
+	public void setRate2(int rate2) {
+		this.rate2 = rate2;
+	}
+	public int getRate3() {
+		return rate3;
+	}
+	public void setRate3(int rate3) {
+		this.rate3 = rate3;
+	}
+	public int getRate4() {
+		return rate4;
+	}
+	public void setRate4(int rate4) {
+		this.rate4 = rate4;
+	}
+	public int getRate5() {
+		return rate5;
+	}
+	public void setRate5(int rate5) {
+		this.rate5 = rate5;
+	}
+	public int getRate6() {
+		return rate6;
+	}
+	public void setRate6(int rate6) {
+		this.rate6 = rate6;
+	}
+	public int getRate7() {
+		return rate7;
+	}
+	public void setRate7(int rate7) {
+		this.rate7 = rate7;
+	}
+	public int getRate8() {
+		return rate8;
+	}
+	public void setRate8(int rate8) {
+		this.rate8 = rate8;
+	}
+	public int getRate9() {
+		return rate9;
+	}
+	public void setRate9(int rate9) {
+		this.rate9 = rate9;
+	}
+	public int getRate10() {
+		return rate10;
+	}
+	public void setRate10(int rate10) {
+		this.rate10 = rate10;
+	}
+	public int getRate11() {
+		return rate11;
+	}
+	public void setRate11(int rate11) {
+		this.rate11 = rate11;
+	}
+	public int getRate12() {
+		return rate12;
+	}
+	public void setRate12(int rate12) {
+		this.rate12 = rate12;
+	}
 	@ManyToOne
 	private Player position14;
 	private PositionEnum orderP14;
-
+	private int rate14;
+	
 	@ManyToOne
 	private Player position15;
 	private PositionEnum orderP15;
-
+	private int rate15;
+	
 	@ManyToOne
 	private Player position16;
 	private PositionEnum orderP16;
+	private int rate16;
 	
 	
 	public Player getPosition1() {
@@ -281,23 +392,35 @@ public class LineUp {
 	public void setPosition4(Player position4) {
 		this.position4 = position4;
 	}
-	public Long getId() {
-		return id;
+	public LocalDateTime getDate() {
+		return date;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
-	public Team getTeam() {
-		return team;
+	public int getRate16() {
+		return rate16;
 	}
-	public void setTeam(Team team) {
-		this.team = team;
+	public void setRate16(int rate16) {
+		this.rate16 = rate16;
 	}
-	public Match getMatch() {
-		return match;
+	public int getRate15() {
+		return rate15;
 	}
-	public void setMatch(Match match) {
-		this.match = match;
+	public void setRate15(int rate15) {
+		this.rate15 = rate15;
+	}
+	public int getRate14() {
+		return rate14;
+	}
+	public void setRate14(int rate14) {
+		this.rate14 = rate14;
+	}
+	public int getRate13() {
+		return rate13;
+	}
+	public void setRate13(int rate13) {
+		this.rate13 = rate13;
 	}
 	
 }

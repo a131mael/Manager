@@ -1,6 +1,7 @@
 package org.aaf.dto;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import org.json.JSONObject;
 
@@ -19,6 +20,8 @@ public class CountryDTO implements Serializable{
     
     private int session;
     
+	private LocalDateTime dateTimeStart; 
+
     private int week;
     
     public CountryDTO(){}
@@ -94,4 +97,12 @@ public class CountryDTO implements Serializable{
         }
         return true;
     }
+
+	public LocalDateTime getDateTimeStart() {
+		return dateTimeStart;
+	}
+
+	public void setDateTimeStart(LocalDateTime dateTimeStart) {
+		this.dateTimeStart = dateTimeStart;
+	}
 }
