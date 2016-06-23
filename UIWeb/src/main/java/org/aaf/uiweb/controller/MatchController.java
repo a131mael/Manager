@@ -20,10 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
@@ -33,9 +31,8 @@ import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.service.MatchService;
 import org.aaf.uiweb.service.PlayerService;
 
-/*@ViewScoped
-@ManagedBean*/
-@Model //TODO REMOVER ?
+@ViewScoped
+@ManagedBean
 public class MatchController extends AuthController {
 
 	// @Inject
@@ -53,13 +50,19 @@ public class MatchController extends AuthController {
 	
 	@PostConstruct
 	private void init(){
-		lineUP = new LineUpDTO();
 		matchId = getQueryValue("match") != null ? Long.valueOf((String)getQueryValue("match")): null;
+		if(matchId != null){
+			lineUP = matchService.getLineUp(matchId, getLoggedUser().getTeam().getId());
+		}
+		
+		if(lineUP == null){
+			lineUP = new LineUpDTO();
+		}
 		
 	}
 
 	//
-	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
+	public List<	MatchDTO> getTeamMatchs(int round) throws Exception {
 
 		return matchService.getMatches(getLoggedUser().getTeam().getId(), getLoggedUser().getCountryDTO().getSession());
 	}

@@ -19,5 +19,5 @@ public class EndPoints {
 	public static final String GET_TEAMS = new StringBuilder(urlBase).append("/UI/rest/leagues/").toString();
 	public static final String GET_MAIN_LEAGUE_USER = new StringBuilder(urlBase).append("/UI/rest/leagues/user/").toString();
 	public static final String GET_TEAMLEAGUE_LEAGUE = new StringBuilder(urlBase).append("/UI/rest/teamLeagues/league/").toString();
-	
+	public static final String GET_LINEUP = new StringBuilder(urlBase).append("/UI/rest/matches/lineup/").toString();
 }

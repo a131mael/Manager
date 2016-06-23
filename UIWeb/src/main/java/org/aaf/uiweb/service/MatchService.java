@@ -55,4 +55,10 @@ public class MatchService {
 		
 	}
 
+	public LineUpDTO getLineUp(Long matchId, Long idTeam) {
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_LINEUP+matchId+"/"+idTeam);
+    	LineUpDTO lineUp = (LineUpDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		return lineUp;
+	}
+
 }

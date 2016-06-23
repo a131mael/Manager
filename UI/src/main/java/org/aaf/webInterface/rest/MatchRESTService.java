@@ -37,6 +37,7 @@ import javax.ws.rs.core.Response;
 
 import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.TeamDTO;
+import org.aaf.webInterface.model.LineUp;
 import org.aaf.webInterface.model.Match;
 import org.aaf.webInterface.service.MatchService;
 import org.aaf.webInterface.util.Convertes;
@@ -89,8 +90,19 @@ public class MatchRESTService {
 			LineUpDTO dto = (LineUpDTO) JsonReader.jsonToJava(lineup);
 			System.out.println(dto.getId());
 			System.out.println(dto.getPlayer1().getName());
+			System.out.println("id do jogo" + dto.getMatch().getId());
+			System.out.println("id do jogo" + dto.getTeamDTO().getId());
 			
-			matchService.save(Convertes.getLineUp(dto));
+			System.out.println("---------------------------");
+			LineUp lineUp = Convertes.getLineUp(dto);
+			System.out.println("xxxxxxxxxxxxx");
+			
+			System.out.println(lineUp.getId());
+			System.out.println(lineUp.getPosition1().getName());
+			System.out.println("id do jogo" + lineUp.getMatch().getId());
+			System.out.println("id do jogo" + lineUp.getTeam().getId());
+			System.out.println("==============");
+			matchService.save(lineUp);
 
 			builder = Response.ok();
 		} catch (ConstraintViolationException ce) {

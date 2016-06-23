@@ -397,6 +397,7 @@ public class Convertes {
 			obj.setPosition15(getPlayer(dto.getPlayer15()));
 			obj.setPosition15(getPlayer(dto.getPlayer13()));
 			
+			return obj;
 		}
 		return null;
 	}
