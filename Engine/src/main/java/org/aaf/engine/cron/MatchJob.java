@@ -2,11 +2,14 @@ package org.aaf.engine.cron;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import org.aaf.engine.model.LineUp;
 import org.aaf.engine.model.Match;
+import org.aaf.engine.service.LineUpService;
 import org.aaf.engine.service.MatchService;
 import org.aaf.engine.util.MatchStatusEnum;
 import org.aaf.engine.util.ServiceLocator;
@@ -20,6 +23,8 @@ public class MatchJob implements Job {
 	private Logger log;
 
 	private MatchService service;
+	
+	private LineUpService lineUpService;
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
@@ -28,21 +33,54 @@ public class MatchJob implements Job {
 			
 			LocalDateTime agora = LocalDateTime.now();
 			service = (MatchService) ServiceLocator.getInstance().getEJB("java:global/Engine/MatchService!org.aaf.engine.service.MatchService");
+			lineUpService = (LineUpService) ServiceLocator.getInstance().getEJB("java:global/Engine/LineUpService!org.aaf.engine.service.LineUpService");
 			Thread.sleep(10000);
 			List<Match> matchesToExecute = service.getMatchesToExecute(agora);
 			System.out.println("Size: ---> " + matchesToExecute.size());
+			//APENAS COLOCA OS JOGOS COMO EM EXECUÇAO
 			for(Match match :matchesToExecute){
 				match.setMatchStatus(MatchStatusEnum.PLAYING);
 				service.save(match);
 			}
-			
-			
-//			service = ServiceLocator.getInstance().getEJB("java:global/Engine/CountryService!org.aaf.engine.service.CountryService");
-//			
-//			CountryDTO country = new CountryDTO();
-//			country.setCod("1");
-//			country.setName("Pais 1");
-//			service.register(country);
+			//EXECUTA AS PARTIDAS
+			Random gerador = new Random();
+			for(Match match :matchesToExecute){
+				LineUp lineUpHomeTeam = lineUpService.getLineUp(match.getId(), match.getHomeTeam().getId());
+				LineUp lineUpVisitTeam = lineUpService.getLineUp(match.getId(), match.getVisitTeam().getId());
+				
+				lineUpHomeTeam.setRate1(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate2(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate3(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate4(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate5(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate6(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate7(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate8(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate9(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate10(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate11(gerador.nextInt()*100);
+				
+				lineUpVisitTeam.setRate1(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate2(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate3(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate4(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate5(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate6(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate7(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate8(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate9(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate10(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate11(gerador.nextInt()*100);
+				
+				lineUpService.save(lineUpHomeTeam);
+				lineUpService.save(lineUpVisitTeam);
+				
+				match.setGolasHomeTeam(gerador.nextInt()*5);
+				match.setGolasVisitTeam(gerador.nextInt()*5);
+				match.setMatchStatus(MatchStatusEnum.PLAYED);
+				service.save(match);
+			}
+		
 		} catch (Exception e) {
 			log.info("ERRO AO EXECUTAR PARTIDAS");
 		}

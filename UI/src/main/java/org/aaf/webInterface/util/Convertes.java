@@ -68,6 +68,7 @@ public class Convertes {
 			country.setName(dto.getName());
 			country.setWeek(dto.getWeek());
 			country.setSession(dto.getSession());
+			country.setDateTimeStart(dto.getDateTimeStart());
 
 			return country;
 		} else {
@@ -83,6 +84,7 @@ public class Convertes {
 			country.setName(obj.getName());
 			country.setWeek(obj.getWeek());
 			country.setSession(obj.getSession());
+			country.setDateTimeStart(obj.getDateTimeStart());
 
 			return country;
 		} else {
@@ -362,6 +364,24 @@ public class Convertes {
 			obj.setId(dto.getId());
 			obj.setMatch(getMatch(dto.getMatch()));
 			obj.setTeam(getTeam(dto.getTeamDTO()));
+			obj.setDate(dto.getDate());
+			
+			obj.setRate1(dto.getRate1());
+			obj.setRate2(dto.getRate2());
+			obj.setRate3(dto.getRate3());
+			obj.setRate4(dto.getRate4());
+			obj.setRate5(dto.getRate5());
+			obj.setRate6(dto.getRate6());
+			obj.setRate7(dto.getRate7());
+			obj.setRate8(dto.getRate8());
+			obj.setRate9(dto.getRate9());
+			obj.setRate10(dto.getRate10());
+			obj.setRate11(dto.getRate11());
+			obj.setRate12(dto.getRate12());
+			obj.setRate13(dto.getRate13());
+			obj.setRate14(dto.getRate14());
+			obj.setRate15(dto.getRate15());
+			obj.setRate16(dto.getRate16());
 			
 			obj.setOrderP1(PositionEnum.values()[dto.getOrderPlayer1()] );
 			obj.setOrderP2(PositionEnum.values()[dto.getOrderPlayer2()] );
@@ -396,6 +416,54 @@ public class Convertes {
 			obj.setPosition14(getPlayer(dto.getPlayer14()));
 			obj.setPosition15(getPlayer(dto.getPlayer15()));
 			obj.setPosition15(getPlayer(dto.getPlayer13()));
+			
+			return obj;
+		}
+		return null;
+	}
+
+	public static LineUpDTO getLineUp(LineUp param) {
+		if (param != null) {
+			LineUpDTO obj = new LineUpDTO();
+
+			obj.setId(param.getId());
+			obj.setMatch(getMatch(param.getMatch()));
+			obj.setTeamDTO(getTeam(param.getTeam()));
+			obj.setDate(param.getDate());
+			
+			obj.setOrderPlayer1((short) param.getOrderP1().ordinal());
+			obj.setOrderPlayer2((short) param.getOrderP2().ordinal() );
+			obj.setOrderPlayer3((short) param.getOrderP3().ordinal());
+			obj.setOrderPlayer4((short) param.getOrderP4().ordinal());
+			obj.setOrderPlayer5((short) param.getOrderP5().ordinal());
+			obj.setOrderPlayer6((short) param.getOrderP6().ordinal());
+			obj.setOrderPlayer7((short) param.getOrderP7().ordinal());
+			obj.setOrderPlayer8((short) param.getOrderP8().ordinal());
+			obj.setOrderPlayer9((short) param.getOrderP9().ordinal());
+			obj.setOrderPlayer10((short) param.getOrderP10().ordinal());
+			obj.setOrderPlayer11((short) param.getOrderP11().ordinal());
+			obj.setOrderPlayer12((short) param.getOrderP12().ordinal());
+			obj.setOrderPlayer13((short) param.getOrderP13().ordinal());
+			obj.setOrderPlayer14((short) param.getOrderP14().ordinal());
+			obj.setOrderPlayer15((short) param.getOrderP15().ordinal());
+			obj.setOrderPlayer16((short) param.getOrderP16().ordinal());
+			
+			obj.setPlayer1(getPlayer(param.getPosition1()));
+			obj.setPlayer2(getPlayer(param.getPosition2()));
+			obj.setPlayer3(getPlayer(param.getPosition3()));
+			obj.setPlayer4(getPlayer(param.getPosition4()));
+			obj.setPlayer5(getPlayer(param.getPosition5()));
+			obj.setPlayer6(getPlayer(param.getPosition6()));
+			obj.setPlayer7(getPlayer(param.getPosition7()));
+			obj.setPlayer8(getPlayer(param.getPosition8()));
+			obj.setPlayer9(getPlayer(param.getPosition9()));
+			obj.setPlayer10(getPlayer(param.getPosition10()));
+			obj.setPlayer11(getPlayer(param.getPosition11()));
+			obj.setPlayer12(getPlayer(param.getPosition12()));
+			obj.setPlayer13(getPlayer(param.getPosition13()));
+			obj.setPlayer14(getPlayer(param.getPosition14()));
+			obj.setPlayer15(getPlayer(param.getPosition15()));
+			obj.setPlayer15(getPlayer(param.getPosition13()));
 			
 			return obj;
 		}

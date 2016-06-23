@@ -36,7 +36,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.dto.LineUpDTO;
-import org.aaf.dto.TeamDTO;
 import org.aaf.webInterface.model.LineUp;
 import org.aaf.webInterface.model.Match;
 import org.aaf.webInterface.service.MatchService;
@@ -78,30 +77,42 @@ public class MatchRESTService {
 		return builder.build();
 	}
 	
+	@GET
+	@Path("/lineup/{idMatch:[0-9][0-9]*}/{idTeam:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getLineUpOrLastLineUp(@PathParam("idMatch") long idMatch, @PathParam("idTeam") long idTeam) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+		builder = Response.ok();
+		
+		LineUp lineUp = matchService.getLineUp(idMatch,idTeam);
+		if(lineUp == null){
+			lineUp = matchService.getLastLineUp(idTeam);
+		}
+		if (lineUp == null) {
+			// eh espero que nao se encontre nenhum resultado, apenas retorna vazio
+			/*builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);*/
+			builder.entity(null);
+			
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getLineUp(lineUp)));
+		}
+		return builder.build();
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/lineup")
 	public Response saveLineUp(String lineup) {
-		System.out.println("SAVING LINEUP");
 		Response.ResponseBuilder builder = null;
 		try {
 
 			LineUpDTO dto = (LineUpDTO) JsonReader.jsonToJava(lineup);
-			System.out.println(dto.getId());
-			System.out.println(dto.getPlayer1().getName());
-			System.out.println("id do jogo" + dto.getMatch().getId());
-			System.out.println("id do jogo" + dto.getTeamDTO().getId());
-			
-			System.out.println("---------------------------");
 			LineUp lineUp = Convertes.getLineUp(dto);
-			System.out.println("xxxxxxxxxxxxx");
 			
-			System.out.println(lineUp.getId());
-			System.out.println(lineUp.getPosition1().getName());
-			System.out.println("id do jogo" + lineUp.getMatch().getId());
-			System.out.println("id do jogo" + lineUp.getTeam().getId());
-			System.out.println("==============");
 			matchService.save(lineUp);
 
 			builder = Response.ok();
