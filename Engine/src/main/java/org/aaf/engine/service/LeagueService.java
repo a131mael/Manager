@@ -9,8 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.engine.dto.CountryDTO;
-import org.aaf.engine.model.Country;
-import org.aaf.engine.model.League;
+import org.aaf.model.Country;
+import org.aaf.model.League;
 
 @Stateless
 public class LeagueService {

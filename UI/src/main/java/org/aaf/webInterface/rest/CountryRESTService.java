@@ -26,7 +26,7 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.webInterface.model.Country;
+import org.aaf.model.Country;
 import org.aaf.webInterface.service.CountryService;
 import org.aaf.webInterface.util.Convertes;
 

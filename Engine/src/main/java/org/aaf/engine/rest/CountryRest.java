@@ -17,7 +17,6 @@
 package org.aaf.engine.rest;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.ejb.Stateful;
 import javax.enterprise.context.RequestScoped;
@@ -31,7 +30,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.engine.dto.CountryDTO;
-import org.aaf.engine.model.Country;
 import org.aaf.engine.service.CountryService;
 
 /**

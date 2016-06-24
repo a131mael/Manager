@@ -15,14 +15,15 @@ import org.aaf.dto.PlayerDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.dto.UserDTO;
-import org.aaf.webInterface.model.Country;
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.LineUp;
-import org.aaf.webInterface.model.Match;
-import org.aaf.webInterface.model.Player;
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.TeamLeague;
-import org.aaf.webInterface.model.UserFM;
+import org.aaf.model.Country;
+import org.aaf.model.League;
+import org.aaf.model.LineUp;
+import org.aaf.model.Match;
+import org.aaf.model.Player;
+import org.aaf.model.PositionEnum;
+import org.aaf.model.Team;
+import org.aaf.model.TeamLeague;
+import org.aaf.model.UserFM;
 
 public class Convertes {
 
@@ -117,7 +118,7 @@ public class Convertes {
 			// json.getInt("aggressiveness") : null); //TODO - verificar
 			playerDTO.setDecision(obj.getDecision());
 			playerDTO.setDisarm(obj.getDisarm());
-			playerDTO.setGoalKeaper(obj.getGoalKeaper());
+			playerDTO.setGoalKeaper(obj.getGoalkeaper());
 			playerDTO.setHeight(obj.getHeight());
 			// playerDTO.setIgnore( !json.isNull("ignore") ?
 			// json.getInt("ignore") : null);
@@ -133,7 +134,7 @@ public class Convertes {
 			// null);
 			playerDTO.setTechnique(obj.getTechnique());
 			playerDTO.setVelocity(obj.getVelocity());
-			playerDTO.setWorkIndex(obj.getWorkIndex());
+			playerDTO.setWorkIndex(obj.getWorkindex());
 			playerDTO.setValue(obj.getValue());;
 
 			return playerDTO;
@@ -158,7 +159,7 @@ public class Convertes {
 			// json.getInt("aggressiveness") : null); //TODO - verificar
 			playerDTO.setDecision(obj.getDecision());
 			playerDTO.setDisarm(obj.getDisarm());
-			playerDTO.setGoalKeaper(obj.getGoalKeaper());
+			playerDTO.setGoalkeaper(obj.getGoalKeaper());
 			playerDTO.setHeight(obj.getHeight());
 			// playerDTO.setIgnore( !json.isNull("ignore") ?
 			// json.getInt("ignore") : null);
@@ -174,7 +175,7 @@ public class Convertes {
 			// null);
 			playerDTO.setTechnique(obj.getTechnique());
 			playerDTO.setVelocity(obj.getVelocity());
-			playerDTO.setWorkIndex(obj.getWorkIndex());
+			playerDTO.setWorkindex(obj.getWorkIndex());
 			playerDTO.setValue(obj.getValue());;
 
 			return playerDTO;
@@ -282,7 +283,7 @@ public class Convertes {
 		if (param != null) {
 			MatchDTO obj = new MatchDTO();
 			obj.setCod(param.getCod());
-			obj.setDate(param.getDate());
+			obj.setDate(param.getDateTime());
 			obj.setGolasHomeTeam(param.getGolasHomeTeam());
 			obj.setGolasVisitTeam(param.getGolasVisitTeam());
 			obj.setHomeTeam(getTeam(param.getHomeTeam()));
@@ -301,7 +302,7 @@ public class Convertes {
 		if (param != null) {
 			Match obj = new Match();
 			obj.setCod(param.getCod());
-			obj.setDate(param.getDate());
+			obj.setDateTime(param.getDate());
 			obj.setGolasHomeTeam(param.getGolasHomeTeam());
 			obj.setGolasVisitTeam(param.getGolasVisitTeam());
 			obj.setHomeTeam(getTeam(param.getHomeTeam()));

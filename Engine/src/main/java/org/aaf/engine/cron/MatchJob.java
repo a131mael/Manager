@@ -7,12 +7,12 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import org.aaf.engine.model.LineUp;
-import org.aaf.engine.model.Match;
 import org.aaf.engine.service.LineUpService;
 import org.aaf.engine.service.MatchService;
-import org.aaf.engine.util.MatchStatusEnum;
 import org.aaf.engine.util.ServiceLocator;
+import org.aaf.model.LineUp;
+import org.aaf.model.Match;
+import org.aaf.model.MatchStatusEnum;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

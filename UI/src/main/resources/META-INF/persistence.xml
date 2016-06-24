@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1"
-	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="
-        http://xmlns.jcp.org/xml/ns/persistence
-        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-
-	<persistence-unit name="PostgresDS">
-
-		<jta-data-source>java:/PostgresDS</jta-data-source>
-		<class>org.aaf.webInterface.model.Country</class>
-		<class>org.aaf.webInterface.model.League</class>
-		<class>org.aaf.webInterface.model.Match</class>
-		<class>org.aaf.webInterface.model.Member</class>
-		<class>org.aaf.webInterface.model.Player</class>
-		<class>org.aaf.webInterface.model.Team</class>
-		<class>org.aaf.webInterface.model.UserFM</class>
-		<class>org.aaf.webInterface.model.TeamLeague</class>
-
-		<properties>
-			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-<!--  			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>  -->
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="false" />
-		</properties>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Engine">
 	</persistence-unit>
-
 </persistence>
-	
