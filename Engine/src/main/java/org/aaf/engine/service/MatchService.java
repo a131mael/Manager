@@ -10,11 +10,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.engine.model.Country;
-import org.aaf.engine.model.League;
-import org.aaf.engine.model.Match;
-import org.aaf.engine.model.Team;
-import org.aaf.engine.util.MatchStatusEnum;
+import org.aaf.model.Country;
+import org.aaf.model.League;
+import org.aaf.model.Match;
+import org.aaf.model.MatchStatusEnum;
+import org.aaf.model.Team;
 
 @Stateless 
 public class MatchService {

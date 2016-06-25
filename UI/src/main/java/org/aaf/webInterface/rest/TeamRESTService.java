@@ -35,7 +35,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.dto.TeamDTO;
-import org.aaf.webInterface.model.Team;
+import org.aaf.model.Team;
 import org.aaf.webInterface.service.TeamService;
 import org.aaf.webInterface.util.Convertes;
 

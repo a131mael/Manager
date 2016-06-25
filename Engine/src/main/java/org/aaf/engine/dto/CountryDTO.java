@@ -1,6 +1,6 @@
 package org.aaf.engine.dto;
 
-import org.aaf.engine.model.Country;
+import org.aaf.model.Country;
 
 public class CountryDTO {
  

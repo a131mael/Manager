@@ -29,9 +29,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.aaf.webInterface.model.Country;
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Team;
+import org.aaf.model.League;
+import org.aaf.model.Team;
 import org.aaf.webInterface.service.LeagueService;
 import org.aaf.webInterface.util.Convertes;
 

@@ -23,8 +23,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.League;
-import org.aaf.webInterface.model.Team;
+import org.aaf.model.League;
+import org.aaf.model.Team;
 
 @Stateless
 public class LeagueService {

@@ -23,8 +23,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.UserFM;
+import org.aaf.model.Team;
+import org.aaf.model.UserFM;
 
 @Stateless
 public class TeamService {
@@ -54,6 +54,7 @@ public class TeamService {
 
 	@SuppressWarnings("unchecked")
 	public List<Team> getTeans(Long idLeague) {
+		okokok
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");
@@ -66,6 +67,7 @@ public class TeamService {
 	}
 
 	public Team getTean(Long id) {
+		mkmkmk
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");
