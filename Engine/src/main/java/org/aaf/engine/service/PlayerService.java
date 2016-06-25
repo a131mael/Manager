@@ -6,11 +6,11 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.aaf.engine.model.Country;
-import org.aaf.engine.model.Player;
-import org.aaf.engine.model.Team;
-import org.aaf.engine.model.TeamLeague;
 import org.aaf.engine.names.Brasil;
+import org.aaf.model.Country;
+import org.aaf.model.Player;
+import org.aaf.model.Team;
+import org.aaf.model.TeamLeague;
 
 @Stateless
 public class PlayerService {

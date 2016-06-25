@@ -1,7 +1,7 @@
 package org.aaf.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class MatchDTO implements Serializable{
 
@@ -12,7 +12,7 @@ public class MatchDTO implements Serializable{
 
 	private Long id;
 
-	private Date date;
+	private LocalDateTime date;
 
 	private String cod;
 
@@ -100,14 +100,6 @@ public class MatchDTO implements Serializable{
 		this.cod = cod;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
 	public int getRound() {
 		return round;
 	}
@@ -130,6 +122,14 @@ public class MatchDTO implements Serializable{
 
 	public void setWeek(String week) {
 		this.week = week;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public void setDate(LocalDateTime date) {
+		this.date = date;
 	}
 
 

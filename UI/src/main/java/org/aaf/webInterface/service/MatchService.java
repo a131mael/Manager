@@ -25,9 +25,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.LineUp;
-import org.aaf.webInterface.model.Match;
-import org.aaf.webInterface.model.Team;
+import org.aaf.model.LineUp;
+import org.aaf.model.Match;
+import org.aaf.model.Team;
 
 @Stateless
 public class MatchService {

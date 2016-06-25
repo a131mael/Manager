@@ -23,7 +23,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.Player;
+import org.aaf.model.Player;
 
 @Stateless
 public class PlayerService {

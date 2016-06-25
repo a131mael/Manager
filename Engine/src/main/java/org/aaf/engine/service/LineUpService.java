@@ -20,9 +20,9 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.aaf.engine.model.LineUp;
-import org.aaf.engine.model.Match;
-import org.aaf.engine.model.Team;
+import org.aaf.model.LineUp;
+import org.aaf.model.Match;
+import org.aaf.model.Team;
 
 @Stateless
 public class LineUpService {

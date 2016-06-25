@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.aaf.engine.dto.CountryDTO;
-import org.aaf.engine.model.Country;
+import org.aaf.model.Country;
 
 @Stateless
 public class CountryService {

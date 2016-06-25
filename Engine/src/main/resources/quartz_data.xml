@@ -33,5 +33,48 @@
             </cron>
         </trigger>
     </schedule>
+    
+    <schedule>
+        <job>
+            <name>EconomyJob</name>
+            <job-class>org.aaf.engine.cron.EconomyJob</job-class>
+        </job>
+        <trigger>
+            <cron>
+                <name>EconomyJob</name>
+                <job-name>EconomyJob</job-name>
+                <cron-expression>* 0/2 * * * ? *</cron-expression>
+            </cron>
+        </trigger>
+    </schedule>
+    
+    <schedule>
+        <job>
+            <name>PlayerJob</name>
+            <job-class>org.aaf.engine.cron.PlayerJob</job-class>
+        </job>
+        <trigger>
+            <cron>
+                <name>PlayerJob</name>
+                <job-name>PlayerJob</job-name>
+                <cron-expression>* 0/2 * * * ? *</cron-expression>
+            </cron>
+        </trigger>
+    </schedule>
+    
+     <schedule>
+        <job>
+            <name>TrainningJob</name>
+            <job-class>org.aaf.engine.cron.TrainningJob</job-class>
+        </job>
+        <trigger>
+            <cron>
+                <name>TrainningJob</name>
+                <job-name>TrainningJob</job-name>
+                <cron-expression>* 0/2 * * * ? *</cron-expression>
+            </cron>
+        </trigger>
+    </schedule>
+    
 
 </job-scheduling-data>

@@ -22,8 +22,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.aaf.webInterface.model.Team;
-import org.aaf.webInterface.model.UserFM;
+import org.aaf.model.Team;
+import org.aaf.model.UserFM;
 
 @Stateless
 public class UserService {
