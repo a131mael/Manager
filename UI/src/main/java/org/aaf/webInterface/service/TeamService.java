@@ -54,6 +54,7 @@ public class TeamService {
 
 	@SuppressWarnings("unchecked")
 	public List<Team> getTeans(Long idLeague) {
+		okokok
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");
@@ -66,6 +67,7 @@ public class TeamService {
 	}
 
 	public Team getTean(Long id) {
+		mkmkmk
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");

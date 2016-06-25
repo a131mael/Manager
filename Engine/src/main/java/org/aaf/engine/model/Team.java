@@ -67,12 +67,4 @@ public class Team {
 		this.cashBox = cashBox;
 	}
 
-//	public List<TeamLeague> getTeamLeagues() {
-//		return teamLeagues;
-//	}
-//
-//	public void setTeamLeagues(List<TeamLeague> teamLeagues) {
-//		this.teamLeagues = teamLeagues;
-//	}
-
 }
