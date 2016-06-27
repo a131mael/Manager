@@ -8,46 +8,59 @@
 
 	<ui:define name="content">
 		<div>
-
-			<h:panelGrid width="100%" columns="2">
-				<h:panelGrid>
-					<h:outputLabel value="Jogos da Liga" />
-					<ui:repeat var="week" value="#{matchController.weeks}"
-						varStatus="status">
-
-						<h:panelGrid columns="2">
-							<h:outputLabel value="#{msg['match.week']}: " />
-							<h:outputLabel value="#{week}" />
-
-							<ui:repeat var="match" value="#{matchController.getTeamMatchs(week)}"
-								varStatus="matchStatus">
-								<h:panelGrid columns="3">
-									<h:outputLabel value="#{match.homeTeam.name}" />
-									<h:outputLabel value=" - " />
-									<h:outputLabel value="#{match.visitTeam.name}" />
-
-								</h:panelGrid>
-
-							</ui:repeat>
-
-						</h:panelGrid>
-
-
-					</ui:repeat>
-
-
-				</h:panelGrid>
-				<h:panelGrid>
-					<h:outputLabel value="Outros" />
-
-				</h:panelGrid>
-
-
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Torcedores: " />
+				<h:outputLabel value="1000" />
+				<h:outputLabel value="Humor Patrocinadores: " />
+				<h:outputLabel value="Felizes" />
+				<h:outputLabel value="Humor Torcida: " />
+				<h:outputLabel value="Tristes" />
 			</h:panelGrid>
 
+			<h:panelGrid width="100%" columns="2">
+				<!-- Painel 1 -->
+				<h:outputLabel value="Receitas" />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Dinheiro: " />
+					<h:outputLabel value="21000 " />
 
+					<h:outputLabel value="Estádio: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Economista: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Outros: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Sócios: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Jogos: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Total: " />
+					<h:outputLabel value="21000 " />
+				</h:panelGrid>
 
+				<!-- Painel 2 -->
+				<h:outputLabel value="Despesas" />
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Manutenção Estádio: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Salário Jogadores: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Salário Comissão: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Outros: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Juniores: " />
+					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Total: " />
+					<h:outputLabel value="21000 " />
+				</h:panelGrid>
 
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Total: " />
+					<h:outputLabel value="21000 " />
+				</h:panelGrid>
+
+			</h:panelGrid>
 
 		</div>
 
