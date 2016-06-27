@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
-import org.aaf.engine.service.LineUpService;
 import org.aaf.engine.service.MatchService;
 import org.aaf.engine.util.ServiceLocator;
 import org.quartz.Job;
@@ -18,7 +17,6 @@ public class EconomyJob implements Job {
 
 	private MatchService service;
 	
-	private LineUpService lineUpService;
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
@@ -26,7 +24,8 @@ public class EconomyJob implements Job {
 			System.out.println("Atualizando economy");
 			
 			service = (MatchService) ServiceLocator.getInstance().getEJB("java:global/Engine/MatchService!org.aaf.engine.service.MatchService");
-		
+
+			service.getClass();
 		} catch (Exception e) {
 			log.info("ERRO AO Atualizar economia");
 		}

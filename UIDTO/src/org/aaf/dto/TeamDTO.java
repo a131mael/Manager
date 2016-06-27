@@ -20,6 +20,8 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 	private LeagueDTO league;
 
 	private UserDTO owner;
+	
+	private StadiumDTO stadium;
 
 	private Double cashBox;
 	
@@ -142,6 +144,14 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 
 	public void setPoints(int points) {
 		this.points = points;
+	}
+
+	public StadiumDTO getStadium() {
+		return stadium;
+	}
+
+	public void setStadium(StadiumDTO stadium) {
+		this.stadium = stadium;
 	}
 
 	

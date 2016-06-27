@@ -1,6 +1,7 @@
 package org.aaf.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,6 +36,8 @@ public class UserFM implements Serializable{
 	private String login;
 	
 	private String senha;
+	
+	private LocalDate enteredInto;
 
 	public String getName() {
 		return name;
@@ -90,6 +93,14 @@ public class UserFM implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public LocalDate getEnteredInto() {
+		return enteredInto;
+	}
+
+	public void setEnteredInto(LocalDate enteredInto) {
+		this.enteredInto = enteredInto;
 	}
 
 	

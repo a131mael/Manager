@@ -19,39 +19,52 @@ package org.aaf.uiweb.service;
 import java.util.List;
 
 import org.aaf.dto.CountryDTO;
+import org.aaf.dto.StadiumDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
 import org.json.JSONObject;
 
-
 public class TeamService {
 
-
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
-		JSONObject jo = JsonReader.getObject(EndPoints.AVALIABLE_TEAM);
-		TeamDTO time = new TeamDTO(jo);
 		
+		String endPoint = EndPoints.AVALIABLE_TEAM;
+		
+		if (country != null) {
+			endPoint += country.getId();
+		}else{
+			endPoint +=1;;
+		}
+		JSONObject jo = JsonReader.getObject(endPoint);
+		TeamDTO time = new TeamDTO(jo);
+
 		return time;
-    }
-	    
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<TeamDTO> getTeans(Long idLeague) {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_TEAMS+idLeague);
-    	List<TeamDTO> matches = ((List<TeamDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_TEAMS + idLeague);
+		List<TeamDTO> matches = ((List<TeamDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
 		return matches;
 	}
-	
+
 	public TeamDTO getTean(Long id) {
-//		StringBuilder sql = new StringBuilder();
-//		sql.append("SELECT t from  Team t ");
-//		sql.append("left join t.league l ");
-//		sql.append("where 1=1 ");
-//		sql.append("and t.id = :id ");
-//  
-//		Query query = em.createQuery(sql.toString());
-//		query.setParameter("id", id);
-//		return  (TeamDTO) query.getSingleResult();
+		// StringBuilder sql = new StringBuilder();
+		// sql.append("SELECT t from Team t ");
+		// sql.append("left join t.league l ");
+		// sql.append("where 1=1 ");
+		// sql.append("and t.id = :id ");
+		//
+		// Query query = em.createQuery(sql.toString());
+		// query.setParameter("id", id);
+		// return (TeamDTO) query.getSingleResult();
 		return null;
+	}
+
+	public StadiumDTO getStadium(Long idTeam) {
+		JSONObject jo = JsonReader.getObject(EndPoints.GET_STADIUM_TEAM + idTeam);
+		StadiumDTO stadiumDTO = (StadiumDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		return stadiumDTO;
 	}
 }

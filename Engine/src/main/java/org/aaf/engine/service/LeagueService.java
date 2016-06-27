@@ -9,6 +9,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.engine.dto.CountryDTO;
+import org.aaf.engine.names.Brasil;
+import org.aaf.engine.names.CountryInterface;
+import org.aaf.engine.names.RegisterCountry;
 import org.aaf.model.Country;
 import org.aaf.model.League;
 
@@ -42,13 +45,15 @@ public class LeagueService {
 	public void createLeague(CountryDTO country) {
 		try {
 			Country c = country.getCountry();
+			RegisterCountry rc = new RegisterCountry(c.getName());
+			
 			LocalDateTime startDate = LocalDateTime.of(2016, Month.JUNE, 21, 17, 40, 30);//TODO data arbitraria colocar no formulario a data de inicio.
 			c.setDateTimeStart(startDate); 
 			em.persist(c);
 			
 			Integer indiceJogador = 0;
 			for(int i = 1 ; i<=37; i++){
-				teamService.register(createLeague(i, country),indiceJogador);	;
+				teamService.register(createLeague(i, country),indiceJogador,rc);	;
 			}
 			matchService.createMatches(country.getCountry());
 

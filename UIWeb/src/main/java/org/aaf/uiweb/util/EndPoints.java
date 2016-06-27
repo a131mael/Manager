@@ -6,7 +6,7 @@ public class EndPoints {
 	//private static StringBuilder urlBase = new StringBuilder("http://ec2-52-67-36-232.sa-east-1.compute.amazonaws.com");
 	
  	
-	public static final String AVALIABLE_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/avaliable/1").toString();
+	public static final String AVALIABLE_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/avaliable/").toString();
 	public static final String REGISTER_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/").toString();
 	public static final String SAVE_LINEUP = new StringBuilder(urlBase).append("/UI/rest/matches/lineup/").toString();
 	public static final String LOGIN = new StringBuilder(urlBase).append("/UI/rest/login?login=").toString();
@@ -20,4 +20,5 @@ public class EndPoints {
 	public static final String GET_MAIN_LEAGUE_USER = new StringBuilder(urlBase).append("/UI/rest/leagues/user/").toString();
 	public static final String GET_TEAMLEAGUE_LEAGUE = new StringBuilder(urlBase).append("/UI/rest/teamLeagues/league/").toString();
 	public static final String GET_LINEUP = new StringBuilder(urlBase).append("/UI/rest/matches/lineup/").toString();
+	public static final String GET_STADIUM_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/stadium/teamID/").toString();
 }

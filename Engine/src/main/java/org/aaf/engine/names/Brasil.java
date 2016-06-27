@@ -6,390 +6,71 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class Brasil {
+public class Brasil implements CountryInterface{
 
 	public static final String nameCountry = "Brazil";
-	
-	private static  List<String> namesPlayeres;
+	public static final String lamguage = "pt_br";
+
+	private List<String> namesPlayeres;
+	private static List<String> namesTeams;
 
 	// Name players
-	public static final String namePlayer = "Abimael ;Gustavo ;Fernando ;Douglas ;Carlos ;Leandro ;Alberto ;Gugu ;Abibi ;Nando ;Magno ;Miguel ;Lucas ;Guilherme ;Enzo ;Arthur ;Matheus;Davi ;Bernardo ;";
+	public static final String namePlayer = "Abimael ;Gustavo ;Fernando ;Douglas ;Carlos ;Leandro ;Alberto ;Gugu ;Abibi ;Nando ;Magno ;Miguel ;Lucas ;Guilherme ;"
+			+ "Enzo ;Arthur ;Matheus;Davi ;Bernardo ;Gervinho ;PelÃ© ;Maicon ;Coxinha ;AnÃ£o ;Zequinha ;Joca ;JoÃ£o Snow ;Guitarrista ;Pedreiro ;Gaitero ;Alfredo ;"
+			+ "Zico ;Maradona ;Gentil ;Getulio ;Pato ;Ronaldo ;Imperador ;Fenomeno ;CaimbrÃ¢ ;Gervim ;Gervasio ;Aldevino ;Xereque ;Chambinha;Sapeca ;Queijo ;Godofredo ;"
+			+ "Champis ;Ronaldinho ;Julio CÃ©sar ;Adriano ;Adrianinho ;  Fernandinho;JÃ© ; Zinho ;ZÃ©zinho ;Estrelinha ;Neitam ;NaitaÃ§u ;Cabeleira ;Louco ;Porquinho ;Tico ;Ganso ;"
+			+ "Marreco ;Bezerro ; ZÃ³lhudo ;Robssu ; Robssom ; MaÃ§aneta ;";
 	// Midle name players
-	public static final String midleNamePlayer = "wellington ;Roberto ;Caxias ;Alvez ;Alvarenga ;Romero ;Sabino ;Augusto ;Facebocssom ;Araujo ;Cerse ;";
+	//public static final String midleNamePlayer = "wellington ;Roberto ;Caxias ;Alvez ;Alvarenga ;Romero ;Sabino ;Augusto ;Facebocssom ;Araujo ;Cerse ;";
 
 	// Midle name players
-	public static final String lastNamePlayer = "Fidêncio ;Silva ;Souza ;Temer ;Rousseff ;Jucá ;Birk ;França ;Ferronatto ;Pessoa ;Palma ;Resende;Longuinho;Vidal;Lobos;Arantes;Sales;"
-			+ "Peixoto;Filgueira;Solimões;Louzada;Fontes;"
-			+ "Bouças;Mangueira;Gonçalves;Rodrigues;Martins;Lopes;Gomes;Mendes;Antunes;Soares;Domingues;Marques;Paes;Ximenes;Ramires;Sanches;Chaves;Ordonhes;Marcondes;Marins;Guterres;"
-			+ "Castanho;Castelo;Modesto;Gentil;Martim;Rolim;Vimaranes;Fontinhas;Bittencourt;Garcês";
+	public static final String lastNamePlayer = "Fidencio ;Silva ;Souza ;Temer ;Rousseff ;Juca ;Birk ;Franca ;Ferronatto ;Pessoa ;Palma ;Resende;Longuinho;Vidal;Lobos;Arantes;Sales;"
+			+ "Peixoto;Filgueira;Solimï¿½es;Louzada;Fontes;"
+			+ "Bouï¿½as;Mangueira;Gonï¿½alves;Rodrigues;Martins;Lopes;Gomes;Mendes;Antunes;Soares;Domingues;Marques;Paes;Ximenes;Ramires;Sanches;Chaves;Ordonhes;Marcondes;Marins;Guterres;"
+			+ "Castanho;Castelo;Modesto;Gentil;Martim;Rolim;Vimaranes;Fontinhas;Bittencourt;GarÃ§as"
+			+ "da casa Amarela; bom e bola;das quebradas;caÃ§a-rato;pÃ© de Porco;do campo;de Mattos;Avassalador;Chuta que Ã© Macumba;da conceiÃ§Ã£o;da anunciaÃ§Ã£o;Sanguessuga;pÃ©-de-muleque;Muzambinho;Pontes; Ponte Alta; Ladeira; Ladeira a baixo;"
+			+ "Cavalo; Jeguim;Piriquito;Pena Branca;Tupi;Guarani;Castelo Branco;Branco;Frangancia;Cheiro;PaÃ§oquita;Cheiroso;Fimose;Cata Vento;Neto;Junior;Jr;"
+			+ "Gafanhoto;Pequeno Gafanhoto;Gaguinho;Marceneiro;da Padoca;Frescal;Marcelino;Celhinho;Garra Larga;Cabebulo;Cabeleira;Nego Veio;Gaucho;Lazarento;Netinho;NazarÃ©;NoÃ©;"
+			+ "Jofrey; House; Muro Alto; LambanÃ§a;Scot; Scout; Jovelino; Quebra queicho;Natalino;Facundes;Antunes;Netinho;Cretino;Natanael;Covarde;Neitam;FogaÃ§a;Claytom;Calaitu;Juju;catatal;Negueba;"
+			+ "RedenÃ§Ã£o;Pinto;Fulo;Avatar;RegaÃ§o;Pintolino;Cadeira;";
 
-	// Team names to bots
-	public static final String nameTeamBot1 = "Flamengo ";
-	public static final String nameTeamBot2 = "Vasco ";
-	public static final String nameTeamBot3 = "Botafogo ";
-	public static final String nameTeamBot4 = "Bragantino ";
-	public static final String nameTeamBot5 = "São Paulo ";
-	public static final String nameTeamBot6 = "Corinthias ";
-	public static final String nameTeamBot7 = "Chapecoense ";
-	public static final String nameTeamBot8 = "Figueirense ";
-	public static final String nameTeamBot9 = "Avaí ";
-	public static final String nameTeamBot10 = "Palmeiras ";
-	public static final String nameTeamBot11 = "Internacional ";
-	public static final String nameTeamBot12 = "Gremio ";
-	public static final String nameTeamBot13 = "Santos ";
-	public static final String nameTeamBot14 = "Ponte Preta ";
-	public static final String nameTeamBot15 = "Santa Cruz ";
-	public static final String nameTeamBot16 = "Atlético PR ";
-	public static final String nameTeamBot17 = "Fluminense ";
-	public static final String nameTeamBot18 = "Vitória ";
-	public static final String nameTeamBot19 = "Curitiba ";
-	public static final String nameTeamBot20 = "Cruzeiro ";
-	public static final String nameTeamBot21 = "Atlético Mineiro ";
-	public static final String nameTeamBot22 = "Sport ";
-	public static final String nameTeamBot23 = "América RJ ";
-	public static final String nameTeamBot24 = "Portuguesa ";
-	public static final String nameTeamBot25 = "Atlético Goianiense ";
-	public static final String nameTeamBot26 = "Bahia ";
-	public static final String nameTeamBot27 = "Criciuma ";
-	public static final String nameTeamBot28 = "Ceará ";
-	public static final String nameTeamBot29 = "Londrina ";
-	public static final String nameTeamBot30 = "Payssandu ";
+	public static final String teamName = "Flamengo ;Vasco ;Botafogo ;Bragantino ;Sï¿½o Paulo ;Corinthias ;Chapecoense ;Figueirense ;Avaï¿½ ;Palmeiras ;Internacional ;Gremio ;Santos ;Ponte Preta ;Santa Cruz ;Atlï¿½tico PR ;Fluminense ;Vitï¿½ria ;Curitiba ;Cruzeiro ;Atlï¿½tico Mineiro ;Sport ;Amï¿½rica RJ ;Portuguesa ;Atlï¿½tico Goianiense ;Bahia ;Criciuma ;CearÃ¡ ;Londrina ;Payssandu ;";
 
-	public static final String conectorTeam1 = "do ";
-	public static final String conectorTeam2 = "de ";
+	public static final String regions = "Santa Catarina;Rio Grande do Sul;ParanÃ¡;SÃ£o Paulo;Rio de Janeiro;Goiais;Bahia;Tocantins;CearÃ¡;Amazonia;Roraima";
 
-	public static final String lastNameTeamBot1 = "Santa Catatina";
-	public static final String lastNameTeamBot2 = "Rio Grande do Sul";
-	public static final String lastNameTeamBot3 = "Paraná";
-	public static final String lastNameTeamBot4 = "Bahia";
-	public static final String lastNameTeamBot5 = "São Paulo";
-	public static final String lastNameTeamBot6 = "Goiais";
-	public static final String lastNameTeamBot7 = "Minas ";
-	public static final String lastNameTeamBot8 = "Amazônia";
-	public static final String lastNameTeamBot9 = "Tocantins";
 
-	
-	
-	
-	
-	@SuppressWarnings("unchecked")
-	public static List<String> getPlayerName() {
-		Set<String> nomes = new HashSet<>();
-		StringBuilder fullName = null;
-		Random gerador = new Random();
-
-		int total = 0;
-		while (total < 256 * 22) {
-
-			String name = namePlayer.split(";")[gerador.nextInt(namePlayer.split(";").length - 1)];
-			String midleName = midleNamePlayer.split(";")[gerador.nextInt(midleNamePlayer.split(";").length - 1)];
-			String lastName = lastNamePlayer.split(";")[gerador.nextInt(lastNamePlayer.split(";").length - 1)];
-			fullName = new StringBuilder();
-			fullName.append(name);
-			fullName.append(midleName);
-			fullName.append(lastName);
-			nomes.add(fullName.toString());
-
-			System.out.println(fullName);
-
-			total = nomes.size();
-			System.out.println("Total = " + total);
-		}
-		List<String> namesFinal = new ArrayList<>();
-		namesFinal.addAll(nomes);
-		return namesFinal;
+	public static List<String> getNamesTeans() {
+		return namesTeams;
 	}
 
-	public static List<String> getTeam() {
-		List<String> nameTeams = new ArrayList<String>();
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot1);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot1);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot2);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot2);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot3);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot3);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot4);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot4);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot5);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot5);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot6);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot6);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot7);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot7);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot8);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot8);
-
-		nameTeams.add(nameTeamBot1 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot2 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot3 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot4 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot5 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot6 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot7 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot8 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot9 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot10 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot11 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot12 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot13 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot14 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot15 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot16 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot17 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot18 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot19 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot20 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot21 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot22 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot23 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot24 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot25 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot26 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot27 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot28 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot29 + conectorTeam1 + lastNameTeamBot9);
-		nameTeams.add(nameTeamBot30 + conectorTeam1 + lastNameTeamBot9);
-
-		return nameTeams;
+	@Override
+	public String getNamecountry() {
+		return Brasil.nameCountry;
 	}
 
-	public static List<String> getNamesPlayeres() {
-		
-		if(namesPlayeres == null || namesPlayeres.size()==0){
-			namesPlayeres = getPlayerName();
-		}
-		return namesPlayeres;
+	@Override
+	public String getLamguage() {
+		return Brasil.lamguage;
+	}
+
+	@Override
+	public String getNameplayer() {
+		return Brasil.namePlayer;
+	}
+
+	@Override
+	public String getLastnameplayer() {
+		return Brasil.lastNamePlayer;
+	}
+
+	@Override
+	public String getTeamname() {
+		return Brasil.teamName;
+	}
+
+	@Override
+	public String getRegions() {
+		return Brasil.regions;
 	}
 
 }

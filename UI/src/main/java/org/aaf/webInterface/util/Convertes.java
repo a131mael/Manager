@@ -12,6 +12,7 @@ import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
+import org.aaf.dto.StadiumDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.dto.UserDTO;
@@ -21,6 +22,7 @@ import org.aaf.model.LineUp;
 import org.aaf.model.Match;
 import org.aaf.model.Player;
 import org.aaf.model.PositionEnum;
+import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.model.TeamLeague;
 import org.aaf.model.UserFM;
@@ -37,6 +39,7 @@ public class Convertes {
 			userFM.setName(dto.getName());
 			userFM.setSenha(dto.getSenha());
 			userFM.setTeam(getTeam(dto.getTeam()));
+			userFM.setEnteredInto(dto.getEnteredInto());
 			return userFM;
 
 		} else {
@@ -54,6 +57,7 @@ public class Convertes {
 			userDTO.setName(user.getName());
 			userDTO.setSenha(user.getSenha());
 			userDTO.setTeam(getTeam(user.getTeam()));
+			userDTO.setEnteredInto(user.getEnteredInto());
 			return userDTO;
 
 		} else {
@@ -432,22 +436,22 @@ public class Convertes {
 			obj.setTeamDTO(getTeam(param.getTeam()));
 			obj.setDate(param.getDate());
 			
-			obj.setOrderPlayer1((short) param.getOrderP1().ordinal());
-			obj.setOrderPlayer2((short) param.getOrderP2().ordinal() );
-			obj.setOrderPlayer3((short) param.getOrderP3().ordinal());
-			obj.setOrderPlayer4((short) param.getOrderP4().ordinal());
-			obj.setOrderPlayer5((short) param.getOrderP5().ordinal());
-			obj.setOrderPlayer6((short) param.getOrderP6().ordinal());
-			obj.setOrderPlayer7((short) param.getOrderP7().ordinal());
-			obj.setOrderPlayer8((short) param.getOrderP8().ordinal());
-			obj.setOrderPlayer9((short) param.getOrderP9().ordinal());
-			obj.setOrderPlayer10((short) param.getOrderP10().ordinal());
-			obj.setOrderPlayer11((short) param.getOrderP11().ordinal());
-			obj.setOrderPlayer12((short) param.getOrderP12().ordinal());
-			obj.setOrderPlayer13((short) param.getOrderP13().ordinal());
-			obj.setOrderPlayer14((short) param.getOrderP14().ordinal());
-			obj.setOrderPlayer15((short) param.getOrderP15().ordinal());
-			obj.setOrderPlayer16((short) param.getOrderP16().ordinal());
+			obj.setOrderPlayer1( param.getOrderP1() != null ?(short)param.getOrderP1().ordinal():0);
+			obj.setOrderPlayer2(param.getOrderP2() != null ?(short)param.getOrderP2().ordinal():0 );
+			obj.setOrderPlayer3(param.getOrderP3() != null ?(short)param.getOrderP3().ordinal():0);
+			obj.setOrderPlayer4(param.getOrderP4() != null ?(short)param.getOrderP4().ordinal():0);
+			obj.setOrderPlayer5(param.getOrderP5() != null ?(short)param.getOrderP5().ordinal():0);
+			obj.setOrderPlayer6(param.getOrderP6() != null ?(short)param.getOrderP6().ordinal():0);
+			obj.setOrderPlayer7(param.getOrderP7() != null ?(short)param.getOrderP7().ordinal():0);
+			obj.setOrderPlayer8(param.getOrderP8() != null ?(short)param.getOrderP8().ordinal():0);
+			obj.setOrderPlayer9(param.getOrderP9() != null ?(short)param.getOrderP9().ordinal():0);
+			obj.setOrderPlayer10(param.getOrderP10() != null ?(short)param.getOrderP10().ordinal():0);
+			obj.setOrderPlayer11(param.getOrderP11() != null ?(short)param.getOrderP11().ordinal():0);
+			obj.setOrderPlayer12(param.getOrderP12() != null ?(short)param.getOrderP12().ordinal():0);
+			obj.setOrderPlayer13(param.getOrderP13() != null ?(short)param.getOrderP13().ordinal():0);
+			obj.setOrderPlayer14(param.getOrderP14() != null ?(short)param.getOrderP14().ordinal():0);
+			obj.setOrderPlayer15(param.getOrderP15() != null ?(short)param.getOrderP15().ordinal():0);
+			obj.setOrderPlayer16(param.getOrderP16() != null ?(short)param.getOrderP16().ordinal():0);
 			
 			obj.setPlayer1(getPlayer(param.getPosition1()));
 			obj.setPlayer2(getPlayer(param.getPosition2()));
@@ -469,5 +473,25 @@ public class Convertes {
 			return obj;
 		}
 		return null;
+	}
+
+	public static StadiumDTO getStadium(Stadium param) {
+		if (param != null) {
+			StadiumDTO obj = new StadiumDTO();
+			obj.setName(param.getNome());
+			obj.setBleacher(param.getBleacher());
+			obj.setChair(param.getChair());
+			//obj.setCod(param.getId());
+			obj.setCoveredBleacher(param.getCoveredBleacher());
+			obj.setCoveredChair(param.getCoveredChair());
+			obj.setCoveredVip(param.getCoveredVip());
+			obj.setName(param.getNome());
+			obj.setVip(param.getVip());
+			obj.setTeam(getTeam(param.getTeam()));
+			
+			return obj;
+		} else {
+			return null;
+		}
 	}
 }

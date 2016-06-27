@@ -34,23 +34,21 @@ import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.service.CountryService;
 import org.aaf.uiweb.service.LeagueService;
+import org.aaf.uiweb.service.TeamService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 
 @Model
 public class AuthController {
 
-	// @Inject
-	// private FacesContext facesContext;
-
-	// @Inject
-	// private UserService userRegistration;
-
 	@Inject
 	private CountryService countryService;
 
 	@Inject
 	private LeagueService leagueService;
+	
+	@Inject
+	private TeamService teamService;
 
 	private UserDTO loggedUser;
 
@@ -88,15 +86,16 @@ public class AuthController {
 		this.authUser = authUser;
 	}
 
-	// Colocar o country no loggedUser
 	public UserDTO getLoggedUser() {
 		try {
 			if (loggedUser == null) {
 				if (SecurityUtils.getSubject().getPrincipal() != null) {
+					System.out.println("CONSTRUIU O USUARIO LOGADO !!");
 					UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
 					loggedUser = user;
 					loggedUser.setCountryDTO(countryService.getCountry(loggedUser.getId()));
 					loggedUser.setMainLeague(leagueService.getMainLeague(loggedUser.getId()));
+					loggedUser.getTeam().setStadium(teamService.getStadium(loggedUser.getTeam().getId()));
 				}
 			}
 

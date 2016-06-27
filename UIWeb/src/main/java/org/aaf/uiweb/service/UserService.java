@@ -16,6 +16,7 @@
  */
 package org.aaf.uiweb.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,15 +50,13 @@ public class UserService {
 
 	public void register(UserDTO user, CountryDTO countryDTO) throws Exception {
 
-		// log.info("Registering " + user.getName());
-
+		user.setEnteredInto(LocalDate.now());
+		
 		TeamDTO team = teamService.getAvailableTeam(countryDTO);
 		team.setName(user.getTeam().getName());
 		team.setOwner(user);
 
 		JSONPPost.sendJson(JsonWriter.objectToJson(team), EndPoints.REGISTER_TEAM);
-
-		// TODO POST para criar time
 	}
 
 	public UserDTO login(UserDTO m) throws Exception {
@@ -68,20 +67,13 @@ public class UserService {
 		return userLogado;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<CountryDTO> getCountries() throws Exception {
-		JSONArray jo = JsonReader.getList(EndPoints.GET_COUNTRIES);
-		List<CountryDTO> objs = new ArrayList<CountryDTO>();
-		for(int i = 0; i<jo.length();i++){
-			CountryDTO co = new CountryDTO();
-			
-			co.setName(jo.getJSONObject(i).getString("name"));
-			co.setId(jo.getJSONObject(i).getLong("id"));
-			//co.setCod(jo.getJSONObject(i).getString("cod"));
-			
-			objs.add(co);
-		}
+		String endPoint = EndPoints.GET_COUNTRIES;
+		JSONObject jo = JsonReader.getObject(endPoint);
 		
-		return objs;
+    	List<CountryDTO> countryDTOs =  (List<CountryDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
+		return countryDTOs;
 	}
 
 }

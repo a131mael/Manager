@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
 <h:head>
 	<title>webInterface</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,16 +27,18 @@
 				<h2>Member Registration</h2>
 
 				<h:panelGrid columns="3" columnClasses="titleCell">
-<!-- 					<h:outputLabel for="country" value="Country:" /> -->
-<!-- 					<h:selectOneMenu id="country" label="Country" style="width: 175px;" -->
-<!-- 						value="#{userController.countryDTO}"> -->
-<!-- 						<f:selectItem itemLabel="Country ..." itemValue="" /> -->
-<!-- 						<f:selectItems value="#{CombosEspeciaisMB.countries}"  /> -->
-<!-- 						<f:ajax execute="@this" render="teamName" event="change" />  -->
-<!-- 					</h:selectOneMenu> -->
-<!-- 					<h:outputText value=""/> -->
+					<h:outputLabel for="country" value="Country:" />
+
+					<p:selectOneMenu id="country" style="width: 153px;" converter="converterCountry"
+						value="#{userController.countryDTO}" >
+						<f:selectItems value="#{CombosEspeciaisMB.countries}" var="country"
+						 itemLabel="#{country.label}" itemValue="#{player}" />
+					</p:selectOneMenu>
+
+					<h:outputText value="" /> 
 					<h:outputLabel for="teamName" value="Team Name:" />
-					<h:inputText id="teamName" value="#{userController.newUser.team.name}" />
+					<h:inputText id="teamName"
+						value="#{userController.newUser.team.name}" />
 					<h:message for="teamName" errorClass="invalid" />
 
 					<h:outputLabel for="login" value="Login:" />

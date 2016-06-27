@@ -16,6 +16,8 @@
  */
 package org.aaf.webInterface.rest;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
@@ -27,6 +29,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.model.Country;
+import org.aaf.model.Stadium;
+import org.aaf.model.Team;
 import org.aaf.webInterface.service.CountryService;
 import org.aaf.webInterface.util.Convertes;
 
@@ -35,52 +39,59 @@ import com.cedarsoftware.util.io.JsonWriter;
 @Path("/countries")
 @RequestScoped
 public class CountryRESTService {
-    
-    @EJB
-    private CountryService countryService;
 
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAll() {
-    	
-    	
-    	Response.ResponseBuilder builder = Response.ok();
-    	
-//    	retornar assim
-    	/*JsonWriter.objectToJson(team)*/
-    	
-		builder.entity(Convertes.getCountries(countryService.findAllOrderedByName()));
-        return builder.build();
-    }
+	@EJB
+	private CountryService countryService;
 
-    @GET
-    @Path("/{id:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response lookupCountryById(@PathParam("id") long id) {
-    	Response.ResponseBuilder builder = Response.ok();
-    	
-        Country country = countryService.findById(id);
-        builder.entity(country);
-        if (country == null) {
-        	 builder = Response.status(Response.Status.NOT_FOUND);
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }	
-        return builder.build();
-    }
-    
-    @GET
-    @Path("/user/{idUser:[0-9][0-9]*}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response lookupCountryByIdUser(@PathParam("idUser") long idUser) {
-    	Response.ResponseBuilder builder = Response.ok();
-    	
-        Country country = countryService.findByUserId(idUser);
-        builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
-        if (country == null) {
-        	 builder = Response.status(Response.Status.NOT_FOUND);
-            throw new WebApplicationException(Response.Status.NOT_FOUND);
-        }	
-        return builder.build();
-    }
-   
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getall() {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+
+		List<Country> countries = countryService.findAllOrderedByName();
+
+		if (countries == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getCountries(countries)));
+		}
+
+		return builder.build();
+	}
+
+	
+
+	@GET
+	@Path("/{id:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response lookupCountryById(@PathParam("id") long id) {
+		Response.ResponseBuilder builder = Response.ok();
+
+		Country country = countryService.findById(id);
+		builder.entity(country);
+		if (country == null) {
+			builder = Response.status(Response.Status.NOT_FOUND);
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		}
+		return builder.build();
+	}
+
+	@GET
+	@Path("/user/{idUser:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response lookupCountryByIdUser(@PathParam("idUser") long idUser) {
+		Response.ResponseBuilder builder = Response.ok();
+
+		Country country = countryService.findByUserId(idUser);
+		builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
+		if (country == null) {
+			builder = Response.status(Response.Status.NOT_FOUND);
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		}
+		return builder.build();
+	}
+
 }

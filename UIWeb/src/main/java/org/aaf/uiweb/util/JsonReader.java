@@ -29,7 +29,7 @@ public class JsonReader {
       BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
       String jsonText = readAll(rd);
       JSONObject json = new JSONObject(jsonText);
-      
+      	
       com.cedarsoftware.util.io.JsonReader.jsonToJava(jsonText);
       
       return json;

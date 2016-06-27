@@ -41,13 +41,13 @@
 						<h:link value="#{authController.loggedUser.mainLeague.name}"  outcome="league"/>
 
 						<h:outputLabel value="#{msg['team.entry']}" />
-						<h:outputText value="..." style="font-size: 25px" />
+						<h:link value="#{authController.loggedUser.enteredInto}"  outcome="league"/>
 
 						<h:outputLabel value="#{msg['team.idiom']}" />
 						<h:outputText value="..." style="font-size: 25px" />
 
 						<h:outputLabel value="#{msg['team.stadium']}" />
-						<h:outputText value="..." style="font-size: 25px" />
+						<h:link value="#{authController.loggedUser.team.stadium.name}"  outcome="stadium"/>
 
 						<h:outputLabel value="#{msg['team.region']}" />
 						<h:outputText value="..." style="font-size: 25px" />

@@ -58,7 +58,7 @@ public class CountryService {
 		Query query2 = em.createQuery(query.toString());
 		query2.setParameter("idUser", idUser);
 		
-		Country user = (Country) query2.getSingleResult();
+		Country user = (Country) query2.getSingleResult(); 	 	 	
 		return user;
 	}
 }

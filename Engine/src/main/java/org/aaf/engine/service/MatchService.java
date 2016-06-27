@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -22,15 +21,6 @@ public class MatchService {
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-//	@Inject
-//	private Logger log;
-
-	@Inject
-	private LeagueService leagueService;
-
-	@Inject
-	private TeamService teamService;
-	
 	@SuppressWarnings("unchecked")
 	public List<Match> getMatchesToExecute(LocalDateTime now){
 		StringBuilder sql = new StringBuilder();

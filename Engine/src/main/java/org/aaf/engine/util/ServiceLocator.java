@@ -1,9 +1,6 @@
 package org.aaf.engine.util;
 
 import javax.naming.InitialContext;
-import javax.rmi.PortableRemoteObject;
-
-import org.aaf.engine.service.CountryService;
 
 public class ServiceLocator {
 

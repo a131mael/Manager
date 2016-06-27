@@ -1,5 +1,6 @@
 package org.aaf.engine.service;
 
+import java.time.LocalDateTime;
 import java.util.Random;
 
 import javax.ejb.Stateless;
@@ -7,8 +8,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.engine.names.Brasil;
+import org.aaf.engine.names.RegisterCountry;
 import org.aaf.model.Country;
+import org.aaf.model.LineUp;
 import org.aaf.model.Player;
+import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.model.TeamLeague;
 
@@ -31,6 +35,8 @@ public class PlayerService {
 	public void register(Team team) throws Exception {
 		em.persist(team);
 		
+		
+		
 		for(int i=1; i<=22; i++){
 			//em.persist(createPlayer(i, team));
 		}
@@ -39,27 +45,47 @@ public class PlayerService {
 		
 	}
 	
-	public void register(TeamLeague teamLeague, Integer indiceJogador) throws Exception {
+	public void register(TeamLeague teamLeague, Integer indiceJogador, RegisterCountry rc) throws Exception {
 		Team team = teamLeague.getTeam();
 		em.persist(team);
 		teamLeague.setTeam(team);
 		em.persist(teamLeague);
 		
+		em.persist(createStadium(team));
+		em.persist(createLineUp(team));
+		
 		for(int i=1; i<=22; i++){
 			indiceJogador++;
-			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador));
+			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador,rc));
 		}
 
 		//log.info("Registering " + team.getName());
 		
 	}
 	
-	private Player createPlayer(int index, Team team, Country country, Integer indiceJogador){
+	private LineUp createLineUp(Team team) {
+		LineUp lineUp = new LineUp();
+		lineUp.setDate(LocalDateTime.now());
+		lineUp.setTeam(team);;
+		
+		return lineUp;
+	}
+
+	private Stadium createStadium(Team team) {
+		Stadium stadium = new Stadium();
+		stadium.setTeam(team);
+		stadium.setBleacher(1000);
+		stadium.setChair(4000);
+		stadium.setNome(team.getName() + " Stadium"); // Translate
+		return stadium;
+	}
+
+	private Player createPlayer(int index, Team team, Country country, Integer indiceJogador, RegisterCountry rc){
 		Random gerador = new Random();
 		Player player = new Player();
 		
 		player.setCod(index+"");
-		player.setName(country.getName().equalsIgnoreCase(Brasil.nameCountry)?Brasil.getNamesPlayeres().get(indiceJogador):"Jogador " + index);
+		player.setName(rc.getNamesPlayeres().get(indiceJogador));
 		player.setTeam(team);
 		player.setCountry(country);
 		

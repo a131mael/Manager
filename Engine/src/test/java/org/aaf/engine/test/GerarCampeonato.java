@@ -66,13 +66,5 @@ public class GerarCampeonato {
 		}
 		return index;
 	}
-	private static List<String> invertArray(List<String> array){
-		List<String> clone = new ArrayList<>();
-		for(String element: array){
-			clone.add(0, element);
-		}
-		
-		return clone;
-	}
 
 }

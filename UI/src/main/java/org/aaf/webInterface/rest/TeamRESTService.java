@@ -35,11 +35,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.dto.TeamDTO;
+import org.aaf.model.Player;
+import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.webInterface.service.TeamService;
 import org.aaf.webInterface.util.Convertes;
 
 import com.cedarsoftware.util.io.JsonReader;
+import com.cedarsoftware.util.io.JsonWriter;
 
 @Path("/teams")
 @RequestScoped
@@ -77,18 +80,46 @@ public class TeamRESTService {
 	@GET
 	@Path("/avaliable/{countryId:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Team lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
-		Team t = null;
+	public Response lookupAvaliableTeamByCountry(@PathParam("countryId") long id) {
+		Response.ResponseBuilder builder = null;
+		
+		Team team = null;
+		
 		try {
-			t = teamService.getAvailableTeam(id);
-			if (t == null) {
-				throw new WebApplicationException(Response.Status.NOT_FOUND);
-			}
-
+			team = teamService.getAvailableTeam(id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return t;
+
+		if (team == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getTeam(team)));
+		}
+
+		return builder.build();
+	}
+
+	@GET
+	@Path("/stadium/teamID/{teamId:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getTeamStadium(@PathParam("teamId") long id) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+
+		Stadium stadium = teamService.getStadium(id);
+
+		if (stadium == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getStadium(stadium)));
+		}
+
+		return builder.build();
 	}
 
 	@POST

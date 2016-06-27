@@ -23,6 +23,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.model.UserFM;
 
@@ -54,7 +55,7 @@ public class TeamService {
 
 	@SuppressWarnings("unchecked")
 	public List<Team> getTeans(Long idLeague) {
-		okokok
+		//TODO what
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");
@@ -67,7 +68,7 @@ public class TeamService {
 	}
 
 	public Team getTean(Long id) {
-		mkmkmk
+		//TODO what
 		StringBuilder sql = new StringBuilder();
 		sql.append("SELECT t from  Team t ");
 		sql.append("left join t.league l ");
@@ -98,5 +99,17 @@ public class TeamService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public Stadium getStadium(long id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT s from  Stadium s ");
+		sql.append("left join s.team t ");
+		sql.append("where 1=1 ");
+		sql.append("and t.id = :id ");
+
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("id", id);
+		return (Stadium) query.getSingleResult();
 	}
 }

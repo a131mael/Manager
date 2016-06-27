@@ -1,6 +1,7 @@
 package org.aaf.dto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import org.json.JSONObject;
 
@@ -28,6 +29,8 @@ public class UserDTO implements Serializable {
 	private CountryDTO countryDTO;
 
 	private LeagueDTO mainLeague;
+	
+	private LocalDate enteredInto;
 
 	public UserDTO() {
 	}
@@ -135,6 +138,14 @@ public class UserDTO implements Serializable {
 
 	public void setMainLeague(LeagueDTO mainLeague) {
 		this.mainLeague = mainLeague;
+	}
+
+	public LocalDate getEnteredInto() {
+		return enteredInto;
+	}
+
+	public void setEnteredInto(LocalDate enteredInto) {
+		this.enteredInto = enteredInto;
 	}
 
 }
