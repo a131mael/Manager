@@ -1,16 +1,12 @@
 package org.aaf.engine.names;
 
-import java.util.List;
+import org.aaf.model.enuns.IdionsEnum;
 
 public interface CountryInterface {
 
 	public abstract String getNamecountry();
 
 	public abstract String getLamguage() ;
-
-//	public abstract void setNamesPlayeres(List<String> namesPlayeres);
-	
-	//public abstract void setNamesTeams(List<String> namesTeams);
 
 	public abstract String getNameplayer();
 
@@ -20,4 +16,6 @@ public interface CountryInterface {
 
 	public abstract String getRegions() ;
 	
+	public IdionsEnum getIdiom();
+
 }

@@ -23,12 +23,10 @@ import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
-import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONObject;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-public class MatchService {
+public class MatchService extends Service{
 
 	
 	public List<MatchDTO> getLastMatches(Long idTeam) {
@@ -38,10 +36,8 @@ public class MatchService {
 	
 	@SuppressWarnings("unchecked")
 	public List<MatchDTO> getMatches(Long idTeam,int session) {
-		
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_MATCHES+idTeam+"/"+session);
-    	List<MatchDTO> matches = ((List<MatchDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
-		return matches;
+		String endPoint =  EndPoints.GET_MATCHES+idTeam+"/"+session;
+		return (List<MatchDTO>)getObject(endPoint);
 	}
 
 	public MatchDTO getLastMatch(Long id) {
@@ -55,9 +51,9 @@ public class MatchService {
 	}
 
 	public LineUpDTO getLineUp(Long matchId, Long idTeam) {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_LINEUP+matchId+"/"+idTeam);
-    	LineUpDTO lineUp = (LineUpDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return lineUp;
+		
+		String endPoint =  EndPoints.GET_LINEUP+matchId+"/"+idTeam;
+		return(LineUpDTO)getObject(endPoint);
 	}
 
 }

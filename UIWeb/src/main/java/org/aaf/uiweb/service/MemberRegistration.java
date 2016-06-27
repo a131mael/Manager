@@ -18,8 +18,6 @@ package org.aaf.uiweb.service;
 
 import java.lang.reflect.Member;
 
-import javax.ejb.Stateless;
-
 // The @Stateless annotation eliminates the need for manual transaction demarcation
 public class MemberRegistration {
 

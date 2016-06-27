@@ -1,10 +1,8 @@
 package org.aaf.engine.names;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
-import java.util.Set;
+
+import org.aaf.model.enuns.IdionsEnum;
 
 public class Brasil implements CountryInterface{
 
@@ -13,6 +11,8 @@ public class Brasil implements CountryInterface{
 
 	private List<String> namesPlayeres;
 	private static List<String> namesTeams;
+	
+	private IdionsEnum idiom = IdionsEnum.PT_BR;
 
 	// Name players
 	public static final String namePlayer = "Abimael ;Gustavo ;Fernando ;Douglas ;Carlos ;Leandro ;Alberto ;Gugu ;Abibi ;Nando ;Magno ;Miguel ;Lucas ;Guilherme ;"
@@ -72,5 +72,11 @@ public class Brasil implements CountryInterface{
 	public String getRegions() {
 		return Brasil.regions;
 	}
+
+	@Override
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
 
 }

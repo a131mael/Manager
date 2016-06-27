@@ -22,31 +22,28 @@ import org.aaf.dto.CountryDTO;
 import org.aaf.dto.StadiumDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.uiweb.util.EndPoints;
-import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONObject;
 
-public class TeamService {
+public class TeamService extends Service{
 
 	public TeamDTO getAvailableTeam(CountryDTO country) throws Exception {
 		
-		String endPoint = EndPoints.AVALIABLE_TEAM;
+		String endPoint = EndPoints.AVALIABLE_TEAM + country.getId();
+		return (TeamDTO)getObject(endPoint);
 		
-		if (country != null) {
-			endPoint += country.getId();
-		}else{
-			endPoint +=1;;
-		}
-		JSONObject jo = JsonReader.getObject(endPoint);
-		TeamDTO time = new TeamDTO(jo);
-
-		return time;
+////		if (country != null) {
+////			endPoint += country.getId();
+////		}else{
+////			endPoint +=1;;
+////		}
+////		JSONObject jo = JsonReader.getObject(endPoint);
+////		TeamDTO time = new TeamDTO(jo);
+//		return time;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<TeamDTO> getTeans(Long idLeague) {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_TEAMS + idLeague);
-		List<TeamDTO> matches = ((List<TeamDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
-		return matches;
+		String endPoint =  EndPoints.GET_TEAMS + idLeague;
+		return (List<TeamDTO>)getObject(endPoint);
 	}
 
 	public TeamDTO getTean(Long id) {
@@ -63,8 +60,7 @@ public class TeamService {
 	}
 
 	public StadiumDTO getStadium(Long idTeam) {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_STADIUM_TEAM + idTeam);
-		StadiumDTO stadiumDTO = (StadiumDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return stadiumDTO;
+		String endPoint =  EndPoints.GET_STADIUM_TEAM + idTeam;
+		return (StadiumDTO)getObject(endPoint);
 	}
 }

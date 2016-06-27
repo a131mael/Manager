@@ -17,7 +17,6 @@
 package org.aaf.uiweb.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.aaf.dto.CountryDTO;
@@ -25,22 +24,10 @@ import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JSONPPost;
-import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import com.cedarsoftware.util.io.JsonWriter;
 
-public class UserService {
-
-	// @Inject
-	// private Logger log;
-
-	// @Inject
-	// private EntityManager em;
-
-	// @Inject
-	// private Event<Member> memberEventSrc;
+public class UserService extends Service{
 
 	private TeamService teamService;
 
@@ -49,7 +36,6 @@ public class UserService {
 	}
 
 	public void register(UserDTO user, CountryDTO countryDTO) throws Exception {
-
 		user.setEnteredInto(LocalDate.now());
 		
 		TeamDTO team = teamService.getAvailableTeam(countryDTO);
@@ -60,20 +46,14 @@ public class UserService {
 	}
 
 	public UserDTO login(UserDTO m) throws Exception {
-		JSONObject jo = JsonReader.getObject(EndPoints.LOGIN+m.getLogin());
-		
-		UserDTO userLogado = (UserDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		
-		return userLogado;
+		String endPoint =  EndPoints.LOGIN+m.getLogin();
+		return (UserDTO)getObject(endPoint);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<CountryDTO> getCountries() throws Exception {
 		String endPoint = EndPoints.GET_COUNTRIES;
-		JSONObject jo = JsonReader.getObject(endPoint);
-		
-    	List<CountryDTO> countryDTOs =  (List<CountryDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return countryDTOs;
+		return (List<CountryDTO>) getObject(endPoint);
 	}
 
 }

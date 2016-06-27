@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+
+import org.aaf.model.enuns.IdionsEnum;
  
 @Entity
 public class Country implements Serializable{
@@ -33,7 +35,8 @@ public class Country implements Serializable{
     
     @Column
 	private LocalDateTime dateTimeStart; 
-
+    
+    private IdionsEnum idiom; 
 
 	public String getCod() {
 		return cod;
@@ -81,6 +84,14 @@ public class Country implements Serializable{
 
 	public void setDateTimeStart(LocalDateTime dateTimeStart) {
 		this.dateTimeStart = dateTimeStart;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 
 	

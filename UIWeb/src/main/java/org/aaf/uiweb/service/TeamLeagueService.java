@@ -20,17 +20,14 @@ import java.util.List;
 
 import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.uiweb.util.EndPoints;
-import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONObject;
 
 
-public class TeamLeagueService {
+public class TeamLeagueService extends Service{
 
 	@SuppressWarnings("unchecked")
 	public List<TeamLeagueDTO> getTeans(Long idLeague) {
-		JSONObject jo = JsonReader.getObject(EndPoints.GET_TEAMLEAGUE_LEAGUE+idLeague);
-    	List<TeamLeagueDTO> matches = ((List<TeamLeagueDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
-		return matches;
+		String endPoint =  EndPoints.GET_TEAMLEAGUE_LEAGUE+idLeague;
+		return (List<TeamLeagueDTO>)getObject(endPoint);
 	}
 	
 }

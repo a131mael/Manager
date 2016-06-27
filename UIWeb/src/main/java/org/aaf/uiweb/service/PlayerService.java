@@ -21,9 +21,8 @@ import java.util.List;
 import org.aaf.dto.PlayerDTO;
 import org.aaf.uiweb.util.EndPoints;
 import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONObject;
 
-public class PlayerService {
+public class PlayerService extends Service{
 
 //    @Inject
 //    private Logger log;
@@ -38,21 +37,18 @@ public class PlayerService {
 			parans.append("&orderByType=");
 			parans.append(orderByType);
 		}
-    	JSONObject jo = JsonReader.getObject(EndPoints.GET_PLAYERS_USER+teamID+parans);
-    	List<PlayerDTO> players = ((List<PlayerDTO>) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString()));
-		return players;
 		
+		String endPoint =  EndPoints.GET_PLAYERS_USER+teamID+parans;
+		return (List<PlayerDTO>)getObject(endPoint);
 	}
     
 	public PlayerDTO getPlayer(Long id, Long idTeam) { 
-		JSONObject jo = JsonReader.getObject( EndPoints.GET_PLAYER.replace("*1", idTeam.toString()).replace("*2", id.toString()));
-    	PlayerDTO player = (PlayerDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return player;
+		String endPoint =  EndPoints.GET_PLAYER.replace("*1", idTeam.toString()).replace("*2", id.toString());
+		return (PlayerDTO)getObject(endPoint);
 	}
 
 	public String dismiss(long id) {
 		String jo = JsonReader.getText( EndPoints.PLAYER_DISMISS+id);
-		
 		return jo;		
 	}
 }

@@ -35,7 +35,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.dto.TeamDTO;
-import org.aaf.model.Player;
 import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.webInterface.service.TeamService;
@@ -121,7 +120,26 @@ public class TeamRESTService {
 
 		return builder.build();
 	}
+	
+	@GET
+	@Path("/sumSalaryPlayers/{teamId:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getSumSalaryPlayers(@PathParam("teamId") long id) {
+		Response.ResponseBuilder builder = null;
 
+		Long total = teamService.getSumSalaryPlayers(id);
+
+		if (total == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(total));
+		}
+
+		return builder.build();
+	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

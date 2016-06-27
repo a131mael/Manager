@@ -6,10 +6,13 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+import org.aaf.model.enuns.IdionsEnum;
+
 public class Argentina implements CountryInterface {
 
 	public static final String nameCountry = "Argentina";
-	public static final String lamguage = "es_cas"; 
+	public static final String lamguage = "es_cas";
+	private IdionsEnum idiom = IdionsEnum.ES_CAS;
 	
 	private  List<String> namesPlayeres;
 	
@@ -446,5 +449,10 @@ public class Argentina implements CountryInterface {
 	@Override
 	public String getRegions() {
 		return Argentina.regions;
-	}	
+	}
+	
+	@Override
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
 }

@@ -16,13 +16,15 @@
  */
 package org.aaf.uiweb.service;
 
-import org.aaf.dto.LeagueDTO;
-import org.aaf.uiweb.util.EndPoints;
+import org.aaf.uiweb.util.JsonReader;
+import org.json.JSONObject;
 
-public class LeagueService extends Service{
 
-	public LeagueDTO getMainLeague(Long idUser) {
-		String endPoint =  EndPoints.GET_MAIN_LEAGUE_USER + idUser;
-		return (LeagueDTO) getObject(endPoint);
+public class Service {
+
+	public Object getObject(String endPoint){
+		JSONObject jo = JsonReader.getObject(endPoint);
+		return com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
 	}
+	
 }

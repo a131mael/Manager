@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
+
+import org.aaf.model.enuns.IdionsEnum;
  
 @Entity
 public class UserFM implements Serializable{
@@ -38,6 +40,8 @@ public class UserFM implements Serializable{
 	private String senha;
 	
 	private LocalDate enteredInto;
+	
+	private IdionsEnum idiom;
 
 	public String getName() {
 		return name;
@@ -101,6 +105,14 @@ public class UserFM implements Serializable{
 
 	public void setEnteredInto(LocalDate enteredInto) {
 		this.enteredInto = enteredInto;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 
 	

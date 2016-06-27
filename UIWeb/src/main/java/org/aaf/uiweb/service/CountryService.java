@@ -18,15 +18,12 @@ package org.aaf.uiweb.service;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.uiweb.util.EndPoints;
-import org.aaf.uiweb.util.JsonReader;
-import org.json.JSONObject;
 
 
-public class CountryService {
+public class CountryService extends Service{
 
 	public CountryDTO getCountry(Long idUser) {
-		JSONObject jo = JsonReader.getObject( EndPoints.GET_COUNTRY_USER+idUser);
-    	CountryDTO countryDTO = (CountryDTO) com.cedarsoftware.util.io.JsonReader.jsonToJava(jo.toString());
-		return countryDTO;
+		String endPoint = EndPoints.GET_COUNTRY_USER + idUser;
+		return (CountryDTO) getObject(endPoint);
 	}
 }
