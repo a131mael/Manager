@@ -49,4 +49,8 @@ public class EconomyService extends Service{
 		return (Long) getObject(endPoint);
 	}
 	
+	public Long getTotalMoney(Long teamID) {
+		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
+		return (Long) getObject(endPoint);
+	}
 }

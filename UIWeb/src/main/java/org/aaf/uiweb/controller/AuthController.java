@@ -23,7 +23,6 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -71,7 +70,7 @@ public class AuthController {
 
 			return "team";
 		} catch (Exception ex) {
-			FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
+		//	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
 			// facesContext.addMessage(null, m);
 			ex.printStackTrace();
 			return "erro";

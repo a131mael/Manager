@@ -16,6 +16,7 @@ import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 
 import org.aaf.dto.CountryDTO;
+import org.aaf.dto.RegionDTO;
 import org.aaf.uiweb.service.UserService;
 
 /**
@@ -53,6 +54,19 @@ public class CombosEspeciaisMB implements Serializable {
 			e.printStackTrace();
 		}
 
+		return items;
+	}
+	
+	public ArrayList<SelectItem> getRegions(Long idContry) {
+		ArrayList<SelectItem> items  = new ArrayList<SelectItem>();
+		try {
+			List<RegionDTO> regions = userRegistration.getRegions(idContry);
+			for (RegionDTO m : regions) {
+				items.add(new SelectItem(m, m.getName()));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return items;
 	}
 

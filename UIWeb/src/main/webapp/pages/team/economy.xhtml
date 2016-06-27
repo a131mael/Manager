@@ -16,26 +16,29 @@
 				<h:outputLabel value="Humor Torcida: " />
 				<h:outputLabel value="Tristes" />
 			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Dinheiro: " />
+				<h:outputLabel value="#{economyController.dto.totalMoney} " />
+			</h:panelGrid>
 
 			<h:panelGrid width="100%" columns="2">
 				<!-- Painel 1 -->
 				<h:outputLabel value="Receitas" />
 				<h:panelGrid columns="2">
-					<h:outputLabel value="Dinheiro: " />
-					<h:outputLabel value="21000 " />
+				
+					<h:outputLabel value="Jogadores Vendidos: " />
+					<h:outputLabel value="#{economyController.dto.totalSallesPlayers} " />
 
-					<h:outputLabel value="Estádio: " />
-					<h:outputLabel value="21000 " />
+					<h:outputLabel value="Jogos " />
+					<h:outputLabel value="#{economyController.dto.totalMatches} " />
 					<h:outputLabel value="Economista: " />
 					<h:outputLabel value="21000 " />
 					<h:outputLabel value="Outros: " />
-					<h:outputLabel value="21000 " />
+					<h:outputLabel value="#{economyController.dto.totalOthersPositive} " />
 					<h:outputLabel value="Sócios: " />
 					<h:outputLabel value="21000 " />
-					<h:outputLabel value="Jogos: " />
-					<h:outputLabel value="21000 " />
 					<h:outputLabel value="Total: " />
-					<h:outputLabel value="21000 " />
+					<h:outputLabel value="#{economyController.dto.totalMoney} " />
 				</h:panelGrid>
 
 				<!-- Painel 2 -->

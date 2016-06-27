@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.aaf.dto.CountryDTO;
+import org.aaf.dto.RegionDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.uiweb.util.EndPoints;
@@ -54,6 +55,12 @@ public class UserService extends Service{
 	public List<CountryDTO> getCountries() throws Exception {
 		String endPoint = EndPoints.GET_COUNTRIES;
 		return (List<CountryDTO>) getObject(endPoint);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<RegionDTO> getRegions(Long id) throws Exception {
+		String endPoint = EndPoints.GET_REGIONS_COUNTRY + id;
+		return (List<RegionDTO>) getObject(endPoint);
 	}
 
 }

@@ -19,11 +19,21 @@ public class Argentina implements CountryInterface {
 	private static  List<String> namesTeams;
 
 	// Name players
-	public static final String namePlayer = "Hugo ;Daniel ;Alejandro ;Pablo ;Álvaro ;Adrian ;David ;Diego ;Mário ;Javier ;Marcos ;Nicolas ;Lucas ;;Carlos ;Miguel ;Jorge ;Martin ;Gonzalo ;Izan ;António ;Juan ;Leo ;Angel ;Victor ;Samuel ;Aitor ;Raul ;Hector ;Gabriel ;Guillermo ;Rodrigo ;Dario ;Jesus ;José ;Jaime ;Pedro ;Alberto ;Bruno ;Joel ;"; 
+	public static final String namePlayer = "Hugo ;Daniel ;Alejandro ;Pablo ;Álvaro ;Adrian ;David ;Diego ;Mário ;Javier ;Marcos ;Nicolas ;Lucas ;;Carlos ;Miguel ;"
+			+ "Jorge ;Martin ;Gonzalo ;Izan ;António ;Juan ;Leo ;Angel ;Victor ;Samuel ;Aitor ;Raul ;Hector ;Gabriel ;Guillermo ;"
+			+ "Rodrigo ;Dario ;Jesus ;José ;Jaime ;Pedro ;Alberto ;Bruno ;Joel ;Tiago ;Diego ;Lorenzo ;Murilo ;Pablo ;Ruan ;Juan ;Santos ;Ramon ;Ramom ;Jamom ;Iago ;Santiago ;"
+			+ "Rodrigues ;Marques ;Jaime ;Murillo ;Rhuan ;Vicenzo ;Araújo ;Andrade ;Lopes ;Cristian ;Cristiam ;Alejandro ;Juarez ;Vasco ;Dimas ;Santana ;Enrique ;Borges ;Estevan ;"
+			+ "Ramiro ;Riquelme ;Penha ;Manu ;Juan Pablo ;Gildo ;Paco ;Henrique ;Pablo Henrique ;Radamés ;Ramsés ;Rico ;Ernâni ;Calisxto ;Muniz ;Carlito ;Rúbio ;Messi ;Higuain ;Aguero ;"; 
 	
 	// Midle name players
-	public static final String lastNamePlayer = "Di María;Zanetti; Mascherano;Ayala;Messi;Simeone;Ruggeri; Armando Maradona; Maradona;Ortega;Batistuta;Romero;Aguero;Tevez;Pablo Sorin;Galego;Sebastian;Sebastian Veron;Heinze;Crespo;Kemps;Pontoni;Mendez;Passarella;Luque;";
-
+	public static final String lastNamePlayer = "Di María;Zanetti; Mascherano;Ayala;Messi;Simeone;Ruggeri; Armando Maradona; Maradona;Ortega;Batistuta;Romero;Aguero;Tevez;"
+			+ "Pablo Sorin;Galego;Sebastian;Sebastian Veron;Heinze;Crespo;Kemps;Pontoni;Mendez;Passarella;Luque;Abelho;Amaral;Anchieta;Barbosa;Cabeça de Vaca;Camargo;Chávez;"
+			+ "Claver;Costa;Feijó;Gama;Garcia;Garrido;Guerreiro;Guillén;Inácio;Magalhães;Meira;Montenegro;Mujica;Pazos;Peres;Pinheiro;Prado;Ramíres;Ramos;Silva;Souza;"
+			+ "Silva Souza; Silva de Souza;Teixeira;Veloso;Viegas;Vilalobos;de las Mandíbulas;Descuidado;Peludo;Chocho;Cerdo;Buena Bola;Amigo;Preto;Andarilho;Cabeza Fría;Piojoso;"
+			+ "Mejor del mundo;Huracán;Fuerte;el Grande;Antorcha;Pelé;Maradona;Pelé Maradona;Astuto;Pluma de Pato;Hermoso;Cucaracha;Huenchumir;Huenchuquir;Huemil Puel Namuncurá;"
+			+ "Calfucurá;Nahuel;Guayquiñir;Tassone;GAMBAZZA;Gatti;Signorile;Fariello;Mercuri;Fortunatti;Martinez Fernandez;Sanchez;Garcia;Lopez;Lopez Perez;Fernandez;Garcia;Rodriguez;"
+			+ "Andrada;Escobar;Neruda;";
+	
 	public static final String teamName = "All Boys ;Argentino Juniors ;Arsenal ;Atlético Rafaela ;Belgrano ;Boca Juniors ;Cólon ;Estudiantes ;Ginmasia ;Escrima ;Godoy Cruz ;Lanús ;Newell's Old Boys ; Olimpo ; Quilmes ;Racing ;River Plate ;Rosario Central ;San Lorenzo ;Tigre ;Vélez Sarsfield;";
 	
 	public static final String regions = "Buenos Aires;Catamarca;Chaco;Chubut;Córdoba;Corrientes;Entre Rios;Formosa;Jujuy;La Pampa;La Rioja;Mendoza;Misiones;Neuquén;Rio Negro;Salta;San Juan;San Luis;Santa Cruz;Santa Fé;Santiago del Estero;Terra do fogo; Tucumám;";

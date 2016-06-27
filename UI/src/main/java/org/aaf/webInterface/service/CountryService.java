@@ -24,6 +24,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import org.aaf.model.Country;
+import org.aaf.model.Region;
 
 @Stateless
 public class CountryService {
@@ -60,5 +61,10 @@ public class CountryService {
 		
 		Country user = (Country) query2.getSingleResult(); 	 	 	
 		return user;
+	}
+
+	public List<Region> getRegions(long idContry) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

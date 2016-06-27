@@ -29,6 +29,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.aaf.model.Country;
+import org.aaf.model.Region;
 import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.webInterface.service.CountryService;
@@ -86,6 +87,21 @@ public class CountryRESTService {
 		Response.ResponseBuilder builder = Response.ok();
 
 		Country country = countryService.findByUserId(idUser);
+		builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
+		if (country == null) {
+			builder = Response.status(Response.Status.NOT_FOUND);
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		}
+		return builder.build();
+	}
+	
+	@GET
+	@Path("/regions/{idCountry:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getRegionsByContryID(@PathParam("idCountry") long idContry) {
+		Response.ResponseBuilder builder = Response.ok();
+
+		List<Region> regions = countryService.getRegions(idContry);
 		builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
 		if (country == null) {
 			builder = Response.status(Response.Status.NOT_FOUND);

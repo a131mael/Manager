@@ -19,25 +19,18 @@ package org.aaf.uiweb.controller;
 import java.util.List;
 
 import javax.enterprise.inject.Model;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 
 import org.aaf.dto.CountryDTO;
 import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.uiweb.service.TeamLeagueService;
-import org.aaf.uiweb.service.TeamService;
 
 @Model
-@SessionScoped
+@ViewScoped
 public class LeagueController extends AuthController{
 
-//    @Inject
-//    private FacesContext facesContext;
-
-    @Inject
-    private TeamService teamService; 
-    
     @Inject
     private TeamLeagueService teamLeagueService; 
     
