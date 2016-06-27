@@ -50,6 +50,8 @@ public class LeagueService {
 			LocalDateTime startDate = LocalDateTime.of(2016, Month.JUNE, 21, 17, 40, 30);//TODO data arbitraria colocar no formulario a data de inicio.
 			c.setDateTimeStart(startDate); 
 			em.persist(c);
+
+			registerRegions(c);
 			
 			Integer indiceJogador = 0;
 			for(int i = 1 ; i<=37; i++){
@@ -61,6 +63,11 @@ public class LeagueService {
 			e.printStackTrace();
 		}
 	}	
+
+	private void registerRegions(Country c) {
+		
+		
+	}
 
 	private League createLeague(int index, CountryDTO country) {
 
