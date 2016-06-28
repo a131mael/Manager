@@ -63,8 +63,17 @@ public class CountryService {
 		return user;
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Region> getRegions(long idContry) {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder query = new StringBuilder();
+		query.append("SELECT r from Region r ");
+		query.append("left join r.country c ");
+		query.append("where 1=1 ");
+		query.append("and c.id = :idContry ");
+		Query query2 = em.createQuery(query.toString());
+		query2.setParameter("idContry", idContry);
+		
+		List<Region> regions = (List<Region>) query2.getResultList(); 	 	 	
+		return regions;
 	}
 }

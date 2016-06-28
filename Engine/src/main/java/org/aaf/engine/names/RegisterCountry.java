@@ -17,7 +17,7 @@ public class RegisterCountry {
 	private List<String> namesTeams;
 	public static String lastNamePlayer;
 	public static String teamName;
-	public static String regions;
+	public String regions;
 	
 	public static Map<String, CountryInterface> countries = new HashMap<>();
 	
@@ -82,7 +82,7 @@ public class RegisterCountry {
 		return namesPlayeres;
 	}
 
-	public static List<String> getTeamsName() {
+	public List<String> getTeamsName() {
 		Set<String> nomes = new HashSet<>();
 		StringBuilder fullName = null;
 		Random gerador = new Random();

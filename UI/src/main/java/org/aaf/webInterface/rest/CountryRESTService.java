@@ -63,8 +63,6 @@ public class CountryRESTService {
 		return builder.build();
 	}
 
-	
-
 	@GET
 	@Path("/{id:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -102,8 +100,8 @@ public class CountryRESTService {
 		Response.ResponseBuilder builder = Response.ok();
 
 		List<Region> regions = countryService.getRegions(idContry);
-		builder.entity(JsonWriter.objectToJson(Convertes.getCountry(country)));
-		if (country == null) {
+		builder.entity(JsonWriter.objectToJson(Convertes.getRegions(regions)));
+		if (regions == null) {
 			builder = Response.status(Response.Status.NOT_FOUND);
 			throw new WebApplicationException(Response.Status.NOT_FOUND);
 		}
@@ -111,3 +109,4 @@ public class CountryRESTService {
 	}
 
 }
+	

@@ -32,10 +32,23 @@
 					<p:selectOneMenu id="country" style="width: 153px;" converter="converterCountry"
 						value="#{userController.countryDTO}" >
 						<f:selectItems value="#{CombosEspeciaisMB.countries}" var="country"
-						 itemLabel="#{country.label}" itemValue="#{player}" />
+						 itemLabel="#{country.label}" itemValue="#{country}" />
+						 <p:ajax process="@this" update="region"/>
+					</p:selectOneMenu>
+					<h:outputText value="" />
+					
+					<h:outputLabel for="region" value="Region:" />
+
+					<p:selectOneMenu id="region" style="width: 153px;" converter="converterRegion"
+									 value="#{userController.regionDTO}" >
+									 <f:selectItem itemValue="#{null}" itemLabel="Selecione uma Região"/>
+						<f:selectItems value="#{CombosEspeciaisMB.getRegions(userController.countryDTO)}" 
+									   var="region" itemLabel="#{region.label}" itemValue="#{region}"/>
+						 <p:ajax process="@this" />
 					</p:selectOneMenu>
 
 					<h:outputText value="" /> 
+					 
 					<h:outputLabel for="teamName" value="Team Name:" />
 					<h:inputText id="teamName"
 						value="#{userController.newUser.team.name}" />
@@ -56,9 +69,10 @@
 
 				<p>
 					<h:panelGrid columns="2">
-						<h:commandButton id="registerNewMember"
+						<p:commandButton id="registerNewMember"
 							action="#{userController.register}" value="Register"
-							styleClass="register" />
+							styleClass="register" 
+							ajax="true" process="@this" update="@form"/>
 						<h:messages styleClass="messages" errorClass="invalid"
 							infoClass="valid" warnClass="warning" globalOnly="true" />
 					</h:panelGrid>

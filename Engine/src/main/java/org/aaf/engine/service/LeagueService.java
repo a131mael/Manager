@@ -14,6 +14,7 @@ import org.aaf.engine.names.CountryInterface;
 import org.aaf.engine.names.RegisterCountry;
 import org.aaf.model.Country;
 import org.aaf.model.League;
+import org.aaf.model.Region;
 
 @Stateless
 public class LeagueService {
@@ -51,7 +52,7 @@ public class LeagueService {
 			c.setDateTimeStart(startDate); 
 			em.persist(c);
 
-			registerRegions(c);
+			registerRegions(c,rc);
 			
 			Integer indiceJogador = 0;
 			for(int i = 1 ; i<=37; i++){
@@ -64,9 +65,13 @@ public class LeagueService {
 		}
 	}	
 
-	private void registerRegions(Country c) {
-		
-		
+	private void registerRegions(Country c, RegisterCountry rc) {
+		for(String name :rc.regions.split(";")){
+			Region region = new Region();
+			region.setCountry(c);
+			region.setName(name);
+			em.persist(region);
+		}
 	}
 
 	private League createLeague(int index, CountryDTO country) {

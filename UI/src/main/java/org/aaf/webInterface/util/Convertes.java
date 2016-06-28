@@ -12,6 +12,7 @@ import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
 import org.aaf.dto.PlayerDTO;
+import org.aaf.dto.RegionDTO;
 import org.aaf.dto.StadiumDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.TeamLeagueDTO;
@@ -22,6 +23,7 @@ import org.aaf.model.LineUp;
 import org.aaf.model.Match;
 import org.aaf.model.Player;
 import org.aaf.model.PositionEnum;
+import org.aaf.model.Region;
 import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.model.TeamLeague;
@@ -493,5 +495,27 @@ public class Convertes {
 		} else {
 			return null;
 		}
+	}
+
+	public static RegionDTO getRegion(Region param) {
+		if (param != null) {
+			RegionDTO obj = new RegionDTO();
+			obj.setName(param.getName());
+			obj.setId(param.getId());
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static List<RegionDTO> getRegions(List<Region> regions) {
+		List<RegionDTO> list = new ArrayList<>();
+		if(list != null){
+			for(Region mt :regions){
+				list.add(getRegion(mt));
+			}
+		}
+		return list;
+	
 	}
 }
