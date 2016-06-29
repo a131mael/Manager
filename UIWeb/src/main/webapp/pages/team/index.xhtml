@@ -44,7 +44,7 @@
 						<h:link value="#{authController.loggedUser.enteredInto}"  outcome="league"/>
 
 						<h:outputLabel value="#{msg['team.idiom']}" />
-						<h:outputText value="..." style="font-size: 25px" />
+						<h:outputText value="#{authController.loggedUser.idiom.label}" />
 
 						<h:outputLabel value="#{msg['team.stadium']}" />
 						<h:link value="#{authController.loggedUser.team.stadium.name}"  outcome="stadium"/>

@@ -42,6 +42,7 @@ public class Convertes {
 			userFM.setSenha(dto.getSenha());
 			userFM.setTeam(getTeam(dto.getTeam()));
 			userFM.setEnteredInto(dto.getEnteredInto());
+			userFM.setIdiom(dto.getIdiom());
 			return userFM;
 
 		} else {
@@ -60,6 +61,7 @@ public class Convertes {
 			userDTO.setSenha(user.getSenha());
 			userDTO.setTeam(getTeam(user.getTeam()));
 			userDTO.setEnteredInto(user.getEnteredInto());
+			userDTO.setIdiom(user.getIdiom());
 			return userDTO;
 
 		} else {
@@ -92,6 +94,7 @@ public class Convertes {
 			country.setWeek(obj.getWeek());
 			country.setSession(obj.getSession());
 			country.setDateTimeStart(obj.getDateTimeStart());
+			country.setIdiom(obj.getIdiom());
 
 			return country;
 		} else {
@@ -199,6 +202,7 @@ public class Convertes {
 			countryDTO.setName(country.getName());
 			countryDTO.setWeek(country.getWeek());
 			countryDTO.setSession(country.getSession());
+			countryDTO.setIdiom(country.getIdiom());
 
 			return countryDTO;
 		} else {

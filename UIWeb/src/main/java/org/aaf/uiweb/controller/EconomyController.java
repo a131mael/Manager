@@ -23,6 +23,7 @@ public class EconomyController extends AuthController{
     
 
     public void init(Long teamID){
+    	economyService = new EconomyService(); //ver fluxo de vida, injecao do service eh feita apos o contrututor
     	dto.setTotalIncreaseSupportes(economyService.getTotalIncreaseSupporters(teamID));
     }
     

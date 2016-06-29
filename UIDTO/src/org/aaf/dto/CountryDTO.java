@@ -3,6 +3,7 @@ package org.aaf.dto;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.aaf.model.enuns.IdionsEnum;
 import org.json.JSONObject;
 
 public class CountryDTO implements Serializable{
@@ -23,6 +24,8 @@ public class CountryDTO implements Serializable{
 	private LocalDateTime dateTimeStart; 
 
     private int week;
+    
+    private IdionsEnum idiom;
     
     public CountryDTO(){}
     
@@ -104,5 +107,13 @@ public class CountryDTO implements Serializable{
 
 	public void setDateTimeStart(LocalDateTime dateTimeStart) {
 		this.dateTimeStart = dateTimeStart;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 }

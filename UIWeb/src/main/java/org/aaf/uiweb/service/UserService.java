@@ -40,6 +40,7 @@ public class UserService extends Service{
 		user.setEnteredInto(LocalDate.now());
 		
 		TeamDTO team = teamService.getAvailableTeam(countryDTO);
+		team.setIdiom(countryDTO.getIdiom());
 		team.setName(user.getTeam().getName());
 		team.setOwner(user);
 
