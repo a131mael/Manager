@@ -2,6 +2,7 @@ package org.aaf.dto;
 
 import java.io.Serializable;
 
+import org.aaf.model.enuns.IdionsEnum;
 import org.json.JSONObject;
 
 public class TeamDTO implements Serializable, Comparable<TeamDTO> {

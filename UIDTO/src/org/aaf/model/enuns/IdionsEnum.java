@@ -1,4 +1,4 @@
-package org.aaf.dto;
+package org.aaf.model.enuns;
 
 public enum IdionsEnum {
 

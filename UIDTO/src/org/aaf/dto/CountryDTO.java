@@ -3,6 +3,7 @@ package org.aaf.dto;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.aaf.model.enuns.IdionsEnum;
 import org.json.JSONObject;
 
 public class CountryDTO implements Serializable{

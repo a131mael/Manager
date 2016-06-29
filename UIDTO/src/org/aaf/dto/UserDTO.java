@@ -3,6 +3,7 @@ package org.aaf.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import org.aaf.model.enuns.IdionsEnum;
 import org.json.JSONObject;
 
 public class UserDTO implements Serializable {
@@ -31,6 +32,8 @@ public class UserDTO implements Serializable {
 	private LeagueDTO mainLeague;
 	
 	private LocalDate enteredInto;
+	
+	private IdionsEnum idiom;
 
 	public UserDTO() {
 	}
@@ -146,6 +149,14 @@ public class UserDTO implements Serializable {
 
 	public void setEnteredInto(LocalDate enteredInto) {
 		this.enteredInto = enteredInto;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 
 }

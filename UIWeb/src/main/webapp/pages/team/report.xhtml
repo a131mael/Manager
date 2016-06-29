@@ -10,16 +10,37 @@
 		<div>
 
 			<h:panelGrid width="100%" columns="2">
-				<h:panelGrid>
-					<h:outputLabel value="Jogos da Liga" />
-					<hr />
+				<h:panelGrid id="panelLeft">
+					<h:panelGrid>
+						<h:outputLabel value="Data do jogo" />
+					</h:panelGrid>
 
-			
+					<h:panelGrid>
+						<h:outputLabel value="Detalhes da partida" />
+						<h:panelGrid columns="2">
+							<h:outputLabel value="Detalhes Time 1" />
+							<h:outputLabel value="Detalhes Time 2" />
+						</h:panelGrid>
+					</h:panelGrid>
+
+					<h:panelGrid>
+						<h:outputLabel value="Relatório do jogo" />
+					</h:panelGrid>
 
 				</h:panelGrid>
-				<h:panelGrid>
-					<h:outputLabel value="Outros" />
-					<hr />
+
+				<h:panelGrid id="panelRight">
+					<h:panelGrid>
+						<h:outputLabel value="Notas do times" />
+					</h:panelGrid>
+
+					<h:panelGrid>
+						<h:outputLabel value="Notas do time 1" />
+					</h:panelGrid>
+
+					<h:panelGrid>
+						<h:outputLabel value="Notas do time 2" />
+					</h:panelGrid>
 
 				</h:panelGrid>
 
