@@ -26,6 +26,8 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 	private Double cashBox;
 	
 	private int points;
+	
+	 private IdionsEnum idiom; 
 
 	public TeamDTO() {
 
@@ -152,6 +154,14 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 
 	public void setStadium(StadiumDTO stadium) {
 		this.stadium = stadium;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 
 	

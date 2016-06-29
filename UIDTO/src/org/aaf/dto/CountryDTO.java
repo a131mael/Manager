@@ -24,6 +24,8 @@ public class CountryDTO implements Serializable{
 
     private int week;
     
+    private IdionsEnum idiom;
+    
     public CountryDTO(){}
     
     public CountryDTO(JSONObject json){
@@ -104,5 +106,13 @@ public class CountryDTO implements Serializable{
 
 	public void setDateTimeStart(LocalDateTime dateTimeStart) {
 		this.dateTimeStart = dateTimeStart;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 }
