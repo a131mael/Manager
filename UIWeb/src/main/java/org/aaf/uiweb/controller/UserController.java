@@ -16,15 +16,12 @@
  */
 package org.aaf.uiweb.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -58,14 +55,13 @@ public class UserController extends AuthController{
 		setNewUser(new UserDTO());
 		TeamDTO team = new TeamDTO();
 		getNewUser().setTeam(team);
-		
-		String id = getRequestParam("id");
-		addAtributoSessao("country",countryDTO);
 	}
 
 	public void register() throws Exception {
 		try {
-			userRegistration.register(getNewUser(), countryDTO);
+			CountryDTO c = (CountryDTO) getAtributoSessao("country");
+			RegionDTO r = (RegionDTO) getAtributoSessao("region");
+			userRegistration.register(getNewUser(), r);
 			// FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO,
 			// "Registered!", "Registration successful");
 			// facesContext.addMessage(null, m);
@@ -127,6 +123,7 @@ public class UserController extends AuthController{
 
 	public void setCountryDTO(CountryDTO countryDTO) {
 		this.countryDTO = countryDTO;
+		addAtributoSessao("country", countryDTO);
 	}
 
 	public RegionDTO getRegionDTO() {
@@ -135,6 +132,7 @@ public class UserController extends AuthController{
 
 	public void setRegionDTO(RegionDTO regionDTO) {
 		this.regionDTO = regionDTO;
+		addAtributoSessao("region", regionDTO);
 	}
 
 }

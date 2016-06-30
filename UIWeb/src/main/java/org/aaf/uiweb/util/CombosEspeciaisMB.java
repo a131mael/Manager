@@ -62,8 +62,9 @@ public class CombosEspeciaisMB implements Serializable {
 		return items;
 	}
 
-	public ArrayList<SelectItem> getRegions(CountryDTO countryDTO) {
+	public ArrayList<SelectItem> getRegions2(CountryDTO countryDTO) {
 		ArrayList<SelectItem> regions = new ArrayList<SelectItem>();
+		
 		if (countryDTO != null ) {
 			ArrayList<SelectItem> regMemory = regioes.get(countryDTO.getId());
 			if (regMemory != null && regMemory.size() >0) {
@@ -71,6 +72,7 @@ public class CombosEspeciaisMB implements Serializable {
 			} else {
 				try {
 					List<RegionDTO> regsDTO = userRegistration.getRegions(countryDTO.getId());
+					regions.add(new SelectItem(null, "Selecione um País"));
 					for (RegionDTO m : regsDTO) {
 						regions.add(new SelectItem(m, m.getName()));
 					}
@@ -80,6 +82,37 @@ public class CombosEspeciaisMB implements Serializable {
 					e.printStackTrace();
 				}
 
+			}
+		}else{
+			
+		}
+		return regions;
+	}
+	
+	public ArrayList<SelectItem> getRegions(CountryDTO countryDTO) {
+		ArrayList<SelectItem> regions = new ArrayList<SelectItem>();
+		
+		if (countryDTO != null ) {
+			ArrayList<SelectItem> regMemory = regioes.get(countryDTO.getId());
+			if (regMemory != null && regMemory.size() >0) {
+				return regMemory;
+			} else {
+				try {
+					List<RegionDTO> regsDTO = userRegistration.getRegions(countryDTO.getId());
+					regions.add(new SelectItem(null, "Selecione um País"));
+					for (RegionDTO m : regsDTO) {
+						regions.add(new SelectItem(m, m.getName()));
+					}
+					regioes.put(countryDTO.getId(), regions);
+					return regions;
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+		}else{
+			if(regioes != null){
+				regioes.get("Brazil");
 			}
 		}
 		return regions;

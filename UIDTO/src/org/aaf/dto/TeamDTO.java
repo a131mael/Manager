@@ -21,14 +21,16 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 	private LeagueDTO league;
 
 	private UserDTO owner;
-	
+
 	private StadiumDTO stadium;
 
 	private Double cashBox;
-	
+
 	private int points;
-	
-	 private IdionsEnum idiom; 
+
+	private IdionsEnum idiom;
+
+	private RegionDTO region;
 
 	public TeamDTO() {
 
@@ -59,27 +61,26 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 		object.put("cashBox", this.cashBox);
 		return object;
 	}
-	
+
 	@Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 11 * hash + (this.id != null ? this.id.hashCode() : 0);
-        return hash;
-    }
+	public int hashCode() {
+		int hash = 7;
+		hash = 11 * hash + (this.id != null ? this.id.hashCode() : 0);
+		return hash;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-       
-        final TeamDTO other = (TeamDTO) obj;
-        if (this.getId() != other.getId() && (this.id == null || !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
 
+		final TeamDTO other = (TeamDTO) obj;
+		if (this.getId() != other.getId() && (this.id == null || !this.id.equals(other.id))) {
+			return false;
+		}
+		return true;
+	}
 
 	public String getCod() {
 		return cod;
@@ -131,13 +132,13 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 
 	@Override
 	public int compareTo(TeamDTO o) {
-		if(o.getPoints() > this.points){
+		if (o.getPoints() > this.points) {
 			return 1;
-		}else if(o.getPoints() < this.points){
+		} else if (o.getPoints() < this.points) {
 			return -1;
-		}else{
-			
-			return 0;	
+		} else {
+
+			return 0;
 		}
 	}
 
@@ -165,6 +166,12 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 		this.idiom = idiom;
 	}
 
-	
+	public RegionDTO getRegion() {
+		return region;
+	}
+
+	public void setRegion(RegionDTO region) {
+		this.region = region;
+	}
 
 }

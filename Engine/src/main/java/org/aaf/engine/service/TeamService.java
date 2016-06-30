@@ -7,10 +7,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-<<<<<<< HEAD
-=======
 
->>>>>>> master
 import org.aaf.engine.names.RegisterCountry;
 import org.aaf.model.Country;
 import org.aaf.model.League;
@@ -23,7 +20,6 @@ public class TeamService {
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-<<<<<<< HEAD
 	// @Inject
 	// private Logger log;
 
@@ -37,17 +33,6 @@ public class TeamService {
 //			playerService.register(createTeamLeague(i, league), indiceJogador);
 //		}
 //	}
-=======
-	@Inject
-	private PlayerService playerService;
-
-	public void register(League league, Integer indiceJogador) throws Exception {
-		em.persist(league);
-		
-		for (int i = 1; i <= 8; i++) {
-			playerService.register(createTeamLeague(i, league),indiceJogador);
-		}
->>>>>>> master
 
 	public void register(League league, Integer indiceJogador, RegisterCountry rc) throws Exception {
 		em.persist(league);
@@ -55,13 +40,7 @@ public class TeamService {
 		for (int i = 1; i <= 8; i++) {
 			playerService.register(createTeamLeague(i, league, rc), indiceJogador, rc);
 		}
-<<<<<<< HEAD
 
-		// log.info("Registering " + league.getName());
-=======
-		
-		//log.info("Registering " + league.getName());
->>>>>>> master
 	}
 
 	public void save(League league) throws Exception {
@@ -122,7 +101,6 @@ public class TeamService {
 		return teamLeague;
 	}
 
-<<<<<<< HEAD
 	// TODO MongoDB native query
 	@SuppressWarnings("unchecked")
 	public long countActiveTeamsMONGODB(Country country) {
@@ -153,8 +131,6 @@ public class TeamService {
 		return countTeam;
 	}
 
-=======
->>>>>>> master
 	@SuppressWarnings("unchecked")
 	public long countActiveTeams(Country country) {
 		// TODO what
@@ -171,14 +147,8 @@ public class TeamService {
 		query.setParameter("idPais", country.getId());
 
 		List<Team> times = query.getResultList();
-<<<<<<< HEAD
 		Long total = (long) times.size();
 
-=======
-		Long total =  (long) times.size() ;
-		
-		
->>>>>>> master
 		return total;
 	}
 
@@ -186,11 +156,7 @@ public class TeamService {
 	public long countCapacity(Country country) {
 
 		StringBuilder queryLeague = new StringBuilder();
-<<<<<<< HEAD
-		queryLeague.append("Select tl from TeamLeague tl ");
-=======
 		queryLeague.append("Select t from TeamLeague tl ");
->>>>>>> master
 		queryLeague.append("left join tl.team t ");
 		queryLeague.append("left join t.owner o ");
 		queryLeague.append("left join tl.league l ");
@@ -209,10 +175,6 @@ public class TeamService {
 		List<Team> times = query.getResultList();
 		Long total = (long) times.size();
 
-<<<<<<< HEAD
-=======
-		
->>>>>>> master
 		return total;
 	}
 }

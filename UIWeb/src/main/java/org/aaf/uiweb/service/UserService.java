@@ -36,13 +36,15 @@ public class UserService extends Service{
 		teamService = new TeamService();
 	}
 
-	public void register(UserDTO user, CountryDTO countryDTO) throws Exception {
+	public void register(UserDTO user, RegionDTO region) throws Exception {
 		user.setEnteredInto(LocalDate.now());
 		
-		TeamDTO team = teamService.getAvailableTeam(countryDTO);
-		team.setIdiom(countryDTO.getIdiom());
+		TeamDTO team = teamService.getAvailableTeam(region.getCountry());
+		team.setIdiom(region.getCountry().getIdiom());
+		team.setRegion(region);
 		team.setName(user.getTeam().getName());
 		team.setOwner(user);
+		
 
 		JSONPPost.sendJson(JsonWriter.objectToJson(team), EndPoints.REGISTER_TEAM);
 	}

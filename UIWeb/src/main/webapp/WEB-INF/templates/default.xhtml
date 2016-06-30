@@ -22,6 +22,7 @@
                     [Template content will be inserted here]
          </ui:insert>
 		</div>
+		
 		<div id="aside">
 			<h:form id="formReg" style="border:none">
 				<h2>Member Registration</h2>
@@ -29,23 +30,25 @@
 				<h:panelGrid columns="3" columnClasses="titleCell">
 					<h:outputLabel for="country" value="Country:" />
 
-					<p:selectOneMenu id="country" style="width: 153px;" converter="converterCountry"
-						value="#{userController.countryDTO}" >
-						<f:selectItems value="#{CombosEspeciaisMB.countries}" var="country"
-						 itemLabel="#{country.label}" itemValue="#{country}" />
-						 <p:ajax process="@this" update="region"/>
+					<p:selectOneMenu id="country" style="width: 153px;" converter="converterCountry" value="#{userController.countryDTO}" >
+						<f:selectItems value="#{CombosEspeciaisMB.countries}" 
+									  var="country"	itemLabel="#{country.label}" itemValue="#{country}" />
+						 <p:ajax event="change" process="@this" update="reg"/>
 					</p:selectOneMenu>
 					<h:outputText value="" />
 					
-					<h:outputLabel for="region" value="Region:" />
+					<h:outputLabel for="reg" value="Region:" />
 
-					<p:selectOneMenu id="region" style="width: 153px;" converter="converterRegion"
-									 value="#{userController.regionDTO}" >
-									 <f:selectItem itemValue="#{null}" itemLabel="Selecione uma Região"/>
+					<p:selectOneMenu id="reg" style="width: 153px;" converter="converterRegion" value="#{userController.regionDTO}">
+						
 						<f:selectItems value="#{CombosEspeciaisMB.getRegions(userController.countryDTO)}" 
-									   var="region" itemLabel="#{region.label}" itemValue="#{region}"/>
-						 <p:ajax process="@this" />
+										var="region" itemLabel="#{region.label}" itemValue="#{region}" />
+							
+						<p:ajax event="change" process="@this" update="registerNewMember" />
+						
 					</p:selectOneMenu>
+
+
 
 					<h:outputText value="" /> 
 					 
@@ -70,9 +73,9 @@
 				<p>
 					<h:panelGrid columns="2">
 						<p:commandButton id="registerNewMember"
-							action="#{userController.register}" value="Register"
+							action="#{userController.register()}" value="Register"
 							styleClass="register" 
-							ajax="true" process="@this" update="@form"/>
+							ajax="true" process="@this" update="email2"/>
 						<h:messages styleClass="messages" errorClass="invalid"
 							infoClass="valid" warnClass="warning" globalOnly="true" />
 					</h:panelGrid>

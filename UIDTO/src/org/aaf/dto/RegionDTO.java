@@ -14,6 +14,8 @@ public class RegionDTO implements Serializable{
 	
 	private String name;
 	
+	private CountryDTO country; 
+	
 	
 	@Override
     public int hashCode() {
@@ -49,6 +51,14 @@ public class RegionDTO implements Serializable{
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public CountryDTO getCountry() {
+		return country;
+	}
+
+	public void setCountry(CountryDTO country) {
+		this.country = country;
 	}
 	
 }

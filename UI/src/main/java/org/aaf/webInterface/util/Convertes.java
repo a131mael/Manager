@@ -258,6 +258,7 @@ public class Convertes {
 		//	obj.setLeague(getLeague(dto.getLeague()));
 			obj.setName(dto.getName());
 			obj.setOwner(getUser(dto.getOwner()));
+			obj.setRegion(getRegion(dto.getRegion()));
 			return obj;
 		} else {
 			return null;
@@ -273,6 +274,7 @@ public class Convertes {
 			//obj.setLeague(getLeague(team.getLeague()));
 			obj.setName(team.getName());
 			// obj.setOwner(getUser(dto.getOwner()));
+			obj.setRegion(getRegion(team.getRegion()));
 			return obj;
 		} else {
 			return null;
@@ -506,6 +508,19 @@ public class Convertes {
 			RegionDTO obj = new RegionDTO();
 			obj.setName(param.getName());
 			obj.setId(param.getId());
+			obj.setCountry(getCountry(param.getCountry()));
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static Region getRegion(RegionDTO param) {
+		if (param != null) {
+			Region obj = new Region();
+			obj.setName(param.getName());
+			obj.setId(param.getId());
+			obj.setCountry(getCountry(param.getCountry()));
 			return obj;
 		} else {
 			return null;

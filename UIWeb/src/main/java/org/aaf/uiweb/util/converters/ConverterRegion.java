@@ -17,10 +17,10 @@ import org.aaf.dto.RegionDTO;
 public class ConverterRegion implements Converter {
 
 	@Override
-    public Object getAsObject(FacesContext context, UIComponent component, String value) {                
+    public RegionDTO getAsObject(FacesContext context, UIComponent component, String value) {                
 
 		if (value != null) {
-            return this.getAttributesFrom(component).get(value);
+            return (RegionDTO)this.getAttributesFrom(component).get(value);
         }
         return null;
 
