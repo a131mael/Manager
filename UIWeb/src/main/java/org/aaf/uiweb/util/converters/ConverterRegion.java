@@ -22,7 +22,7 @@ public class ConverterRegion implements Converter {
 		if (value != null) {
             return this.getAttributesFrom(component).get(value);
         }
-        return new RegionDTO();
+        return null;
 
     }
 

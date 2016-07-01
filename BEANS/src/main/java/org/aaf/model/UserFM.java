@@ -3,6 +3,7 @@ package org.aaf.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,21 +27,28 @@ public class UserFM implements Serializable{
 	@SequenceGenerator(name = "GENERATE_User", sequenceName = "User_pk_seq", allocationSize = 1)
 	private Long id;
  
+	@Column
 	private String name;
 
+	@Column
 	private String cod;
 	
+	@Column
 	private String email;
 
 	@OneToOne
 	private Team team;
 	
+	@Column
 	private String login;
 	
+	@Column
 	private String senha;
 	
+	@Column
 	private LocalDate enteredInto;
 	
+	@Column
 	private IdionsEnum idiom;
 
 	public String getName() {

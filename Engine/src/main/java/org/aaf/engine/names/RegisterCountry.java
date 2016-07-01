@@ -8,22 +8,24 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import org.aaf.model.enuns.IdionsEnum;
+
 public class RegisterCountry {
 
 	public static String nameCountry;
-	public static String lamguage;
 	public static String namePlayer;
 	private List<String> namesPlayeres;
 	private List<String> namesTeams;
 	public static String lastNamePlayer;
 	public static String teamName;
 	public String regions;
+	private IdionsEnum idiom;
 	
 	public static Map<String, CountryInterface> countries = new HashMap<>();
 	
 	public void popule(CountryInterface country){
 		nameCountry = country.getNamecountry();
-		lamguage = country.getLamguage();
+		idiom = country.getIdiom();
 		namePlayer = country.getNameplayer();
 		lastNamePlayer = country.getLastnameplayer();
 		teamName = country.getTeamname();
@@ -113,6 +115,14 @@ public class RegisterCountry {
 			namesTeams = getTeamsName();
 		}
 		return namesTeams;
+	}
+
+	public IdionsEnum getIdiom() {
+		return idiom;
+	}
+
+	public void setIdiom(IdionsEnum idiom) {
+		this.idiom = idiom;
 	}
 
 }

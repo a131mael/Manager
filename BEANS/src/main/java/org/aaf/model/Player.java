@@ -1,5 +1,6 @@
 package org.aaf.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,16 +15,21 @@ public class Player {
 	@GeneratedValue(generator = "GENERATE_Player", strategy = GenerationType.SEQUENCE)
 	@SequenceGenerator(name = "GENERATE_Player", sequenceName = "Player_pk_seq", allocationSize = 1)
 	private Long id;
-
+	@Column
 	private String name;
+	@Column
 	private float height;
+	@Column
 	private float age;
+	@Column
 	private Float salary;
+	@Column
 	private Long value;
 	
 	@ManyToOne
 	private Country country;
 
+	@Column
 	private String cod;
 
 	@ManyToOne
@@ -31,23 +37,35 @@ public class Player {
 	
 //	Fisicas
 	private float agility;
+	@Column
 	private float velocity;
+	@Column
 	private float resistence;
+	@Column
 	private float impulse;
+	@Column
 	private float strength;
 	
 //	Tecnicas
 	private float pass;
+	@Column
 	private float kick;
+	@Column
 	private float disarm;
+	@Column
 	private float technique;
+	@Column
 	private float mark;
 	
 	//Psico
 	private float positioning;
+	@Column
 	private float decision;
+	@Column
 	private float aggressiveness;
+	@Column
 	private float goalkeaper;
+	@Column
 	private float workindex;
 	
 	private String ignore;

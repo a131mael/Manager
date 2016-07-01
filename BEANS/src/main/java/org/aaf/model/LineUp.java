@@ -2,6 +2,7 @@ package org.aaf.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,6 +25,7 @@ public class LineUp {
 	@OneToOne
 	private Match match;
 	
+	@Column
 	private LocalDateTime date;
 	
 	@ManyToOne
@@ -33,62 +35,110 @@ public class LineUp {
 	
 	@ManyToOne
 	private Player position2;
+	
+	@Column
 	private PositionEnum orderP2;
+	
+	@Column
 	private int rate2;
 	
 	@ManyToOne
 	private Player position3;
+	
+	@Column
 	private PositionEnum orderP3;
+	
+	@Column
 	private int rate3;
 	
 	@ManyToOne
 	private Player position4;
+	
+	@Column
 	private PositionEnum orderP4;
+	
+	@Column
 	private int rate4;
 	
 	@ManyToOne
 	private Player position5;
+	
+	@Column
 	private PositionEnum orderP5;
+	
+	@Column
 	private int rate5;
 	
 	@ManyToOne
 	private Player position6;
+	
+	@Column
 	private PositionEnum orderP6;
+	
+	@Column
 	private int rate6;
 	
 	@ManyToOne
 	private Player position7;
+	
+	@Column
 	private PositionEnum orderP7;
+	
+	@Column
 	private int rate7;
 	
 	@ManyToOne
 	private Player position8;
+	
+	@Column
 	private PositionEnum orderP8;
+	
+	@Column
 	private int rate8;
 	
 	@ManyToOne
 	private Player position9;
+	
+	@Column
 	private PositionEnum orderP9;
+	
+	@Column
 	private int rate9;
 	
 	@ManyToOne
 	private Player position10;
+	
+	@Column
 	private PositionEnum orderP10;
+	
+	@Column
 	private int rate10;
 	
 	@ManyToOne
 	private Player position11;
+	
+	@Column
 	private PositionEnum orderP11;
+	
+	@Column
 	private int rate11;
 	
 	@ManyToOne
 	private Player position12;
+	
+	@Column
 	private PositionEnum orderP12;
+	
+	@Column
 	private int rate12;
 	
 	@ManyToOne
 	private Player position13;
+	
+	@Column
 	private PositionEnum orderP13;
+	
+	@Column
 	private int rate13;
 	
 	public Long getId() {

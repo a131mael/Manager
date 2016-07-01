@@ -38,6 +38,7 @@ public class UserService extends Service{
 
 	public void register(UserDTO user, RegionDTO region) throws Exception {
 		user.setEnteredInto(LocalDate.now());
+		user.setIdiom(region.getCountry().getIdiom());
 		
 		TeamDTO team = teamService.getAvailableTeam(region.getCountry());
 		team.setIdiom(region.getCountry().getIdiom());

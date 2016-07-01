@@ -2,6 +2,7 @@ package org.aaf.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,8 +23,10 @@ public class Region implements Serializable{
 	@SequenceGenerator(name = "GENERATE_Region", sequenceName = "Region_pk_seq", allocationSize = 1)
 	private Long id;
  
+	@Column
     private String name;
  
+	@Column
     private String cod;
     
     @ManyToOne

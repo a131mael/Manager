@@ -1,5 +1,6 @@
 package org.aaf.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +17,13 @@ public class Team {
 	@SequenceGenerator(name = "GENERATE_Team", sequenceName = "Team_pk_seq", allocationSize = 1)
 	private Long id;
 
+	@Column
 	private String name;
 
+	@Column
 	private String cod;
 	
+	@Column
 	private Double cashBox;
 
 //	@OneToMany(cascade=CascadeType.ALL, mappedBy="team")

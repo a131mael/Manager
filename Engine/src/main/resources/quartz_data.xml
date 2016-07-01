@@ -29,7 +29,7 @@
             <cron>
                 <name>MatchJob</name>
                 <job-name>MatchJob</job-name>
-                <cron-expression>* 0 * 1 * ? *</cron-expression>
+                <cron-expression>* 0 * 15 * ? *</cron-expression>
             </cron>
         </trigger>
     </schedule>
@@ -43,7 +43,7 @@
             <cron>
                 <name>EconomyJob</name>
                 <job-name>EconomyJob</job-name>
-                <cron-expression>* 0/2 * 1 * ? *</cron-expression>
+                <cron-expression>* * * 30 12 ? *</cron-expression>
             </cron>
         </trigger>
     </schedule>
@@ -57,7 +57,7 @@
             <cron>
                 <name>PlayerJob</name>
                 <job-name>PlayerJob</job-name>
-                <cron-expression>* 0/2 * 1 * ? *</cron-expression>
+                <cron-expression>* 0/2 * 12 * ? *</cron-expression>
             </cron>
         </trigger>
     </schedule>
@@ -71,7 +71,7 @@
             <cron>
                 <name>TrainningJob</name>
                 <job-name>TrainningJob</job-name>
-                <cron-expression>* 0/2 * 1 * ? *</cron-expression>
+                <cron-expression>* 0/2 * 21 * ? *</cron-expression>
             </cron>
         </trigger>
     </schedule>

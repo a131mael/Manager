@@ -1,5 +1,6 @@
 package org.aaf.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,18 +16,25 @@ public class Stadium {
 	@SequenceGenerator(name = "GENERATE_Stadium", sequenceName = "Stadium_pk_seq", allocationSize = 1)
 	private Long id;
 
+	@Column
 	private String nome;
 	
 	@OneToOne
 	private Team team;
 	
+	@Column
 	private int chair;
+	
+	@Column
 	private int coveredChair;
 	
+	@Column
 	private int bleacher;
+	@Column
 	private int coveredBleacher;
-
+	@Column
 	private int vip;
+	@Column
 	private int coveredVip;
 
 	

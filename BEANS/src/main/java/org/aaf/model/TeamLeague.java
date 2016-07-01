@@ -1,5 +1,6 @@
 package org.aaf.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +16,13 @@ public class TeamLeague {
 	@SequenceGenerator(name = "GENERATE_TeamLeague", sequenceName = "TeamLeague_pk_seq", allocationSize = 1)
 	private Long id;
 
+	@Column
 	private String name;
 
+	@Column
 	private String cod;
 	
+	@Column
 	private boolean main;
 	
 	@ManyToOne
@@ -27,16 +31,22 @@ public class TeamLeague {
 	@ManyToOne
 	private League league;
 	
+	@Column
 	private int points;
 	
+	@Column
 	private int goalsPro;
 	
+	@Column
 	private int goasAgainst;
 	
+	@Column
 	private int matches;
 	
+	@Column
 	private int victories;
 	
+	@Column
 	private int losses;
 	
 

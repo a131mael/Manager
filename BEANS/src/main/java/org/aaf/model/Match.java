@@ -18,10 +18,13 @@ public class Match {
 	@SequenceGenerator(name = "GENERATE_Match", sequenceName = "Match_pk_seq", allocationSize = 1)
 	private Long id;
 
+	@Column
 	private String cod;
 	
+	@Column
 	private String session;
 	
+	@Column
 	private String week;
 
 	@ManyToOne
@@ -30,10 +33,13 @@ public class Match {
 	@ManyToOne
 	private Team visitTeam;
 	
+	@Column
 	private int golasHomeTeam;
 	
+	@Column
 	private int golasVisitTeam;
 	
+	@Column
 	private int round;
 	
 	@Column

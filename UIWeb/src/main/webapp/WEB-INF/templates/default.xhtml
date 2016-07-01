@@ -90,7 +90,7 @@
 					<h:panelGrid columns="2">
 						<p:commandButton id="registerNewMember"
 							action="#{userController.register()}" value="Register"
-							styleClass="register" ajax="true" process="@this" update="email2" />
+							styleClass="register" ajax="true" process="@form" update="@form" />
 						<h:messages styleClass="messages" errorClass="invalid"
 							infoClass="valid" warnClass="warning" globalOnly="true" />
 					</h:panelGrid>

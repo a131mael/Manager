@@ -1,5 +1,6 @@
 package org.aaf.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +16,13 @@ public class League {
 	@SequenceGenerator(name = "GENERATE_League", sequenceName = "League_pk_seq", allocationSize = 1)
 	private Long id;
 
+	@Column
 	private String name;
-
+	
+	@Column
 	private String cod;
 	
+	@Column
 	private int level;
 //	
 //	@OneToMany(cascade=CascadeType.ALL, mappedBy="league")

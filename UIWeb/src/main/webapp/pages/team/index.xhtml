@@ -32,7 +32,7 @@
 						<h:outputText value="" />
 
 						<h:outputLabel value="#{msg['country']}" />
-						<h:outputText value="#{authController.loggedUser.countryDTO.name}" />
+						<h:link value="#{authController.loggedUser.countryDTO.name}"  outcome="country"/>
 
 						<h:outputLabel value="#{msg['team.user']}" />
 						<h:outputText value="#{authController.loggedUser.login}" />
@@ -41,7 +41,7 @@
 						<h:link value="#{authController.loggedUser.mainLeague.name}"  outcome="league"/>
 
 						<h:outputLabel value="#{msg['team.entry']}" />
-						<h:link value="#{authController.loggedUser.enteredInto}"  outcome="league"/>
+						<h:outputText value="#{authController.loggedUser.enteredInto}" />
 
 						<h:outputLabel value="#{msg['team.idiom']}" />
 						<h:outputText value="#{authController.loggedUser.idiom.label}" />
@@ -50,7 +50,7 @@
 						<h:link value="#{authController.loggedUser.team.stadium.name}"  outcome="stadium"/>
 
 						<h:outputLabel value="#{msg['team.region']}" />
-						<h:outputText value="..." style="font-size: 25px" />
+						<h:outputText value="#{authController.loggedUser.team.region.name}" />
 
 						<hr />
 
