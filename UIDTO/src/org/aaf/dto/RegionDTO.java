@@ -17,6 +17,8 @@ public class RegionDTO implements Serializable{
 	private CountryDTO country; 
 	
 	
+	
+	/*
 	@Override
     public int hashCode() {
         int hash = 7;
@@ -35,7 +37,7 @@ public class RegionDTO implements Serializable{
             return false;
         }
         return true;
-    }
+    }*/
 
 	public Long getId() {
 		return id;
@@ -60,5 +62,25 @@ public class RegionDTO implements Serializable{
 	public void setCountry(CountryDTO country) {
 		this.country = country;
 	}
+	
+	@Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + (this.id != null ? this.id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+       
+        final RegionDTO other = (RegionDTO) obj;
+        if (this.getId() != other.getId() && (this.id == null || !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
 	
 }

@@ -16,12 +16,14 @@
  */
 package org.aaf.uiweb.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.bean.ViewScoped;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -33,7 +35,7 @@ import org.aaf.uiweb.service.UserService;
 
 @Model
 @ViewScoped
-public class UserController extends AuthController{
+public class UserController extends AuthController {
 
 	@Inject
 	private UserService userRegistration;
@@ -49,7 +51,7 @@ public class UserController extends AuthController{
 	@Produces
 	@Named
 	private RegionDTO regionDTO;
-	
+
 	@PostConstruct
 	public void initNewMember() {
 		setNewUser(new UserDTO());
@@ -57,9 +59,20 @@ public class UserController extends AuthController{
 		getNewUser().setTeam(team);
 	}
 
+	private String aa = "a";
+
+	public List<String> teste() {
+		List<String> lis = new ArrayList<String>();
+		lis.add("a");
+		lis.add("b");
+		lis.add("c");
+		lis.add("d");
+
+		return lis;
+	}
+
 	public void register() throws Exception {
 		try {
-			CountryDTO c = (CountryDTO) getAtributoSessao("country");
 			RegionDTO r = (RegionDTO) getAtributoSessao("region");
 			userRegistration.register(getNewUser(), r);
 			// FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_INFO,
@@ -87,6 +100,24 @@ public class UserController extends AuthController{
 			// facesContext.addMessage(null, m);
 		}
 		return null;
+	}
+
+	public ArrayList<SelectItem> getRegions() {
+		ArrayList<SelectItem> regions = new ArrayList<SelectItem>();
+		regions.add(new SelectItem(null, "Selecione um País"));
+		CountryDTO c = (CountryDTO) getAtributoSessao("country");
+		if (c != null) {
+			try {
+				List<RegionDTO> regsDTO = userRegistration.getRegions(c.getId());
+				for (RegionDTO m : regsDTO) {
+					regions.add(new SelectItem(m, m.getName()));
+				}
+				return regions;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return regions;
 	}
 
 	@SuppressWarnings("unused")
@@ -133,6 +164,14 @@ public class UserController extends AuthController{
 	public void setRegionDTO(RegionDTO regionDTO) {
 		this.regionDTO = regionDTO;
 		addAtributoSessao("region", regionDTO);
+	}
+
+	public String getAa() {
+		return aa;
+	}
+
+	public void setAa(String aa) {
+		this.aa = aa;
 	}
 
 }

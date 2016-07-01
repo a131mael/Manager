@@ -74,6 +74,8 @@ public class CombosEspeciaisMB implements Serializable {
 					List<RegionDTO> regsDTO = userRegistration.getRegions(countryDTO.getId());
 					regions.add(new SelectItem(null, "Selecione um País"));
 					for (RegionDTO m : regsDTO) {
+						m.setCountry(null);
+						
 						regions.add(new SelectItem(m, m.getName()));
 					}
 					regioes.put(countryDTO.getId(), regions);

@@ -6,7 +6,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	
+
 <h:head>
 	<title>webInterface</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -22,7 +22,17 @@
                     [Template content will be inserted here]
          </ui:insert>
 		</div>
-		
+
+		<!-- 		<p:selectOneMenu id="reg" style="width: 153px;" converter="converterRegion" value="#{userController.regionDTO}" -->
+		<!-- 									rendered="#{userController.countryDTO != null}"> -->
+
+		<!-- 						<f:selectItems value="#{CombosEspeciaisMB.getRegions(userController.countryDTO)}"  -->
+		<!-- 										var="region" itemLabel="#{region.label}" itemValue="#{region}" /> -->
+
+		<!-- 						<p:ajax event="change" process="@this" update="registerNewMember" /> -->
+
+		<!-- 					</p:selectOneMenu> -->
+
 		<div id="aside">
 			<h:form id="formReg" style="border:none">
 				<h2>Member Registration</h2>
@@ -30,28 +40,34 @@
 				<h:panelGrid columns="3" columnClasses="titleCell">
 					<h:outputLabel for="country" value="Country:" />
 
-					<p:selectOneMenu id="country" style="width: 153px;" converter="converterCountry" value="#{userController.countryDTO}" >
-						<f:selectItems value="#{CombosEspeciaisMB.countries}" 
-									  var="country"	itemLabel="#{country.label}" itemValue="#{country}" />
-						 <p:ajax event="change" process="@this" update="reg"/>
+					<p:selectOneMenu id="country" style="width: 153px;"
+						converter="converterCountry" value="#{userController.countryDTO}">
+						<f:selectItems value="#{CombosEspeciaisMB.countries}"
+							var="country" itemLabel="#{country.label}" itemValue="#{country}" />
+						<p:ajax event="change" process="@this" update="formReg" />
 					</p:selectOneMenu>
 					<h:outputText value="" />
-					
+
 					<h:outputLabel for="reg" value="Region:" />
 
-					<p:selectOneMenu id="reg" style="width: 153px;" converter="converterRegion" value="#{userController.regionDTO}">
-						
-						<f:selectItems value="#{CombosEspeciaisMB.getRegions(userController.countryDTO)}" 
-										var="region" itemLabel="#{region.label}" itemValue="#{region}" />
-							
+
+					<p:selectOneMenu id="reg" style="width: 153px;"
+									value="#{userController.regionDTO}"
+									converter="converterRegion">
+
+						<f:selectItems
+							value="#{userController.regions}"
+							var="region" 
+							itemValue="#{region}"
+							/>
+
 						<p:ajax event="change" process="@this" update="registerNewMember" />
-						
+
 					</p:selectOneMenu>
 
 
+					<h:outputText value="" />
 
-					<h:outputText value="" /> 
-					 
 					<h:outputLabel for="teamName" value="Team Name:" />
 					<h:inputText id="teamName"
 						value="#{userController.newUser.team.name}" />
@@ -74,8 +90,7 @@
 					<h:panelGrid columns="2">
 						<p:commandButton id="registerNewMember"
 							action="#{userController.register()}" value="Register"
-							styleClass="register" 
-							ajax="true" process="@this" update="email2"/>
+							styleClass="register" ajax="true" process="@this" update="email2" />
 						<h:messages styleClass="messages" errorClass="invalid"
 							infoClass="valid" warnClass="warning" globalOnly="true" />
 					</h:panelGrid>
