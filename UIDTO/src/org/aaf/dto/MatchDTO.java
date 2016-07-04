@@ -34,7 +34,6 @@ public class MatchDTO implements Serializable{
 	
 	private LineUpDTO lineUpVisitTeam;
 
-	
 	@Override
     public int hashCode() {
         int hash = 7;

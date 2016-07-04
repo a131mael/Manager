@@ -16,6 +16,19 @@ public class LineUpDTO implements Serializable{
 	
 	private MatchDTO match;
 	
+	private String tatica;
+	private int posseDeBola;
+	private int bolaEmCampo;
+	private int chutes;
+	private int faltas;
+	private int cartosAmarelos;
+	private int cartosVermelhos;
+	private int impedimentos;
+	private int mediaNotas;
+	private int notaAtaque;
+	private int notaDefesa;
+	private int notaMeioCampo;
+	
 	private LocalDateTime date;
 	
 	private PlayerDTO player1;
@@ -608,6 +621,126 @@ public class LineUpDTO implements Serializable{
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+
+
+	public String getTatica() {
+		return tatica;
+	}
+
+
+	public void setTatica(String tatica) {
+		this.tatica = tatica;
+	}
+
+
+	public int getNotaDefesa() {
+		return notaDefesa;
+	}
+
+
+	public void setNotaDefesa(int notaDefesa) {
+		this.notaDefesa = notaDefesa;
+	}
+
+
+	public int getNotaMeioCampo() {
+		return notaMeioCampo;
+	}
+
+
+	public void setNotaMeioCampo(int notaMeioCampo) {
+		this.notaMeioCampo = notaMeioCampo;
+	}
+
+
+	public int getNotaAtaque() {
+		return notaAtaque;
+	}
+
+
+	public void setNotaAtaque(int notaAtaque) {
+		this.notaAtaque = notaAtaque;
+	}
+
+
+	public int getMediaNotas() {
+		return mediaNotas;
+	}
+
+
+	public void setMediaNotas(int mediaNotas) {
+		this.mediaNotas = mediaNotas;
+	}
+
+
+	public int getImpedimentos() {
+		return impedimentos;
+	}
+
+
+	public void setImpedimentos(int impedimentos) {
+		this.impedimentos = impedimentos;
+	}
+
+
+	public int getCartosVermelhos() {
+		return cartosVermelhos;
+	}
+
+
+	public void setCartosVermelhos(int cartosVermelhos) {
+		this.cartosVermelhos = cartosVermelhos;
+	}
+
+
+	public int getCartosAmarelos() {
+		return cartosAmarelos;
+	}
+
+
+	public void setCartosAmarelos(int cartosAmarelos) {
+		this.cartosAmarelos = cartosAmarelos;
+	}
+
+
+	public int getFaltas() {
+		return faltas;
+	}
+
+
+	public void setFaltas(int faltas) {
+		this.faltas = faltas;
+	}
+
+
+	public int getChutes() {
+		return chutes;
+	}
+
+
+	public void setChutes(int chutes) {
+		this.chutes = chutes;
+	}
+
+
+	public int getBolaEmCampo() {
+		return bolaEmCampo;
+	}
+
+
+	public void setBolaEmCampo(int bolaEmCampo) {
+		this.bolaEmCampo = bolaEmCampo;
+	}
+
+
+	public int getPosseDeBola() {
+		return posseDeBola;
+	}
+
+
+	public void setPosseDeBola(int posseDeBola) {
+		this.posseDeBola = posseDeBola;
 	}
     
 
