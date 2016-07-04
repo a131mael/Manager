@@ -55,6 +55,35 @@ body {
   padding: 5px;
 }
 
+/* css da pagina de report */
+.panelTeamReport {
+  font-size: 0.6em;
+  width: 200px !important;
+  height: 300px !important;
+  padding-left: 10px !important;
+  float: right;
+  margin: 10px 0px;
+  border: 1px solid #D5D5D5;
+  background: #F1F1F1;
+  background-image: url(#{request.contextPath}/resources/gfx/asidebkg.png);
+  background-repeat: repeat-x;
+  padding: 5px;
+}
+
+.panelGradesReport {
+  font-size: 0.3em !important;
+  width: 400px !important;
+  height: 80px !important;
+  padding-left: 5px !important;
+  float: left;
+  margin: 5px 0px;
+  border: 1px solid #D5D5D5;
+  background: #F1F1F1;
+  background-repeat: repeat-x;
+  padding: 5px;
+}
+
+
 .gi-1x{font-size: 10px;}
 .gi-1-5x{font-size: 15px;}
 .gi-2x{font-size: 20px;}
@@ -110,7 +139,7 @@ span.invalid {
 }
 form {
   padding: 1em;
-  font: 80%/1 sans-serif;
+  font: 70%/1 sans-serif;
   width: 375px;
   border: 1px solid #D5D5D5;
 }

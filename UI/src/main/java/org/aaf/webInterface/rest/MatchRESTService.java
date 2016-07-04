@@ -78,6 +78,26 @@ public class MatchRESTService {
 	}
 	
 	@GET
+	@Path("/{idMatch:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getMatches(@PathParam("idMatch") long idMatch) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+		
+		builder = Response.ok();
+		
+		Match match = matchService.findById(idMatch);
+		if (match == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getMatch(match)));
+		}
+		return builder.build();
+	}
+	
+	@GET
 	@Path("/lineup/{idMatch:[0-9][0-9]*}/{idTeam:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getLineUpOrLastLineUp(@PathParam("idMatch") long idMatch, @PathParam("idTeam") long idTeam) {

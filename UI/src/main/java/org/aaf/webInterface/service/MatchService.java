@@ -25,6 +25,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.aaf.model.Country;
 import org.aaf.model.LineUp;
 import org.aaf.model.Match;
 import org.aaf.model.Team;
@@ -194,6 +195,10 @@ public class MatchService {
 			System.out.println("kkkkkkk ");
 		}
 		return lineUp;
+	}
+
+	public Match findById(long idMatch) {
+		return em.find(Match.class, idMatch);
 	}
 
 }

@@ -46,6 +46,12 @@
    <PROCESS-ITEM-OUTPUT ID="matches::#pages#team#matches.xhtml"
     NAME="output" PATH="/pages/team/matches.xhtml"
     TARGET="rules:#pages#team#matches.xhtml" TITLE="matches" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="matchID::#pages#team#report.xhtml"
+    NAME="output1" PATH="/pages/team/report.xhtml"
+    TARGET="rules:#pages#team#report.xhtml" TITLE="matchID" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#team#report.xhtml"
+  PATH="/pages/team/report.xhtml" SHAPE="744,480,50,25"
+  model-entity="JSFProcessGroup" persistent="true"/>
 </PROCESS>

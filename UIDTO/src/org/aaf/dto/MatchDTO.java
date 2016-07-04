@@ -29,6 +29,10 @@ public class MatchDTO implements Serializable{
 	private int golasVisitTeam;
 
 	private int round;
+	
+	private LineUpDTO lineUpHomeTeam;
+	
+	private LineUpDTO lineUpVisitTeam;
 
 	
 	@Override
@@ -130,6 +134,22 @@ public class MatchDTO implements Serializable{
 
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+
+	public LineUpDTO getLineUpHomeTeam() {
+		return lineUpHomeTeam;
+	}
+
+	public void setLineUpHomeTeam(LineUpDTO lineUpHomeTeam) {
+		this.lineUpHomeTeam = lineUpHomeTeam;
+	}
+
+	public LineUpDTO getLineUpVisitTeam() {
+		return lineUpVisitTeam;
+	}
+
+	public void setLineUpVisitTeam(LineUpDTO lineUpVisitTeam) {
+		this.lineUpVisitTeam = lineUpVisitTeam;
 	}
 
 

@@ -27,9 +27,6 @@ import org.aaf.uiweb.service.PlayerService;
 @ViewScoped
 public class PlayerController extends AuthController {
 
-	// @Inject
-	// private FacesContext facesContext;
-
 	private PlayerService playerService;
 
 	private PlayerDTO player;
