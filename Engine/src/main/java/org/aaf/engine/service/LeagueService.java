@@ -60,7 +60,8 @@ public class LeagueService {
 				teamService.register(createLeague(i, country),indiceJogador,rc);	;
 			}
 			matchService.createMatches(country.getCountry());
-
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

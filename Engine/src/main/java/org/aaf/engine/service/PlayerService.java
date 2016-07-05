@@ -1,11 +1,14 @@
 package org.aaf.engine.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.aaf.engine.names.Brasil;
 import org.aaf.engine.names.RegisterCountry;
@@ -24,6 +27,9 @@ public class PlayerService {
 
 //	@Inject
 //	private Logger log;
+	
+	@Inject
+	private LineUpService lineUpService;
 
 
 	public void save(Country country) throws Exception {
@@ -52,19 +58,39 @@ public class PlayerService {
 		em.persist(teamLeague);
 		
 		em.persist(createStadium(team));
-		em.persist(createLineUp(team));
+		
 		
 		for(int i=1; i<=22; i++){
 			indiceJogador++;
 			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador,rc));
 		}
 
-		//log.info("Registering " + team.getName());
+		em.persist(createLineUp(team));
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Player> getPlayers(Long teamID, String orderBy, String orderByType) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT p from  Player p ");
+		sql.append("left join p.team t ");
+		sql.append("left join p.country c ");
+		sql.append("where 1 = 1 ");
+		sql.append("and t.id = :teamID ");
+		if(orderBy!= null){
+			sql.append("ORDER BY p. ");
+			sql.append(orderBy);
+			sql.append(" ");
+			sql.append(orderByType);	
+		}
 		
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("teamID", teamID);
+		return  query.getResultList();
 	}
 	
 	private LineUp createLineUp(Team team) {
-		LineUp lineUp = new LineUp();
+		LineUp lineUp = lineUpService.doLineUp(team);
+		
 		lineUp.setDate(LocalDateTime.now());
 		lineUp.setTeam(team);;
 		

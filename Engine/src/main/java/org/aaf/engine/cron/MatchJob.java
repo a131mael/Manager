@@ -13,6 +13,7 @@ import org.aaf.engine.util.ServiceLocator;
 import org.aaf.model.LineUp;
 import org.aaf.model.Match;
 import org.aaf.model.MatchStatusEnum;
+import org.aaf.model.PositionEnum;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
@@ -37,16 +38,27 @@ public class MatchJob implements Job {
 			Thread.sleep(10000);
 			List<Match> matchesToExecute = service.getMatchesToExecute(agora);
 			System.out.println("Size: ---> " + matchesToExecute.size());
+
 			//APENAS COLOCA OS JOGOS COMO EM EXECUÇAO
 			for(Match match :matchesToExecute){
 				match.setMatchStatus(MatchStatusEnum.PLAYING);
 				service.save(match);
 			}
+			
 			//EXECUTA AS PARTIDAS
-			Random gerador = new Random();
+			Random gerador = new Random();	
 			for(Match match :matchesToExecute){
 				LineUp lineUpHomeTeam = lineUpService.getLineUp(match.getId(), match.getHomeTeam().getId());
 				LineUp lineUpVisitTeam = lineUpService.getLineUp(match.getId(), match.getVisitTeam().getId());
+				
+				if(lineUpHomeTeam == null){
+					lineUpHomeTeam = lineUpService.getLastLineUp(match.getHomeTeam().getId());
+				}
+				
+				if(lineUpVisitTeam == null){
+					lineUpVisitTeam = lineUpService.getLastLineUp(match.getVisitTeam().getId());
+				}
+				
 				
 				lineUpHomeTeam.setRate1(gerador.nextInt()*100);
 				lineUpHomeTeam.setRate2(gerador.nextInt()*100);

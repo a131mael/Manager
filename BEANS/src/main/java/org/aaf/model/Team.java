@@ -9,6 +9,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 
+import org.aaf.model.enuns.FanMoodEnum;
+import org.aaf.model.enuns.SponsorMoodEnum;
+
 @Entity
 public class Team {
 
@@ -26,8 +29,11 @@ public class Team {
 	@Column
 	private Double cashBox;
 
-//	@OneToMany(cascade=CascadeType.ALL, mappedBy="team")
-//	private List<TeamLeague> teamLeagues;
+	private FanMoodEnum fanMood;
+	
+	private SponsorMoodEnum sponsorMood;
+	
+	private Long fanSize;
 	
 	@OneToOne
 	private UserFM owner;
@@ -81,6 +87,30 @@ public class Team {
 
 	public void setRegion(Region region) {
 		this.region = region;
+	}
+
+	public FanMoodEnum getFanMood() {
+		return fanMood;
+	}
+
+	public void setFanMood(FanMoodEnum fanMood) {
+		this.fanMood = fanMood;
+	}
+
+	public SponsorMoodEnum getSponsorMood() {
+		return sponsorMood;
+	}
+
+	public void setSponsorMood(SponsorMoodEnum sponsorMood) {
+		this.sponsorMood = sponsorMood;
+	}
+
+	public long getFanSize() {
+		return fanSize;
+	}
+
+	public void setFanSize(long fanSize) {
+		this.fanSize = fanSize;
 	}
 
 }

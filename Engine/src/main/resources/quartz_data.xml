@@ -29,7 +29,7 @@
             <cron>
                 <name>MatchJob</name>
                 <job-name>MatchJob</job-name>
-                <cron-expression>* 0 * 15 * ? *</cron-expression>
+                <cron-expression>* 0/2 * * * ? *</cron-expression>
             </cron>
         </trigger>
     </schedule>

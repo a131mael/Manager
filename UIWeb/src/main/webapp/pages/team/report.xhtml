@@ -19,58 +19,58 @@
 
 					<h:panelGrid >
 						<h:outputLabel value="Detalhes da partida" />
-						<h:panelGrid columns="3" styleClass="panelGradesReport">
-							<h:outputLabel value="#{reportController.match.homeTeam.name}" />
-							<h:outputLabel value=" - " />
-							<h:outputLabel value="#{reportController.match.visitTeam.name}" />
+						<h:panelGrid columns="3" styleClass="panelGradesReport alinharCentro">
+							<h:outputText  value="#{reportController.match.homeTeam.name}" />
+							<h:outputText value=" - " />
+							<h:outputText value="#{reportController.match.visitTeam.name}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.tatica}" />
-							<h:outputLabel value=" Tática " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.tatica}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.tatica}" styleClass="alinharCentro"/>
+							<h:outputText value=" Tática " styleClass="alinharCentro"/>
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.tatica}" styleClass="alinharCentro"/>
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.posseDeBola}" />
-							<h:outputLabel value=" Posse de bola " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.posseDeBola}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.posseDeBola}" styleClass="alinharCentro"/>
+							<h:outputText value=" Posse de bola " styleClass="alinharCentro"/>
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.posseDeBola}" styleClass="alinharCentro"/>
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.tatica}" />
-							<h:outputLabel value=" Bola em cada campo " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.bolaEmCampo}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.tatica}" />
+							<h:outputText value=" Bola em cada campo " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.bolaEmCampo}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.chutes}" />
-							<h:outputLabel value=" Chutes " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.chutes}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.chutes}" />
+							<h:outputText value=" Chutes " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.chutes}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.faltas}" />
-							<h:outputLabel value=" Faltas " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.faltas}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.faltas}" />
+							<h:outputText value=" Faltas " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.faltas}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.cartosAmarelos}" />
-							<h:outputLabel value=" Cartões amarelos " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.cartosAmarelos}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.cartosAmarelos}" />
+							<h:outputText value=" Cartões amarelos " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.cartosAmarelos}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.cartosVermelhos}" />
-							<h:outputLabel value=" Cartoões vermelhos " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.cartosVermelhos}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.cartosVermelhos}" />
+							<h:outputText value=" Cartoões vermelhos " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.cartosVermelhos}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.impedimentos}" />
-							<h:outputLabel value=" Impedimentos " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.impedimentos}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.impedimentos}" />
+							<h:outputText value=" Impedimentos " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.impedimentos}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.mediaNotas}" />
-							<h:outputLabel value=" Média de notas " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.mediaNotas}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.mediaNotas}" />
+							<h:outputText value=" Média de notas " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.mediaNotas}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.notaAtaque}" />
-							<h:outputLabel value=" Ataque " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.notaAtaque}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.notaAtaque}" />
+							<h:outputText value=" Ataque " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.notaAtaque}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.notaMeioCampo}" />
-							<h:outputLabel value=" Meio campo " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.notaMeioCampo}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.notaMeioCampo}" />
+							<h:outputText value=" Meio campo " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.notaMeioCampo}" />
 							
-							<h:outputLabel value="#{reportController.match.lineUpHomeTeam.notaDefesa}" />
-							<h:outputLabel value=" Defesa " />
-							<h:outputLabel value="#{reportController.match.lineUpVisitTeam.notaDefesa}" />
+							<h:outputText value="#{reportController.match.lineUpHomeTeam.notaDefesa}" />
+							<h:outputText value=" Defesa " />
+							<h:outputText value="#{reportController.match.lineUpVisitTeam.notaDefesa}" />
 						</h:panelGrid>
 					</h:panelGrid>
 
@@ -80,7 +80,7 @@
 
 				</h:panelGrid>
 
-				<h:panelGrid id="panelRight" styleClass="panelTeamReport">
+				<h:panelGrid id="panelRight" styleClass="panelTeamReport ">
 					<h:panelGrid>
 						<p:link value="#{reportController.match.homeTeam.name}"	outcome="team">
 							<f:param name="teamID" value="#{reportController.match.homeTeam.id}" />
@@ -153,13 +153,16 @@
 
 						<br/>
 
-						<p:link value="Notas individuais" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player16.id}" />
+						<p:link value="Notas individuais" outcome="individualGrades">
+							<f:param name="teamID" value="#{reportController.match.lineUpHomeTeam.id}" />
 						</p:link>
 						
 						
 					</h:panelGrid>
 
+					<br/>
+					<br/>
+					
 					<h:panelGrid>
 						<p:link value="#{reportController.match.visitTeam.name}"	outcome="team">
 							<f:param name="teamID" value="#{reportController.match.visitTeam.id}" />
@@ -232,8 +235,9 @@
 
 						<br/>
 
-						<p:link value="Notas individuais" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player16.id}" />
+						<p:link value="Notas individuais" outcome="individualGrades">
+							<f:param name="teamID" value="#{reportController.match.lineUpVisitTeam.id}" />
+							<f:param name="matchID" value="#{reportController.match.id}" />
 						</p:link>
 						
 						

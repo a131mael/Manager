@@ -1,9 +1,8 @@
 package org.aaf.model;
 
-import java.util.ArrayList;
-
 public enum PositionEnum {
 
+	GK("GK"),
 	DEF("Def"),
 	MID("Mid"),
 	ATT("Att");

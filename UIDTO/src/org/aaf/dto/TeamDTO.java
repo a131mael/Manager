@@ -2,7 +2,9 @@ package org.aaf.dto;
 
 import java.io.Serializable;
 
+import org.aaf.model.enuns.FanMoodEnum;
 import org.aaf.model.enuns.IdionsEnum;
+import org.aaf.model.enuns.SponsorMoodEnum;
 import org.json.JSONObject;
 
 public class TeamDTO implements Serializable, Comparable<TeamDTO> {
@@ -29,6 +31,12 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 	private int points;
 
 	private IdionsEnum idiom;
+	
+	private FanMoodEnum fanMood;
+	
+	private SponsorMoodEnum sponsorMood;
+	
+	private long fanSize;
 
 	private RegionDTO region;
 
@@ -172,6 +180,30 @@ public class TeamDTO implements Serializable, Comparable<TeamDTO> {
 
 	public void setRegion(RegionDTO region) {
 		this.region = region;
+	}
+
+	public FanMoodEnum getFanMood() {
+		return fanMood;
+	}
+
+	public void setFanMood(FanMoodEnum fanMood) {
+		this.fanMood = fanMood;
+	}
+
+	public SponsorMoodEnum getSponsorMood() {
+		return sponsorMood;
+	}
+
+	public void setSponsorMood(SponsorMoodEnum sponsorMood) {
+		this.sponsorMood = sponsorMood;
+	}
+
+	public long getFanSize() {
+		return fanSize;
+	}
+
+	public void setFanSize(long fanSize) {
+		this.fanSize = fanSize;
 	}
 
 }

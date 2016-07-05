@@ -121,6 +121,10 @@ public class AuthController {
 		HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
 		session.setAttribute(nome, valor);
 	}
+	
+	public void cleanSession(){
+		System.out.println("Limpar sessao");
+	}
 
 	public Object getAtributoSessao(String nome) {
 		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();

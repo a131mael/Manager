@@ -115,13 +115,14 @@ public class TeamService {
 
 	public Long getSumSalaryPlayers(long idTeam) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("SELECT SUM(salary) from  Player p ");
-	//	sql.append("left join p.team t ");
-	//	sql.append("where 1=1 ");
-//		sql.append("and t.id = :id ");
+		sql.append("SELECT SUM(p.salary) from  Player p ");
+		sql.append("left join p.team t ");
+		sql.append("where 1=1 ");
+		sql.append("and t.id = :id ");
 
 		Query query = em.createQuery(sql.toString());
-		//query.setParameter("id", idTeam);
+		query.setParameter("id", idTeam);
 		return Double.doubleToLongBits((double) query.getSingleResult()) ;
 	}
+	
 }
