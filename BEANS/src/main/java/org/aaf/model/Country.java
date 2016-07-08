@@ -25,17 +25,25 @@ public class Country implements Serializable{
 	@SequenceGenerator(name = "GENERATE_Country", sequenceName = "Country_pk_seq", allocationSize = 1)
 	private Long id;
  
+	@Column
     private String name;
  
+    @Column
     private String cod;
     
+    @Column
     private int session;
     
+    @Column
     private int week;
+    
+    @Column
+    private int GMT;
     
     @Column
 	private LocalDateTime dateTimeStart; 
     
+    @Column
     private IdionsEnum idiom; 
 
 	public String getCod() {
@@ -92,6 +100,14 @@ public class Country implements Serializable{
 
 	public void setIdiom(IdionsEnum idiom) {
 		this.idiom = idiom;
+	}
+
+	public int getGMT() {
+		return GMT;
+	}
+
+	public void setGMT(int gMT) {
+		GMT = gMT;
 	}
 
 	

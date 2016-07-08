@@ -23,5 +23,6 @@ public class EndPoints {
 	public static final String GET_TEAMLEAGUE_LEAGUE = new StringBuilder(urlBase).append("/UI/rest/teamLeagues/league/").toString();
 	public static final String GET_LINEUP = new StringBuilder(urlBase).append("/UI/rest/matches/lineup/").toString();
 	public static final String GET_STADIUM_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/stadium/teamID/").toString();
-	public static final String GET_SALARY_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/sumSalaryPlayers/").toString();
+	public static final String GET_SALARY_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/sumSalaryPlayers/").toString(); //TODO REMOVER
+	public static final String GET_ECONOMY = new StringBuilder(urlBase).append("/UI/rest/Economies/").toString();
 }

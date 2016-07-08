@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.aaf.dto.CountryDTO;
+import org.aaf.dto.EconomyDTO;
 import org.aaf.dto.LeagueDTO;
 import org.aaf.dto.LineUpDTO;
 import org.aaf.dto.MatchDTO;
@@ -18,6 +19,7 @@ import org.aaf.dto.TeamDTO;
 import org.aaf.dto.TeamLeagueDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.model.Country;
+import org.aaf.model.Economy;
 import org.aaf.model.League;
 import org.aaf.model.LineUp;
 import org.aaf.model.Match;
@@ -536,5 +538,27 @@ public class Convertes {
 		}
 		return list;
 	
+	}
+
+	public static EconomyDTO getEconomy(Economy param) {
+		if (param != null) {
+			EconomyDTO obj = new EconomyDTO();
+			obj.setId(param.getId());
+			obj.setCashBox(param.getCashBox());
+			obj.setCod(param.getCod());
+			obj.setFanMood(param.getFanMood());
+			obj.setFanSize(param.getFanSize());
+			obj.setMaintenenceStadium(param.getMaintenenceStadium());
+			obj.setNewFan(param.getNewFan());
+			obj.setReceivedMatch(param.getReceivedMatch());
+			obj.setSession(param.getSession());
+			obj.setSponsorMood(obj.getSponsorMood());
+			obj.setSumPlayerSalary(obj.getSumPlayerSalary());
+			obj.setTeam(getTeam(param.getTeam()));
+			obj.setWeek(param.getWeek());
+			return obj;
+		} else {
+			return null;
+		}
 	}
 }

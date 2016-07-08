@@ -1,56 +1,19 @@
 package org.aaf.uiweb.service;
 
+import org.aaf.dto.EconomyDTO;
 import org.aaf.uiweb.util.EndPoints;
 
 public class EconomyService extends Service{
 
-	public Long getTotalSalary(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-   
-	public Long getTotalMathes(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-   
-	public Long getTotalOthers(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
+	public EconomyDTO getEconomy(Long teamID, int session, int week) {
+		StringBuilder endPoint = new StringBuilder();
+		endPoint.append(EndPoints.GET_ECONOMY);
+		endPoint.append(teamID);
+		endPoint.append("/");
+		endPoint.append("session");
+		endPoint.append("/");
+		endPoint.append("week");
+		return (EconomyDTO) getObject(endPoint.toString());
 	}
 	
-	public Long getTotalSallesPlayer(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-	
-	public Long getTotalPurchasePlayer(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-	
-	public Long getTotalIncreaseSupporters(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-	
-	public Long getTotalStadiumMaintence(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-	
-	public Long getTotalSalaryJuniors(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-	
-	public Long getTotalSalaryStaff(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
-	
-	public Long getTotalMoney(Long teamID) {
-		String endPoint = EndPoints.GET_SALARY_TEAM + teamID;
-		return (Long) getObject(endPoint);
-	}
 }

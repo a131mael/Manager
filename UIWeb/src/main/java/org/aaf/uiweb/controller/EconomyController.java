@@ -1,5 +1,6 @@
 package org.aaf.uiweb.controller;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
@@ -17,14 +18,13 @@ public class EconomyController extends AuthController{
     private EconomyDTO dto;
     
     EconomyController(){
-    	dto = new EconomyDTO();
-    	init(10L);
+    	//init();
     }
-    
 
-    public void init(Long teamID){
-    	economyService = new EconomyService(); //ver fluxo de vida, injecao do service eh feita apos o contrututor
-    	dto.setTotalIncreaseSupportes(economyService.getTotalIncreaseSupporters(teamID));
+    @PostConstruct
+    public void init(){
+    	//economyService = new EconomyService(); //ver fluxo de vida, injecao do service eh feita apos o contrututor
+		dto = economyService.getEconomy(getLoggedUser().getTeam().getId(),getLoggedUser().getCountryDTO().getSession(),getLoggedUser().getCountryDTO().getWeek()) ;
     }
     
     public EconomyDTO getDto(){

@@ -13,11 +13,14 @@ import javax.persistence.Query;
 import org.aaf.engine.names.Brasil;
 import org.aaf.engine.names.RegisterCountry;
 import org.aaf.model.Country;
+import org.aaf.model.Economy;
 import org.aaf.model.LineUp;
 import org.aaf.model.Player;
 import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.model.TeamLeague;
+import org.aaf.model.enuns.FanMoodEnum;
+import org.aaf.model.enuns.SponsorMoodEnum;
 
 @Stateless
 public class PlayerService {
@@ -56,16 +59,19 @@ public class PlayerService {
 		em.persist(team);
 		teamLeague.setTeam(team);
 		em.persist(teamLeague);
+		Stadium stadium = createStadium(team);
+		em.persist(stadium);
 		
-		em.persist(createStadium(team));
-		
-		
+		Long sumSalary = 0L;
 		for(int i=1; i<=22; i++){
 			indiceJogador++;
-			em.persist(createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador,rc));
+			Player p = createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador,rc); 
+			em.persist(p);
+			sumSalary = (long) (sumSalary + p.getSalary());
 		}
 
 		em.persist(createLineUp(team));
+		em.persist(createEconomy(team, stadium, sumSalary));
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -96,6 +102,24 @@ public class PlayerService {
 		
 		return lineUp;
 	}
+	
+	private Economy createEconomy(Team team, Stadium stadium, long sumSalary) {
+		Economy economy = new Economy();
+		economy.setTeam(team);
+		economy.setCashBox(500000D);
+		economy.setCod(team.getCod());
+		economy.setFanMood(FanMoodEnum.SATISFIED);
+		economy.setFanSize(200L);
+		economy.setMaintenenceStadium(stadium.getBleacher()*15 + stadium.getChair() * 10);
+		economy.setNewFan(0);
+		economy.setReceivedMatch(0);
+		economy.setSession(0);
+		economy.setSponsorMood(SponsorMoodEnum.SATISFIED);
+		economy.setSumPlayerSalary(sumSalary);
+		economy.setWeek(0);
+		return economy;
+	}
+	
 
 	private Stadium createStadium(Team team) {
 		Stadium stadium = new Stadium();

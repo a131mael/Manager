@@ -9,8 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.aaf.engine.dto.CountryDTO;
-import org.aaf.engine.names.Brasil;
-import org.aaf.engine.names.CountryInterface;
 import org.aaf.engine.names.RegisterCountry;
 import org.aaf.model.Country;
 import org.aaf.model.League;

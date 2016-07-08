@@ -15,6 +15,7 @@ import org.aaf.model.Country;
 @Stateless
 public class CountryService {
 
+
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 //
@@ -59,6 +60,14 @@ public class CountryService {
 		}
 		return list;
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Country> findAll() {
+		Query query = em.createQuery("FROM Country p");
+		List<Country> countries = (List<Country>) query.getResultList();
+
+		return countries;
+	}
 
 	//TODO query para mongo nativo
 	public List<Country> queryCache2MONGODB() {
@@ -69,5 +78,6 @@ public class CountryService {
 		List<Country> list = query.getResultList();
 		return list;
 	}
+
 
 }

@@ -8,8 +8,8 @@ public class Brasil implements CountryInterface{
 
 	public static final String nameCountry = "Brazil";
 	public static final String lamguage = "pt_br";
+	public static final int GMT = -3;
 
-	private List<String> namesPlayeres;
 	private static List<String> namesTeams;
 	
 	private IdionsEnum idiom = IdionsEnum.PT_BR;
@@ -76,6 +76,11 @@ public class Brasil implements CountryInterface{
 	@Override
 	public IdionsEnum getIdiom() {
 		return idiom;
+	}
+
+	@Override
+	public int getGMT() {
+		return GMT;
 	}
 
 

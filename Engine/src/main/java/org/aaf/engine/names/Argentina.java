@@ -13,20 +13,21 @@ public class Argentina implements CountryInterface {
 	public static final String nameCountry = "Argentina";
 	public static final String lamguage = "es_cas";
 	private IdionsEnum idiom = IdionsEnum.ES_CAS;
+	public static final int GMT = -4;
 	
 	private  List<String> namesPlayeres;
 	
 	private static  List<String> namesTeams;
 
 	// Name players
-	public static final String namePlayer = "Hugo ;Daniel ;Alejandro ;Pablo ;Álvaro ;Adrian ;David ;Diego ;Mário ;Javier ;Marcos ;Nicolas ;Lucas ;;Carlos ;Miguel ;"
+	public final String namePlayer = "Hugo ;Daniel ;Alejandro ;Pablo ;Álvaro ;Adrian ;David ;Diego ;Mário ;Javier ;Marcos ;Nicolas ;Lucas ;;Carlos ;Miguel ;"
 			+ "Jorge ;Martin ;Gonzalo ;Izan ;António ;Juan ;Leo ;Angel ;Victor ;Samuel ;Aitor ;Raul ;Hector ;Gabriel ;Guillermo ;"
 			+ "Rodrigo ;Dario ;Jesus ;José ;Jaime ;Pedro ;Alberto ;Bruno ;Joel ;Tiago ;Diego ;Lorenzo ;Murilo ;Pablo ;Ruan ;Juan ;Santos ;Ramon ;Ramom ;Jamom ;Iago ;Santiago ;"
 			+ "Rodrigues ;Marques ;Jaime ;Murillo ;Rhuan ;Vicenzo ;Araújo ;Andrade ;Lopes ;Cristian ;Cristiam ;Alejandro ;Juarez ;Vasco ;Dimas ;Santana ;Enrique ;Borges ;Estevan ;"
 			+ "Ramiro ;Riquelme ;Penha ;Manu ;Juan Pablo ;Gildo ;Paco ;Henrique ;Pablo Henrique ;Radamés ;Ramsés ;Rico ;Ernâni ;Calisxto ;Muniz ;Carlito ;Rúbio ;Messi ;Higuain ;Aguero ;"; 
 	
 	// Midle name players
-	public static final String lastNamePlayer = "Di María;Zanetti; Mascherano;Ayala;Messi;Simeone;Ruggeri; Armando Maradona; Maradona;Ortega;Batistuta;Romero;Aguero;Tevez;"
+	public final String lastNamePlayer = "Di María;Zanetti; Mascherano;Ayala;Messi;Simeone;Ruggeri; Armando Maradona; Maradona;Ortega;Batistuta;Romero;Aguero;Tevez;"
 			+ "Pablo Sorin;Galego;Sebastian;Sebastian Veron;Heinze;Crespo;Kemps;Pontoni;Mendez;Passarella;Luque;Abelho;Amaral;Anchieta;Barbosa;Cabeça de Vaca;Camargo;Chávez;"
 			+ "Claver;Costa;Feijó;Gama;Garcia;Garrido;Guerreiro;Guillén;Inácio;Magalhães;Meira;Montenegro;Mujica;Pazos;Peres;Pinheiro;Prado;Ramíres;Ramos;Silva;Souza;"
 			+ "Silva Souza; Silva de Souza;Teixeira;Veloso;Viegas;Vilalobos;de las Mandíbulas;Descuidado;Peludo;Chocho;Cerdo;Buena Bola;Amigo;Preto;Andarilho;Cabeza Fría;Piojoso;"
@@ -81,7 +82,7 @@ public class Argentina implements CountryInterface {
 	public static final String lastNameTeamBot9 = "Tocantins";
 
 	
-	public static List<String> getPlayerName() {
+	public List<String> getPlayerName() {
 		Set<String> nomes = new HashSet<>();
 		StringBuilder fullName = null;
 		Random gerador = new Random();
@@ -443,12 +444,12 @@ public class Argentina implements CountryInterface {
 
 	@Override
 	public String getNameplayer() {
-		return Argentina.namePlayer;
+		return namePlayer;
 	}
 
 	@Override
 	public String getLastnameplayer() {
-		return Argentina.lastNamePlayer;
+		return lastNamePlayer;
 	}
 
 	@Override
@@ -464,5 +465,11 @@ public class Argentina implements CountryInterface {
 	@Override
 	public IdionsEnum getIdiom() {
 		return idiom;
+	}
+
+	@Override
+	public int getGMT() {
+		
+		return GMT;
 	}
 }

@@ -21,6 +21,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.aaf.model.Economy;
+
 @Stateless
 public class EconomyService {
 
@@ -37,6 +39,22 @@ public class EconomyService {
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("teamID", teamID);
 		return  (Long) query.getSingleResult();
+	}
+	
+	public Economy getEconomyBySessionWeek(Long teamID,int session, int week) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT e from  Economy e ");
+		sql.append("left join e.team t ");
+		sql.append("where 1 = 1 ");
+		sql.append("and t.id = :teamID ");
+		sql.append("and e.session = :week ");
+		sql.append("and e.week = :week ");
+		
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("teamID", teamID);
+		query.setParameter("session", session);
+		query.setParameter("week", week);
+		return  (Economy) query.getSingleResult();
 	}
    
 }

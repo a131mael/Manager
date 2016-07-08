@@ -16,10 +16,11 @@ public class RegisterCountry {
 	public static String namePlayer;
 	private List<String> namesPlayeres;
 	private List<String> namesTeams;
-	public static String lastNamePlayer;
 	public static String teamName;
+	public static String lastNamePlayer;
 	public String regions;
 	private IdionsEnum idiom;
+	private int GMT ;
 	
 	public static Map<String, CountryInterface> countries = new HashMap<>();
 	
@@ -30,6 +31,8 @@ public class RegisterCountry {
 		lastNamePlayer = country.getLastnameplayer();
 		teamName = country.getTeamname();
 		regions = country.getRegions();
+		setGMT(country.getGMT());
+		
 	}
 	
 	public RegisterCountry(){
@@ -123,6 +126,14 @@ public class RegisterCountry {
 
 	public void setIdiom(IdionsEnum idiom) {
 		this.idiom = idiom;
+	}
+
+	public int getGMT() {
+		return GMT;
+	}
+
+	public void setGMT(int gMT) {
+		GMT = gMT;
 	}
 
 }

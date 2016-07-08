@@ -17,5 +17,7 @@ public interface CountryInterface {
 	public abstract String getRegions() ;
 	
 	public IdionsEnum getIdiom();
+	
+	public int getGMT();
 
 }
