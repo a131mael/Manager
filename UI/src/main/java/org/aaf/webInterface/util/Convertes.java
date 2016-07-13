@@ -544,7 +544,7 @@ public class Convertes {
 		if (param != null) {
 			EconomyDTO obj = new EconomyDTO();
 			obj.setId(param.getId());
-			obj.setCashBox(param.getCashBox());
+			obj.setCashBox(param.getCashBox()+0.000013);
 			obj.setCod(param.getCod());
 			obj.setFanMood(param.getFanMood());
 			obj.setFanSize(param.getFanSize());
@@ -552,8 +552,8 @@ public class Convertes {
 			obj.setNewFan(param.getNewFan());
 			obj.setReceivedMatch(param.getReceivedMatch());
 			obj.setSession(param.getSession());
-			obj.setSponsorMood(obj.getSponsorMood());
-			obj.setSumPlayerSalary(obj.getSumPlayerSalary());
+			obj.setSponsorMood(param.getSponsorMood());
+			obj.setSumPlayerSalary(param.getSumPlayerSalary());
 			obj.setTeam(getTeam(param.getTeam()));
 			obj.setWeek(param.getWeek());
 			return obj;

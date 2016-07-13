@@ -7,15 +7,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Angular</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+	
 	<h:outputStylesheet name="css/userDefault.css" />
-
+	<h:outputStylesheet name="css/jquery.mobile-1.4.2.css" />
+	<h:outputStylesheet name="css/bootstrap.min.css" />
 	<h:outputStylesheet name="css/menu.css" />
+	
+	
+<!-- 	<h:outputScript library="js" name="jquery.min.js" /> -->
+<!-- 	<h:outputScript library="js" name="bootstrap.min.js" /> -->
+<!-- 	<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.min.css"/> -->
+	
 
-	<link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-	<script
-		src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 
 	<!-- For minification, comment out this link -->
 	<!-- 	<link rel="stylesheet" href="css/jquery.mobile-1.4.2.css" /> -->
@@ -38,17 +44,6 @@
 
 	<!-- Set viewport scaling and zoom features -->
 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-
-	<link rel="stylesheet"
-		href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-
-	<!-- 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-
-	<script
-		src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
-
 </h:head>
 <h:body>
 	<div id="container">
@@ -65,15 +60,37 @@
 
 		<div id="aside">
 			<div>
-				<a href="../../pages/team/index.xhtml" ><span class="glyphicon glyphicon-home gi-2-5x" /></a>
-				<a href="../../pages/team/players.xhtml"><span class="glyphicon glyphicon-user gi-2-5x"></span></a>
-				<a href="../../pages/team/matches.xhtml"><span class="glyphicon glyphicon-calendar gi-2-5x"></span></a>
-				<a href="../../pages/team/training.xhtml"><span class="glyphicon glyphicon-scale gi-2-5x"></span></a>
-				<a href="../../pages/team/stadium.xhtml"><span class="glyphicon glyphicon-tent gi-2-5x"></span></a>
-				<a href="../../pages/team/economy.xhtml"><span class="glyphicon glyphicon-usd gi-2-5x"></span></a>
-				<a href="../../pages/team/informations.xhtml"><span class="glyphicon glyphicon-phone-alt gi-2-5x"></span></a>
-				<a href="../../pages/team/secretary.xhtml"><span class="glyphicon glyphicon-envelope gi-2-5x"></span></a>
-				
+				<a href="../../pages/team/index.xhtml">
+<!-- 					<span	class="glyphicon glyphicon-home gi-2-5x" /> -->
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a> 
+				<a href="../../pages/team/players.xhtml">
+<!-- 					<span class="glyphicon glyphicon-user gi-2-5x"/> -->
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a> 
+				<a href="../../pages/team/matches.xhtml">
+<!-- 					<span class="glyphicon glyphicon-calendar gi-2-5x"/> -->
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a> 
+				<a href="../../pages/team/training.xhtml">
+<!-- 					<span class="glyphicon glyphicon-scale gi-2-5x"/> -->
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a>
+				 <a href="../../pages/team/stadium.xhtml">
+<!-- 				 <span class="glyphicon glyphicon-tent gi-2-5x" /> -->
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a> 
+					<a href="../../pages/team/economy.xhtml">
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+<!-- 					<span class="glyphicon glyphicon-usd gi-2-5x"/> -->
+				</a> 
+				<a href="../../pages/team/informations.xhtml">
+<!-- 				<span class="glyphicon glyphicon-phone-alt gi-2-5x"/> -->
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a> 
+				<a href="../../pages/team/secretary.xhtml">
+					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+				</a>
 			</div>
 
 		</div>

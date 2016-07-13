@@ -10,16 +10,22 @@
 		<div>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Torcedores: " />
-				<h:outputLabel value="#{economyController.dto.fanSize}" />
+				<h:outputText value="#{economyController.dto.fanSize}" />
 				<h:outputLabel value="Humor Patrocinadores: " />
-				<h:outputLabel value="#{economyController.dto.sponsorMood.label}" />
+				<h:outputText value="#{economyController.dto.sponsorMood.label}" />
 				<h:outputLabel value="Humor Torcida: " />
-				<h:outputLabel value="#{economyController.dto.fanMood.label}" />
+				<h:outputText value="#{economyController.dto.fanMood.label}" />
 			</h:panelGrid>
 			<h:panelGrid columns="2">
 				<h:outputLabel value="Dinheiro: " />
-				<h:outputLabel value="#{economyController.dto.cashBox} " />
+				<h:outputText value="#{economyController.dto.cashBox} " >
+<!-- 					<f:convertNumber type="currency"  pattern="$#,##0.00" currencySymbol="$" locale="en_US" /> -->
+					<f:convertNumber locale="pt_BR" type="currency" />
+				</h:outputText>
 			</h:panelGrid>
+
+			<br/>
+			<br/>
 
 			<h:panelGrid width="100%" columns="2">
 				<h:panelGrid columns="2">
@@ -27,40 +33,43 @@
 					<br/>
 				
 					<h:outputLabel value="Jogadores Vendidos: " />
-					<h:outputLabel value="#{economyController.dto.totalSallesPlayers} " />
+					<h:outputText value="#{economyController.dto.totalSallesPlayers} " />
 
 					<h:outputLabel value="Jogos " />
-					<h:outputLabel value="#{economyController.dto.receivedMatch} " />
+					<h:outputText value="#{economyController.dto.receivedMatch} " />
 					<h:outputLabel value="Economista: " />
-					<h:outputLabel value="21000 " />
+					<h:outputText value="21000 " />
 					<h:outputLabel value="Outros: " />
-					<h:outputLabel value="#{economyController.dto.totalOthersPositive} " />
+					<h:outputText value="#{economyController.dto.totalOthersPositive} " />
 					<h:outputLabel value="Sócios: " />
-					<h:outputLabel value="21000 " />
+					<h:outputText value="21000 " />
 					<h:outputLabel value="Total: " />
-					<h:outputLabel value="#{economyController.dto.totalMoney}" />
+					<h:outputText value="#{economyController.dto.totalMoney}" >
+						<f:convertNumber type="currency"  pattern="$#,##0.00" currencySymbol="$" locale="en_US" />
+					</h:outputText>
 				</h:panelGrid>
 
 				<h:panelGrid columns="2">
 					<h:outputLabel value="Despesas" />
 					<br/>
 					<h:outputLabel value="Manutenção Estádio: " />
-					<h:outputLabel value="#{economyController.dto.maintenenceStadium}  " />
+					<h:outputText value="#{economyController.dto.maintenenceStadium}  " />
 					<h:outputLabel value="Salário Jogadores: " />
-					<h:outputLabel value="#{economyController.dto.sumPlayerSalary}" />
+					<h:outputText value="#{economyController.dto.sumPlayerSalary}" />
 					<h:outputLabel value="Salário Comissão: " />
-					<h:outputLabel value="21000 " />
+					<h:outputText value="21000 " />
 					<h:outputLabel value="Outros: " />
-					<h:outputLabel value="21000 " />
+					<h:outputText value="21000 " />
 					<h:outputLabel value="Juniores: " />
-					<h:outputLabel value="21000 " />
+					<h:outputText value="21000 " />
 					<h:outputLabel value="Total: " />
-					<h:outputLabel value="21000 " />
+					<h:outputText value="21000 " />
 				</h:panelGrid>
 
+<br/>
 				<h:panelGrid columns="2">
-					<h:outputLabel value="Total: " />
-					<h:outputLabel value="21000 " />
+					<h:outputLabel value="balanço: " />
+					<h:outputText value="21000 " />
 				</h:panelGrid>
 
 			</h:panelGrid>

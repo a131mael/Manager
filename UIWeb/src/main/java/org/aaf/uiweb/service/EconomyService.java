@@ -10,9 +10,9 @@ public class EconomyService extends Service{
 		endPoint.append(EndPoints.GET_ECONOMY);
 		endPoint.append(teamID);
 		endPoint.append("/");
-		endPoint.append("session");
+		endPoint.append(session);
 		endPoint.append("/");
-		endPoint.append("week");
+		endPoint.append(week);
 		return (EconomyDTO) getObject(endPoint.toString());
 	}
 	

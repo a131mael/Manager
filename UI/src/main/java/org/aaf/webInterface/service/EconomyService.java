@@ -47,7 +47,7 @@ public class EconomyService {
 		sql.append("left join e.team t ");
 		sql.append("where 1 = 1 ");
 		sql.append("and t.id = :teamID ");
-		sql.append("and e.session = :week ");
+		sql.append("and e.session = :session ");
 		sql.append("and e.week = :week ");
 		
 		Query query = em.createQuery(sql.toString());
