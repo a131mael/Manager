@@ -23,6 +23,7 @@ import org.aaf.model.Economy;
 import org.aaf.model.League;
 import org.aaf.model.LineUp;
 import org.aaf.model.Match;
+import org.aaf.model.MatchStatusEnum;
 import org.aaf.model.Player;
 import org.aaf.model.PositionEnum;
 import org.aaf.model.Region;
@@ -306,6 +307,7 @@ public class Convertes {
 			obj.setSession(param.getSession());
 			obj.setVisitTeam(getTeam(param.getVisitTeam()));
 			obj.setWeek(param.getWeek());
+			obj.setMatchStatus(param.getMatchStatus().ordinal());
 			return obj;
 		} else {
 			return null;
@@ -325,6 +327,7 @@ public class Convertes {
 			obj.setSession(param.getSession());
 			obj.setVisitTeam(getTeam(param.getVisitTeam()));
 			obj.setWeek(param.getWeek());
+			obj.setMatchStatus(MatchStatusEnum.values()[param.getMatchStatus()]);
 			return obj;
 		} else {
 			return null;

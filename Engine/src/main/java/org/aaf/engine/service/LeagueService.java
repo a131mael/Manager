@@ -49,6 +49,8 @@ public class LeagueService {
 			LocalDateTime startDate = LocalDateTime.of(2016, Month.JUNE, 21, 17, 40, 30);//TODO data arbitraria colocar no formulario a data de inicio.
 			c.setDateTimeStart(startDate); 
 			c.setIdiom(rc.getIdiom());
+			c.setGMT(rc.getGMT());
+
 			em.persist(c);
 
 			registerRegions(c,rc);

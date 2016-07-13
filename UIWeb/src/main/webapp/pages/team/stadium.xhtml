@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/userDefault.xhtml">
+
+	<ui:define name="content">
+		<div>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="#{msg['country']}: " />
+				<h:outputText value="#{leagueController.countryLeague.name}" />
+				<h:outputLabel value="#{msg['league']}: " />
+				<h:outputText value="#{leagueController.league.name}" />
+				<h:outputLabel value="#{msg['league.session']}: " />
+				<h:outputText value="#{leagueController.countryLeague.session}" />
+				<h:outputLabel value="#{msg['league.week']}: " />
+				<h:outputText value="#{leagueController.countryLeague.week}" />
+			</h:panelGrid>
+
+			<table style="width: 100%">
+				<tr>
+					<th>Posição</th>
+					<th>Team</th>
+					<th>Jogos</th>
+					<th>Vitorias</th>
+					<th>Empates</th>
+					<th>Derrotas</th>
+					<th>GP-GC</th>
+					<th>Points</th>
+				</tr>
+
+				<ui:repeat var="leagueTeam" value="#{leagueController.leagueTeans}"
+					varStatus="status">
+					<tr align="center">
+						<td>#{status.index+1}</td>
+						<td><a href="index.xhtml?teamId=#{leagueTeam.team.id}">#{leagueTeam.team.name}</a></td>
+						<td>#{leagueTeam.matches}</td>
+						<td>#{leagueTeam.victories}</td>
+						<td>#{leagueTeam.matches - (leagueTeam.victories +
+							leagueTeam.losses)}</td>
+						<td>#{leagueTeam.losses}</td>
+						<td>#{leagueTeam.goalsPro - leagueTeam.goasAgainst}</td>
+						<td>#{leagueTeam.points}</td>
+					</tr>
+					<br />
+				</ui:repeat>
+			</table>
+		</div>
+	</ui:define>
+</ui:composition>

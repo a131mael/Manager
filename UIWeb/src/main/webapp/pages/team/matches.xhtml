@@ -7,43 +7,48 @@
 	template="/WEB-INF/templates/userDefault.xhtml"
 	xmlns:p="http://primefaces.org/ui">
 
-<!-- <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" timeZone="#{EmpresaCrudMB.entity.timeZone}"/> -->
+	<!-- <f:convertDateTime pattern="dd/MM/yyyy - HH:mm" timeZone="#{EmpresaCrudMB.entity.timeZone}"/> -->
 
 	<ui:define name="content">
 		<div>
 			<h:form style="width:100%;border:none">
-				<h:panelGrid width="100%" columns="2">
-					<h:panelGrid>
+				<h:panelGrid width="100%" columns="2" styleClass="alinharTopo">
+					<h:panelGrid  style="width: 50% !important">
 						<h:outputLabel value="Jogos da Liga" />
 						<hr />
 
-						<ui:repeat var="match" value="#{matchController.getTeamMatchs(0)}"
-							varStatus="status">
+						<ui:repeat var="match" value="#{matchController.getTeamMatchs(0)}" varStatus="status">
 
-							<h:panelGrid columns="2">
-								<h:outputLabel value="#{msg['match.week']}: " />
-								<h:outputLabel value="#{match.week}" />
-
+							<h:panelGrid style="border: 1px">
+							
+								<h:panelGrid columns="2"  style="width: 250px;" styleClass="fundoCinzaPainel">
+									<h:outputLabel value="#{msg['match.week']}: " />
+									<h:outputLabel value="#{match.week}" styleClass="alinharDireita"/>
+								</h:panelGrid>
 								<h:panelGrid columns="5">
 
 									<a href="index.xhtml?teamId=#{match.homeTeam.id}">#{match.homeTeam.name}</a>
 
+									<h:outputLabel value="#{match.golasHomeTeam}" rendered="#{match.matchStatus ne 2}" />
+									<h:outputLabel value=" " rendered="#{match.matchStatus eq 2}"/>
 									<h:outputLabel value=" - " />
+									<h:outputLabel value="#{match.golasVisitTeam}" rendered="#{match.matchStatus ne 2}" styleClass="alinharEsquerda"/>
+									<h:outputLabel value=" " rendered="#{match.matchStatus eq 2}"/>
 
 									<a href="index.xhtml?teamId=#{match.visitTeam.id}">#{match.visitTeam.name}</a>
 								</h:panelGrid>
 								<br />
 
-								<p:link value="escalar" outcome="lineUp">
-									<f:param name="match" value="#{match.id}" />
-								</p:link>
+								<h:panelGrid columns="2" styleClass="alinharDireita">
+									<p:link value="escalar" outcome="lineUp" rendered="#{match.matchStatus eq 2}">
+										<f:param name="match" value="#{match.id}" />
+									</p:link>
+									<h:outputLabel value="Assistir ao vivo" rendered="#{match.matchStatus eq 1}" />
+									<p:link value="relatório" outcome="report" rendered="#{match.matchStatus eq 0}">
+										<f:param name="matchID" value="#{match.id}" />
+									</p:link>
 
-
-								<!-- <a href="lineUp.xhtml?teamId=#{matchController.lineupLink(match.id)}">escalar</a> -->
-								<!-- <a href="report.xhtml?teamId=#{leagueTeam.team.id}">relatório</a> -->
-								<p:link value="relatório" outcome="report">
-									<f:param name="matchID" value="#{match.id}" />
-								</p:link>
+								</h:panelGrid>
 
 							</h:panelGrid>
 							<br />
@@ -51,7 +56,7 @@
 						</ui:repeat>
 
 					</h:panelGrid>
-					<h:panelGrid>
+					<h:panelGrid style="width: 50% !important">
 						<h:outputLabel value="Outros" />
 						<hr />
 

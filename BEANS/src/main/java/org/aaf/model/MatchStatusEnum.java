@@ -1,7 +1,5 @@
 package org.aaf.model;
 
-import java.util.ArrayList;
-
 public enum MatchStatusEnum {
 
 	PLAYED("Played"),

@@ -44,6 +44,10 @@ public class ReportController extends AuthController {
 		reportService = new ReportService();
 		String id = getRequestParam("matchID");
 		addAtributoSessao("matchID",id);
+		
+		String teamID = getRequestParam("teamID");
+		addAtributoSessao("teamID",teamID);
+		
 		match = id!= null? (reportService.getMatch(Long.parseLong(id))):null;
 		if(match != null){
 			match.setLineUpHomeTeam(getLineUpHomeTeam());
@@ -69,5 +73,7 @@ public class ReportController extends AuthController {
 	public void setMatch(MatchDTO match) {
 		this.match = match;
 	}
+	
+	
 
 }

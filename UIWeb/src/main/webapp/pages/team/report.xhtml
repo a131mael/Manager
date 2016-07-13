@@ -8,239 +8,249 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="content">
-		<div>
+		<div class="alinharTopo">
+		<div class="fundoCinzaPainel espacamentoEsqueda">
+			<h:outputText  value="#{reportController.match.homeTeam.name} " />
+			<h:outputText value=" - " />
+			<h:outputText value=" #{reportController.match.visitTeam.name}" />
+			<h:outputText value="    " />
+			<h:outputText  value="#{reportController.match.golasHomeTeam} " />
+			<h:outputText value=" - " />
+			<h:outputText value=" #{reportController.match.golasVisitTeam}" />
+		</div>
 
-			<h:panelGrid width="100%" columns="2">
-				<h:panelGrid id="panelLeft">
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Data do jogo: " />
-						<h:outputLabel value="#{reportController.match.date}" />
-					</h:panelGrid>
-
-					<h:panelGrid >
-						<h:outputLabel value="Detalhes da partida" />
-						<h:panelGrid columns="3" styleClass="panelGradesReport alinharCentro">
-							<h:outputText  value="#{reportController.match.homeTeam.name}" />
-							<h:outputText value=" - " />
-							<h:outputText value="#{reportController.match.visitTeam.name}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.tatica}" styleClass="alinharCentro"/>
-							<h:outputText value=" Tática " styleClass="alinharCentro"/>
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.tatica}" styleClass="alinharCentro"/>
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.posseDeBola}" styleClass="alinharCentro"/>
-							<h:outputText value=" Posse de bola " styleClass="alinharCentro"/>
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.posseDeBola}" styleClass="alinharCentro"/>
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.tatica}" />
-							<h:outputText value=" Bola em cada campo " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.bolaEmCampo}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.chutes}" />
-							<h:outputText value=" Chutes " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.chutes}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.faltas}" />
-							<h:outputText value=" Faltas " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.faltas}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.cartosAmarelos}" />
-							<h:outputText value=" Cartões amarelos " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.cartosAmarelos}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.cartosVermelhos}" />
-							<h:outputText value=" Cartoões vermelhos " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.cartosVermelhos}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.impedimentos}" />
-							<h:outputText value=" Impedimentos " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.impedimentos}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.mediaNotas}" />
-							<h:outputText value=" Média de notas " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.mediaNotas}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.notaAtaque}" />
-							<h:outputText value=" Ataque " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.notaAtaque}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.notaMeioCampo}" />
-							<h:outputText value=" Meio campo " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.notaMeioCampo}" />
-							
-							<h:outputText value="#{reportController.match.lineUpHomeTeam.notaDefesa}" />
-							<h:outputText value=" Defesa " />
-							<h:outputText value="#{reportController.match.lineUpVisitTeam.notaDefesa}" />
-						</h:panelGrid>
-					</h:panelGrid>
-
-					<h:panelGrid>
-						<h:outputLabel value="Relatório do jogo" />
-					</h:panelGrid>
-
+		<h:panelGrid width="100%" columns="2" >
+			<h:panelGrid id="panelLeft">
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Data do jogo: " />
+					<h:outputLabel value="#{reportController.match.date}" />
 				</h:panelGrid>
 
-				<h:panelGrid id="panelRight" styleClass="panelTeamReport ">
-					<h:panelGrid>
-						<p:link value="#{reportController.match.homeTeam.name}"	outcome="team">
-							<f:param name="teamID" value="#{reportController.match.homeTeam.id}" />
-						</p:link>
-						<br/>
+				<h:panelGrid >
+					<h:outputLabel value="Detalhes da partida" />
+					<h:panelGrid columns="3" styleClass="panelGradesReport alinharCentro">
+						<h:outputText  value="#{reportController.match.homeTeam.name}" />
+						<h:outputText value="  " />
+						<h:outputText value="#{reportController.match.visitTeam.name}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player1.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player1.id}" />
-						</p:link>
-
-						<p:link value="#{reportController.match.lineUpHomeTeam.player2.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player2.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.tatica}" styleClass="alinharCentro"/>
+						<h:outputText value=" Tática " styleClass="alinharCentro"/>
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.tatica}" styleClass="alinharCentro"/>
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player3.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player3.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.posseDeBola}" styleClass="alinharCentro"/>
+						<h:outputText value=" Posse de bola " styleClass="alinharCentro"/>
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.posseDeBola}" styleClass="alinharCentro"/>
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player4.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player4.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.bolaEmCampo}" />
+						<h:outputText value=" Bola em cada campo " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.bolaEmCampo}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player5.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player5.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.chutes}" />
+						<h:outputText value=" Chutes " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.chutes}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player6.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player6.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.faltas}" />
+						<h:outputText value=" Faltas " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.faltas}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player7.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player7.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.cartosAmarelos}" />
+						<h:outputText value=" Cartões amarelos " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.cartosAmarelos}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player8.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player8.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.cartosVermelhos}" />
+						<h:outputText value=" Cartoões vermelhos " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.cartosVermelhos}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player9.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player9.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.impedimentos}" />
+						<h:outputText value=" Impedimentos " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.impedimentos}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player10.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player10.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.mediaNotas}" />
+						<h:outputText value=" Média de notas " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.mediaNotas}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player11.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player11.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.notaAtaque}" />
+						<h:outputText value=" Ataque " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.notaAtaque}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player12.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player12.id}" />
-						</p:link>
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.notaMeioCampo}" />
+						<h:outputText value=" Meio campo " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.notaMeioCampo}" />
 						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player13.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player13.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player14.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player14.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player15.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player15.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player16.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player16.id}" />
-						</p:link>
-
-						<br/>
-
-						<p:link value="Notas individuais" outcome="individualGrades">
-							<f:param name="teamID" value="#{reportController.match.lineUpHomeTeam.id}" />
-						</p:link>
-						
-						
+						<h:outputText value="#{reportController.match.lineUpHomeTeam.notaDefesa}" />
+						<h:outputText value=" Defesa " />
+						<h:outputText value="#{reportController.match.lineUpVisitTeam.notaDefesa}" />
 					</h:panelGrid>
+				</h:panelGrid>
 
-					<br/>
+				<h:panelGrid>
+					<h:outputLabel value="Relatório do jogo" />
+				</h:panelGrid>
+
+			</h:panelGrid>
+
+			<h:panelGrid id="panelRight" styleClass="panelTeamReport ">
+				<h:panelGrid>
+					<p:link value="#{reportController.match.homeTeam.name}"	outcome="team">
+						<f:param name="teamID" value="#{reportController.match.homeTeam.id}" />
+					</p:link>
 					<br/>
 					
-					<h:panelGrid>
-						<p:link value="#{reportController.match.visitTeam.name}"	outcome="team">
-							<f:param name="teamID" value="#{reportController.match.visitTeam.id}" />
-						</p:link>
-						<br/>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player1.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player1.id}" />
-						</p:link>
+					<p:link value="#{reportController.match.lineUpHomeTeam.player1.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player1.id}" />
+					</p:link>
 
-						<p:link value="#{reportController.match.lineUpVisitTeam.player2.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player2.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player3.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player3.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player4.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player4.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player5.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player5.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player6.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player6.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player7.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player7.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player8.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player8.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player9.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player9.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player10.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player10.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player11.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player11.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player12.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player12.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player13.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player13.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player14.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player14.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player15.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player15.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpVisitTeam.player16.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player16.id}" />
-						</p:link>
+					<p:link value="#{reportController.match.lineUpHomeTeam.player2.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player2.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player3.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player3.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player4.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player4.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player5.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player5.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player6.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player6.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player7.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player7.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player8.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player8.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player9.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player9.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player10.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player10.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player11.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player11.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player12.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player12.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player13.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player13.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player14.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player14.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player15.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player15.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpHomeTeam.player16.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player16.id}" />
+					</p:link>
 
-						<br/>
+					<br/>
 
-						<p:link value="Notas individuais" outcome="individualGrades">
-							<f:param name="teamID" value="#{reportController.match.lineUpVisitTeam.id}" />
-							<f:param name="matchID" value="#{reportController.match.id}" />
-						</p:link>
-						
-						
+					<p:link value="Notas individuais" outcome="individualGrades">
+						<f:param name="teamID" value="#{reportController.match.lineUpHomeTeam.id}" />
+						<f:param name="matchID" value="#{reportController.match.id}" />
+					</p:link>
+					
+					
+				</h:panelGrid>
+
+				<br/>
+				<br/>
+				
+				<h:panelGrid>
+					<p:link value="#{reportController.match.visitTeam.name}"	outcome="team">
+						<f:param name="teamID" value="#{reportController.match.visitTeam.id}" />
+					</p:link>
+					<br/>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player1.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player1.id}" />
+					</p:link>
+
+					<p:link value="#{reportController.match.lineUpVisitTeam.player2.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player2.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player3.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player3.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player4.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player4.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player5.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player5.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player6.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player6.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player7.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player7.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player8.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player8.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player9.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player9.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player10.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player10.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player11.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player11.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player12.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player12.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player13.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player13.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player14.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player14.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player15.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player15.id}" />
+					</p:link>
+					
+					<p:link value="#{reportController.match.lineUpVisitTeam.player16.name}" outcome="player">
+						<f:param name="playerID" value="#{reportController.match.lineUpVisitTeam.player16.id}" />
+					</p:link>
+
+					<br/>
+
+					<p:link value="Notas individuais" outcome="individualGrades">
+						<f:param name="teamID" value="#{reportController.match.lineUpVisitTeam.id}" />
+						<f:param name="matchID" value="#{reportController.match.id}" />
+					</p:link>
+					
+					
 					</h:panelGrid>
 
 				</h:panelGrid>

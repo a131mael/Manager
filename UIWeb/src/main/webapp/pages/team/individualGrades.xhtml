@@ -4,113 +4,38 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/userDefault.xhtml"
-	xmlns:p="http://primefaces.org/ui">
+	>
 
 	<ui:define name="content">
-		<div>
+		<h:form style="width:100%">
+			<div>
+				<div class="fundoCinzaPainel espacamentoEsqueda">
+					<h:outputText  value="#{reportController.match.homeTeam.name} " />
+					<h:outputText value=" - " />
+					<h:outputText value=" #{reportController.match.visitTeam.name}" />
+					<h:outputText value="    " />
+					<h:outputText  value="#{reportController.match.golasHomeTeam} " />
+					<h:outputText value=" - " />
+					<h:outputText value=" #{reportController.match.golasVisitTeam}" />
+				</div>
+			
+			<div class="espacamentoEsqueda" style="width: 40%">
+				<div class="espacamentoEsqueda" style="left:0;">
+					a
+				</div>
+				<div class="espacamentoEsqueda" style="right:0;">
+					a
+				</div>
+			
+				
+					
+			</div>
+			
+				
 
-			<h:panelGrid width="100%" columns="2">
-				<h:panelGrid id="panelLeft">
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Data do jogo: " />
-						<h:outputLabel value="#{reportController.match.date}" />
-					</h:panelGrid>
-
-					<h:panelGrid >
-						<h:outputLabel value="Detalhes da partida" />
-						<h:panelGrid columns="3" styleClass="panelGradesReport alinharCentro">
-
-						</h:panelGrid>
-					</h:panelGrid>
-
-				</h:panelGrid>
-
-				<h:panelGrid id="panelRight" styleClass="panelTeamReport ">
-					<h:panelGrid>
-						<p:link value="#{reportController.match.homeTeam.name}"	outcome="team">
-							<f:param name="teamID" value="#{reportController.match.homeTeam.id}" />
-						</p:link>
-						<br/>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player1.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player1.id}" />
-						</p:link>
-
-						<p:link value="#{reportController.match.lineUpHomeTeam.player2.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player2.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player3.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player3.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player4.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player4.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player5.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player5.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player6.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player6.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player7.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player7.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player8.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player8.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player9.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player9.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player10.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player10.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player11.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player11.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player12.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player12.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player13.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player13.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player14.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player14.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player15.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player15.id}" />
-						</p:link>
-						
-						<p:link value="#{reportController.match.lineUpHomeTeam.player16.name}" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player16.id}" />
-						</p:link>
-
-						<br/>
-
-						<p:link value="Notas individuais" outcome="player">
-							<f:param name="playerID" value="#{reportController.match.lineUpHomeTeam.player16.id}" />
-						</p:link>
-						
-						
-					</h:panelGrid>
-
-				</h:panelGrid>
-
-			</h:panelGrid>
-
-		</div>
-
+			</div>
+		</h:form>
 	</ui:define>
 </ui:composition>

@@ -59,11 +59,9 @@ public class MatchController extends AuthController {
 		if(lineUP == null){
 			lineUP = new LineUpDTO();
 		}
-		
 	}
 
-	//
-	public List<	MatchDTO> getTeamMatchs(int round) throws Exception {
+	public List<MatchDTO> getTeamMatchs(int round) throws Exception {
 
 		return matchService.getMatches(getLoggedUser().getTeam().getId(), getLoggedUser().getCountryDTO().getSession());
 	}
@@ -108,8 +106,6 @@ public class MatchController extends AuthController {
 		return playerService.getPlayers(getLoggedUser().getId(), "name", "asc");
 
 	}
-
-	//
 	public List<Object> getLastTeamMatchs() throws Exception {
 		// return matchService.getLastMatches(getLoggedUser().getId());
 		return null;

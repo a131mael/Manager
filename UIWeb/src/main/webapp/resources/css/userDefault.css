@@ -55,6 +55,13 @@ body {
   padding: 5px;
 }
 
+.fundoCinzaPainel {
+  background: #FFFFFF;
+  background-image: url(#{request.contextPath}/resources/gfx/headerbkg.png);
+  background-repeat: repeat-x;
+  box-shadow: 3px 3px 15px #d5d5d5;
+}
+
 /* css da pagina de report */
 .panelTeamReport {
   font-size: 0.6em;
@@ -83,20 +90,35 @@ body {
   padding: 5px;
 }
 
+.espacamentoEsqueda {
+   padding-left: 5px;
+}
+
 .alinharDireita {
   float: right !important;
    text-align: right !important;
+}
+
+.alinharEsquerda {
+  float: left !important;
+   text-align: left !important;
+}
+
+.alinharTopo {
+  vertical-align: top !important;
+}
+.alinharTopo td {
+  vertical-align: top !important;
+}    
+
+.alinharTopo>tbody>tr>td {
+    vertical-align: top;
 }
 
 .alinharCentro {
   text-align: center !important;
   margin-left: auto !important;
   margin-right: auto !important;
-}
-
-.alinharEsquerda {
-  float: right !important;
-   text-align: right !important;
 }
 
 .gi-1x{font-size: 10px;}

@@ -27,6 +27,8 @@ public class MatchDTO implements Serializable{
 	private int golasHomeTeam;
 
 	private int golasVisitTeam;
+	
+	private Integer matchStatus;
 
 	private int round;
 	
@@ -149,6 +151,14 @@ public class MatchDTO implements Serializable{
 
 	public void setLineUpVisitTeam(LineUpDTO lineUpVisitTeam) {
 		this.lineUpVisitTeam = lineUpVisitTeam;
+	}
+
+	public Integer getMatchStatus() {
+		return matchStatus;
+	}
+
+	public void setMatchStatus(Integer matchStatus) {
+		this.matchStatus = matchStatus;
 	}
 
 

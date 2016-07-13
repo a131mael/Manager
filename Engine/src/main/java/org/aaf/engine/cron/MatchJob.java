@@ -60,35 +60,42 @@ public class MatchJob implements Job {
 				}
 				
 				
-				lineUpHomeTeam.setRate1(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate2(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate3(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate4(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate5(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate6(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate7(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate8(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate9(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate10(gerador.nextInt()*100);
-				lineUpHomeTeam.setRate11(gerador.nextInt()*100);
+				lineUpHomeTeam.setRate1(gerador.nextInt(100));
+				lineUpHomeTeam.setRate2(gerador.nextInt(100));
+				lineUpHomeTeam.setRate3(gerador.nextInt(100));
+				lineUpHomeTeam.setRate4(gerador.nextInt(100));
+				lineUpHomeTeam.setRate5(gerador.nextInt(100));
+				lineUpHomeTeam.setRate6(gerador.nextInt(100));
+				lineUpHomeTeam.setRate7(gerador.nextInt(100));
+				lineUpHomeTeam.setRate8(gerador.nextInt(100));
+				lineUpHomeTeam.setRate9(gerador.nextInt(100));
+				lineUpHomeTeam.setRate10(gerador.nextInt(100));
+				lineUpHomeTeam.setRate11(gerador.nextInt(100));
 				
-				lineUpVisitTeam.setRate1(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate2(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate3(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate4(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate5(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate6(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate7(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate8(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate9(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate10(gerador.nextInt()*100);
-				lineUpVisitTeam.setRate11(gerador.nextInt()*100);
+				lineUpVisitTeam.setRate1(gerador.nextInt(100));
+				lineUpVisitTeam.setRate2(gerador.nextInt(100));
+				lineUpVisitTeam.setRate3(gerador.nextInt(100));
+				lineUpVisitTeam.setRate4(gerador.nextInt(100));
+				lineUpVisitTeam.setRate5(gerador.nextInt(100));
+				lineUpVisitTeam.setRate6(gerador.nextInt(100));
+				lineUpVisitTeam.setRate7(gerador.nextInt(100));
+				lineUpVisitTeam.setRate8(gerador.nextInt(100));
+				lineUpVisitTeam.setRate9(gerador.nextInt(100));
+				lineUpVisitTeam.setRate10(gerador.nextInt(100));
+				lineUpVisitTeam.setRate11(gerador.nextInt(100));
+				
+				if(lineUpHomeTeam.getMatch() == null){
+					lineUpHomeTeam.setMatch(match);
+				}
+				if(lineUpVisitTeam.getMatch() == null){
+					lineUpVisitTeam.setMatch(match);
+				}
 				
 				lineUpService.save(lineUpHomeTeam);
 				lineUpService.save(lineUpVisitTeam);
 				
-				match.setGolasHomeTeam(gerador.nextInt()*5);
-				match.setGolasVisitTeam(gerador.nextInt()*5);
+				match.setGolasHomeTeam(gerador.nextInt(5));
+				match.setGolasVisitTeam(gerador.nextInt(5));
 				match.setMatchStatus(MatchStatusEnum.PLAYED);
 				service.save(match);
 			}

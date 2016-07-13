@@ -34,7 +34,7 @@ import org.aaf.model.Team;
 public class MatchService {
 
 	@PersistenceContext(unitName = "PostgresDS")
-    private EntityManager em;
+	private EntityManager em;
 
 	@SuppressWarnings("unchecked")
 	public List<Match> getLastMatches(Long idTeam) {
@@ -47,13 +47,14 @@ public class MatchService {
 		sql.append("vt.id = :idTeam ");
 		sql.append("or ht.id = :idTeam ");
 		sql.append(") ");
+		sql.append("ORDER BY m.dateTime ASC");
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("idTeam", idTeam);
-		return  query.getResultList();
+		return query.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Match> getMatches(Long id,int session, int week) {
+	public List<Match> getMatches(Long id, int session, int week) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("Select m from Match m  ");
 		sql.append("left join m.homeTeam ht ");
@@ -64,16 +65,17 @@ public class MatchService {
 		sql.append("or ht.id = :idTeam ");
 		sql.append(") ");
 		sql.append("and m.session = :session");
-		sql.append("and m.week = :week");
+		sql.append("and m.week = :week ");
+		sql.append("ORDER BY m.dateTime ASC");
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("session", session);
 		query.setParameter("idTeam", id);
 		query.setParameter("week", week);
-		return  query.getResultList();
+		return query.getResultList();
 	}
-	
+
 	@SuppressWarnings("unchecked")
-	public List<Match> getMatches(Long id,int session) {
+	public List<Match> getMatches(Long id, int session) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("Select m from Match m  ");
 		sql.append("left join m.homeTeam ht ");
@@ -83,13 +85,14 @@ public class MatchService {
 		sql.append("vt.id = :idTeam ");
 		sql.append("or ht.id = :idTeam ");
 		sql.append(") ");
-		sql.append("and m.session = :session");
+		sql.append("and m.session = :session ");
+		sql.append("ORDER BY m.dateTime ASC");
+
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("session", String.valueOf(session));
 		query.setParameter("idTeam", id);
-		return  query.getResultList();
-		
-		
+		return query.getResultList();
+
 	}
 
 	public Match getLastMatch(Long id) {
@@ -104,16 +107,16 @@ public class MatchService {
 		sql.append(") ");
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("id", id);
-		return  (Match) query.getResultList();
+		return (Match) query.getResultList();
 	}
 
 	public void save(LineUp lineUp) {
 		em.find(Match.class, lineUp.getMatch().getId());
 		em.find(Team.class, lineUp.getTeam().getId());
-		
-		if(lineUp.getId() != null){
+
+		if (lineUp.getId() != null) {
 			em.merge(lineUp);
-		}else{
+		} else {
 			em.persist(lineUp);
 		}
 	}
@@ -131,19 +134,19 @@ public class MatchService {
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("idMatch", idMatch);
 		query.setParameter("idTeam", idTeam);
-		
+
 		LineUp lineUp = null;
-		try{
+		try {
 			lineUp = (LineUp) query.getSingleResult();
-			
-		}catch(NoResultException nre){
+
+		} catch (NoResultException nre) {
 			System.out.println("Escalação nâo encontrada.");
 		}
-		
+
 		return lineUp;
 	}
 
-	public LocalDateTime getDateLastLineUp(Long idTeam){
+	public LocalDateTime getDateLastLineUp(Long idTeam) {
 		StringBuilder sql = new StringBuilder();
 		sql.append("Select max(lu.date) from LineUp lu  ");
 		sql.append("left join lu.team t ");
@@ -152,27 +155,24 @@ public class MatchService {
 		sql.append("t.id = :idTeam ");
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("idTeam", idTeam);
-		
+
 		System.out.println("QUERY: " + sql);
-		
+
 		LocalDateTime date = null;
-		try{
+		try {
 			date = (LocalDateTime) query.getSingleResult();
-			
-		}catch(NoResultException nre){
+
+		} catch (NoResultException nre) {
 			System.out.println("Nenhuma Escalacao encontrada");
 		}
-		
+
 		return date;
 	}
-	
+
 	public LineUp getLastLineUp(long idTeam) {
 		LineUp lineUp = null;
-		System.out.println("XXXXXXX");
 		LocalDateTime lastDate = getDateLastLineUp(idTeam);
-		System.out.println("YYYYYYY ");
-		System.out.println("YYYYYYY " + lastDate);
-		if(lastDate != null){
+		if (lastDate != null) {
 			StringBuilder sql = new StringBuilder();
 			sql.append("Select lu from LineUp lu  ");
 			sql.append("left join lu.team t ");
@@ -185,14 +185,13 @@ public class MatchService {
 			Query query = em.createQuery(sql.toString());
 			query.setParameter("idTeam", idTeam);
 			query.setParameter("lastDate", lastDate);
-			
-			try{
+
+			try {
 				lineUp = (LineUp) query.getSingleResult();
-				
-			}catch(NoResultException nre){
+
+			} catch (NoResultException nre) {
 				System.out.println("Escalação nâo encontrada.");
 			}
-			System.out.println("kkkkkkk ");
 		}
 		return lineUp;
 	}
