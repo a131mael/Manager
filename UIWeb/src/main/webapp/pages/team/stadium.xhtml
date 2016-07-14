@@ -7,46 +7,47 @@
 	template="/WEB-INF/templates/userDefault.xhtml">
 
 	<ui:define name="content">
-		<div>
-			<h:panelGrid columns="2">
-				<h:outputLabel value="#{msg['country']}: " />
-				<h:outputText value="#{leagueController.countryLeague.name}" />
-				<h:outputLabel value="#{msg['league']}: " />
-				<h:outputText value="#{leagueController.league.name}" />
-				<h:outputLabel value="#{msg['league.session']}: " />
-				<h:outputText value="#{leagueController.countryLeague.session}" />
-				<h:outputLabel value="#{msg['league.week']}: " />
-				<h:outputText value="#{leagueController.countryLeague.week}" />
-			</h:panelGrid>
+		<div style="width: 100%" class="alinhamentoHorizontal">
+			<div class="fundoCinzaPainel espacamentoEsqueda" style="width: 100%">
+				<h:outputText value="#{stadiumController.stadium.name} " />
+			</div>
 
-			<table style="width: 100%">
-				<tr>
-					<th>Posição</th>
-					<th>Team</th>
-					<th>Jogos</th>
-					<th>Vitorias</th>
-					<th>Empates</th>
-					<th>Derrotas</th>
-					<th>GP-GC</th>
-					<th>Points</th>
-				</tr>
+			<br />
+			<div class="espacamentoEsqueda alinharTopo" style="width: 100%">
 
-				<ui:repeat var="leagueTeam" value="#{leagueController.leagueTeans}"
-					varStatus="status">
-					<tr align="center">
-						<td>#{status.index+1}</td>
-						<td><a href="index.xhtml?teamId=#{leagueTeam.team.id}">#{leagueTeam.team.name}</a></td>
-						<td>#{leagueTeam.matches}</td>
-						<td>#{leagueTeam.victories}</td>
-						<td>#{leagueTeam.matches - (leagueTeam.victories +
-							leagueTeam.losses)}</td>
-						<td>#{leagueTeam.losses}</td>
-						<td>#{leagueTeam.goalsPro - leagueTeam.goasAgainst}</td>
-						<td>#{leagueTeam.points}</td>
-					</tr>
-					<br />
-				</ui:repeat>
-			</table>
+				<h:panelGrid columns="2" width="100%">
+					<h:panelGrid columns="2" width="60%">
+						<h:outputLabel value="Arquibancada" />
+						<h:outputLabel value="#{stadiumController.stadium.bleacher}" />
+
+						<h:outputLabel value="Arquibancada coberta" />
+						<h:outputLabel
+							value="#{stadiumController.stadium.coveredBleacher}" />
+
+						<h:outputLabel value="Cadeira" />
+						<h:outputLabel value="#{stadiumController.stadium.chair}" />
+
+						<h:outputLabel value="Cadeira coberta" />
+						<h:outputLabel value="#{stadiumController.stadium.coveredChair}" />
+
+						<h:outputLabel value="Vip" />
+						<h:outputLabel value="#{stadiumController.stadium.vip}" />
+
+						<h:outputLabel value="Vip coberta" />
+						<h:outputLabel value="#{stadiumController.stadium.coveredVip}" />
+					</h:panelGrid>
+						
+					<h:panelGrid styleClass="alinharTopo alinharDireita" width="40%">
+						<img src="../../resources/img/stadium.jpg"
+								width="150px" height="150px;"
+								alt="#{authController.loggedUser.team.league.country.name}" 
+							/>			
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+			</div>
+
 		</div>
 	</ui:define>
 </ui:composition>

@@ -20,19 +20,187 @@
 					<h:outputText value=" - " />
 					<h:outputText value=" #{reportController.match.golasVisitTeam}" />
 				</div>
-			
-			<div class="espacamentoEsqueda" style="width: 100%">
-				<div class="espacamentoEsqueda" style="left:0; width: 50px">
-					aj
+				<div class="espacamentoEsqueda">
+					<h:outputText  value="#{reportController.lineUP.teamDTO.name} " />
 				</div>
-				<div class="espacamentoEsqueda" style="right:0;">
-					a
-				</div>
-					
-			</div>
-			
-				
+				<br/>
+				<div class="espacamentoEsqueda" style="width: 100%">
+					<div class="espacamentoEsqueda" style="left; width: 50%">
+						<img src="../../resources/img/field.JPG"
+							width="100px" height="220px;"
+							alt="#{authController.loggedUser.team.league.country.name}" 
+						/>
+					</div>
+					<div style="left;width: 50%" class="espacamentoEsqueda">
+						<h:panelGrid columns="1" >
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player1.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer1) }" styleClass="alinharDireita" />
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate1}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+							
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player2.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer2) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate2}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+							
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player3.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer3) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate3}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>							
+							</h:panelGrid>
+							
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player4.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer4) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate4}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>							
+							</h:panelGrid>
+							
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player5.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer5) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate5}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
 
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player6.name}" />		
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer6) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate6}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player7.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer7) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate7}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player8.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer8) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate8}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player9.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer9) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate9}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player10.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer10) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate10}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player11.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer11) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate11}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							
+							<h:outputLabel value="Reservas" style="padding-top:30px"/>
+							
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player12.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer12) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate12}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player13.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer13) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate13}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player14.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer14) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate14}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player15.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer15) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate15}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+
+							<h:panelGrid styleClass="fundoCinzaPainel" columns="2" style="width:100%">
+								<h:outputLabel value="#{reportController.lineUP.player16.name}" />
+								<h:outputLabel value="#{playerPosition.getPosition(reportController.lineUP.orderPlayer16) }" styleClass="alinharDireita"/>
+								<h:panelGrid columns="2" width="100%">
+									<h:outputLabel value="##" />
+									<h:outputLabel value="#{reportController.lineUP.rate16}" styleClass="alinharDireita"/>
+								</h:panelGrid>
+								<br/>
+							</h:panelGrid>
+							
+						</h:panelGrid>
+						 
+					</div>
+				</div>
+				<br/>
 			</div>
 		</h:form>
 	</ui:define>

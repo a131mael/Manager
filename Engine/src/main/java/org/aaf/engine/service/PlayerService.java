@@ -1,6 +1,7 @@
 package org.aaf.engine.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -17,10 +18,14 @@ import org.aaf.model.Economy;
 import org.aaf.model.LineUp;
 import org.aaf.model.Player;
 import org.aaf.model.Stadium;
+import org.aaf.model.Staff;
 import org.aaf.model.Team;
 import org.aaf.model.TeamLeague;
+import org.aaf.model.Training;
 import org.aaf.model.enuns.FanMoodEnum;
+import org.aaf.model.enuns.RateEnum;
 import org.aaf.model.enuns.SponsorMoodEnum;
+import org.aaf.model.enuns.StaffEnum;
 
 @Stateless
 public class PlayerService {
@@ -63,17 +68,32 @@ public class PlayerService {
 		em.persist(stadium);
 		
 		Long sumSalary = 0L;
+		List<Player> players = new ArrayList<>();
 		for(int i=1; i<=22; i++){
 			indiceJogador++;
 			Player p = createPlayer(i, teamLeague.getTeam(), teamLeague.getLeague().getCountry(),indiceJogador,rc); 
 			em.persist(p);
 			sumSalary = (long) (sumSalary + p.getSalary());
+			players.add(p);
 		}
-
+		List<Staff> staffs = new ArrayList<>();
+		Staff coach = createStaff(StaffEnum.COACH, "Joao da Silva"); //TODO internacionalizar e buscar o nome aleatorio 
+		Staff personal = createStaff(StaffEnum.PERSONAL_TRAINER, "Pedro Manolo"); //TODO internacionalizar e buscar o nome aleatorio 
+		Staff techinical = createStaff(StaffEnum.TECHNICAL_TRAINER, "Zeca da Favela"); //TODO internacionalizar e buscar o nome aleatorio 
+		
+		staffs.add(coach);
+		staffs.add(personal);
+		staffs.add(techinical);
+		
+		em.persist(coach); 
+		em.persist(personal); 
+		em.persist(techinical); 
+		
+		em.persist(createTrainning(team,players,staffs));
 		em.persist(createLineUp(team));
 		em.persist(createEconomy(team, stadium, sumSalary));
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Player> getPlayers(Long teamID, String orderBy, String orderByType) {
 		StringBuilder sql = new StringBuilder();
@@ -92,6 +112,24 @@ public class PlayerService {
 		Query query = em.createQuery(sql.toString());
 		query.setParameter("teamID", teamID);
 		return  query.getResultList();
+	}
+	
+	private Staff createStaff(StaffEnum type, String name) {
+		Staff staff = new Staff();
+		staff.setType(type);
+		staff.setName(name);
+		staff.setCod(1);
+		staff.setRate(RateEnum.GOOD);
+		return staff;
+	}
+	
+	private Training createTrainning(Team team, List<Player> players, List<Staff> staffs) {
+		Training training = new Training();
+		training.setNome("Main"); //TODO internacionalizar
+		training.setTeam(team);
+		training.setPlayers(players);
+		training.setStaffs(staffs);
+		return training;
 	}
 	
 	private LineUp createLineUp(Team team) {

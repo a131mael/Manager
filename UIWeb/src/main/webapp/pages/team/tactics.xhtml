@@ -4,17 +4,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/templates/userDefault.xhtml">
 
 	<ui:define name="content">
-		<div style="width: 100%" class="alinhamentoHorizontal">
-			<div class="fundoCinzaPainel espacamentoEsqueda" style="width: 100%">
-				<h:outputText value="#{trainningController.stadium.name} " />
-
-				<p:link value="Tatics" outcome="tactics" styleClass="alinharDireita"/>
+		<div style="width: 100%">
+			<div style="width: 50%">
+				<h:outputLabel value="Lista de Táticas" />
+			
 			</div>
-			<br />
+			<div style="width: 50%">
+				<img src="../../resources/img/field.JPG"
+							width="280px" height="360px;"
+							alt="#{authController.loggedUser.team.league.country.name}" />
+			
+			</div>
 		</div>
+
 	</ui:define>
 </ui:composition>

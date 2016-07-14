@@ -118,7 +118,7 @@ body {
 }
 
 .alinhamentoHorizontal{
-	
+	 display: inline-block;
 }
 
 .alinharCentro {

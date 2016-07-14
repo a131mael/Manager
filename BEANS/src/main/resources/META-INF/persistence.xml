@@ -17,6 +17,8 @@
 		<class>org.aaf.model.Match</class>
 		<class>org.aaf.model.TeamLeague</class>
 		<class>org.aaf.model.Economy</class>
+		<class>org.aaf.model.Training</class>
+		<class>org.aaf.model.Staff</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

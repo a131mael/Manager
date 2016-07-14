@@ -1,7 +1,5 @@
 package org.aaf.model;
 
-import java.util.ArrayList;
-
 public enum HabilityEnum {
 
 	VALUE("Valor"),
@@ -39,8 +37,6 @@ public enum HabilityEnum {
 	GOALKEAPER("Goleiro"),
 	
 	WORKINDEX("Indice de trabalho");
-	
-	
 	
 	private String label;
     

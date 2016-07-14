@@ -8,7 +8,7 @@
 	<ui:define name="content">
 		<h:form style="width:100%; border:none">
 			<div>
-				<h:panelGrid columns="2" width="100%">
+				<h:panelGrid columns="2" width="100%"  styleClass="alinharTopo">
 					<h:panelGrid width="50%">
 						<img
 							src=" ../../resources/img/ico/flags/#{authController.loggedUser.countryDTO.name.toLowerCase()}.png"
@@ -18,13 +18,12 @@
 					</h:panelGrid>
 					<h:panelGrid columns="2">
 
-						<h:outputLabel value="#{authController.loggedUser.team.name}"
-							style="font-size: 25px" />
+						<h:outputLabel value="#{authController.loggedUser.team.name}" style="font-size: 25px" />
 
-						<img
-							src=" ../../resources/img/ico/flags/#{authController.loggedUser.countryDTO.name.toLowerCase()}.png"
-							width="16px" height="16px; "
-							alt="#{authController.loggedUser.team.league.country.name}" />
+						<img src=" ../../resources/img/ico/flags/#{authController.loggedUser.countryDTO.name.toLowerCase()}.png"
+							width="16px" height="16px;"
+							alt="#{authController.loggedUser.team.league.country.name}" 
+							/>
 
 						<h:outputText value="" />
 						<h:outputText value="" />

@@ -37,6 +37,8 @@ public class ReportController extends AuthController {
 	
 
 	private MatchDTO match;
+	
+	private LineUpDTO lineUP; 
 
 	@PostConstruct
 	private void init() {
@@ -53,6 +55,9 @@ public class ReportController extends AuthController {
 			match.setLineUpHomeTeam(getLineUpHomeTeam());
 			match.setLineUpVisitTeam(getLineUpVisitTeam());
 		}
+		if(id != null && teamID != null){
+			lineUP = matchService.getLineUp(Long.parseLong(id), Long.parseLong(teamID) );
+		}
 	}
 
 	public MatchDTO getMatch() {
@@ -64,16 +69,22 @@ public class ReportController extends AuthController {
 		return lineUP;
 	}
 	
-
 	private LineUpDTO getLineUpVisitTeam() {
 		LineUpDTO lineUP = matchService.getLineUp(match.getId(), match.getVisitTeam().getId());
 		return  lineUP;
 	}
-
+	
 	public void setMatch(MatchDTO match) {
 		this.match = match;
 	}
-	
+
+	public LineUpDTO getLineUP() {
+		return lineUP;
+	}
+
+	public void setLineUP(LineUpDTO lineUP) {
+		this.lineUP = lineUP;
+	}
 	
 
 }

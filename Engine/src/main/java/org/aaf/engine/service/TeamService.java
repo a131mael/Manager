@@ -20,19 +20,8 @@ public class TeamService {
 	@PersistenceContext(unitName = "PostgresDS")
 	private EntityManager em;
 
-	// @Inject
-	// private Logger log;
-
 	@Inject
 	private PlayerService playerService;
-
-//	public void register(League league, Integer indiceJogador) throws Exception {
-//		em.persist(league);
-//
-//		for (int i = 1; i <= 8; i++) {
-//			playerService.register(createTeamLeague(i, league), indiceJogador);
-//		}
-//	}
 
 	public void register(League league, Integer indiceJogador, RegisterCountry rc) throws Exception {
 		em.persist(league);
