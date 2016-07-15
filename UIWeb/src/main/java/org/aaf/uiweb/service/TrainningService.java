@@ -16,14 +16,14 @@
  */
 package org.aaf.uiweb.service;
 
-import org.aaf.dto.StadiumDTO;
+import org.aaf.dto.TrainningDTO;
 import org.aaf.uiweb.util.EndPoints;
 
 public class TrainningService extends Service{
 
-	public StadiumDTO getTrainning(Long idTeam) {
-		String endPoint =  EndPoints.GET_STADIUM_TEAM+idTeam;
-		return(StadiumDTO)getObject(endPoint);
+	public TrainningDTO getTrainning(Long idTeam) {
+		String endPoint =  EndPoints.GET_TRAINNING+idTeam;
+		return(TrainningDTO)getObject(endPoint);
 	}
 
 }

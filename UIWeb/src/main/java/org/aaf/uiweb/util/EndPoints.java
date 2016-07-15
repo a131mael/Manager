@@ -2,8 +2,8 @@ package org.aaf.uiweb.util;
 
 public class EndPoints {
 
-	//private static StringBuilder urlBase = new StringBuilder("http://localhost");
-	private static StringBuilder urlBase = new StringBuilder("http://ec2-52-67-36-232.sa-east-1.compute.amazonaws.com");
+	private static StringBuilder urlBase = new StringBuilder("http://localhost");
+	//private static StringBuilder urlBase = new StringBuilder("http://ec2-52-67-36-232.sa-east-1.compute.amazonaws.com");
 	
  	
 	public static final String AVALIABLE_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/avaliable/").toString();
@@ -25,4 +25,5 @@ public class EndPoints {
 	public static final String GET_STADIUM_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/stadium/teamID/").toString();
 	public static final String GET_SALARY_TEAM = new StringBuilder(urlBase).append("/UI/rest/teams/sumSalaryPlayers/").toString(); //TODO REMOVER
 	public static final String GET_ECONOMY = new StringBuilder(urlBase).append("/UI/rest/Economies/").toString();
+	public static final String GET_TRAINNING = new StringBuilder(urlBase).append("/UI/rest/trainnings/").toString();
 }

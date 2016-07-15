@@ -17,6 +17,7 @@ import org.aaf.dto.RegionDTO;
 import org.aaf.dto.StadiumDTO;
 import org.aaf.dto.TeamDTO;
 import org.aaf.dto.TeamLeagueDTO;
+import org.aaf.dto.TrainningDTO;
 import org.aaf.dto.UserDTO;
 import org.aaf.model.Country;
 import org.aaf.model.Economy;
@@ -30,6 +31,7 @@ import org.aaf.model.Region;
 import org.aaf.model.Stadium;
 import org.aaf.model.Team;
 import org.aaf.model.TeamLeague;
+import org.aaf.model.Training;
 import org.aaf.model.UserFM;
 
 public class Convertes {
@@ -559,6 +561,21 @@ public class Convertes {
 			obj.setSumPlayerSalary(param.getSumPlayerSalary());
 			obj.setTeam(getTeam(param.getTeam()));
 			obj.setWeek(param.getWeek());
+			return obj;
+		} else {
+			return null;
+		}
+	}
+	
+	public static TrainningDTO getTrainning(Training param) {
+		if (param != null) {
+			TrainningDTO obj = new TrainningDTO();
+			obj.setId(param.getId());
+			obj.setNome(param.getNome());
+			obj.setTeam(getTeam(param.getTeam()));
+			obj.setPlayers(getPlayers(param.getPlayers()));
+			//TODO STAFF
+			
 			return obj;
 		} else {
 			return null;

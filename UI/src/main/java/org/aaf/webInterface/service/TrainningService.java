@@ -14,37 +14,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.aaf.uiweb.controller;
+package org.aaf.webInterface.service;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.inject.Model;
-import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
-import org.aaf.dto.TrainningDTO;
-import org.aaf.uiweb.service.TrainningService;
+import org.aaf.model.Training;
 
-@Model
-@ViewScoped
-public class TrainningController extends AuthController {
+@Stateless
+public class TrainningService {
 
-	@Inject
-	private TrainningService trainningService;
-
-	private TrainningDTO trainning;
-
-	@PostConstruct
-	private void init() {
-		trainningService = new TrainningService();
-		trainning = trainningService.getTrainning(getLoggedUser().getTeam().getId());
+	@PersistenceContext(unitName = "PostgresDS")
+    private EntityManager em;
+	
+	public Training getTrainning(Long teamID) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT tr from  Training tr ");
+		sql.append("left join tr.team t ");
+		sql.append("where 1 = 1 ");
+		sql.append("and t.id = :teamID ");
+		
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("teamID", teamID);
+		return  (Training) query.getSingleResult();
 	}
-
-	public TrainningDTO getTrainning() {
-		return trainning;
-	}
-
-	public void setTrainning(TrainningDTO trainning) {
-		this.trainning = trainning;
-	}
-
+   
 }
