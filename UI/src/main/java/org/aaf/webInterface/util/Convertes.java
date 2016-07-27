@@ -573,6 +573,7 @@ public class Convertes {
 			obj.setId(param.getId());
 			obj.setNome(param.getNome());
 			obj.setTeam(getTeam(param.getTeam()));
+			param.getPlayers().size();
 			obj.setPlayers(getPlayers(param.getPlayers()));
 			//TODO STAFF
 			

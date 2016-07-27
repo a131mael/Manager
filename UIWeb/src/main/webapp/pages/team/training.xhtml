@@ -11,10 +11,40 @@
 		<div style="width: 100%" class="alinhamentoHorizontal">
 			<div class="fundoCinzaPainel espacamentoEsqueda" style="width: 100%">
 				<h:outputText value="#{trainningController.trainning.nome} " />
-
 				<p:link value="Tatics" outcome="tactics" styleClass="alinharDireita"/>
 			</div>
 			<br />
+			
+			<h:panelGrid columns="2">
+				<h:panelGrid>
+					<div class="espacamentoEsqueda">
+						<h:outputText value="Qualidade do Treino: " />
+						<h:outputText value="#{trainningController.trainning.id}" />
+					</div>
+					
+					<br />
+					<div class="espacamentoEsqueda">
+						<h:outputText value="Jogadores Treinando " />
+						<h:outputText value="#{trainningController.trainning.id}" />
+					</div>
+					
+					<br />
+					<div class="espacamentoEsqueda">
+						<h:outputText value="Jogadores sem treinar " />
+						<h:outputText value="#{trainningController.trainning.id}" />
+					</div>
+		
+				</h:panelGrid>
+						
+				<h:panelGrid styleClass="alinharTopo">
+					<div class="alinharTopo">
+						<h:outputText value="Staff " />
+						<h:outputText value="#{trainningController.trainning.id}" />
+					</div>
+				</h:panelGrid>
+			
+			</h:panelGrid>
+			
 		</div>
 	</ui:define>
 </ui:composition>
