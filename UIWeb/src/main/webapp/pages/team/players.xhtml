@@ -8,27 +8,25 @@
 	template="/WEB-INF/templates/userDefault.xhtml">
 
 	<h:head>
-
 	</h:head>
 
 	<ui:define name="content">
 		<h:form style="width:100%;border:none">
 			<div>
-				<h:panelGrid columns="2">
+				<h:panelGrid columns="3">
 
-					<h:panelGrid columns="3">
-						<h:outputLabel value="Time principal, " />
-						<h:outputLabel value="#{playerListController.teamPlayers.size()}" />
-						<h:outputLabel value=" jogadores" />
+					<h:panelGrid columns="3" width="300px">
+						<h:outputLabel id="olMainTean" value="#{msg['team.mainTeam']}: " style="font-size: 1.5em; " />
+						<p:spacer width="10px"/>
+						<h:outputLabel value="#{playerListController.teamPlayers.size()} #{msg['team.players']}" style="font-size: 1.5em"/>
 					</h:panelGrid>
-
+					<p:spacer width="50px"/>
 					<h:panelGrid columns="2">
-						<h:outputLabel value="Order by: " />
+						<h:outputLabel value="#{msg['select.orderby']}" style="font-size: 1.5em"/>
 
-						<p:selectOneMenu label="orderBy"
-							style="width: 200px; margin-left: 10px;"
+						<p:selectOneMenu label="orderBy" style="width: 200px; margin-left: 10px;"
 								value="#{playerListController.selectedHability}">
-							<f:selectItem itemLabel="Hability" itemValue="" />
+							<f:selectItem itemLabel="Hability" itemValue="" style="font-size: 1.5em"/>
 							<f:selectItems value="#{selectItems.habilityEnum}" var="item" itemValue="item" itemLabel="#{item.description}"/>
 							<p:ajax process="@this" update="@form" />
 						</p:selectOneMenu>
@@ -41,28 +39,27 @@
 				<h:panelGrid id="listPlayers">
 					<ui:repeat var="player" value="#{playerListController.teamPlayers}"
 						varStatus="status">
-						<h:panelGrid columns="8">
+						<h:panelGrid columns="10">
 							<img
 								src="../../resources/img/ico/flags/#{player.country.name.toLowerCase()}.png"
 								width="16px" height="16px" alt="#{player.country.name}" />
 
 							<h:link value="#{player.name}, "
-								onclick="window.location='./player.xhtml?id=#{player.id}'" />
+								onclick="window.location='./player.xhtml?id=#{player.id}'" style="font-size: 1.5em"/>
 
-							<!-- 					<h:commandLink value="#{player.name}, " actionListener="player" action="player" outcome="?teste=3;faces-redirect=true" /> -->
-							<!-- 					<h:commandLink value="teste " onclick="window.location='./player.xhtml?id=#{player.id}'"  /> -->
-
-							<h:outputLabel value="#{playerHability.getAge(player.age)}" />
-							<h:outputText value="#{msg['player.age.yearOld']} " />
+							<h:outputLabel value="#{playerHability.getAge(player.age)}" style="font-size: 1.5em"/>
+							<h:outputText value="#{msg['player.age.yearOld']} " style="font-size: 1.5em"/>
 							<h:outputText value=" " style="padding-left: 30px" />
-							<h:outputText value="#{msg['player.height']}: " />
-							<h:outputLabel value="#{playerHability.getHeigth(player.height)}"
-								style="margin-left:2px" />
+							<h:outputText value="#{msg['player.height']}: " style="font-size: 1.5em"/>
+							<h:outputLabel value="#{playerHability.getHeigth(player.height)}m" style="margin-left:2px;font-size: 1.5em" />
+								<p:spacer width="10px"/>
+							<h:outputText value="#{msg['player.value']}: " style="font-size: 1.5em"/>
+							<h:outputLabel value="#{playerHability.getValue(player.value)}"	style="margin-left:2px;font-size: 1.5em" />
 						</h:panelGrid>
 						<center>
-							<hr />
+							<hr style="margin-top: 4px;margin-bottom: 4px;"/>
 							<h:panelGrid columns="3">
-								<h:panelGrid columns="2" title="Bodily">
+								<h:panelGrid columns="2" title="Bodily" style="font-size: 1.5em">
 
 									<h:outputLabel value="#{msg['player.agility']}: " />
 									<h:outputText
@@ -87,7 +84,7 @@
 
 								</h:panelGrid>
 
-								<h:panelGrid columns="2" title="Technical">
+								<h:panelGrid columns="2" title="Technical" style="font-size: 1.5em">
 									<h:outputLabel value="#{msg['player.disarm']}" />
 									<h:outputText
 										value="#{playerHability.getHability(player.disarm)}" />
@@ -110,7 +107,7 @@
 
 								</h:panelGrid>
 
-								<h:panelGrid columns="2" title="Psychological">
+								<h:panelGrid columns="2" title="Psychological" style="font-size: 1.5em">
 									<h:outputLabel value="#{msg['player.aggressiveness']}:  " />
 									<h:outputText
 										value="#{playerHability.getHability(player.aggressiveness)}" />
@@ -135,6 +132,8 @@
 							</h:panelGrid>
 						</center>
 
+						<br />
+						<br />
 						<br />
 					</ui:repeat>
 				</h:panelGrid>

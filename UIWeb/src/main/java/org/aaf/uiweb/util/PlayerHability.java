@@ -69,6 +69,11 @@ public class PlayerHability {
     }
     
     public float getHeigth(float valor){
-    	return  valor/100; 
+    	return  Formater.format(valor/100); 
     }
+    
+    public String getValue(long valor){
+    	return  Formater.formatCurrency(valor); 
+    }
+    
 }

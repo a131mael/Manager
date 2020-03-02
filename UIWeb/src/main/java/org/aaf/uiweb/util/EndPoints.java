@@ -17,6 +17,9 @@ public class EndPoints {
 	public static final String GET_REGIONS_COUNTRY = new StringBuilder(urlBase).append("/UI/rest/countries/regions/").toString();
 	public static final String GET_COUNTRY_USER = new StringBuilder(urlBase).append("/UI/rest/countries/user/").toString();
 	public static final String GET_MATCHES = new StringBuilder(urlBase).append("/UI/rest/matches/").toString();//2path
+	public static final String GET_LAST_MATCHES = new StringBuilder(urlBase).append("/UI/rest/matches/lastMatches/").toString();//2path
+	public static final String GET_LAST_MATCH = new StringBuilder(urlBase).append("/UI/rest/matches/lastMatch/").toString();//2path
+	public static final String GET_LAST_MATCH_PENULT = new StringBuilder(urlBase).append("/UI/rest/matches/lastMatchPenult/").toString();//2path
 	public static final String GET_MATCHE = new StringBuilder(urlBase).append("/UI/rest/matches/").toString();//1path
 	public static final String GET_TEAMS = new StringBuilder(urlBase).append("/UI/rest/leagues/").toString();
 	public static final String GET_MAIN_LEAGUE_USER = new StringBuilder(urlBase).append("/UI/rest/leagues/user/").toString();

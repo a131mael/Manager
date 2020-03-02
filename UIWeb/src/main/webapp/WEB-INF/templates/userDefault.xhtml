@@ -6,20 +6,24 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Angular</title>
-<!-- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
-<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1" /> -->
-	
+	<title>Football Manager</title>
+	<!-- 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+	<!-- 	<meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+
 	<h:outputStylesheet name="css/userDefault.css" />
 	<h:outputStylesheet name="css/jquery.mobile-1.4.2.css" />
 	<h:outputStylesheet name="css/bootstrap.min.css" />
 	<h:outputStylesheet name="css/menu.css" />
 	
-	
-<!-- 	<h:outputScript library="js" name="jquery.min.js" /> -->
-<!-- 	<h:outputScript library="js" name="bootstrap.min.js" /> -->
-<!-- 	<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.min.css"/> -->
-	
+	<h:outputScript library="js" name="js/football.js" />
+
+	<script type="text/javascript" src="../../resources/js/football.js"></script>
+
+
+	<!-- 	<h:outputScript library="js" name="jquery.min.js" /> -->
+	<!-- 	<h:outputScript library="js" name="bootstrap.min.js" /> -->
+	<!-- 	<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.min.css"/> -->
+
 
 
 
@@ -44,81 +48,209 @@
 
 	<!-- Set viewport scaling and zoom features -->
 
+
+	<style>
+h1 {
+	font-size: 30px;
+	text-align: center;
+}
+
+#clock {
+	display: block;
+	margin: 0 auto;
+	background: #F1F1E1;
+	border: 1px solid black;
+}
+</style>
 </h:head>
-<h:body>
+<h:body onload="startTime()">
 	<div id="container">
-		<div class="dualbrand">
-			<img src="../../resources/gfx/dualbrand_logo.png" />
+		<div class="dualbrand" style="width: 100%; height: 50px">
+			<img src="../../resources/gfx/icons/logoFootbalMaster.png" style="width: 92%;height:95px;  margin-left: 12px;"  />
 		</div>
 
-		<div id="content" style="width: 680px">
+		<div id="leftaside" >
+			<div>
+				<div style="padding: 2px; " >
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/start.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.start']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/worldwide.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.world']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/brazil.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{authController.loggedUser.countryDTO.name}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/find.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.find']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/transfer.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.transfer']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/forum.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.forum']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/rules.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.rulers']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/premium.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.plus']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+				<div style="padding: 2px">
+					<a href="../../pages/team/index.xhtml" name="ggg" title="ddd">
+						<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px; height: 30px; width: 110px" >
+							<h:panelGrid columns="2"> 
+								<img src="../../resources/gfx/icons/logout.png"  width="20px" height="20px" style="margin-left: 2px"/>
+								<h:outputText value="#{msg['menu.left.logout']}" />
+							</h:panelGrid>
+								
+						</div>
+					</a>
+				</div>
+
+				<div>
+					<div id="txt" style="padding: 12px"></div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div id="content" style="width: 80%">
 			<ui:insert name="content">
                     [Template content will be inserted here]
          </ui:insert>
 		</div>
 
-
 		<div id="aside">
-			<div>
+ 
+				
 				<a href="../../pages/team/index.xhtml">
-<!-- 					<span	class="glyphicon glyphicon-home gi-2-5x" /> -->
-					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
-				</a> 
+							<img src="../../resources/gfx/icons/inicio.png"
+							width="35px" height="35px;"
+							alt="#{authController.loggedUser.team.league.country.name}" 
+							class="alinharIconMenu" />
+				</a>
+
 				<a href="../../pages/team/players.xhtml">
-<!-- 					<span class="glyphicon glyphicon-user gi-2-5x"/> -->
-					<!-- <span class="glyphicon glyphicon-envelope gi-2-5x"/> -->
-					<img src="../../resources/img/ico/menu/football-player-attempting-to-kick-ball.png"
-							width="28px" height="28px;"
+							<img src="../../resources/gfx/icons/jogador.png"
+							width="35px" height="35px;"
 							alt="#{authController.loggedUser.team.league.country.name}" 
-							class="gi-2-5x alinharIconMenu"/>
-				</a> 
+							class="alinharIconMenu" />
+				</a>
 				<a href="../../pages/team/matches.xhtml">
-<!-- 					<span class="glyphicon glyphicon-calendar gi-2-5x"/> -->
-<!-- 					<span class="glyphicon glyphicon-envelope gi-2-5x"/> -->
-						<img src="../../resources/img/ico/menu/soccer-dates.png"
-							width="28px" height="28px;"
-							alt="#{authController.loggedUser.team.league.country.name}" 
-							class="gi-2-5x alinharIconMenu"/>
-				</a> 
+					<img src="../../resources/gfx/icons/corner.png"
+						 width="35px" height="35px;"
+						 alt="#{authController.loggedUser.team.league.country.name}" 
+						 class="alinharIconMenu" />
+				</a>
 				<a href="../../pages/team/training.xhtml">
-<!-- 					<span class="glyphicon glyphicon-scale gi-2-5x"/> -->
-					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
+					<img src="../../resources/gfx/icons/treino.png"
+						 width="35px" height="35px;"
+						 alt="#{authController.loggedUser.team.league.country.name}" 
+						 class="alinharIconMenu" />
 				</a>
-				 <a href="../../pages/team/stadium.xhtml">
-<!-- 				 <span class="glyphicon glyphicon-tent gi-2-5x" /> -->
-					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
-				</a> 
-					<a href="../../pages/team/economy.xhtml">
-					<span class="glyphicon glyphicon-euro gi-2-5x"/>
-<!-- 					<span class="glyphicon glyphicon-usd gi-2-5x"/> -->
-				</a> 
+				<a href="../../pages/team/stadium.xhtml">
+					<img src="../../resources/gfx/icons/stadium.png"
+						 width="35px" height="35px;"
+						 alt="#{authController.loggedUser.team.league.country.name}" 
+						 class="alinharIconMenu" />
+						
+				</a>
+				<a href="../../pages/team/economy.xhtml">
+					<img src="../../resources/gfx/icons/dinheiro.png"
+						 width="35px" height="35px;"
+						 alt="#{authController.loggedUser.team.league.country.name}" 
+						 class="alinharIconMenu" />
+				</a>
 				<a href="../../pages/team/informations.xhtml">
-<!-- 				<span class="glyphicon glyphicon-phone-alt gi-2-5x"/> -->
-					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
-				</a> 
+					<img src="../../resources/gfx/icons/impressora.png"
+						 width="35px" height="35px;"
+						 alt="#{authController.loggedUser.team.league.country.name}" 
+						 class="alinharIconMenu" />
+					</a>
 				<a href="../../pages/team/secretary.xhtml">
-					<span class="glyphicon glyphicon-envelope gi-2-5x"/>
-				</a>
-			</div>
+					<img src="../../resources/gfx/icons/correio.png"
+						 width="35px" height="35px;"
+						 alt="#{authController.loggedUser.team.league.country.name}" 
+						 class="alinharIconMenu" />
+					</a>
+
+				<!-- <div>
+       				 <h1 style="color:blue"></h1>
+        				<canvas id="clock" width="80" height="20"></canvas>
+    				</div> -->
 
 		</div>
 
 		<div id="footer">
-			<div data-role="footer" data-tap-toggle="false" data-theme="a"
-				style="display: none">
-				<div data-role="navbar">
-					<ul>
-						<li><a href="#intro-art" data-icon="home"
-							class="ui-btn-active"></a></li>
-						<li><a href="/UIWeb/pages/team/players.xhtml"
-							data-icon="gear"></a></li>
-						<li><a href="#member-art" data-icon="grid"></a></li>
-						<li><a href="#register-art" data-icon="plus"></a></li>
-						<li><a href="#register-art" data-icon="info"></a></li>
-					</ul>
-				</div>
-			</div>
-
+			<p>
+				Projeto Manager Web, todos os direitos reservados.<br />
+			</p>
 		</div>
 	</div>
 </h:body>

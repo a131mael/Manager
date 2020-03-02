@@ -34,6 +34,8 @@ public class UserDTO implements Serializable {
 	private LocalDate enteredInto;
 	
 	private IdionsEnum idiom;
+	
+	private String breadcrumb;
 
 	public UserDTO() {
 	}
@@ -157,6 +159,14 @@ public class UserDTO implements Serializable {
 
 	public void setIdiom(IdionsEnum idiom) {
 		this.idiom = idiom;
+	}
+
+	public String getBreadcrumb() {
+		return breadcrumb;
+	}
+
+	public void setBreadcrumb(String breadcrumb) {
+		this.breadcrumb = breadcrumb;
 	}
 
 }

@@ -67,7 +67,6 @@ public class AuthController {
 			UsernamePasswordToken token = new UsernamePasswordToken(authUser.getLogin(),
 					authUser.getSenha().toCharArray(), true);
 			SecurityUtils.getSubject().login(token);
-
 			return "team";
 		} catch (Exception ex) {
 		//	FacesMessage m = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Registration Fail");
@@ -89,7 +88,6 @@ public class AuthController {
 		try {
 			if (loggedUser == null) {
 				if (SecurityUtils.getSubject().getPrincipal() != null) {
-					System.out.println("CONSTRUIU O USUARIO LOGADO !!");
 					UserDTO user = (UserDTO) SecurityUtils.getSubject().getPrincipal();
 					loggedUser = user;
 					loggedUser.setCountryDTO(countryService.getCountry(loggedUser.getId()));

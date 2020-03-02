@@ -6,64 +6,142 @@
 	template="/WEB-INF/templates/userDefault.xhtml">
 
 	<ui:define name="content">
+	<div style="padding: 2px" >
+				<div style="background: #F1F1E1; -moz-border-radius: 7px; -webkit-border-radius: 7px; border-radius: 7px; padding-left: 8px">
+					<div>
+						#{msg['menu.top.teampage']} - #{authController.loggedUser.team.name}
+					</div>
+					<br/>
+					<p:spacer height="5px" width="30px"/>					
+					<a href="../../pages/team/secretary.xhtml">
+						#{msg['team.history']}
+					</a>
+					<p:spacer height="5px" width="18px"/>
+					<a href="../../pages/team/secretary.xhtml">
+						#{msg['team.transfer']}
+					</a>
+					<p:spacer height="5px" width="18px"/>
+					<a href="../../pages/team/secretary.xhtml">
+						#{msg['team.inf']}
+					</a>
+					<p:spacer height="5px" width="18px"/>
+					<a href="../../pages/team/secretary.xhtml">
+						#{msg['team.players']}
+					</a>
+					<p:spacer height="5px" width="18px"/>
+					<a href="../../pages/team/secretary.xhtml">
+						#{msg['team.matches']}
+					</a>
+					<p:spacer height="5px" width="18px"/>
+					<a href="../../pages/team/secretary.xhtml">
+						#{msg['team.statistics']}
+					</a>
+				</div>
+			</div>
 		<h:form style="width:100%; border:none">
 			<div>
-				<h:panelGrid columns="2" width="100%"  styleClass="alinharTopo">
+				<h:panelGrid columns="2" width="100%" styleClass="alinharTopo">
 					<h:panelGrid width="50%">
 						<img
 							src=" ../../resources/img/ico/flags/#{authController.loggedUser.countryDTO.name.toLowerCase()}.png"
-							width="45px" height="45px"
+							width="180px" height="180px"
 							alt="#{authController.loggedUser.team.league.country.name}" />
 
 					</h:panelGrid>
 					<h:panelGrid columns="2">
 
-						<h:outputLabel value="#{authController.loggedUser.team.name}" style="font-size: 25px" />
+						<h:outputLabel value="#{authController.loggedUser.team.name}"
+							style="font-size: 20px" />
 
-						<img src=" ../../resources/img/ico/flags/#{authController.loggedUser.countryDTO.name.toLowerCase()}.png"
+						<img
+							src=" ../../resources/img/ico/flags/#{authController.loggedUser.countryDTO.name.toLowerCase()}.png"
 							width="16px" height="16px;"
-							alt="#{authController.loggedUser.team.league.country.name}" 
-							/>
+							alt="#{authController.loggedUser.team.league.country.name}" />
 
 						<h:outputText value="" />
 						<h:outputText value="" />
 
-						<h:outputLabel value="#{msg['country']}" />
-						<h:link value="#{authController.loggedUser.countryDTO.name}"  outcome="country"/>
+						<h:outputLabel value="#{msg['country']}" style="font-size: 13px" />
+						<h:link value="#{authController.loggedUser.countryDTO.name}"
+							outcome="country" style="font-size: 13px" />
 
-						<h:outputLabel value="#{msg['team.user']}" />
-						<h:outputText value="#{authController.loggedUser.login}" />
+						<h:outputLabel value="#{msg['team.user']}" style="font-size: 13px" />
+						<h:outputText value="#{authController.loggedUser.login}"
+							style="font-size: 13px" />
 
-						<h:outputLabel value="#{msg['team.league']}" />
-						<h:link value="#{authController.loggedUser.mainLeague.name}"  outcome="league"/>
+						<h:outputLabel value="#{msg['team.league']}"
+							style="font-size: 13px" />
+						<h:link value="#{authController.loggedUser.mainLeague.name}"
+							outcome="league" style="font-size: 13px" />
 
-						<h:outputLabel value="#{msg['team.entry']}" />
-						<h:outputText value="#{authController.loggedUser.enteredInto}" />
+						<h:outputLabel value="#{msg['team.entry']}"
+							style="font-size: 13px" />
+						<h:outputText value="#{authController.loggedUser.enteredInto}"
+							style="font-size: 13px" />
 
-						<h:outputLabel value="#{msg['team.idiom']}" />
-						<h:outputText value="#{authController.loggedUser.idiom.label}" />
+						<h:outputLabel value="#{msg['team.idiom']}"
+							style="font-size: 13px" />
+						<h:outputText value="#{authController.loggedUser.idiom.label}"
+							style="font-size: 13px" />
 
-						<h:outputLabel value="#{msg['team.stadium']}" />
-						<h:link value="#{authController.loggedUser.team.stadium.name}"  outcome="stadium"/>
+						<h:outputLabel value="#{msg['team.stadium']}"
+							style="font-size: 13px" />
+						<h:link value="#{authController.loggedUser.team.stadium.name}"
+							outcome="stadium" style="font-size: 13px" />
 
-						<h:outputLabel value="#{msg['team.region']}" />
-						<h:outputText value="#{authController.loggedUser.team.region.name}" />
+						<h:outputLabel value="#{msg['team.region']}"
+							style="font-size: 13px" />
+						<h:outputText
+							value="#{authController.loggedUser.team.region.name}" />
 
 						<hr />
+						<p:spacer />
+
 
 					</h:panelGrid>
-					<ui:repeat var="match" value="#{matchController.lastTeamMatchs}"
-						varStatus="status">
+					<h:outputLabel value="#{msg['team.lastgames']}"
+						style="font-size: 13px" />
 
-						<h:panelGrid columns="4">
-							<h:outputLabel value="#{match.round}" />
-							<h:outputLabel value="#{match.homeTeam.name}" />
-							<h:outputLabel value=" - " />
-							<h:outputLabel value="#{match.visitTeam.name}" />
-						</h:panelGrid>
-					</ui:repeat>
+					<h:panelGrid columns="4">
+						<h:outputLabel value="#{matchController.lastTeamMatch.round}" />
+						<h:outputText
+							value="#{matchController.lastTeamMatch.homeTeam.name}"
+							style="font-size: 1.1em" />
+						<h:outputLabel value=" - " />
+						<h:outputText
+							value="#{matchController.lastTeamMatch.visitTeam.name}"
+							style="font-size: 1.1em" />
+					</h:panelGrid>
+					<br />
+					<h:panelGrid columns="3" style="float: right">
+						<h:link value="#{msg['match.report']}" style="font-size: 1.0em" />
+						<p:spacer width="30px" />
+						<h:link value="#{msg['match.watch']}" style="font-size: 1.0em" />
+					</h:panelGrid>
 
-
+					<br />
+					<br />
+					<br />
+					<h:panelGrid columns="6">
+						<h:outputLabel value="#{matchController.matchPenultimate.round}" />
+						<h:outputText
+							value="#{matchController.matchPenultimate.homeTeam.name}"
+							style="font-size: 1.1em;" />
+						<h:outputLabel
+							value="#{matchController.matchPenultimate.golasHomeTeam}" />
+						<h:outputLabel value=" - " />
+						<h:outputLabel
+							value="#{matchController.matchPenultimate.golasVisitTeam}" />
+						<h:outputText
+							value="#{matchController.matchPenultimate.visitTeam.name}"
+							style="font-size: 1.1em" />
+					</h:panelGrid>
+					<br />
+					<h:panelGrid columns="3" style="float: right">
+						<h:link value="#{msg['match.report']}" style="font-size: 1.0em" />
+						<p:spacer width="30px" />
+						<h:link value="#{msg['match.watch']}" style="font-size: 1.0em" />
+					</h:panelGrid>
 
 				</h:panelGrid>
 			</div>

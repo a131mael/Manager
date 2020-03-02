@@ -106,9 +106,16 @@ public class MatchController extends AuthController {
 		return playerService.getPlayers(getLoggedUser().getId(), "name", "asc");
 
 	}
-	public List<Object> getLastTeamMatchs() throws Exception {
-		// return matchService.getLastMatches(getLoggedUser().getId());
-		return null;
+	public List<MatchDTO> getLastTeamMatchs() throws Exception {
+		 return matchService.getLastMatches(getLoggedUser().getTeam().getId());
+	}
+	
+	public MatchDTO getLastTeamMatch() throws Exception {
+		 return matchService.getLastMatch(getLoggedUser().getTeam().getId());
+	}
+	
+	public MatchDTO getMatchPenultimate() throws Exception {
+		 return matchService.getLastMatchPenultimate(getLoggedUser().getTeam().getId());
 	}
 
 	public List<Integer> getWeeks() throws Exception {

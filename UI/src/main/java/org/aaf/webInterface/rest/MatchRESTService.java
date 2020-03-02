@@ -78,6 +78,67 @@ public class MatchRESTService {
 	}
 	
 	@GET
+	@Path("/lastMatches/{idTeam:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getLastMatches(@PathParam("idTeam") long idTeam) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+		
+		builder = Response.ok();
+		
+		List<Match> matches = matchService.getLast2Matches(idTeam);
+		if (matches == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getMatches(matches)));
+		}
+		return builder.build();
+	}
+	
+	@GET
+	@Path("/lastMatch/{idTeam:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getLastMatch(@PathParam("idTeam") long idTeam) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+		
+		builder = Response.ok();
+		
+		Match matches = matchService.getLastMatch(idTeam);
+		if (matches == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getMatch(matches)));
+		}
+		return builder.build();
+	}
+	
+	@GET
+	@Path("/lastMatchPenult/{idTeam:[0-9][0-9]*}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getLastMatchPenult(@PathParam("idTeam") long idTeam) {
+		// TODO alterar o id do time para o token
+		Response.ResponseBuilder builder = null;
+		
+		builder = Response.ok();
+		
+		Match matches = matchService.getLastMatchPenult(idTeam);
+		if (matches == null) {
+			builder = Response.status(Response.Status.BAD_REQUEST).entity("erro");
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+		} else {
+			builder = Response.ok();
+			builder.entity(JsonWriter.objectToJson(Convertes.getMatch(matches)));
+		}
+		return builder.build();
+	}
+	
+	
+	@GET
 	@Path("/{idMatch:[0-9][0-9]*}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getMatches(@PathParam("idMatch") long idMatch) {

@@ -16,7 +16,6 @@
  */
 package org.aaf.uiweb.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.aaf.dto.LineUpDTO;
@@ -30,8 +29,8 @@ public class MatchService extends Service{
 
 	
 	public List<MatchDTO> getLastMatches(Long idTeam) {
-		
-		return  new ArrayList<MatchDTO>();
+		String endPoint =  EndPoints.GET_LAST_MATCHES+idTeam;
+		return (List<MatchDTO>)getObject(endPoint);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -42,9 +41,15 @@ public class MatchService extends Service{
 
 	public MatchDTO getLastMatch(Long id) {
 		
-		return  new MatchDTO();
+		String endPoint =  EndPoints.GET_LAST_MATCH+id;
+		return (MatchDTO)getObject(endPoint);
 	}
 
+	public MatchDTO getLastMatchPenultimate(Long id) {
+		String endPoint =  EndPoints.GET_LAST_MATCH_PENULT+id;
+		return (MatchDTO)getObject(endPoint);
+	}
+	
 	public void saveLineUp(LineUpDTO lineUP) {
 		JSONPPost.sendJson(JsonWriter.objectToJson(lineUP), EndPoints.SAVE_LINEUP);
 		
@@ -55,5 +60,7 @@ public class MatchService extends Service{
 		String endPoint =  EndPoints.GET_LINEUP+matchId+"/"+idTeam;
 		return(LineUpDTO)getObject(endPoint);
 	}
+
+	
 
 }

@@ -106,8 +106,7 @@
 			<groupId>org.aaf.UIDTO</groupId>
 			<artifactId>UIDTO</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			<!-- <scope>system</scope> -->
-			<!-- <systemPath>path/to/myejbproject.jar</systemPath> -->
+			<type>jar</type>
 		</dependency>
 
 		<dependency>

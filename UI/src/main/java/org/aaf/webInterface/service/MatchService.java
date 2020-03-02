@@ -52,6 +52,24 @@ public class MatchService {
 		query.setParameter("idTeam", idTeam);
 		return query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Match> getLast2Matches(Long idTeam) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or ht.id = :idTeam ");
+		sql.append(") ");
+		sql.append("ORDER BY m.dateTime DESC");
+		Query query = em.createQuery(sql.toString());
+		query.setMaxResults(2);
+		query.setParameter("idTeam", idTeam);
+		return query.getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Match> getMatches(Long id, int session, int week) {
@@ -94,22 +112,7 @@ public class MatchService {
 		return query.getResultList();
 
 	}
-
-	public Match getLastMatch(Long id) {
-		StringBuilder sql = new StringBuilder();
-		sql.append("Select m from Match m  ");
-		sql.append("left join m.homeTeam ht ");
-		sql.append("left join m.visitTeam vt ");
-		sql.append("where 1=1 ");
-		sql.append("and (");
-		sql.append("vt.id = :idTeam ");
-		sql.append("or m.id = :id ");
-		sql.append(") ");
-		Query query = em.createQuery(sql.toString());
-		query.setParameter("id", id);
-		return (Match) query.getResultList();
-	}
-
+	
 	public void save(LineUp lineUp) {
 		em.find(Match.class, lineUp.getMatch().getId());
 		em.find(Team.class, lineUp.getTeam().getId());
@@ -200,4 +203,39 @@ public class MatchService {
 		return em.find(Match.class, idMatch);
 	}
 
+	public Match getLastMatchPenult(long idTeam) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or m.id = :idTeam ");
+		sql.append(") ");
+		sql.append("ORDER BY m.dateTime DESC");
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("idTeam", idTeam);
+		query.setMaxResults(2);
+		List<Match> matches = query.getResultList(); 
+		return matches.get(1); 
+	}
+	
+	public Match getLastMatch(Long id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("Select m from Match m  ");
+		sql.append("left join m.homeTeam ht ");
+		sql.append("left join m.visitTeam vt ");
+		sql.append("where 1=1 ");
+		sql.append("and (");
+		sql.append("vt.id = :idTeam ");
+		sql.append("or m.id = :idTeam ");
+		sql.append(") ");
+		sql.append("ORDER BY m.dateTime DESC");
+		Query query = em.createQuery(sql.toString());
+		query.setParameter("idTeam", id);
+		query.setMaxResults(1);
+		return (Match) query.getSingleResult();
+	}
+	
 }
